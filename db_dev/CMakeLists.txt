@@ -9,4 +9,5 @@ file(GLOB_RECURSE SRC RELATIVE ${CMAKE_SOURCE_DIR} "src/*.c")
 file(GLOB_RECURSE HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "inc/*.h")
 
 add_executable(UCHAT ${SRC} ${HEADERS})
+target_link_libraries(UCHAT -lsqlite3 )
 

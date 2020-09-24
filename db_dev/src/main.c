@@ -5,5 +5,11 @@
 #include "header_db_dev.h"
 
 int main() {
-    printf("Hello World!\n");
+    sqlite3 *db;
+    char *error = NULL;
+    int result;
+
+    result = sqlite3_open("test.db", &db);
+    printf("%d\n", result);
+    return 0;
 }

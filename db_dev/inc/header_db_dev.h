@@ -23,5 +23,6 @@
 #include <fcntl.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include <sqlite3.h>
 
 #endif //UCHAT_HEADER_DB_DEV_H
