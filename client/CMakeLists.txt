@@ -30,7 +30,9 @@ target_compile_options(UCHAT PRIVATE
         -I${CMAKE_SOURCE_DIR}/resources/framework/include/glib/2.66.0/include/glib-2.0
         -I${CMAKE_SOURCE_DIR}/resources/framework/include/glib/2.66.0/lib/glib-2.0/include
         -I${CMAKE_SOURCE_DIR}/resources/framework/include/gettext
-        -I${CMAKE_SOURCE_DIR}/resources/framework/include/pcre)
+        -I${CMAKE_SOURCE_DIR}/resources/framework/include/pcre
+        -I${CMAKE_SOURCE_DIR}/resources/framework/include/jansson
+        )
 
 target_link_libraries(UCHAT
         -L${CMAKE_SOURCE_DIR}/resources/framework/lib/gtk+3
@@ -41,7 +43,8 @@ target_link_libraries(UCHAT
         -L${CMAKE_SOURCE_DIR}/resources/framework/lib/gdk-pixbuf
         -L${CMAKE_SOURCE_DIR}/resources/framework/lib/glib
         -L${CMAKE_SOURCE_DIR}/resources/framework/lib/gettext
-        -lgtk-3 -lgdk-3 -Wl -Wl -Wl
+        -L${CMAKE_SOURCE_DIR}/resources/framework/lib/jansson
+        -lgtk-3 -lgdk-3 -Wl -Wl -Wl -ljansson
         -lpangocairo-1.0 -lpango-1.0
         -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo
         -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0 -lintl)
