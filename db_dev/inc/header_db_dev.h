@@ -25,4 +25,10 @@
 #include <stddef.h>
 #include <sqlite3.h>
 
+typedef struct s_sqlite_request {
+    char *error_message;
+    char **result;
+    char *request;
+}              t_sqlite_request;
+
 #endif //UCHAT_HEADER_DB_DEV_H
