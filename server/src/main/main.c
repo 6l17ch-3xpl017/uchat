@@ -78,12 +78,12 @@ int main(int argc, char *argv[]) {
         json_t *data, *sha, *commit, *message, *root;
         json_error_t error;
 
-        root = json_load_file("/test.json",0,&error);
-        if(!root)
-        {
-            fprintf(stderr, "error: on line %d: %s\n", error.line, error.text);
-            return 1;
-        }
+        root = json_load_file("test.json",0,&error);
+//        if(!root)
+//        {
+//            fprintf(stderr, "error: on line %d: %s\n", error.line, error.text);
+//            return 1;
+//        }
 
 
 
