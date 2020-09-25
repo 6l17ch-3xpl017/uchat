@@ -1,0 +1,4 @@
+#ifndef UCHAT_TEST_SERVER_H
+#define UCHAT_TEST_SERVER_H
+
+#endif //UCHAT_TEST_SERVER_H

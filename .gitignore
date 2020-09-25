@@ -2,7 +2,7 @@
 CMakeLists.txt
 obj
 *.a
-.idea
+../.idea
 uchat
 uchat_server
 ._.DS_Store
@@ -18,3 +18,4 @@ client_unit_tests/
 *.zsh
 mycert.pem
 /cmake-build-debug/
+.idea
