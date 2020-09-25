@@ -1,0 +1,4 @@
+#ifndef UCHAT_GUI_CLIENT_H
+#define UCHAT_GUI_CLIENT_H
+
+#endif //UCHAT_GUI_CLIENT_H
