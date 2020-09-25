@@ -31,4 +31,7 @@ typedef struct s_sqlite_request {
     char *request;
 }              t_sqlite_request;
 
+char *mx_itoa(int number);
+bool if_user_in_db(char *nickname);
+
 #endif //UCHAT_HEADER_DB_DEV_H
