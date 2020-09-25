@@ -10,5 +10,4 @@
 #include<pthread.h>
 #include"../resources/framework/include/jansson/jansson.h"
 
-
 #endif
