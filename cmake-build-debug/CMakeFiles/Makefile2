@@ -73,7 +73,7 @@ CMAKE_BINARY_DIR = /Users/illiass/Documents/uchatSB/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/uchat.dir/all
+all: CMakeFiles/uchatSB.dir/all
 
 .PHONY : all
 
@@ -83,36 +83,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/uchat.dir/clean
+clean: CMakeFiles/uchatSB.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/uchat.dir
+# Target rules for target CMakeFiles/uchatSB.dir
 
 # All Build rule for target.
-CMakeFiles/uchat.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/uchat.dir/build.make CMakeFiles/uchat.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/uchat.dir/build.make CMakeFiles/uchat.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/illiass/Documents/uchatSB/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66 "Built target uchat"
-.PHONY : CMakeFiles/uchat.dir/all
+CMakeFiles/uchatSB.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/uchatSB.dir/build.make CMakeFiles/uchatSB.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/uchatSB.dir/build.make CMakeFiles/uchatSB.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/illiass/Documents/uchatSB/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66 "Built target uchatSB"
+.PHONY : CMakeFiles/uchatSB.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/uchat.dir/rule: cmake_check_build_system
+CMakeFiles/uchatSB.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/illiass/Documents/uchatSB/cmake-build-debug/CMakeFiles 66
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/uchat.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/uchatSB.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/illiass/Documents/uchatSB/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/uchat.dir/rule
+.PHONY : CMakeFiles/uchatSB.dir/rule
 
 # Convenience name for target.
-uchat: CMakeFiles/uchat.dir/rule
+uchatSB: CMakeFiles/uchatSB.dir/rule
 
-.PHONY : uchat
+.PHONY : uchatSB
 
 # clean rule for target.
-CMakeFiles/uchat.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/uchat.dir/build.make CMakeFiles/uchat.dir/clean
-.PHONY : CMakeFiles/uchat.dir/clean
+CMakeFiles/uchatSB.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/uchatSB.dir/build.make CMakeFiles/uchatSB.dir/clean
+.PHONY : CMakeFiles/uchatSB.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

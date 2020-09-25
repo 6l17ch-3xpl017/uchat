@@ -1,6 +1,5 @@
 .DS_Store
 CMakeLists.txt
-cmake-build-debug
 obj
 *.a
 .idea
@@ -18,3 +17,4 @@ database.db
 client_unit_tests/
 *.zsh
 mycert.pem
+/cmake-build-debug/
