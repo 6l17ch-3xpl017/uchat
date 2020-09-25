@@ -45,10 +45,9 @@
  * it under the terms of the MIT license. See LICENSE for details.
  */
 
-#include <jansson.h>
+#include "jansson.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <sqlite3.h>
 
 /* forward refs */
 void print_json(json_t *root);
