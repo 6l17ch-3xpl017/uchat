@@ -8,7 +8,6 @@
 #include<arpa/inet.h>
 #include<unistd.h>
 #include<pthread.h>
-#include<jansson.h>
 
 
 #endif
