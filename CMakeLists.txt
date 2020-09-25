@@ -70,4 +70,4 @@ add_executable(uchat
         libmx/src/mx_strstr.c
         libmx/src/mx_strtrim.c
         libmx/src/mx_swap_char.c
-        src/main/main.c)
+        src/main/main.c src/main/try_multytreads.c)

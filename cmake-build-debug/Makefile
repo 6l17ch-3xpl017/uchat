@@ -68,10 +68,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/illiass/Documents/uchat
+CMAKE_SOURCE_DIR = /Users/illiass/Documents/uchatSB
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/illiass/Documents/uchat/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/illiass/Documents/uchatSB/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/illiass/Documents/uchat/cmake-build-debug/CMakeFiles /Users/illiass/Documents/uchat/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/illiass/Documents/uchatSB/cmake-build-debug/CMakeFiles /Users/illiass/Documents/uchatSB/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/illiass/Documents/uchat/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/illiass/Documents/uchatSB/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -1871,6 +1871,33 @@ src/main/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/uchat.dir/build.make CMakeFiles/uchat.dir/src/main/main.c.s
 .PHONY : src/main/main.c.s
 
+src/main/try_multytreads.o: src/main/try_multytreads.c.o
+
+.PHONY : src/main/try_multytreads.o
+
+# target to build an object file
+src/main/try_multytreads.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/uchat.dir/build.make CMakeFiles/uchat.dir/src/main/try_multytreads.c.o
+.PHONY : src/main/try_multytreads.c.o
+
+src/main/try_multytreads.i: src/main/try_multytreads.c.i
+
+.PHONY : src/main/try_multytreads.i
+
+# target to preprocess a source file
+src/main/try_multytreads.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/uchat.dir/build.make CMakeFiles/uchat.dir/src/main/try_multytreads.c.i
+.PHONY : src/main/try_multytreads.c.i
+
+src/main/try_multytreads.s: src/main/try_multytreads.c.s
+
+.PHONY : src/main/try_multytreads.s
+
+# target to generate assembly for a file
+src/main/try_multytreads.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/uchat.dir/build.make CMakeFiles/uchat.dir/src/main/try_multytreads.c.s
+.PHONY : src/main/try_multytreads.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2072,6 +2099,9 @@ help:
 	@echo "... src/main/main.o"
 	@echo "... src/main/main.i"
 	@echo "... src/main/main.s"
+	@echo "... src/main/try_multytreads.o"
+	@echo "... src/main/try_multytreads.i"
+	@echo "... src/main/try_multytreads.s"
 .PHONY : help
 
 

@@ -63,6 +63,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/uchat.dir/libmx/src/mx_strtrim.c.o"
   "CMakeFiles/uchat.dir/libmx/src/mx_swap_char.c.o"
   "CMakeFiles/uchat.dir/src/main/main.c.o"
+  "CMakeFiles/uchat.dir/src/main/try_multytreads.c.o"
   "uchat"
   "uchat.pdb"
 )

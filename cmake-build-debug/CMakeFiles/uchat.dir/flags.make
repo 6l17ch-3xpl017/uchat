@@ -6,5 +6,5 @@ C_FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacO
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/illiass/Documents/uchat/libmx/inc 
+C_INCLUDES = -I/Users/illiass/Documents/uchatSB/libmx/inc 
 
