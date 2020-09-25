@@ -1,6 +1,0 @@
-{
-  "sha": "<the commit ID>",
-  "commit": {
-    "message": "<the commit message>"
-  }
-}
