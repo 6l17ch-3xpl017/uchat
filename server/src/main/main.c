@@ -80,10 +80,10 @@ int main(int argc, char *argv[]) {
 
         root = json_load_file("test.json",0,&error);
         if(!root)
-        {
-            fprintf(stderr, "error: on line %d: %s\n", error.line, error.text);
-            return 1;
-        }
+//        {
+//            fprintf(stderr, "error: on line %d: %s\n", error.line, error.text);
+//            return 1;
+//        }
 
 
 
