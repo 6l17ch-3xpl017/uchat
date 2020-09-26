@@ -445,6 +445,7 @@ int jansson_version_cmp(int major, int minor, int micro);
 
 #ifdef __cplusplus
 }
+
 #endif
 
 #endif
