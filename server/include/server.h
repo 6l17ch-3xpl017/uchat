@@ -11,7 +11,5 @@
 #include "libmx.h"
 #include "jansson.h"
 #include "jansson_config.h"
-// json
-int json_parse_test();
 
 #endif
