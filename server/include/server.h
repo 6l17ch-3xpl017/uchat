@@ -11,7 +11,19 @@
 #include "libmx.h"
 #include "jansson.h"
 #include "jansson_config.h"
-// json
-int json_parse_test();
+
+typedef struct s_user {
+    char *nickname;
+    char *password;
+    char *email;
+    int age;
+    char *fullname;
+    char *ph_number;
+    char *user_photo;
+    void *option;
+    struct s_user *next;
+} t_user;
+
+void check_route(char *str);
 
 #endif

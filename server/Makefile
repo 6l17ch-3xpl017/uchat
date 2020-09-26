@@ -1,5 +1,5 @@
 # name of binary
-NAME		= uchat
+NAME		= uchat_server
 
 # main dir for source files
 SRC_DIR		= src/

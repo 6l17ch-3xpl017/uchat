@@ -1,6 +1,6 @@
 .DS_Store
 obj
-*.a
+#*.a
 ../.idea
 uchat
 uchat_server

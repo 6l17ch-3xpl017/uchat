@@ -1,7 +1,6 @@
 #include "../../include/server.h"
 
 void *connection_handler(void *socket_desc) {
-    //ToDo make server router to send and get data from DB;
 
     //Get the socket descriptor
     int sock = *(int *) socket_desc;
@@ -16,13 +15,20 @@ void *connection_handler(void *socket_desc) {
     while ((read_size = recv(sock, client_message, 2000, 0)) > 0) {
         //end of string marker
         client_message[read_size] = '\0';
-
         //Send the message back to client
         write(sock, client_message, strlen(client_message));
 
         //clear the message buffer
         memset(client_message, 0, 2000);
     }
+    //TODO here add json parse;
+
+
+    //TODO here add router;
+
+
+
+
     if (read_size == 0) {
         puts("Client disconnected");
         fflush(stdout);
@@ -36,6 +42,20 @@ void *connection_handler(void *socket_desc) {
 int main(int argc, char *argv[]) {
     (void)argc;
     (void)argv;
+    char str[] = "{\n"
+                 "  \"type\": \"sign_in\",\n"
+                 "  \"user\": {\n"
+                 "    \"nickname\": \"test\",\n"
+                 "    \"password\": \"test\",\n"
+                 "    \"email\": \"test\",\n"
+                 "    \"age\": \"test\",\n"
+                 "    \"fullname\": \"test\",\n"
+                 "    \"ph_number\": \"test\",\n"
+                 "    \"user_photo\": \"test\",\n"
+                 "    \"option\": \"test\"\n"
+                 "  }\n"
+                 "}";
+
     int socket_desc, client_sock, c;
     struct sockaddr_in server, client;
 
@@ -48,60 +68,50 @@ int main(int argc, char *argv[]) {
     socket_desc = socket(AF_INET, SOCK_STREAM, 0);
     if (socket_desc == -1)
         printf("Could not create socket");
-    puts("Socket created");
 
-    //Bind
-    if (bind(socket_desc, (struct sockaddr *) &server, sizeof(server)) < 0) {
-        //print the error message
-        perror("bind failed. Error");
-        return 1;
-    }
-    puts("bind done");
-    //Listen
-    listen(socket_desc, 3);
-    //Accept and incoming connection
-    puts("Waiting for incoming connections...");
-    c = sizeof(struct sockaddr_in);
-    pthread_t thread_id;
-
-    while ((client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t *) &c))) {
-        puts("Connection accepted");
-        if (pthread_create(&thread_id, NULL, connection_handler, (void *) &client_sock) < 0) {
-            perror("could not create thread");
-            return 1;
-        }
-        //Now join the thread , so that we don't terminate before the thread
-        //pthread_join( thread_id , NULL);
-        puts("Handler assigned");
-
-        //
-        json_t *data, *sha, *commit, *message, *root;
-        json_error_t error;
-
-        root = json_load_file("/test.json",0,&error);
-        if(!root)
-        {
-            fprintf(stderr, "error: on line %d: %s\n", error.line, error.text);
-            return 1;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
-    if (client_sock < 0) {
-        perror("accept failed");
-        return 1;
-    }
+    check_route(str);
     return 0;
+//    puts("Socket created");
+//
+//    //Bind
+//    if (bind(socket_desc, (struct sockaddr *) &server, sizeof(server)) < 0) {
+//        //print the error message
+//        perror("bind failed. Error");
+//        return 1;
+//    }
+//    puts("bind done");
+//    //Listen
+//    listen(socket_desc, 3);
+//    //Accept and incoming connection
+//    puts("Waiting for incoming connections...");
+//    c = sizeof(struct sockaddr_in);
+//    pthread_t thread_id;
+//
+//    while ((client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t *) &c))) {
+//        puts("Connection accepted");
+//        if (pthread_create(&thread_id, NULL, connection_handler, (void *) &client_sock) < 0) {
+//            perror("could not create thread");
+//            return 1;
+//        }
+//        //Now join the thread , so that we don't terminate before the thread
+//        //pthread_join( thread_id , NULL);
+//        puts("Handler assigned");
+//
+//        //
+//        json_t *data, *sha, *commit, *message, *root;
+//        json_error_t error;
+//
+//        root = json_load_file("/test.json",0,&error);
+//        if(!root)
+//        {
+//            fprintf(stderr, "error: on line %d: %s\n", error.line, error.text);
+//            return 1;
+//        }
+//    }
+//    if (client_sock < 0) {
+//        perror("accept failed");
+//        return 1;
+//    }
+//    return 0;
 }
 
