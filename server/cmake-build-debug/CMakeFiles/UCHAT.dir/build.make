@@ -103,31 +103,31 @@ CMakeFiles/UCHAT.dir/src/main/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/UCHAT.dir/src/main/main.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/yksonzenko/CLionProjects/uchat/server/src/main/main.c -o CMakeFiles/UCHAT.dir/src/main/main.c.s
 
-CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o: CMakeFiles/UCHAT.dir/flags.make
-CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o: ../src/router/auth/sign_in.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o   -c /Users/yksonzenko/CLionProjects/uchat/server/src/router/auth/sign_in.c
+CMakeFiles/UCHAT.dir/src/router/sign_in.c.o: CMakeFiles/UCHAT.dir/flags.make
+CMakeFiles/UCHAT.dir/src/router/sign_in.c.o: ../src/router/sign_in.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/UCHAT.dir/src/router/sign_in.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/UCHAT.dir/src/router/sign_in.c.o   -c /Users/yksonzenko/CLionProjects/uchat/server/src/router/sign_in.c
 
-CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/yksonzenko/CLionProjects/uchat/server/src/router/auth/sign_in.c > CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.i
+CMakeFiles/UCHAT.dir/src/router/sign_in.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/UCHAT.dir/src/router/sign_in.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/yksonzenko/CLionProjects/uchat/server/src/router/sign_in.c > CMakeFiles/UCHAT.dir/src/router/sign_in.c.i
 
-CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/yksonzenko/CLionProjects/uchat/server/src/router/auth/sign_in.c -o CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.s
+CMakeFiles/UCHAT.dir/src/router/sign_in.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/UCHAT.dir/src/router/sign_in.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/yksonzenko/CLionProjects/uchat/server/src/router/sign_in.c -o CMakeFiles/UCHAT.dir/src/router/sign_in.c.s
 
-CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.o: CMakeFiles/UCHAT.dir/flags.make
-CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.o: ../src/router/auth/sign_up.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.o   -c /Users/yksonzenko/CLionProjects/uchat/server/src/router/auth/sign_up.c
+CMakeFiles/UCHAT.dir/src/router/sign_up.c.o: CMakeFiles/UCHAT.dir/flags.make
+CMakeFiles/UCHAT.dir/src/router/sign_up.c.o: ../src/router/sign_up.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/UCHAT.dir/src/router/sign_up.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/UCHAT.dir/src/router/sign_up.c.o   -c /Users/yksonzenko/CLionProjects/uchat/server/src/router/sign_up.c
 
-CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/yksonzenko/CLionProjects/uchat/server/src/router/auth/sign_up.c > CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.i
+CMakeFiles/UCHAT.dir/src/router/sign_up.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/UCHAT.dir/src/router/sign_up.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/yksonzenko/CLionProjects/uchat/server/src/router/sign_up.c > CMakeFiles/UCHAT.dir/src/router/sign_up.c.i
 
-CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/yksonzenko/CLionProjects/uchat/server/src/router/auth/sign_up.c -o CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.s
+CMakeFiles/UCHAT.dir/src/router/sign_up.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/UCHAT.dir/src/router/sign_up.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/yksonzenko/CLionProjects/uchat/server/src/router/sign_up.c -o CMakeFiles/UCHAT.dir/src/router/sign_up.c.s
 
 CMakeFiles/UCHAT.dir/libmx/src/mx_atoi.c.o: CMakeFiles/UCHAT.dir/flags.make
 CMakeFiles/UCHAT.dir/libmx/src/mx_atoi.c.o: ../libmx/src/mx_atoi.c
@@ -952,8 +952,8 @@ CMakeFiles/UCHAT.dir/libmx/src/mx_swap_char.c.s: cmake_force
 UCHAT_OBJECTS = \
 "CMakeFiles/UCHAT.dir/src/json/check_route.c.o" \
 "CMakeFiles/UCHAT.dir/src/main/main.c.o" \
-"CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o" \
-"CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.o" \
+"CMakeFiles/UCHAT.dir/src/router/sign_in.c.o" \
+"CMakeFiles/UCHAT.dir/src/router/sign_up.c.o" \
 "CMakeFiles/UCHAT.dir/libmx/src/mx_atoi.c.o" \
 "CMakeFiles/UCHAT.dir/libmx/src/mx_binary_search.c.o" \
 "CMakeFiles/UCHAT.dir/libmx/src/mx_bubble_sort.c.o" \
@@ -1023,8 +1023,8 @@ UCHAT_EXTERNAL_OBJECTS =
 
 UCHAT: CMakeFiles/UCHAT.dir/src/json/check_route.c.o
 UCHAT: CMakeFiles/UCHAT.dir/src/main/main.c.o
-UCHAT: CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o
-UCHAT: CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.o
+UCHAT: CMakeFiles/UCHAT.dir/src/router/sign_in.c.o
+UCHAT: CMakeFiles/UCHAT.dir/src/router/sign_up.c.o
 UCHAT: CMakeFiles/UCHAT.dir/libmx/src/mx_atoi.c.o
 UCHAT: CMakeFiles/UCHAT.dir/libmx/src/mx_binary_search.c.o
 UCHAT: CMakeFiles/UCHAT.dir/libmx/src/mx_bubble_sort.c.o

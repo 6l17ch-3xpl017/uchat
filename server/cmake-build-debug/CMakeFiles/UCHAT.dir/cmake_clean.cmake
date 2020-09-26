@@ -64,8 +64,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/UCHAT.dir/libmx/src/mx_swap_char.c.o"
   "CMakeFiles/UCHAT.dir/src/json/check_route.c.o"
   "CMakeFiles/UCHAT.dir/src/main/main.c.o"
-  "CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o"
-  "CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.o"
+  "CMakeFiles/UCHAT.dir/src/router/sign_in.c.o"
+  "CMakeFiles/UCHAT.dir/src/router/sign_up.c.o"
   "UCHAT"
   "UCHAT.pdb"
 )

@@ -190,15 +190,23 @@ CMakeFiles/UCHAT.dir/libmx/src/mx_strtrim.c.o: ../libmx/src/mx_strtrim.c
 CMakeFiles/UCHAT.dir/libmx/src/mx_swap_char.c.o: ../libmx/inc/libmx.h
 CMakeFiles/UCHAT.dir/libmx/src/mx_swap_char.c.o: ../libmx/src/mx_swap_char.c
 
-CMakeFiles/UCHAT.dir/src/json/mx_new_json.c.o: ../libmx/inc/libmx.h
-CMakeFiles/UCHAT.dir/src/json/mx_new_json.c.o: ../resources/framework/jansson/inc/jansson.h
-CMakeFiles/UCHAT.dir/src/json/mx_new_json.c.o: ../resources/framework/jansson/inc/jansson_config.h
-CMakeFiles/UCHAT.dir/src/json/mx_new_json.c.o: ../include/server.h
-CMakeFiles/UCHAT.dir/src/json/mx_new_json.c.o: ../src/json/mx_new_json.c
+CMakeFiles/UCHAT.dir/src/json/check_route.c.o: ../libmx/inc/libmx.h
+CMakeFiles/UCHAT.dir/src/json/check_route.c.o: ../resources/framework/jansson/inc/jansson.h
+CMakeFiles/UCHAT.dir/src/json/check_route.c.o: ../resources/framework/jansson/inc/jansson_config.h
+CMakeFiles/UCHAT.dir/src/json/check_route.c.o: ../include/server.h
+CMakeFiles/UCHAT.dir/src/json/check_route.c.o: ../src/json/check_route.c
 
 CMakeFiles/UCHAT.dir/src/main/main.c.o: ../libmx/inc/libmx.h
 CMakeFiles/UCHAT.dir/src/main/main.c.o: ../resources/framework/jansson/inc/jansson.h
 CMakeFiles/UCHAT.dir/src/main/main.c.o: ../resources/framework/jansson/inc/jansson_config.h
 CMakeFiles/UCHAT.dir/src/main/main.c.o: ../include/server.h
 CMakeFiles/UCHAT.dir/src/main/main.c.o: ../src/main/main.c
+
+CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o: ../include/server.h
+CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o: ../libmx/inc/libmx.h
+CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o: ../resources/framework/jansson/inc/jansson.h
+CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o: ../resources/framework/jansson/inc/jansson_config.h
+CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o: ../src/router/auth/sign_in.c
+
+CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.o: ../src/router/auth/sign_up.c
 

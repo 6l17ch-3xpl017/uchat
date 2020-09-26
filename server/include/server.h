@@ -24,6 +24,8 @@ typedef struct s_user {
     struct s_user *next;
 } t_user;
 
+// router
 void check_route(char *str);
+bool user_sign_in(json_t *income_json);
 
 #endif

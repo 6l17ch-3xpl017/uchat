@@ -1898,59 +1898,59 @@ src/main/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/main/main.c.s
 .PHONY : src/main/main.c.s
 
-src/router/auth/sign_in.o: src/router/auth/sign_in.c.o
+src/router/sign_in.o: src/router/sign_in.c.o
 
-.PHONY : src/router/auth/sign_in.o
-
-# target to build an object file
-src/router/auth/sign_in.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o
-.PHONY : src/router/auth/sign_in.c.o
-
-src/router/auth/sign_in.i: src/router/auth/sign_in.c.i
-
-.PHONY : src/router/auth/sign_in.i
-
-# target to preprocess a source file
-src/router/auth/sign_in.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.i
-.PHONY : src/router/auth/sign_in.c.i
-
-src/router/auth/sign_in.s: src/router/auth/sign_in.c.s
-
-.PHONY : src/router/auth/sign_in.s
-
-# target to generate assembly for a file
-src/router/auth/sign_in.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.s
-.PHONY : src/router/auth/sign_in.c.s
-
-src/router/auth/sign_up.o: src/router/auth/sign_up.c.o
-
-.PHONY : src/router/auth/sign_up.o
+.PHONY : src/router/sign_in.o
 
 # target to build an object file
-src/router/auth/sign_up.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.o
-.PHONY : src/router/auth/sign_up.c.o
+src/router/sign_in.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/sign_in.c.o
+.PHONY : src/router/sign_in.c.o
 
-src/router/auth/sign_up.i: src/router/auth/sign_up.c.i
+src/router/sign_in.i: src/router/sign_in.c.i
 
-.PHONY : src/router/auth/sign_up.i
+.PHONY : src/router/sign_in.i
 
 # target to preprocess a source file
-src/router/auth/sign_up.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.i
-.PHONY : src/router/auth/sign_up.c.i
+src/router/sign_in.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/sign_in.c.i
+.PHONY : src/router/sign_in.c.i
 
-src/router/auth/sign_up.s: src/router/auth/sign_up.c.s
+src/router/sign_in.s: src/router/sign_in.c.s
 
-.PHONY : src/router/auth/sign_up.s
+.PHONY : src/router/sign_in.s
 
 # target to generate assembly for a file
-src/router/auth/sign_up.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.s
-.PHONY : src/router/auth/sign_up.c.s
+src/router/sign_in.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/sign_in.c.s
+.PHONY : src/router/sign_in.c.s
+
+src/router/sign_up.o: src/router/sign_up.c.o
+
+.PHONY : src/router/sign_up.o
+
+# target to build an object file
+src/router/sign_up.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/sign_up.c.o
+.PHONY : src/router/sign_up.c.o
+
+src/router/sign_up.i: src/router/sign_up.c.i
+
+.PHONY : src/router/sign_up.i
+
+# target to preprocess a source file
+src/router/sign_up.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/sign_up.c.i
+.PHONY : src/router/sign_up.c.i
+
+src/router/sign_up.s: src/router/sign_up.c.s
+
+.PHONY : src/router/sign_up.s
+
+# target to generate assembly for a file
+src/router/sign_up.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/sign_up.c.s
+.PHONY : src/router/sign_up.c.s
 
 # Help Target
 help:
@@ -2156,12 +2156,12 @@ help:
 	@echo "... src/main/main.o"
 	@echo "... src/main/main.i"
 	@echo "... src/main/main.s"
-	@echo "... src/router/auth/sign_in.o"
-	@echo "... src/router/auth/sign_in.i"
-	@echo "... src/router/auth/sign_in.s"
-	@echo "... src/router/auth/sign_up.o"
-	@echo "... src/router/auth/sign_up.i"
-	@echo "... src/router/auth/sign_up.s"
+	@echo "... src/router/sign_in.o"
+	@echo "... src/router/sign_in.i"
+	@echo "... src/router/sign_in.s"
+	@echo "... src/router/sign_up.o"
+	@echo "... src/router/sign_up.i"
+	@echo "... src/router/sign_up.s"
 .PHONY : help
 
 

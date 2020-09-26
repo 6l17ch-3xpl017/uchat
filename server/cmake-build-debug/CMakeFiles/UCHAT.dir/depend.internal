@@ -190,15 +190,23 @@ CMakeFiles/UCHAT.dir/libmx/src/mx_strtrim.c.o
 CMakeFiles/UCHAT.dir/libmx/src/mx_swap_char.c.o
  ../libmx/inc/libmx.h
  /Users/yksonzenko/CLionProjects/uchat/server/libmx/src/mx_swap_char.c
-CMakeFiles/UCHAT.dir/src/json/mx_new_json.c.o
+CMakeFiles/UCHAT.dir/src/json/check_route.c.o
  ../libmx/inc/libmx.h
  ../resources/framework/jansson/inc/jansson.h
  ../resources/framework/jansson/inc/jansson_config.h
  /Users/yksonzenko/CLionProjects/uchat/server/include/server.h
- /Users/yksonzenko/CLionProjects/uchat/server/src/json/mx_new_json.c
+ /Users/yksonzenko/CLionProjects/uchat/server/src/json/check_route.c
 CMakeFiles/UCHAT.dir/src/main/main.c.o
  ../libmx/inc/libmx.h
  ../resources/framework/jansson/inc/jansson.h
  ../resources/framework/jansson/inc/jansson_config.h
  /Users/yksonzenko/CLionProjects/uchat/server/include/server.h
  /Users/yksonzenko/CLionProjects/uchat/server/src/main/main.c
+CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o
+ ../include/server.h
+ ../libmx/inc/libmx.h
+ ../resources/framework/jansson/inc/jansson.h
+ ../resources/framework/jansson/inc/jansson_config.h
+ /Users/yksonzenko/CLionProjects/uchat/server/src/router/auth/sign_in.c
+CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.o
+ /Users/yksonzenko/CLionProjects/uchat/server/src/router/auth/sign_up.c
