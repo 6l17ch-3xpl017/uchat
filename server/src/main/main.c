@@ -36,6 +36,9 @@ void *connection_handler(void *socket_desc) {
 int main(int argc, char *argv[]) {
     (void)argc;
     (void)argv;
+
+    json_parse_test();
+
     int socket_desc, client_sock, c;
     struct sockaddr_in server, client;
 
@@ -75,28 +78,36 @@ int main(int argc, char *argv[]) {
         puts("Handler assigned");
 
         //
-        json_t *data, *sha, *commit, *message, *root;
-        json_error_t error;
 
-        root = json_load_file("/test.json",0,&error);
-        if(!root)
-        {
-            fprintf(stderr, "error: on line %d: %s\n", error.line, error.text);
-            return 1;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
+//        char json_new[] = "{\n"
+//                          "        \"sha\": \"<the commit ID>\",\n"
+//                          "        \"commit\": {\n"
+//                          "            \"message\": \"<the commit message>\",\n"
+//                          "            <more fields, not important to this tutorial...>\n"
+//                          "        },\n"
+//                          "        <more fields...>\n"
+//                          "    }";
+//        json_t *root;
+//        json_error_t error;
+//
+//        root = json_loads(json_new,0,&error);
+//        if(!root)
+//        {
+//            fprintf(stderr, "error: on line %d: %s\n", error.line, error.text);
+//            return 1;
+//        }
+//
+//        for(unsigned long i = 0; i < json_array_size(root); i++) {
+//            json_t *data, *sha, *commit, *message;
+//            const char *message_text;
+//
+//            data = json_array_get(root, i);
+//            if (!json_is_object(data)) {
+//                fprintf(stderr, "error: commit data %lu is not an object\n", i + 1);
+//                json_decref(root);
+//                return 1;
+//            }
+//        }
     }
     if (client_sock < 0) {
         perror("accept failed");

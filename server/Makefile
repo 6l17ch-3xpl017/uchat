@@ -7,6 +7,10 @@ SRC_DIR		= src/
 OBJ_DIR		= obj/
 # main dir for header files
 INC_DIR		= inc/
+
+# main dir for jansson files
+J_INC_DIR   = resources/framework/jansson/inc/
+
 # list of subdirs in src/
 DIRS		= $(notdir $(wildcard $(SRC_DIR)*))
 # list of only source C-files without extansions
@@ -19,6 +23,10 @@ OBJ			= $(SRC:src/%.c=$(OBJ_DIR)%.o)
 # list of header files
 INC_H		= $(wildcard $(INC_DIR)*.h)
 
+# list of jansson header files
+J_INC_H		= $(wildcard $(J_INC_DIR)*.h)
+
+J_BIN = resources/framework/jansson/libjansson.a
 
 # main dir with any libraries
 LIB_DIR		= .
@@ -43,7 +51,7 @@ GFLAGS		= -std=c11 -pipe -Wall -Wextra -Werror -Wpedantic\
 # folder with header files
 IFLAGS		= $(addprefix -I, $(LIB_INC) $(INC_DIR))
 
-COMPILE		= $(CC) $(GFLAGS) $(IFLAGS) $(LIB_BIN)
+COMPILE		= $(CC) $(GFLAGS) $(IFLAGS) -I $(J_INC_DIR) $(LIB_BIN) $(J_BIN)
 MAKE_M		= make -sf Makefile -C
 MKDIR		= mkdir -p
 RM			= /bin/rm -rf
@@ -66,7 +74,7 @@ $(LIB_LIST): $(LIB_DIRS)
 $(OBJ_DIR):
 	@$(MKDIR) $@ $(foreach dir, $(DIRS), $@/$(dir))
 
-# comling obj files
+# compiling obj files
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_H) $(LIB_BIN)
 	@$(COMPILE) -o $@ -c $<
 	@printf "\r\33[2K$(NAME) \033[33;1mcompile \033[0m$(<:$(SRC_DIR)/%.c=%)"
