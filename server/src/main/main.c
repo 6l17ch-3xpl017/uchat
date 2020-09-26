@@ -1,9 +1,9 @@
 #include "../../include/server.h"
 
 void *connection_handler(void *socket_desc) {
-    //ToDo make server router to send and get data from DB;
+//    ToDo make server router to send and get data from DB;
 
-    //Get the socket descriptor
+//    Get the socket descriptor
     int sock = *(int *) socket_desc;
     int read_size;
     char *message, client_message[2000];
@@ -13,7 +13,7 @@ void *connection_handler(void *socket_desc) {
     message = "Now type something and i shall repeat what you type \n";
     write(sock, message, strlen(message));
     //Receive a message from client
-    while ((read_size = recv(sock, client_message, 2000, 0)) > 0) {
+    while ((read_size = (sock, client_message, 2000, 0)) > 0) {
         //end of string marker
         client_message[read_size] = '\0';
 
@@ -34,8 +34,11 @@ void *connection_handler(void *socket_desc) {
 
 
 int main(int argc, char *argv[]) {
-    (void)argc;
-    (void)argv;
+    (void) argc;
+    (void) argv;
+
+    jopa();
+
     int socket_desc, client_sock, c;
     struct sockaddr_in server, client;
 
@@ -61,6 +64,7 @@ int main(int argc, char *argv[]) {
     listen(socket_desc, 3);
     //Accept and incoming connection
     puts("Waiting for incoming connections...");
+
     c = sizeof(struct sockaddr_in);
     pthread_t thread_id;
 
@@ -73,29 +77,6 @@ int main(int argc, char *argv[]) {
         //Now join the thread , so that we don't terminate before the thread
         //pthread_join( thread_id , NULL);
         puts("Handler assigned");
-
-        //
-        json_t *data, *sha, *commit, *message, *root;
-        json_error_t error;
-
-        root = json_load_file("test.json",0,&error);
-        if(!root)
-//        {
-//            fprintf(stderr, "error: on line %d: %s\n", error.line, error.text);
-//            return 1;
-//        }
-
-
-
-
-
-
-
-
-
-
-
-
     }
     if (client_sock < 0) {
         perror("accept failed");
@@ -103,4 +84,3 @@ int main(int argc, char *argv[]) {
     }
     return 0;
 }
-

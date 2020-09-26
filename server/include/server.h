@@ -10,4 +10,7 @@
 #include<pthread.h>
 #include"../../resources/framework/include/jansson/jansson.h"
 
+
+int jopa(void);
+
 #endif
