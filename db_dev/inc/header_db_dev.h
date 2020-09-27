@@ -31,7 +31,21 @@ typedef struct s_sqlite_request {
     char *request;
 }              t_sqlite_request;
 
+typedef struct s_user {
+    char *nickname;
+    char *password;
+    char *email;
+    char *age;
+    char *fullname;
+    char *ph_number;
+    char *user_photo;
+    void *option;
+    struct s_user *next;
+} t_user;
+
 char *mx_itoa(int number);
 bool if_user_in_db(char *nickname);
+void init_database();
+void add_user_to_db(t_user *User);
 
 #endif //UCHAT_HEADER_DB_DEV_H
