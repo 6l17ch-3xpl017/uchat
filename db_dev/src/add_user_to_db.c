@@ -2,19 +2,14 @@
 // Created by Illia Marchenko on 9/27/20.
 //
 
-/**
- * @brief function takes values for Users table and makes new writes to database
- * @param nickname - user's nickname (can't be NULL)
- * @param password - user's password (can't be NULL)
- * @param email - user's email (could be NULL)
- * @param age - user's age (could be NULL)
- * @param fullname - user's fullname (could be NULL)
- * @param phone_number - user's phone number (could be NULL)
- * @param user_photo - user's photo (could be NULL)
- * @param option - optional column (could be NULL)
- */
-
 #include "header_db_dev.h"
+
+/**
+ * @brief Function takes structure with data and paste this data into database. Every variable of structure User must be
+ * NULL or must contain some information about user.
+ * @param User - structure that has data about user (nickname, password, email, age, fullname, phone_number, user_photo,
+ * options)
+ */
 
 void add_user_to_db(t_user *User) {
     int result;
@@ -24,68 +19,68 @@ void add_user_to_db(t_user *User) {
     asprintf(&request, "INSERT INTO Users (nickname, password, email, age, fullname, phone_number, user_photo, options)"
                        "VALUES ('%s', '%s', ", User->nickname, User->password);
     if (User->email) {
-        realloc(request, strlen(request) + strlen(User->email) + strlen("'', "));
+        request = realloc(request, strlen(request) + strlen(User->email) + strlen("'', "));
         request = strcat(request, "'");
         request = strcat(request, User->email);
         request = strcat(request, "', ");
     }
     else {
-        realloc(request, strlen(request) + strlen("NULL, "));
+        request = realloc(request, strlen(request) + strlen("NULL, "));
         request = strcat(request, "NULL, ");
     }
 
     if (User->age) {
-        realloc(request, strlen(request) + strlen(User->age) + strlen("'', "));
+        request = realloc(request, strlen(request) + strlen(User->age) + strlen("'', "));
         request = strcat(request, "'");
         request = strcat(request, User->age);
         request = strcat(request, "', ");
     }
     else {
-        realloc(request, strlen(request) + strlen("NULL, "));
+        request = realloc(request, strlen(request) + strlen("NULL, "));
         request = strcat(request, "NULL, ");
     }
 
     if (User->fullname) {
-        realloc(request, strlen(request) + strlen(User->fullname) + strlen("'', "));
+        request = realloc(request, strlen(request) + strlen(User->fullname) + strlen("'', "));
         request = strcat(request, "'");
         request = strcat(request, User->fullname);
         request = strcat(request, "', ");
     }
     else {
-        realloc(request, strlen(request) + strlen("NULL, "));
+        request = realloc(request, strlen(request) + strlen("NULL, "));
         request = strcat(request, "NULL, ");
     }
 
     if (User->ph_number) {
-        realloc(request, strlen(request) + strlen(User->ph_number) + strlen("'', "));
+        request = realloc(request, strlen(request) + strlen(User->ph_number) + strlen("'', "));
         request = strcat(request, "'");
         request = strcat(request, User->ph_number);
         request = strcat(request, "', ");
     }
     else {
-        realloc(request, strlen(request) + strlen("NULL, "));
+        request = realloc(request, strlen(request) + strlen("NULL, "));
         request = strcat(request, "NULL, ");
     }
 
     if (User->user_photo) {
-        realloc(request, strlen(request) + strlen(User->user_photo) + strlen("'', "));
+        request = realloc(request, strlen(request) + strlen(User->user_photo) + strlen("'', "));
         request = strcat(request, "'");
         request = strcat(request, User->user_photo);
         request = strcat(request, "', ");
     }
     else {
-        realloc(request, strlen(request) + strlen("NULL, "));
+        request = realloc(request, strlen(request) + strlen("NULL, "));
         request = strcat(request, "NULL, ");
     }
 
     if (User->option) {
-        realloc(request, strlen(request) + strlen(User->option) + strlen("'');"));
+        request = realloc(request, strlen(request) + strlen(User->option) + strlen("'');"));
         request = strcat(request, "'");
         request = strcat(request, User->option);
         request = strcat(request, "');");
     }
     else {
-        realloc(request, strlen(request) + strlen("NULL);"));
+        request = realloc(request, strlen(request) + strlen("NULL);"));
         request = strcat(request, "NULL);");
     }
 

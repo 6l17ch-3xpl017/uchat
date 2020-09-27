@@ -44,7 +44,7 @@ typedef struct s_user {
 } t_user;
 
 char *mx_itoa(int number);
-bool if_user_in_db(char *nickname);
+char *user_in_db(t_user *User);
 void init_database();
 void add_user_to_db(t_user *User);
 
