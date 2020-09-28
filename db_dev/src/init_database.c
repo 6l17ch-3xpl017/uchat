@@ -44,7 +44,7 @@ void init_database() {
     // -----------------------------=-Block to create Chats table-=-------------------------------
     result = sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS \"Chats\" (\n"
                               "\"chat_id\"\tINTEGER NOT NULL UNIQUE,\n"
-                              "\"chat_name\"\tTEXT,\n"
+                              "\"chat_name\"\tTEXT NOT NULL,\n"
                               "\"admin_id\"\tINTEGER NOT NULL,\n"
                               "\"chat_photo\"\tTEXT,\n"
                               "\"options\"\tTEXT,\n"

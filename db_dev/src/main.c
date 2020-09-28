@@ -12,7 +12,7 @@ int main() {
 
     User->password = strdup("qwerty");
 
-    User->email = "imar@gmail.com";
+    User->email = "imarchenko@gmail.com";
 //    User->email = NULL;
 
     User->age = "18";
@@ -23,5 +23,14 @@ int main() {
     //add_user_to_db(User);
     //printf("%s\n\n", user_in_db(User));
     //system("leaks -q UCHAT");
+
+    t_chat *Chat = malloc(sizeof(t_chat));
+    Chat->chat_name = strdup("FirstChat");
+    Chat->admin_id = strdup("1");
+    Chat->chat_photo = strdup("/img/qqxnexwx.jpg");
+    Chat->option = NULL;
+
+    add_chat_to_db(Chat);
+
     return 0;
 }

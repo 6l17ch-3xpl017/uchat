@@ -37,6 +37,13 @@ typedef struct s_user {
     struct s_user *next;
 }              t_user;
 
+typedef struct s_chat {
+    char *chat_name;
+    char *admin_id;
+    char *chat_photo;
+    void *option;
+}              t_chat;
+
 typedef struct s_password {
     char *password;
 }              t_password;
@@ -45,5 +52,6 @@ char *mx_itoa(int number);
 char *user_in_db(t_user *User);
 void init_database();
 void add_user_to_db(t_user *User);
+void add_chat_to_db(t_chat *Chat)
 
 #endif //UCHAT_HEADER_DB_DEV_H
