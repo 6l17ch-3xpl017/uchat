@@ -21,7 +21,7 @@ int main() {
     User->user_photo = "/photos/imarchenko.jpg";
     User->option = NULL;
     //add_user_to_db(User);
-    printf("%s\n\n", user_in_db(User));
+    //printf("%s\n\n", user_in_db(User));
     //system("leaks -q UCHAT");
     return 0;
 }

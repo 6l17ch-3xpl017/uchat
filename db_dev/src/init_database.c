@@ -59,7 +59,7 @@ void init_database() {
 
     // -----------------------------=-Block to create Chat-User table-=---------------------------
     result = sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS \"Chat_User\" (\n"
-                              "\"char_id\"\tINTEGER NOT NULL,\n"
+                              "\"chat_id\"\tINTEGER NOT NULL,\n"
                               "\"user_id\"\tINTEGER NOT NULL,\n"
                               "\"options\"\tTEXT\n"
                               ");", 0, 0, &error);
@@ -72,13 +72,15 @@ void init_database() {
     // -----------------------------=-Block to create Messages table-=----------------------------
     result = sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS \"Messages\" (\n"
                               "\"message_id\"\tINTEGER NOT NULL UNIQUE,\n"
-                              "\"message_owner\"\tTEXT NOT NULL,\n"
+                              "\"message_owner_id\"\tINTEGER NOT NULL,\n"
                               "\"chat_id\"\tINTEGER NOT NULL,\n"
                               "\"message_content\"\tTEXT NOT NULL,\n"
                               "\"time\"\tINTEGER,\n"
                               "\"changed\"\tINTEGER,\n"
                               "\"options\"\tTEXT,\n"
                               "PRIMARY KEY(\"message_id\" AUTOINCREMENT)\n"
+                              "FOREIGN KEY(\"message_owner_id\") REFERENCES Users (\"id\")\n"
+                              "FOREIGN KEY(\"chat_id\") REFERENCES Chats (\"chat_id\")"
                               ");", 0, 0, &error);
     if (result != SQLITE_OK) {
         fprintf(stderr, "SQL error: %s\n", error);
