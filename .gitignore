@@ -3,3 +3,4 @@
 *.o
 *.ghc
 .idea/*
+/venv/
