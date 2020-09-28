@@ -8,7 +8,7 @@
  * @brief Function takes structure with data and paste this data into database. Every variable of structure User must be
  * NULL or must contain some information about user.
  * @param User - structure that has data about user (nickname, password, email, age, fullname, phone_number, user_photo,
- * options)
+ * options). Nickname and password can't be NULL.
  */
 
 void add_user_to_db(t_user *User) {
