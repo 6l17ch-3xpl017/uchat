@@ -2,7 +2,7 @@
 // Created by Illia Marchenko on 9/27/20.
 //
 
-#include "header_db_dev.h"
+#include "../inc/header_db_dev.h"
 
 /**
  * @brief Function takes structure with data and paste this data into database. Every variable of structure User must be

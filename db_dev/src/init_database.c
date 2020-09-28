@@ -2,7 +2,7 @@
 // Created by Illia Marchenko on 9/27/20.
 //
 
-#include "header_db_dev.h"
+#include "../inc/header_db_dev.h"
 
 /**
  * @author Illia Marchenko
@@ -49,6 +49,7 @@ void init_database() {
                               "\"chat_photo\"\tTEXT,\n"
                               "\"options\"\tTEXT,\n"
                               "PRIMARY KEY(\"chat_id\" AUTOINCREMENT)\n"
+                              "FOREIGN KEY(\"admin_id\") REFERENCES Users (\"id\")"
                               ");", 0, 0, &error);
     if (result != SQLITE_OK) {
         fprintf(stderr, "SQL error: %s\n", error);

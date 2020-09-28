@@ -25,12 +25,6 @@
 #include <stddef.h>
 #include <sqlite3.h>
 
-typedef struct s_sqlite_request {
-    char *error_message;
-    char **result;
-    char *request;
-}              t_sqlite_request;
-
 typedef struct s_user {
     char *nickname;
     char *password;
@@ -41,7 +35,11 @@ typedef struct s_user {
     char *user_photo;
     void *option;
     struct s_user *next;
-} t_user;
+}              t_user;
+
+typedef struct s_password {
+    char *password;
+}              t_password;
 
 char *mx_itoa(int number);
 char *user_in_db(t_user *User);

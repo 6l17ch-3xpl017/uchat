@@ -2,7 +2,7 @@
 // Created by Illia Marchenko on 9/25/20.
 //
 
-#include "header_db_dev.h"
+#include "../inc/header_db_dev.h"
 
 static int callback_number_of_email_or_nickname(void *my_arg, int argc, char **argv, char **array) {
     int *result = (int *)my_arg;
@@ -10,8 +10,9 @@ static int callback_number_of_email_or_nickname(void *my_arg, int argc, char **a
     return 0;
 }
 
-static int callback_to_get_password(void **my_arg, int argc, char **argv, char **array) {
-    *my_arg = strdup(argv[0]);
+static int callback_to_get_password(void *my_arg, int argc, char **argv, char **array) {
+    t_password *temp = my_arg;
+    temp->password = strdup(argv[0]);
     return 0;
 }
 
@@ -34,10 +35,10 @@ char *user_in_db(t_user *User) {
     char *error = NULL;
     char *error1 = NULL;
     int result;
-    char *password_from_db = NULL;
     char *request = NULL;
     int number_of_users_with_such_nick_or_email = 0;
     bool in_db = false;
+    t_password *password = malloc(sizeof(t_password));
 
     result = sqlite3_open("chat_database.db", &db);
     if (result != SQLITE_OK) {
@@ -57,6 +58,7 @@ char *user_in_db(t_user *User) {
     }
     else {
         sqlite3_close(db);
+        free(password);
         return "User->nickname and User->email can't be NULL";
     }
 
@@ -71,6 +73,7 @@ char *user_in_db(t_user *User) {
     if (number_of_users_with_such_nick_or_email == 0) {
         sqlite3_close(db);
         free(request);
+        free(password);
         return "Login incorrect";
     }
     else
@@ -90,21 +93,23 @@ char *user_in_db(t_user *User) {
                                "FROM Users "
                                "WHERE email='%s';", User->email);
         }
-        result = sqlite3_exec(db, request, callback_to_get_password, &password_from_db, &error1);
+        result = sqlite3_exec(db, request, callback_to_get_password, password, &error1);
         if (result != SQLITE_OK) {
             fprintf(stderr, "SQL error: %s\n", error);
             sqlite3_free(error1);
         }
-        if (password_from_db) {
-            if (strcmp(password_from_db, User->password) == 0) {
-                free(password_from_db);
+        if (password->password) {
+            if (strcmp(password->password, User->password) == 0) {
+                free(password->password);
+                free(password);
                 free(request);
                 sqlite3_close(db);
                 return "Login and password correct";
             }
         }
         else {
-            free(password_from_db);
+            free(password->password);
+            free(password);
             free(request);
             sqlite3_close(db);
             return "Password incorrect";
@@ -112,6 +117,7 @@ char *user_in_db(t_user *User) {
     }
 
     sqlite3_close(db);
+    free(password);
 
     if (request)
         free(request);
