@@ -1844,32 +1844,113 @@ libmx/src/mx_swap_char.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/libmx/src/mx_swap_char.c.s
 .PHONY : libmx/src/mx_swap_char.c.s
 
-src/json/check_route.o: src/json/check_route.c.o
+src/db/add_user_to_db.o: src/db/add_user_to_db.c.o
 
-.PHONY : src/json/check_route.o
+.PHONY : src/db/add_user_to_db.o
 
 # target to build an object file
-src/json/check_route.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/json/check_route.c.o
-.PHONY : src/json/check_route.c.o
+src/db/add_user_to_db.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.o
+.PHONY : src/db/add_user_to_db.c.o
 
-src/json/check_route.i: src/json/check_route.c.i
+src/db/add_user_to_db.i: src/db/add_user_to_db.c.i
 
-.PHONY : src/json/check_route.i
+.PHONY : src/db/add_user_to_db.i
 
 # target to preprocess a source file
-src/json/check_route.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/json/check_route.c.i
-.PHONY : src/json/check_route.c.i
+src/db/add_user_to_db.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.i
+.PHONY : src/db/add_user_to_db.c.i
 
-src/json/check_route.s: src/json/check_route.c.s
+src/db/add_user_to_db.s: src/db/add_user_to_db.c.s
 
-.PHONY : src/json/check_route.s
+.PHONY : src/db/add_user_to_db.s
 
 # target to generate assembly for a file
-src/json/check_route.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/json/check_route.c.s
-.PHONY : src/json/check_route.c.s
+src/db/add_user_to_db.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.s
+.PHONY : src/db/add_user_to_db.c.s
+
+src/db/if_user_in_bd.o: src/db/if_user_in_bd.c.o
+
+.PHONY : src/db/if_user_in_bd.o
+
+# target to build an object file
+src/db/if_user_in_bd.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.o
+.PHONY : src/db/if_user_in_bd.c.o
+
+src/db/if_user_in_bd.i: src/db/if_user_in_bd.c.i
+
+.PHONY : src/db/if_user_in_bd.i
+
+# target to preprocess a source file
+src/db/if_user_in_bd.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.i
+.PHONY : src/db/if_user_in_bd.c.i
+
+src/db/if_user_in_bd.s: src/db/if_user_in_bd.c.s
+
+.PHONY : src/db/if_user_in_bd.s
+
+# target to generate assembly for a file
+src/db/if_user_in_bd.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.s
+.PHONY : src/db/if_user_in_bd.c.s
+
+src/db/init_database.o: src/db/init_database.c.o
+
+.PHONY : src/db/init_database.o
+
+# target to build an object file
+src/db/init_database.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/init_database.c.o
+.PHONY : src/db/init_database.c.o
+
+src/db/init_database.i: src/db/init_database.c.i
+
+.PHONY : src/db/init_database.i
+
+# target to preprocess a source file
+src/db/init_database.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/init_database.c.i
+.PHONY : src/db/init_database.c.i
+
+src/db/init_database.s: src/db/init_database.c.s
+
+.PHONY : src/db/init_database.s
+
+# target to generate assembly for a file
+src/db/init_database.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/init_database.c.s
+.PHONY : src/db/init_database.c.s
+
+src/db/mx_itoa.o: src/db/mx_itoa.c.o
+
+.PHONY : src/db/mx_itoa.o
+
+# target to build an object file
+src/db/mx_itoa.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/mx_itoa.c.o
+.PHONY : src/db/mx_itoa.c.o
+
+src/db/mx_itoa.i: src/db/mx_itoa.c.i
+
+.PHONY : src/db/mx_itoa.i
+
+# target to preprocess a source file
+src/db/mx_itoa.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/mx_itoa.c.i
+.PHONY : src/db/mx_itoa.c.i
+
+src/db/mx_itoa.s: src/db/mx_itoa.c.s
+
+.PHONY : src/db/mx_itoa.s
+
+# target to generate assembly for a file
+src/db/mx_itoa.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/mx_itoa.c.s
+.PHONY : src/db/mx_itoa.c.s
 
 src/main/main.o: src/main/main.c.o
 
@@ -1897,6 +1978,33 @@ src/main/main.s: src/main/main.c.s
 src/main/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/main/main.c.s
 .PHONY : src/main/main.c.s
+
+src/router/check_route.o: src/router/check_route.c.o
+
+.PHONY : src/router/check_route.o
+
+# target to build an object file
+src/router/check_route.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/check_route.c.o
+.PHONY : src/router/check_route.c.o
+
+src/router/check_route.i: src/router/check_route.c.i
+
+.PHONY : src/router/check_route.i
+
+# target to preprocess a source file
+src/router/check_route.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/check_route.c.i
+.PHONY : src/router/check_route.c.i
+
+src/router/check_route.s: src/router/check_route.c.s
+
+.PHONY : src/router/check_route.s
+
+# target to generate assembly for a file
+src/router/check_route.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/check_route.c.s
+.PHONY : src/router/check_route.c.s
 
 src/router/sign_in.o: src/router/sign_in.c.o
 
@@ -2150,12 +2258,24 @@ help:
 	@echo "... libmx/src/mx_swap_char.o"
 	@echo "... libmx/src/mx_swap_char.i"
 	@echo "... libmx/src/mx_swap_char.s"
-	@echo "... src/json/check_route.o"
-	@echo "... src/json/check_route.i"
-	@echo "... src/json/check_route.s"
+	@echo "... src/db/add_user_to_db.o"
+	@echo "... src/db/add_user_to_db.i"
+	@echo "... src/db/add_user_to_db.s"
+	@echo "... src/db/if_user_in_bd.o"
+	@echo "... src/db/if_user_in_bd.i"
+	@echo "... src/db/if_user_in_bd.s"
+	@echo "... src/db/init_database.o"
+	@echo "... src/db/init_database.i"
+	@echo "... src/db/init_database.s"
+	@echo "... src/db/mx_itoa.o"
+	@echo "... src/db/mx_itoa.i"
+	@echo "... src/db/mx_itoa.s"
 	@echo "... src/main/main.o"
 	@echo "... src/main/main.i"
 	@echo "... src/main/main.s"
+	@echo "... src/router/check_route.o"
+	@echo "... src/router/check_route.i"
+	@echo "... src/router/check_route.s"
 	@echo "... src/router/sign_in.o"
 	@echo "... src/router/sign_in.i"
 	@echo "... src/router/sign_in.s"

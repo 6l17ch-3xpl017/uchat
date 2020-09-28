@@ -13,18 +13,22 @@ J_INC_DIR   = resources/framework/jansson/inc/
 
 # list of subdirs in src/
 DIRS		= $(notdir $(wildcard $(SRC_DIR)*))
+H_DIRS		= $(notdir $(wildcard $(INC_DIR)*))
 # list of only source C-files without extansions
 FILES		= $(foreach dir, $(DIRS), $(basename $(wildcard \
-			  $(SRC_DIR)$(dir)/*.c)))
+			  $(SRC_DIR)$(dir)/*.c)) $(basename $(wildcard \
+			  $(SRC_DIR)$(dir)/*/*.c)) $(basename $(wildcard \
+			  $(SRC_DIR)$(dir)/*/*/*.c)))
 # adding extansions .c to FILES
 SRC			= $(FILES:%=%.c)
 # adding extansions .o to FILES
 OBJ			= $(SRC:src/%.c=$(OBJ_DIR)%.o)
 # list of header files
-INC_H		= $(wildcard $(INC_DIR)*.h)
+INC_H		= $(foreach h_dir, $(H_DIRS), $(basename $(wildcard \
+			  $(INC_DIR)$(h_dir)/*.h)))
 
 # list of jansson header files
-J_INC_H		= $(wildcard $(J_INC_DIR)*.h)
+J_INC_H		= $(wildcard $(J_INC_DIR)*.h) $(wildcard $(J_INC_DIR)*/*.h) $(wildcard $(J_INC_DIR)*/*/*.h)
 
 J_BIN = resources/framework/jansson/libjansson.a
 
@@ -45,7 +49,7 @@ CC			= clang
 # general flags
 GFLAGS		= -std=c11 -pipe -Wall -Wextra -Werror -Wpedantic\
 	-Wno-unused-command-line-argument -Wno-unused-variable \
-	-Wno-unused-function -Wno-unused-parameter -g
+	-Wno-unused-function -Wno-unused-parameter -g -lsqlite3
 # specific flags
 #CFLAGS		= -lsqlite3 -lpthread
 # folder with header files

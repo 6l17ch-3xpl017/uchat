@@ -43,6 +43,10 @@ typedef struct s_user {
     struct s_user *next;
 } t_user;
 
+typedef struct s_password {
+    char *password;
+}              t_password;
+
 char *mx_itoa(int number);
 char *user_in_db(t_user *User);
 void init_database();

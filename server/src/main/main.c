@@ -42,10 +42,19 @@ void *connection_handler(void *socket_desc) {
 int main(int argc, char *argv[]) {
     (void)argc;
     (void)argv;
+    //----------------------------------------------------
+
+
+    init_database();
+
+
+
+    //----------------------------------------------------
+
     char str[] = "{\n"
                  "  \"type\": \"sign_in\",\n"
                  "  \"user\": {\n"
-                 "    \"nickname\": \"Evgenia\",\n"
+                 "    \"nickname\": \"\",\n"
                  "    \"password\": \"12345\",\n"
                  "    \"email\": \"yevgeniia.ks@gmail.com\",\n"
                  "    \"age\": \"29\",\n"

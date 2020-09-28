@@ -11,18 +11,19 @@
 #include "libmx.h"
 #include "jansson.h"
 #include "jansson_config.h"
+#include "header_db_dev.h"
 
-typedef struct s_user {
-    char *nickname;
-    char *password;
-    char *email;
-    int age;
-    char *fullname;
-    char *ph_number;
-    char *user_photo;
-    void *option;
-    struct s_user *next;
-} t_user;
+//typedef struct s_user {
+//    char *nickname;
+//    char *password;
+//    char *email;
+//    char *age;
+//    char *fullname;
+//    char *ph_number;
+//    char *user_photo;
+//    void *option;
+//    struct s_user *next;
+//} t_user;
 
 // router
 void check_route(char *str);

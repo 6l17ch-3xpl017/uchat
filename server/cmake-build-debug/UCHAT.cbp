@@ -284,10 +284,22 @@
 		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/resources/framework/jansson/inc/jansson_config.h">
 			<Option target="UCHAT"/>
 		</Unit>
-		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/json/check_route.c">
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/db/add_user_to_db.c">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/db/if_user_in_bd.c">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/db/init_database.c">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/db/mx_itoa.c">
 			<Option target="UCHAT"/>
 		</Unit>
 		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/main/main.c">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/router/check_route.c">
 			<Option target="UCHAT"/>
 		</Unit>
 		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/router/sign_in.c">
