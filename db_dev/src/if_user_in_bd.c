@@ -106,13 +106,13 @@ char *user_in_db(t_user *User) {
                 sqlite3_close(db);
                 return "Login and password correct";
             }
-        }
-        else {
-            free(password->password);
-            free(password);
-            free(request);
-            sqlite3_close(db);
-            return "Password incorrect";
+            else {
+                free(password->password);
+                free(password);
+                free(request);
+                sqlite3_close(db);
+                return "Password incorrect";
+            }
         }
     }
 
