@@ -1,0 +1,88 @@
+cmake_minimum_required(VERSION 3.17)
+project(uchat C)
+
+set(CMAKE_C_STANDARD 11)
+
+include_directories(server/inc)
+include_directories(server/libmx/inc)
+include_directories(server/resources)
+include_directories(server/resources/framework)
+include_directories(server/resources/framework/jansson)
+include_directories(server/resources/framework/jansson/inc)
+
+add_executable(uchat
+        server/inc/header_db_dev.h
+        server/inc/server.h
+        server/libmx/inc/libmx.h
+        server/libmx/src/mx_atoi.c
+        server/libmx/src/mx_binary_search.c
+        server/libmx/src/mx_bubble_sort.c
+        server/libmx/src/mx_count_substr.c
+        server/libmx/src/mx_count_words.c
+        server/libmx/src/mx_create_node.c
+        server/libmx/src/mx_del_extra_spaces.c
+        server/libmx/src/mx_del_intarr.c
+        server/libmx/src/mx_del_strarr.c
+        server/libmx/src/mx_file_to_str.c
+        server/libmx/src/mx_foreach.c
+        server/libmx/src/mx_get_char_index.c
+        server/libmx/src/mx_get_substr_index.c
+        server/libmx/src/mx_hex_to_nbr.c
+        server/libmx/src/mx_intlen.c
+        server/libmx/src/mx_isalpha.c
+        server/libmx/src/mx_isdigit.c
+        server/libmx/src/mx_isspace.c
+        server/libmx/src/mx_itoa.c
+        server/libmx/src/mx_list_size.c
+        server/libmx/src/mx_memccpy.c
+        server/libmx/src/mx_memchr.c
+        server/libmx/src/mx_memcmp.c
+        server/libmx/src/mx_memcpy.c
+        server/libmx/src/mx_memmem.c
+        server/libmx/src/mx_memmove.c
+        server/libmx/src/mx_memrchr.c
+        server/libmx/src/mx_memset.c
+        server/libmx/src/mx_nbr_length.c
+        server/libmx/src/mx_nbr_to_hex.c
+        server/libmx/src/mx_pop_back.c
+        server/libmx/src/mx_pop_front.c
+        server/libmx/src/mx_pow.c
+        server/libmx/src/mx_print_intarr.c
+        server/libmx/src/mx_print_strarr.c
+        server/libmx/src/mx_print_unicode.c
+        server/libmx/src/mx_printchar.c
+        server/libmx/src/mx_printerr.c
+        server/libmx/src/mx_printint.c
+        server/libmx/src/mx_printstr.c
+        server/libmx/src/mx_push_back.c
+        server/libmx/src/mx_push_front.c
+        server/libmx/src/mx_quicksort.c
+        server/libmx/src/mx_realloc.c
+        server/libmx/src/mx_replace_substr.c
+        server/libmx/src/mx_sort_list.c
+        server/libmx/src/mx_sqrt.c
+        server/libmx/src/mx_str_reverse.c
+        server/libmx/src/mx_strcat.c
+        server/libmx/src/mx_strcmp.c
+        server/libmx/src/mx_strcpy.c
+        server/libmx/src/mx_strdel.c
+        server/libmx/src/mx_strdup.c
+        server/libmx/src/mx_strjoin.c
+        server/libmx/src/mx_strlen.c
+        server/libmx/src/mx_strncmp.c
+        server/libmx/src/mx_strncpy.c
+        server/libmx/src/mx_strndup.c
+        server/libmx/src/mx_strnew.c
+        server/libmx/src/mx_strsplit.c
+        server/libmx/src/mx_strstr.c
+        server/libmx/src/mx_strtrim.c
+        server/libmx/src/mx_swap_char.c
+        server/resources/framework/jansson/inc/jansson.h
+        server/resources/framework/jansson/inc/jansson_config.h
+        server/src/db/add_user_to_db.c
+        server/src/db/if_user_in_bd.c
+        server/src/db/init_database.c
+        server/src/main/main.c
+        server/src/router/check_route.c
+        server/src/router/sign_in.c
+        server/src/router/sign_up.c)

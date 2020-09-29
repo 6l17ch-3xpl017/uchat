@@ -1,0 +1,13 @@
+{
+  "type": "sign_in",
+  "user": {
+    "nickname": "test",
+    "password": "test",
+    "email": "test",
+    "age": "test",
+    "fullname": "test",
+    "ph_number": "test",
+    "user_photo": "test",
+    "option": "test"
+  }
+}
