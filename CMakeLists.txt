@@ -3,8 +3,7 @@ project(uchat C)
 
 set(CMAKE_C_STANDARD 11)
 
-include_directories(server/db/inc)
-include_directories(server/include)
+include_directories(server/inc)
 include_directories(server/libmx/inc)
 include_directories(server/resources)
 include_directories(server/resources/framework)
@@ -12,12 +11,8 @@ include_directories(server/resources/framework/jansson)
 include_directories(server/resources/framework/jansson/inc)
 
 add_executable(uchat
-        server/include/header_db_dev.h
-        server/db/add_user_to_db.c
-        server/db/if_user_in_bd.c
-        server/db/init_database.c
-        server/db/mx_itoa.c
-        server/include/server.h
+        server/inc/header_db_dev.h
+        server/inc/server.h
         server/libmx/inc/libmx.h
         server/libmx/src/mx_atoi.c
         server/libmx/src/mx_binary_search.c
@@ -84,6 +79,9 @@ add_executable(uchat
         server/libmx/src/mx_swap_char.c
         server/resources/framework/jansson/inc/jansson.h
         server/resources/framework/jansson/inc/jansson_config.h
+        server/src/db/add_user_to_db.c
+        server/src/db/if_user_in_bd.c
+        server/src/db/init_database.c
         server/src/main/main.c
         server/src/router/check_route.c
         server/src/router/sign_in.c

@@ -1,4 +1,4 @@
-#include "../../include/server.h"
+#include "server.h"
 
 static void struct_filling_with_null(t_user *User) {
     User->user_photo = NULL;
@@ -39,8 +39,6 @@ bool user_sign_in(json_t *income_json) {
 //    add_user_to_db(User);
     //-------------------------------------------------
     printf("%s",user_in_db(User));
-
-
     //-------------------------------------------------
 
     return 1; // true

@@ -1,4 +1,4 @@
-#include "../../include/server.h"
+#include "server.h"
 
 void check_route(char *str){
     json_t *income_json, *type;

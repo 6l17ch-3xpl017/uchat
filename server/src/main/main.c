@@ -1,4 +1,4 @@
-#include "../../include/server.h"
+#include "server.h"
 
 void *connection_handler(void *socket_desc) {
 
@@ -25,9 +25,6 @@ void *connection_handler(void *socket_desc) {
 
 
     //TODO here add router;
-
-
-
 
     if (read_size == 0) {
         puts("Client disconnected");
