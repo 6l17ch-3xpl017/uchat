@@ -70,11 +70,10 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/yksonzenko/CLionProjects/uchat/server/src/db/add_user_to_db.c" "/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.o"
   "/Users/yksonzenko/CLionProjects/uchat/server/src/db/if_user_in_bd.c" "/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.o"
   "/Users/yksonzenko/CLionProjects/uchat/server/src/db/init_database.c" "/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles/UCHAT.dir/src/db/init_database.c.o"
-  "/Users/yksonzenko/CLionProjects/uchat/server/src/db/mx_itoa.c" "/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles/UCHAT.dir/src/db/mx_itoa.c.o"
   "/Users/yksonzenko/CLionProjects/uchat/server/src/main/main.c" "/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles/UCHAT.dir/src/main/main.c.o"
+  "/Users/yksonzenko/CLionProjects/uchat/server/src/router/auth/sign_in.c" "/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o"
+  "/Users/yksonzenko/CLionProjects/uchat/server/src/router/auth/sign_up.c" "/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.o"
   "/Users/yksonzenko/CLionProjects/uchat/server/src/router/check_route.c" "/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles/UCHAT.dir/src/router/check_route.c.o"
-  "/Users/yksonzenko/CLionProjects/uchat/server/src/router/sign_in.c" "/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles/UCHAT.dir/src/router/sign_in.c.o"
-  "/Users/yksonzenko/CLionProjects/uchat/server/src/router/sign_up.c" "/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/CMakeFiles/UCHAT.dir/src/router/sign_up.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

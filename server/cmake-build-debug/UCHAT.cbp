@@ -86,6 +86,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/inc/header_db_dev.h">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/inc/server.h">
+			<Option target="UCHAT"/>
+		</Unit>
 		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/libmx/inc/libmx.h">
 			<Option target="UCHAT"/>
 		</Unit>
@@ -293,19 +299,16 @@
 		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/db/init_database.c">
 			<Option target="UCHAT"/>
 		</Unit>
-		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/db/mx_itoa.c">
-			<Option target="UCHAT"/>
-		</Unit>
 		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/main/main.c">
 			<Option target="UCHAT"/>
 		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/router/auth/sign_in.c">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/router/auth/sign_up.c">
+			<Option target="UCHAT"/>
+		</Unit>
 		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/router/check_route.c">
-			<Option target="UCHAT"/>
-		</Unit>
-		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/router/sign_in.c">
-			<Option target="UCHAT"/>
-		</Unit>
-		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/src/router/sign_up.c">
 			<Option target="UCHAT"/>
 		</Unit>
 		<Unit filename="/Users/yksonzenko/CLionProjects/uchat/server/CMakeLists.txt">

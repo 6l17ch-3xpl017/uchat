@@ -12,14 +12,14 @@ INC_DIR		= inc/
 J_INC_DIR   = resources/framework/jansson/inc/
 
 # list of subdirs in src/
-DIRS		= $(notdir $(wildcard $(SRC_DIR)*))
+DIRS		= db json main router router/auth $(notdir $(wildcard $(SRC_DIR)))
 # list of only source C-files without extansions
 FILES		= $(foreach dir, $(DIRS), $(basename $(wildcard \
 			  $(SRC_DIR)$(dir)/*.c)))
 # adding extansions .c to FILES
 SRC			= $(FILES:%=%.c)
 # adding extansions .o to FILES
-OBJ			= $(SRC:src/%.c=$(OBJ_DIR)%.o)
+OBJ			= $(SRC:src/$(DIRS)%.c=$(OBJ_DIR)%.o)
 # list of header files
 INC_H		= $(wildcard $(INC_DIR)*.h)
 
@@ -45,13 +45,13 @@ CC			= clang
 # general flags
 GFLAGS		= -std=c11 -pipe -Wall -Wextra -Werror -Wpedantic\
 	-Wno-unused-command-line-argument -Wno-unused-variable \
-	-Wno-unused-function -Wno-unused-parameter -g -lsqlite3
+	-Wno-unused-function -Wno-unused-parameter -g
 # specific flags
-#CFLAGS		= -lsqlite3 -lpthread
+CFLAGS		= -lsqlite3 -lpthread
 # folder with header files
 IFLAGS		= $(addprefix -I , $(LIB_INC) $(INC_DIR) $(J_INC_DIR))
 
-COMPILE		= $(CC) $(GFLAGS) $(IFLAGS) $(LIB_BIN) $(J_BIN)
+COMPILE		= $(CC) $(GFLAGS) $(IFLAGS) $(CFLAGS) $(LIB_BIN) $(J_BIN)
 MAKE_M		= make -sf Makefile -C
 MKDIR		= mkdir -p
 RM			= /bin/rm -rf

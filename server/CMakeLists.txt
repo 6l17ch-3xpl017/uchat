@@ -12,7 +12,7 @@ file(GLOB_RECURSE HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "inc/*.h")
 file(GLOB_RECURSE LIB_SRC RELATIVE ${CMAKE_SOURCE_DIR} "libmx/src/*.c")
 file(GLOB_RECURSE LIB_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "libmx/inc/*.h")
 
-add_executable(UCHAT ${SRC} ${HEADERS} ${LIB_SRC} ${LIB_HEADERS} resources/framework/jansson/inc/jansson.h resources/framework/jansson/inc/jansson_config.h src/router/sign_in.c src/router/sign_up.c src/router/check_route.c)
+add_executable(UCHAT ${SRC} ${HEADERS} ${LIB_SRC} ${LIB_HEADERS} resources/framework/jansson/inc/jansson.h resources/framework/jansson/inc/jansson_config.h src/router/auth/sign_in.c src/router/auth/sign_up.c src/router/check_route.c)
 
 target_link_libraries(UCHAT -L${CMAKE_SOURCE_DIR}/resources/framework/jansson/ -ljansson)
 

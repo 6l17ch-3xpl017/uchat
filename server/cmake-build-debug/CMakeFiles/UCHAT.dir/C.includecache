@@ -6,7 +6,47 @@
 
 #IncludeRegexTransform: 
 
-../include/server.h
+../inc/header_db_dev.h
+sys/types.h
+-
+sys/stat.h
+-
+sys/ioctl.h
+-
+sys/xattr.h
+-
+sys/acl.h
+-
+grp.h
+-
+dirent.h
+-
+unistd.h
+-
+pwd.h
+-
+time.h
+-
+errno.h
+-
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+string.h
+-
+fcntl.h
+-
+stdbool.h
+-
+stddef.h
+-
+sqlite3.h
+-
+
+../inc/server.h
 stdio.h
 -
 string.h
@@ -22,11 +62,13 @@ unistd.h
 pthread.h
 -
 libmx.h
-../include/libmx.h
+../inc/libmx.h
 jansson.h
-../include/jansson.h
+../inc/jansson.h
 jansson_config.h
-../include/jansson_config.h
+../inc/jansson_config.h
+header_db_dev.h
+../inc/header_db_dev.h
 
 ../libmx/inc/libmx.h
 stdio.h
@@ -57,12 +99,8 @@ jansson_config.h
 ../resources/framework/jansson/inc/jansson_config.h
 stdint.h
 -
-inttypes.h
--
-sys/types.h
--
 
-/Users/yksonzenko/CLionProjects/uchat/server/src/router/auth/sign_in.c
-../../include/server.h
-/Users/yksonzenko/CLionProjects/uchat/server/src/include/server.h
+/Users/yksonzenko/CLionProjects/uchat/server/src/main/cli_test.c
+server.h
+/Users/yksonzenko/CLionProjects/uchat/server/src/main/server.h
 

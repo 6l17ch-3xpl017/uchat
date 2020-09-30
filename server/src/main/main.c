@@ -41,10 +41,7 @@ int main(int argc, char *argv[]) {
     (void)argv;
     //----------------------------------------------------
 
-
     init_database();
-
-
 
     //----------------------------------------------------
 
@@ -76,48 +73,48 @@ int main(int argc, char *argv[]) {
         printf("Could not create socket");
 
     check_route(str);
-    return 0;
-//    puts("Socket created");
-//
-//    //Bind
-//    if (bind(socket_desc, (struct sockaddr *) &server, sizeof(server)) < 0) {
-//        //print the error message
-//        perror("bind failed. Error");
-//        return 1;
-//    }
-//    puts("bind done");
-//    //Listen
-//    listen(socket_desc, 3);
-//    //Accept and incoming connection
-//    puts("Waiting for incoming connections...");
-//    c = sizeof(struct sockaddr_in);
-//    pthread_t thread_id;
-//
-//    while ((client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t *) &c))) {
-//        puts("Connection accepted");
-//        if (pthread_create(&thread_id, NULL, connection_handler, (void *) &client_sock) < 0) {
-//            perror("could not create thread");
-//            return 1;
-//        }
-//        //Now join the thread , so that we don't terminate before the thread
-//        //pthread_join( thread_id , NULL);
-//        puts("Handler assigned");
-//
-//        //
-//        json_t *data, *sha, *commit, *message, *root;
-//        json_error_t error;
-//
-//        root = json_load_file("/test.json",0,&error);
-//        if(!root)
-//        {
-//            fprintf(stderr, "error: on line %d: %s\n", error.line, error.text);
-//            return 1;
-//        }
-//    }
-//    if (client_sock < 0) {
-//        perror("accept failed");
-//        return 1;
-//    }
 //    return 0;
+    puts("Socket created");
+
+    //Bind
+    if (bind(socket_desc, (struct sockaddr *) &server, sizeof(server)) < 0) {
+        //print the error message
+        perror("bind failed. Error");
+        return 1;
+    }
+    puts("bind done");
+    //Listen
+    listen(socket_desc, 3);
+    //Accept and incoming connection
+    puts("Waiting for incoming connections...");
+    c = sizeof(struct sockaddr_in);
+    pthread_t thread_id;
+
+    while ((client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t *) &c))) {
+        puts("Connection accepted");
+        if (pthread_create(&thread_id, NULL, connection_handler, (void *) &client_sock) < 0) {
+            perror("could not create thread");
+            return 1;
+        }
+        //Now join the thread , so that we don't terminate before the thread
+        //pthread_join( thread_id , NULL);
+        puts("Handler assigned");
+
+        //
+        json_t *data, *sha, *commit, *message, *root;
+        json_error_t error;
+
+        root = json_load_file("/test.json",0,&error);
+        if(!root)
+        {
+            fprintf(stderr, "error: on line %d: %s\n", error.line, error.text);
+            return 1;
+        }
+    }
+    if (client_sock < 0) {
+        perror("accept failed");
+        return 1;
+    }
+    return 0;
 }
 
