@@ -3,6 +3,7 @@ project(server C)
 
 set(CMAKE_C_STANDARD 11)
 
+include_directories(inc)
 include_directories(include)
 include_directories(libmx/inc)
 include_directories(resources)
@@ -10,8 +11,9 @@ include_directories(resources/framework)
 include_directories(resources/framework/jansson)
 include_directories(resources/framework/jansson/inc)
 
-<<<<<<< HEAD
 add_executable(server
+        inc/header_db_dev.h
+        inc/server.h
         include/server.h
         libmx/inc/libmx.h
         libmx/src/mx_atoi.c
@@ -79,18 +81,10 @@ add_executable(server
         libmx/src/mx_swap_char.c
         resources/framework/jansson/inc/jansson.h
         resources/framework/jansson/inc/jansson_config.h
+        src/db/add_user_to_db.c
+        src/db/if_user_in_bd.c
+        src/db/init_database.c
         src/main/main.c
+        src/router/check_route.c
         src/router/sign_in.c
-        src/router/sign_up.c
-        src/router/check_route.c)
-=======
-file(GLOB_RECURSE SRC RELATIVE ${CMAKE_SOURCE_DIR} "src/*.c")
-file(GLOB_RECURSE HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "inc/*.h")
-file(GLOB_RECURSE LIB_SRC RELATIVE ${CMAKE_SOURCE_DIR} "libmx/src/*.c")
-file(GLOB_RECURSE LIB_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "libmx/inc/*.h")
-
-add_executable(UCHAT ${SRC} ${HEADERS} ${LIB_SRC} ${LIB_HEADERS} resources/framework/jansson/inc/jansson.h resources/framework/jansson/inc/jansson_config.h src/router/sign_in.c src/router/sign_up.c src/router/check_route.c)
-
-target_link_libraries(UCHAT -L${CMAKE_SOURCE_DIR}/resources/framework/jansson/ -ljansson)
-
->>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
+        src/router/sign_up.c)

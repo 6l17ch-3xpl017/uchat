@@ -67,6 +67,9 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/illiass/Documents/uchat/server/libmx/src/mx_strstr.c" "/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles/server.dir/libmx/src/mx_strstr.c.o"
   "/Users/illiass/Documents/uchat/server/libmx/src/mx_strtrim.c" "/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles/server.dir/libmx/src/mx_strtrim.c.o"
   "/Users/illiass/Documents/uchat/server/libmx/src/mx_swap_char.c" "/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles/server.dir/libmx/src/mx_swap_char.c.o"
+  "/Users/illiass/Documents/uchat/server/src/db/add_user_to_db.c" "/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles/server.dir/src/db/add_user_to_db.c.o"
+  "/Users/illiass/Documents/uchat/server/src/db/if_user_in_bd.c" "/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles/server.dir/src/db/if_user_in_bd.c.o"
+  "/Users/illiass/Documents/uchat/server/src/db/init_database.c" "/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles/server.dir/src/db/init_database.c.o"
   "/Users/illiass/Documents/uchat/server/src/main/main.c" "/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles/server.dir/src/main/main.c.o"
   "/Users/illiass/Documents/uchat/server/src/router/check_route.c" "/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles/server.dir/src/router/check_route.c.o"
   "/Users/illiass/Documents/uchat/server/src/router/sign_in.c" "/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles/server.dir/src/router/sign_in.c.o"
@@ -76,6 +79,7 @@ set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
+  "../inc"
   "../include"
   "../libmx/inc"
   "../resources"

@@ -44,6 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/illiass/Documents/uchat/server/inc"/>
 					<Add directory="/Users/illiass/Documents/uchat/server/include"/>
 					<Add directory="/Users/illiass/Documents/uchat/server/libmx/inc"/>
 					<Add directory="/Users/illiass/Documents/uchat/server/resources"/>
@@ -70,6 +71,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/illiass/Documents/uchat/server/inc"/>
 					<Add directory="/Users/illiass/Documents/uchat/server/include"/>
 					<Add directory="/Users/illiass/Documents/uchat/server/libmx/inc"/>
 					<Add directory="/Users/illiass/Documents/uchat/server/resources"/>
@@ -90,6 +92,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/illiass/Documents/uchat/server/inc/header_db_dev.h">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/Users/illiass/Documents/uchat/server/inc/server.h">
+			<Option target="server"/>
+		</Unit>
 		<Unit filename="/Users/illiass/Documents/uchat/server/include/server.h">
 			<Option target="server"/>
 		</Unit>
@@ -289,6 +297,15 @@
 			<Option target="server"/>
 		</Unit>
 		<Unit filename="/Users/illiass/Documents/uchat/server/resources/framework/jansson/inc/jansson_config.h">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/Users/illiass/Documents/uchat/server/src/db/add_user_to_db.c">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/Users/illiass/Documents/uchat/server/src/db/if_user_in_bd.c">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/Users/illiass/Documents/uchat/server/src/db/init_database.c">
 			<Option target="server"/>
 		</Unit>
 		<Unit filename="/Users/illiass/Documents/uchat/server/src/main/main.c">

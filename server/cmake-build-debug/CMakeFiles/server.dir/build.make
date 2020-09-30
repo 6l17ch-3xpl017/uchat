@@ -896,9 +896,48 @@ CMakeFiles/server.dir/libmx/src/mx_swap_char.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/libmx/src/mx_swap_char.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/illiass/Documents/uchat/server/libmx/src/mx_swap_char.c -o CMakeFiles/server.dir/libmx/src/mx_swap_char.c.s
 
+CMakeFiles/server.dir/src/db/add_user_to_db.c.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/db/add_user_to_db.c.o: ../src/db/add_user_to_db.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/server.dir/src/db/add_user_to_db.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/src/db/add_user_to_db.c.o   -c /Users/illiass/Documents/uchat/server/src/db/add_user_to_db.c
+
+CMakeFiles/server.dir/src/db/add_user_to_db.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/server.dir/src/db/add_user_to_db.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/illiass/Documents/uchat/server/src/db/add_user_to_db.c > CMakeFiles/server.dir/src/db/add_user_to_db.c.i
+
+CMakeFiles/server.dir/src/db/add_user_to_db.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/src/db/add_user_to_db.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/illiass/Documents/uchat/server/src/db/add_user_to_db.c -o CMakeFiles/server.dir/src/db/add_user_to_db.c.s
+
+CMakeFiles/server.dir/src/db/if_user_in_bd.c.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/db/if_user_in_bd.c.o: ../src/db/if_user_in_bd.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/server.dir/src/db/if_user_in_bd.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/src/db/if_user_in_bd.c.o   -c /Users/illiass/Documents/uchat/server/src/db/if_user_in_bd.c
+
+CMakeFiles/server.dir/src/db/if_user_in_bd.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/server.dir/src/db/if_user_in_bd.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/illiass/Documents/uchat/server/src/db/if_user_in_bd.c > CMakeFiles/server.dir/src/db/if_user_in_bd.c.i
+
+CMakeFiles/server.dir/src/db/if_user_in_bd.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/src/db/if_user_in_bd.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/illiass/Documents/uchat/server/src/db/if_user_in_bd.c -o CMakeFiles/server.dir/src/db/if_user_in_bd.c.s
+
+CMakeFiles/server.dir/src/db/init_database.c.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/db/init_database.c.o: ../src/db/init_database.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/server.dir/src/db/init_database.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/src/db/init_database.c.o   -c /Users/illiass/Documents/uchat/server/src/db/init_database.c
+
+CMakeFiles/server.dir/src/db/init_database.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/server.dir/src/db/init_database.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/illiass/Documents/uchat/server/src/db/init_database.c > CMakeFiles/server.dir/src/db/init_database.c.i
+
+CMakeFiles/server.dir/src/db/init_database.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/src/db/init_database.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/illiass/Documents/uchat/server/src/db/init_database.c -o CMakeFiles/server.dir/src/db/init_database.c.s
+
 CMakeFiles/server.dir/src/main/main.c.o: CMakeFiles/server.dir/flags.make
 CMakeFiles/server.dir/src/main/main.c.o: ../src/main/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/server.dir/src/main/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/server.dir/src/main/main.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/src/main/main.c.o   -c /Users/illiass/Documents/uchat/server/src/main/main.c
 
 CMakeFiles/server.dir/src/main/main.c.i: cmake_force
@@ -909,9 +948,22 @@ CMakeFiles/server.dir/src/main/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/src/main/main.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/illiass/Documents/uchat/server/src/main/main.c -o CMakeFiles/server.dir/src/main/main.c.s
 
+CMakeFiles/server.dir/src/router/check_route.c.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/router/check_route.c.o: ../src/router/check_route.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/server.dir/src/router/check_route.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/src/router/check_route.c.o   -c /Users/illiass/Documents/uchat/server/src/router/check_route.c
+
+CMakeFiles/server.dir/src/router/check_route.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/server.dir/src/router/check_route.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/illiass/Documents/uchat/server/src/router/check_route.c > CMakeFiles/server.dir/src/router/check_route.c.i
+
+CMakeFiles/server.dir/src/router/check_route.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/src/router/check_route.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/illiass/Documents/uchat/server/src/router/check_route.c -o CMakeFiles/server.dir/src/router/check_route.c.s
+
 CMakeFiles/server.dir/src/router/sign_in.c.o: CMakeFiles/server.dir/flags.make
 CMakeFiles/server.dir/src/router/sign_in.c.o: ../src/router/sign_in.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/server.dir/src/router/sign_in.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/server.dir/src/router/sign_in.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/src/router/sign_in.c.o   -c /Users/illiass/Documents/uchat/server/src/router/sign_in.c
 
 CMakeFiles/server.dir/src/router/sign_in.c.i: cmake_force
@@ -924,7 +976,7 @@ CMakeFiles/server.dir/src/router/sign_in.c.s: cmake_force
 
 CMakeFiles/server.dir/src/router/sign_up.c.o: CMakeFiles/server.dir/flags.make
 CMakeFiles/server.dir/src/router/sign_up.c.o: ../src/router/sign_up.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/server.dir/src/router/sign_up.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/server.dir/src/router/sign_up.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/src/router/sign_up.c.o   -c /Users/illiass/Documents/uchat/server/src/router/sign_up.c
 
 CMakeFiles/server.dir/src/router/sign_up.c.i: cmake_force
@@ -934,19 +986,6 @@ CMakeFiles/server.dir/src/router/sign_up.c.i: cmake_force
 CMakeFiles/server.dir/src/router/sign_up.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/src/router/sign_up.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/illiass/Documents/uchat/server/src/router/sign_up.c -o CMakeFiles/server.dir/src/router/sign_up.c.s
-
-CMakeFiles/server.dir/src/router/check_route.c.o: CMakeFiles/server.dir/flags.make
-CMakeFiles/server.dir/src/router/check_route.c.o: ../src/router/check_route.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/server.dir/src/router/check_route.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/src/router/check_route.c.o   -c /Users/illiass/Documents/uchat/server/src/router/check_route.c
-
-CMakeFiles/server.dir/src/router/check_route.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/server.dir/src/router/check_route.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/illiass/Documents/uchat/server/src/router/check_route.c > CMakeFiles/server.dir/src/router/check_route.c.i
-
-CMakeFiles/server.dir/src/router/check_route.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/src/router/check_route.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/illiass/Documents/uchat/server/src/router/check_route.c -o CMakeFiles/server.dir/src/router/check_route.c.s
 
 # Object files for target server
 server_OBJECTS = \
@@ -1013,10 +1052,13 @@ server_OBJECTS = \
 "CMakeFiles/server.dir/libmx/src/mx_strstr.c.o" \
 "CMakeFiles/server.dir/libmx/src/mx_strtrim.c.o" \
 "CMakeFiles/server.dir/libmx/src/mx_swap_char.c.o" \
+"CMakeFiles/server.dir/src/db/add_user_to_db.c.o" \
+"CMakeFiles/server.dir/src/db/if_user_in_bd.c.o" \
+"CMakeFiles/server.dir/src/db/init_database.c.o" \
 "CMakeFiles/server.dir/src/main/main.c.o" \
+"CMakeFiles/server.dir/src/router/check_route.c.o" \
 "CMakeFiles/server.dir/src/router/sign_in.c.o" \
-"CMakeFiles/server.dir/src/router/sign_up.c.o" \
-"CMakeFiles/server.dir/src/router/check_route.c.o"
+"CMakeFiles/server.dir/src/router/sign_up.c.o"
 
 # External object files for target server
 server_EXTERNAL_OBJECTS =
@@ -1084,13 +1126,16 @@ server: CMakeFiles/server.dir/libmx/src/mx_strsplit.c.o
 server: CMakeFiles/server.dir/libmx/src/mx_strstr.c.o
 server: CMakeFiles/server.dir/libmx/src/mx_strtrim.c.o
 server: CMakeFiles/server.dir/libmx/src/mx_swap_char.c.o
+server: CMakeFiles/server.dir/src/db/add_user_to_db.c.o
+server: CMakeFiles/server.dir/src/db/if_user_in_bd.c.o
+server: CMakeFiles/server.dir/src/db/init_database.c.o
 server: CMakeFiles/server.dir/src/main/main.c.o
+server: CMakeFiles/server.dir/src/router/check_route.c.o
 server: CMakeFiles/server.dir/src/router/sign_in.c.o
 server: CMakeFiles/server.dir/src/router/sign_up.c.o
-server: CMakeFiles/server.dir/src/router/check_route.c.o
 server: CMakeFiles/server.dir/build.make
 server: CMakeFiles/server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Linking C executable server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/illiass/Documents/uchat/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Linking C executable server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -6,5 +6,5 @@ C_FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacO
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/illiass/Documents/uchat/server/include -I/Users/illiass/Documents/uchat/server/libmx/inc -I/Users/illiass/Documents/uchat/server/resources -I/Users/illiass/Documents/uchat/server/resources/framework -I/Users/illiass/Documents/uchat/server/resources/framework/jansson -I/Users/illiass/Documents/uchat/server/resources/framework/jansson/inc 
+C_INCLUDES = -I/Users/illiass/Documents/uchat/server/inc -I/Users/illiass/Documents/uchat/server/include -I/Users/illiass/Documents/uchat/server/libmx/inc -I/Users/illiass/Documents/uchat/server/resources -I/Users/illiass/Documents/uchat/server/resources/framework -I/Users/illiass/Documents/uchat/server/resources/framework/jansson -I/Users/illiass/Documents/uchat/server/resources/framework/jansson/inc 
 
