@@ -35,9 +35,9 @@
 #if defined(HAVE_STDINT_H)
 #  include <stdint.h>
 #elif defined(HAVE_INTTYPES_H)
-#  include <inttypes.h>
+#  inc <inttypes.h>
 #elif defined(HAVE_SYS_TYPES_H)
-#  include <sys/types.h>
+#  inc <sys/types.h>
 #endif
 
 

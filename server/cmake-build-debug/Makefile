@@ -1844,6 +1844,117 @@ libmx/src/mx_swap_char.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/libmx/src/mx_swap_char.c.s
 .PHONY : libmx/src/mx_swap_char.c.s
 
+<<<<<<< HEAD
+=======
+src/db/add_user_to_db.o: src/db/add_user_to_db.c.o
+
+.PHONY : src/db/add_user_to_db.o
+
+# target to build an object file
+src/db/add_user_to_db.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.o
+.PHONY : src/db/add_user_to_db.c.o
+
+src/db/add_user_to_db.i: src/db/add_user_to_db.c.i
+
+.PHONY : src/db/add_user_to_db.i
+
+# target to preprocess a source file
+src/db/add_user_to_db.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.i
+.PHONY : src/db/add_user_to_db.c.i
+
+src/db/add_user_to_db.s: src/db/add_user_to_db.c.s
+
+.PHONY : src/db/add_user_to_db.s
+
+# target to generate assembly for a file
+src/db/add_user_to_db.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.s
+.PHONY : src/db/add_user_to_db.c.s
+
+src/db/if_user_in_bd.o: src/db/if_user_in_bd.c.o
+
+.PHONY : src/db/if_user_in_bd.o
+
+# target to build an object file
+src/db/if_user_in_bd.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.o
+.PHONY : src/db/if_user_in_bd.c.o
+
+src/db/if_user_in_bd.i: src/db/if_user_in_bd.c.i
+
+.PHONY : src/db/if_user_in_bd.i
+
+# target to preprocess a source file
+src/db/if_user_in_bd.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.i
+.PHONY : src/db/if_user_in_bd.c.i
+
+src/db/if_user_in_bd.s: src/db/if_user_in_bd.c.s
+
+.PHONY : src/db/if_user_in_bd.s
+
+# target to generate assembly for a file
+src/db/if_user_in_bd.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.s
+.PHONY : src/db/if_user_in_bd.c.s
+
+src/db/init_database.o: src/db/init_database.c.o
+
+.PHONY : src/db/init_database.o
+
+# target to build an object file
+src/db/init_database.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/init_database.c.o
+.PHONY : src/db/init_database.c.o
+
+src/db/init_database.i: src/db/init_database.c.i
+
+.PHONY : src/db/init_database.i
+
+# target to preprocess a source file
+src/db/init_database.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/init_database.c.i
+.PHONY : src/db/init_database.c.i
+
+src/db/init_database.s: src/db/init_database.c.s
+
+.PHONY : src/db/init_database.s
+
+# target to generate assembly for a file
+src/db/init_database.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/init_database.c.s
+.PHONY : src/db/init_database.c.s
+
+src/db/mx_itoa.o: src/db/mx_itoa.c.o
+
+.PHONY : src/db/mx_itoa.o
+
+# target to build an object file
+src/db/mx_itoa.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/mx_itoa.c.o
+.PHONY : src/db/mx_itoa.c.o
+
+src/db/mx_itoa.i: src/db/mx_itoa.c.i
+
+.PHONY : src/db/mx_itoa.i
+
+# target to preprocess a source file
+src/db/mx_itoa.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/mx_itoa.c.i
+.PHONY : src/db/mx_itoa.c.i
+
+src/db/mx_itoa.s: src/db/mx_itoa.c.s
+
+.PHONY : src/db/mx_itoa.s
+
+# target to generate assembly for a file
+src/db/mx_itoa.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/db/mx_itoa.c.s
+.PHONY : src/db/mx_itoa.c.s
+
+>>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
 src/main/main.o: src/main/main.c.o
 
 .PHONY : src/main/main.o
@@ -1877,7 +1988,11 @@ src/router/check_route.o: src/router/check_route.c.o
 
 # target to build an object file
 src/router/check_route.c.o:
+<<<<<<< HEAD
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/router/check_route.c.o
+=======
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/check_route.c.o
+>>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
 .PHONY : src/router/check_route.c.o
 
 src/router/check_route.i: src/router/check_route.c.i
@@ -1886,7 +2001,11 @@ src/router/check_route.i: src/router/check_route.c.i
 
 # target to preprocess a source file
 src/router/check_route.c.i:
+<<<<<<< HEAD
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/router/check_route.c.i
+=======
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/check_route.c.i
+>>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
 .PHONY : src/router/check_route.c.i
 
 src/router/check_route.s: src/router/check_route.c.s
@@ -1895,7 +2014,11 @@ src/router/check_route.s: src/router/check_route.c.s
 
 # target to generate assembly for a file
 src/router/check_route.c.s:
+<<<<<<< HEAD
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/router/check_route.c.s
+=======
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/check_route.c.s
+>>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
 .PHONY : src/router/check_route.c.s
 
 src/router/sign_in.o: src/router/sign_in.c.o
@@ -1904,7 +2027,11 @@ src/router/sign_in.o: src/router/sign_in.c.o
 
 # target to build an object file
 src/router/sign_in.c.o:
+<<<<<<< HEAD
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/router/sign_in.c.o
+=======
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/sign_in.c.o
+>>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
 .PHONY : src/router/sign_in.c.o
 
 src/router/sign_in.i: src/router/sign_in.c.i
@@ -1913,7 +2040,11 @@ src/router/sign_in.i: src/router/sign_in.c.i
 
 # target to preprocess a source file
 src/router/sign_in.c.i:
+<<<<<<< HEAD
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/router/sign_in.c.i
+=======
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/sign_in.c.i
+>>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
 .PHONY : src/router/sign_in.c.i
 
 src/router/sign_in.s: src/router/sign_in.c.s
@@ -1922,7 +2053,11 @@ src/router/sign_in.s: src/router/sign_in.c.s
 
 # target to generate assembly for a file
 src/router/sign_in.c.s:
+<<<<<<< HEAD
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/router/sign_in.c.s
+=======
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/sign_in.c.s
+>>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
 .PHONY : src/router/sign_in.c.s
 
 src/router/sign_up.o: src/router/sign_up.c.o
@@ -1931,7 +2066,11 @@ src/router/sign_up.o: src/router/sign_up.c.o
 
 # target to build an object file
 src/router/sign_up.c.o:
+<<<<<<< HEAD
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/router/sign_up.c.o
+=======
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/sign_up.c.o
+>>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
 .PHONY : src/router/sign_up.c.o
 
 src/router/sign_up.i: src/router/sign_up.c.i
@@ -1940,7 +2079,11 @@ src/router/sign_up.i: src/router/sign_up.c.i
 
 # target to preprocess a source file
 src/router/sign_up.c.i:
+<<<<<<< HEAD
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/router/sign_up.c.i
+=======
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/sign_up.c.i
+>>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
 .PHONY : src/router/sign_up.c.i
 
 src/router/sign_up.s: src/router/sign_up.c.s
@@ -1949,7 +2092,11 @@ src/router/sign_up.s: src/router/sign_up.c.s
 
 # target to generate assembly for a file
 src/router/sign_up.c.s:
+<<<<<<< HEAD
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/router/sign_up.c.s
+=======
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UCHAT.dir/build.make CMakeFiles/UCHAT.dir/src/router/sign_up.c.s
+>>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
 .PHONY : src/router/sign_up.c.s
 
 # Help Target
@@ -2150,6 +2297,21 @@ help:
 	@echo "... libmx/src/mx_swap_char.o"
 	@echo "... libmx/src/mx_swap_char.i"
 	@echo "... libmx/src/mx_swap_char.s"
+<<<<<<< HEAD
+=======
+	@echo "... src/db/add_user_to_db.o"
+	@echo "... src/db/add_user_to_db.i"
+	@echo "... src/db/add_user_to_db.s"
+	@echo "... src/db/if_user_in_bd.o"
+	@echo "... src/db/if_user_in_bd.i"
+	@echo "... src/db/if_user_in_bd.s"
+	@echo "... src/db/init_database.o"
+	@echo "... src/db/init_database.i"
+	@echo "... src/db/init_database.s"
+	@echo "... src/db/mx_itoa.o"
+	@echo "... src/db/mx_itoa.i"
+	@echo "... src/db/mx_itoa.s"
+>>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
 	@echo "... src/main/main.o"
 	@echo "... src/main/main.i"
 	@echo "... src/main/main.s"

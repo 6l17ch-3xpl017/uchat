@@ -45,13 +45,13 @@ CC			= clang
 # general flags
 GFLAGS		= -std=c11 -pipe -Wall -Wextra -Werror -Wpedantic\
 	-Wno-unused-command-line-argument -Wno-unused-variable \
-	-Wno-unused-function -Wno-unused-parameter -g
+	-Wno-unused-function -Wno-unused-parameter -g -lsqlite3
 # specific flags
 #CFLAGS		= -lsqlite3 -lpthread
 # folder with header files
-IFLAGS		= $(addprefix -I, $(LIB_INC) $(INC_DIR))
+IFLAGS		= $(addprefix -I , $(LIB_INC) $(INC_DIR) $(J_INC_DIR))
 
-COMPILE		= $(CC) $(GFLAGS) $(IFLAGS) -I $(J_INC_DIR) $(LIB_BIN) $(J_BIN)
+COMPILE		= $(CC) $(GFLAGS) $(IFLAGS) $(LIB_BIN) $(J_BIN)
 MAKE_M		= make -sf Makefile -C
 MKDIR		= mkdir -p
 RM			= /bin/rm -rf

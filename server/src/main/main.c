@@ -1,4 +1,4 @@
-#include "../../include/server.h"
+#include "server.h"
 
 void *connection_handler(void *socket_desc) {
 
@@ -26,9 +26,6 @@ void *connection_handler(void *socket_desc) {
 
     //TODO here add router;
 
-
-
-
     if (read_size == 0) {
         puts("Client disconnected");
         fflush(stdout);
@@ -40,6 +37,7 @@ void *connection_handler(void *socket_desc) {
 
 
 int main(int argc, char *argv[]) {
+<<<<<<< HEAD
     (void) argc;
     (void) argv;
 //    char str[] = "{\n"
@@ -55,6 +53,32 @@ int main(int argc, char *argv[]) {
 //                 "    \"option\": \"test\"\n"
 //                 "  }\n"
 //                 "}";
+=======
+    (void)argc;
+    (void)argv;
+    //----------------------------------------------------
+
+
+    init_database();
+
+
+
+    //----------------------------------------------------
+
+    char str[] = "{\n"
+                 "  \"type\": \"sign_in\",\n"
+                 "  \"user\": {\n"
+                 "    \"nickname\": \"\",\n"
+                 "    \"password\": \"12345\",\n"
+                 "    \"email\": \"yevgeniia.ks@gmail.com\",\n"
+                 "    \"age\": \"29\",\n"
+                 "    \"fullname\": \"YK\",\n"
+                 "    \"ph_number\": \"098777\",\n"
+                 "    \"user_photo\": \"test\",\n"
+                 "    \"option\": \"testo\"\n"
+                 "  }\n"
+                 "}";
+>>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
 
     int socket_desc, client_sock, c;
     struct sockaddr_in server, client;
