@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/socket.h>
-#define MAX 8000
+#define MAXL 8000
 #define PORT 5000
 #define SA struct sockaddr
 
@@ -67,11 +67,9 @@ static char *encode(char *pass)
 static int send_json(json_t *json, int socketfd)
 {
     char *result = json_dumps(json, 0);
-    puts(result);
-    for(;;){
-        write(socketfd, "a", 1);
-    }
-    puts(result);
+//    printf("%lu",sizeof(result));
+    write(socketfd, result, strlen(result));
+//    exit(0);
     return 1;
 }
 
@@ -90,7 +88,7 @@ static int create_user_data(GtkWidget *button, t_login_page *login_page)
     json_object_set_new(user, "option", json_string("test"));
 
 
-    json_object_set_new(json, "type", json_string("log_in"));
+    json_object_set_new(json, "type", json_string("sign_in"));
     json_object_set_new(json, "user", user);
 
     char *s = json_dumps(json, 0);
@@ -169,7 +167,7 @@ int login_page(int socketfd)
 
 void func(int sockfd)
 {
-    char buff[MAX];
+    char buff[MAXL];
     int n;
     for (;;) {
 //        bzero(buff, sizeof(buff));
@@ -219,7 +217,7 @@ int main(int argc, char *argv[])
 
     // function for chat
 //    login_page(sockfd);
-    func(sockfd);
+    login_page(sockfd);
 
     // close the socket
     close(sockfd);

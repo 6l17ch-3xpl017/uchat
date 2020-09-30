@@ -13,6 +13,7 @@ void *connection_handler(void *socket_desc) {
             printf("Client Exit...\n");
             read_size = 0;
         }
+        puts(client_message);
         check_route(client_message);
 
 //      client disconnected

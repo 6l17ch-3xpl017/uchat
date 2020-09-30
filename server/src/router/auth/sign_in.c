@@ -15,6 +15,9 @@ bool user_sign_in(json_t *income_json) {
     t_user *User;
     json_t *user, *nickname, *email, *password;
 
+
+    puts("jopa1");
+
     User = (t_user *)malloc(sizeof(t_user));
     user = json_object_get(income_json, "user");
     if (!json_is_object(user)) {
