@@ -38,7 +38,7 @@ bool user_sign_in(json_t *income_json) {
 
 //    add_user_to_db(User);
     //-------------------------------------------------
-    printf("%s",user_in_db(User));
+//    printf("%s",user_in_db(User));
     //-------------------------------------------------
 
     return 1; // true

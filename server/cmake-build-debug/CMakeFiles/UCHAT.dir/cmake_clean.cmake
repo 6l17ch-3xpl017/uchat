@@ -65,11 +65,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.o"
   "CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.o"
   "CMakeFiles/UCHAT.dir/src/db/init_database.c.o"
-  "CMakeFiles/UCHAT.dir/src/db/mx_itoa.c.o"
   "CMakeFiles/UCHAT.dir/src/main/main.c.o"
+  "CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o"
+  "CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.o"
   "CMakeFiles/UCHAT.dir/src/router/check_route.c.o"
-  "CMakeFiles/UCHAT.dir/src/router/sign_in.c.o"
-  "CMakeFiles/UCHAT.dir/src/router/sign_up.c.o"
   "UCHAT"
   "UCHAT.pdb"
 )
