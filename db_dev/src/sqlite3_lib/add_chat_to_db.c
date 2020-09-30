@@ -1,8 +1,12 @@
-//
-// Created by Illia Marchenko on 9/28/20.
-//
+#include "header_db_dev.h"
 
-#include "../inc/header_db_dev.h"
+/**
+ * @author Ilay Marchenko
+ * @brief Function add chat into table 'Chats' in database. Every variable of structure User must be NULL or must
+ *        contain some information about user.
+ * @param Chat - structure that has data about chat (chat_name, admin_id, chat_photo, options). Chat_name and admin_id
+ *        can't be NULL.
+ */
 
 void add_chat_to_db(t_chat *Chat) {
     int result;

@@ -2,7 +2,7 @@
 // Created by Illia Marchenko on 9/27/20.
 //
 
-#include "../inc/header_db_dev.h"
+#include "header_db_dev.h"
 
 /**
  * @author Illia Marchenko
@@ -44,7 +44,7 @@ void init_database() {
     // -----------------------------=-Block to create Chats table-=-------------------------------
     result = sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS \"Chats\" (\n"
                               "\"chat_id\"\tINTEGER NOT NULL UNIQUE,\n"
-                              "\"chat_name\"\tTEXT NOT NULL,\n"
+                              "\"chat_name\"\tTEXT NOT NULL UNIQUE,\n"
                               "\"admin_id\"\tINTEGER NOT NULL,\n"
                               "\"chat_photo\"\tTEXT,\n"
                               "\"options\"\tTEXT,\n"

@@ -2,7 +2,7 @@
 // Created by Illia Marchenko on 9/25/20.
 //
 
-#include "../inc/header_db_dev.h"
+#include "header_db_dev.h"
 
 static int callback_number_of_email_or_nickname(void *my_arg, int argc, char **argv, char **array) {
     int *result = (int *)my_arg;

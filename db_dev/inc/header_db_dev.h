@@ -1,7 +1,3 @@
-//
-// Created by Illia Marchenko on 9/24/20.
-//
-
 #ifndef UCHAT_HEADER_DB_DEV_H
 #define UCHAT_HEADER_DB_DEV_H
 
@@ -49,9 +45,11 @@ typedef struct s_password {
 }              t_password;
 
 char *mx_itoa(int number);
+
 char *user_in_db(t_user *User);
 void init_database();
 void add_user_to_db(t_user *User);
-void add_chat_to_db(t_chat *Chat)
+void add_chat_to_db(t_chat *Chat);
+void drop_all();
 
 #endif //UCHAT_HEADER_DB_DEV_H
