@@ -1,13 +1,13 @@
 {
-  "type": "sign_in",
+  "type": "sign_up",
   "user": {
-    "nickname": "test",
-    "password": "test",
-    "email": "test",
-    "age": "test",
-    "fullname": "test",
-    "ph_number": "test",
-    "user_photo": "test",
+    "nickname": "illia",
+    "password": "123asd",
+    "email": "test@test.test",
+    "age": "18",
+    "fullname": "illiash",
+    "ph_number": "0983303840",
+    "user_photo": "101010101",
     "option": "test"
   }
 }
