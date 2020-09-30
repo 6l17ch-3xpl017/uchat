@@ -7,15 +7,15 @@ void *connection_handler(void *socket_desc) {
     int read_size = 1;
     char client_message[2000];
     for (;;) {
-
         read(sock, client_message, sizeof(client_message));
-
+//      client exit
         if ((strncmp(client_message, "exit", 4)) == 0) {
             printf("Client Exit...\n");
             read_size = 0;
         }
-        printf("From Server : %s", client_message);
+        check_route(client_message);
 
+//      client disconnected
         if (read_size == 0) {
             puts("Client disconnected");
             fflush(stdout);
@@ -29,19 +29,6 @@ void *connection_handler(void *socket_desc) {
 int main(int argc, char *argv[]) {
     (void) argc;
     (void) argv;
-//    char str[] = "{\n"
-//                 "  \"type\": \"sign_up\",\n"
-//                 "  \"user\": {\n"
-//                 "    \"nickname\": \"illia\",\n"
-//                 "    \"password\": \"123asd\",\n"
-//                 "    \"email\": \"test@test.test\",\n"
-//                 "    \"age\": \"18\",\n"
-//                 "    \"fullname\": \"illiash\",\n"
-//                 "    \"ph_number\": \"0983303840\",\n"
-//                 "    \"user_photo\": \"101010101\",\n"
-//                 "    \"option\": \"test\"\n"
-//                 "  }\n"
-//                 "}";
     int socket_desc, client_sock, c;
     struct sockaddr_in server, client;
 
@@ -55,9 +42,6 @@ int main(int argc, char *argv[]) {
     if (socket_desc == -1)
         printf("Could not create socket");
 
-//    check_route(str);
-////    system("leaks -q uchat_server");
-//    return 0;
     puts("Socket created");
     //Bind
     if (bind(socket_desc, (struct sockaddr *) &server, sizeof(server)) < 0) {
