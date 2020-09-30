@@ -19,3 +19,5 @@ mycert.pem
 /cmake-build-debug/
 .idea
 .txt
+/client/cmake-build-debug/
+/server/cmake-build-debug/
