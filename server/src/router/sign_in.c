@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-#include "../../include/server.h"
-=======
 #include "server.h"
 
 static void struct_filling_with_null(t_user *User) {
@@ -41,9 +38,8 @@ bool user_sign_in(json_t *income_json) {
 
 //    add_user_to_db(User);
     //-------------------------------------------------
-    printf("%s",user_in_db(User));
+//    printf("%s",user_in_db(User));
     //-------------------------------------------------
 
     return 1; // true
 }
->>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a

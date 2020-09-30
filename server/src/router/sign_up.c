@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-#include "../../include/server.h"
+#include "server.h"
 
 bool user_sign_up(json_t *income_json) {
     json_t *user;
@@ -26,7 +25,4 @@ bool user_sign_up(json_t *income_json) {
 
     return 1;
 }
-=======
-#include "server.h"
 
->>>>>>> e85a545ffc1d33812186d17b42c8a92e87fa726a
