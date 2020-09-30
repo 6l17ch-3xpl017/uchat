@@ -18,3 +18,4 @@ mycert.pem
 /cmake-build-debug/
 .idea
 .txt
+uchat_server.dSYM

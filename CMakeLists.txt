@@ -83,6 +83,6 @@ add_executable(uchat
         server/src/db/if_user_in_bd.c
         server/src/db/init_database.c
         server/src/main/main.c
-        server/src/router/check_route.c
         server/src/router/auth/sign_in.c
-        server/src/router/auth/sign_up.c)
+        server/src/router/auth/sign_up.c
+        server/src/router/check_route.c)
