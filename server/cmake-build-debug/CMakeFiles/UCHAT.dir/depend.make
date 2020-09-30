@@ -190,23 +190,59 @@ CMakeFiles/UCHAT.dir/libmx/src/mx_strtrim.c.o: ../libmx/src/mx_strtrim.c
 CMakeFiles/UCHAT.dir/libmx/src/mx_swap_char.c.o: ../libmx/inc/libmx.h
 CMakeFiles/UCHAT.dir/libmx/src/mx_swap_char.c.o: ../libmx/src/mx_swap_char.c
 
-CMakeFiles/UCHAT.dir/src/json/check_route.c.o: ../libmx/inc/libmx.h
-CMakeFiles/UCHAT.dir/src/json/check_route.c.o: ../resources/framework/jansson/inc/jansson.h
-CMakeFiles/UCHAT.dir/src/json/check_route.c.o: ../resources/framework/jansson/inc/jansson_config.h
-CMakeFiles/UCHAT.dir/src/json/check_route.c.o: ../include/server.h
-CMakeFiles/UCHAT.dir/src/json/check_route.c.o: ../src/json/check_route.c
+CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.o: ../inc/header_db_dev.h
+CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.o: ../inc/server.h
+CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.o: ../libmx/inc/libmx.h
+CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.o: ../resources/framework/jansson/inc/jansson.h
+CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.o: ../resources/framework/jansson/inc/jansson_config.h
+CMakeFiles/UCHAT.dir/src/db/add_user_to_db.c.o: ../src/db/add_user_to_db.c
 
+CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.o: ../inc/header_db_dev.h
+CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.o: ../inc/server.h
+CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.o: ../libmx/inc/libmx.h
+CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.o: ../resources/framework/jansson/inc/jansson.h
+CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.o: ../resources/framework/jansson/inc/jansson_config.h
+CMakeFiles/UCHAT.dir/src/db/if_user_in_bd.c.o: ../src/db/if_user_in_bd.c
+
+CMakeFiles/UCHAT.dir/src/db/init_database.c.o: ../inc/header_db_dev.h
+CMakeFiles/UCHAT.dir/src/db/init_database.c.o: ../inc/server.h
+CMakeFiles/UCHAT.dir/src/db/init_database.c.o: ../libmx/inc/libmx.h
+CMakeFiles/UCHAT.dir/src/db/init_database.c.o: ../resources/framework/jansson/inc/jansson.h
+CMakeFiles/UCHAT.dir/src/db/init_database.c.o: ../resources/framework/jansson/inc/jansson_config.h
+CMakeFiles/UCHAT.dir/src/db/init_database.c.o: ../src/db/init_database.c
+
+CMakeFiles/UCHAT.dir/src/main/cli_test.c.o: ../inc/header_db_dev.h
+CMakeFiles/UCHAT.dir/src/main/cli_test.c.o: ../inc/server.h
+CMakeFiles/UCHAT.dir/src/main/cli_test.c.o: ../libmx/inc/libmx.h
+CMakeFiles/UCHAT.dir/src/main/cli_test.c.o: ../resources/framework/jansson/inc/jansson.h
+CMakeFiles/UCHAT.dir/src/main/cli_test.c.o: ../resources/framework/jansson/inc/jansson_config.h
+CMakeFiles/UCHAT.dir/src/main/cli_test.c.o: ../src/main/cli_test.c
+
+CMakeFiles/UCHAT.dir/src/main/main.c.o: ../inc/header_db_dev.h
+CMakeFiles/UCHAT.dir/src/main/main.c.o: ../inc/server.h
 CMakeFiles/UCHAT.dir/src/main/main.c.o: ../libmx/inc/libmx.h
 CMakeFiles/UCHAT.dir/src/main/main.c.o: ../resources/framework/jansson/inc/jansson.h
 CMakeFiles/UCHAT.dir/src/main/main.c.o: ../resources/framework/jansson/inc/jansson_config.h
-CMakeFiles/UCHAT.dir/src/main/main.c.o: ../include/server.h
 CMakeFiles/UCHAT.dir/src/main/main.c.o: ../src/main/main.c
 
-CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o: ../include/server.h
-CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o: ../libmx/inc/libmx.h
-CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o: ../resources/framework/jansson/inc/jansson.h
-CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o: ../resources/framework/jansson/inc/jansson_config.h
-CMakeFiles/UCHAT.dir/src/router/auth/sign_in.c.o: ../src/router/auth/sign_in.c
+CMakeFiles/UCHAT.dir/src/router/check_route.c.o: ../inc/header_db_dev.h
+CMakeFiles/UCHAT.dir/src/router/check_route.c.o: ../inc/server.h
+CMakeFiles/UCHAT.dir/src/router/check_route.c.o: ../libmx/inc/libmx.h
+CMakeFiles/UCHAT.dir/src/router/check_route.c.o: ../resources/framework/jansson/inc/jansson.h
+CMakeFiles/UCHAT.dir/src/router/check_route.c.o: ../resources/framework/jansson/inc/jansson_config.h
+CMakeFiles/UCHAT.dir/src/router/check_route.c.o: ../src/router/check_route.c
 
-CMakeFiles/UCHAT.dir/src/router/auth/sign_up.c.o: ../src/router/auth/sign_up.c
+CMakeFiles/UCHAT.dir/src/router/sign_in.c.o: ../inc/header_db_dev.h
+CMakeFiles/UCHAT.dir/src/router/sign_in.c.o: ../inc/server.h
+CMakeFiles/UCHAT.dir/src/router/sign_in.c.o: ../libmx/inc/libmx.h
+CMakeFiles/UCHAT.dir/src/router/sign_in.c.o: ../resources/framework/jansson/inc/jansson.h
+CMakeFiles/UCHAT.dir/src/router/sign_in.c.o: ../resources/framework/jansson/inc/jansson_config.h
+CMakeFiles/UCHAT.dir/src/router/sign_in.c.o: ../src/router/sign_in.c
+
+CMakeFiles/UCHAT.dir/src/router/sign_up.c.o: ../inc/header_db_dev.h
+CMakeFiles/UCHAT.dir/src/router/sign_up.c.o: ../inc/server.h
+CMakeFiles/UCHAT.dir/src/router/sign_up.c.o: ../libmx/inc/libmx.h
+CMakeFiles/UCHAT.dir/src/router/sign_up.c.o: ../resources/framework/jansson/inc/jansson.h
+CMakeFiles/UCHAT.dir/src/router/sign_up.c.o: ../resources/framework/jansson/inc/jansson_config.h
+CMakeFiles/UCHAT.dir/src/router/sign_up.c.o: ../src/router/sign_up.c
 
