@@ -1,5 +1,13 @@
 #include <gtk/gtk.h>
 #include <jansson.h>
+#include <netdb.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+#define MAX 8000
+#define PORT 5000
+#define SA struct sockaddr
 
 typedef struct s_user_data
 {
@@ -20,12 +28,17 @@ typedef struct s_login_page
     GtkWidget *pass;
     GtkWidget *label_user;
     GtkWidget *label_pass;
+    int soketfd;
+
 }              t_login_page;
 
 
 static void destroy(GtkWidget *widget, gpointer data){
     gtk_main_quit();
 }
+
+
+
 
 static char *encode(char *pass)
 {
@@ -51,10 +64,19 @@ static char *encode(char *pass)
     return pass;
 }
 
-static t_user_data *create_user_data(GtkWidget *button, t_login_page *login_page)
+static int send_json(json_t *json, int socketfd)
 {
-    t_user_data *userData = malloc(sizeof(t_user_data));
+    char *result = json_dumps(json, 0);
+    puts(result);
+    for(;;){
+        write(socketfd, "a", 1);
+    }
+    puts(result);
+    return 1;
+}
 
+static int create_user_data(GtkWidget *button, t_login_page *login_page)
+{
     json_t *json = json_object();
 
     json_t *user = json_object();
@@ -74,9 +96,9 @@ static t_user_data *create_user_data(GtkWidget *button, t_login_page *login_page
     char *s = json_dumps(json, 0);
 
     puts(s);
-    json_decref(json);
-
-    return userData;
+//    json_decref(json);
+    send_json(json, login_page->soketfd);
+    return 1;
 }
 
 static void init_login_page(t_login_page **login_page)
@@ -123,21 +145,82 @@ static void init_login_page(t_login_page **login_page)
 
 }
 
+int login_page(int socketfd)
+{
+//    char *pass = calloc(sizeof(char), 8);
+//    pass = strdup("123321");
+//    encode(pass);
+
+    t_login_page *login_page = malloc(sizeof(t_login_page));
+    init_login_page(&login_page);
+    login_page->soketfd = socketfd;
+
+    g_signal_connect(login_page->Login_button, "clicked",
+                     G_CALLBACK(create_user_data), login_page);
+
+    gtk_grid_attach(GTK_GRID(login_page->grid), login_page->Login_button, 0, 3, 2, 1);
+
+    gtk_widget_show_all(login_page->window);
+    gtk_main();
+
+
+    return 1;
+}
+
+void func(int sockfd)
+{
+    char buff[MAX];
+    int n;
+    for (;;) {
+//        bzero(buff, sizeof(buff));
+//        printf("Enter the string : ");
+        n = 0;
+        while ((buff[n++] = getchar()) != '\n')
+            ;
+        write(sockfd, buff, sizeof(buff));
+        bzero(buff, sizeof(buff));
+        read(sockfd, buff, sizeof(buff));
+        printf("From Server : %s", buff);
+        if ((strncmp(buff, "exit", 4)) == 0) {
+            printf("Client Exit...\n");
+            break;
+        }
+    }
+}
+
 int main(int argc, char *argv[])
 {
-    char *pass = calloc(sizeof(char), 8);
-    pass = strdup("123321");
-    encode(pass);
-//    gtk_init_check(&argc, &argv);
-//    t_login_page *login_page = malloc(sizeof(t_login_page));
-//    init_login_page(&login_page);
-//
-//    g_signal_connect(login_page->Login_button, "clicked",
-//                     G_CALLBACK(create_user_data), login_page);
-//
-//    gtk_grid_attach(GTK_GRID(login_page->grid), login_page->Login_button, 0, 3, 2, 1);
-//
-//    gtk_widget_show_all(login_page->window);
-//    gtk_main();
+    gtk_init_check(&argc, &argv);
+    int sockfd, connfd;
+    struct sockaddr_in servaddr, cli;
 
+    // socket create and varification
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd == -1) {
+        printf("socket creation failed...\n");
+        exit(0);
+    }
+    else
+        printf("Socket successfully created..\n");
+    bzero(&servaddr, sizeof(servaddr));
+
+    // assign IP, PORT
+    servaddr.sin_family = AF_INET;
+//    servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    servaddr.sin_port = htons(PORT);
+
+    // connect the client socket to server socket
+    if (connect(sockfd, (SA*)&servaddr, sizeof(servaddr)) != 0) {
+        printf("connection with the server failed...\n");
+        exit(0);
+    }
+    else
+        printf("connected to the server..\n");
+
+    // function for chat
+//    login_page(sockfd);
+    func(sockfd);
+
+    // close the socket
+    close(sockfd);
 }
