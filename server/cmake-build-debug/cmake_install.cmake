@@ -1,4 +1,4 @@
-# Install script for directory: /Users/yksonzenko/CLionProjects/uchat/server
+# Install script for directory: /Users/illiass/Documents/uchat/server
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/yksonzenko/CLionProjects/uchat/server/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/illiass/Documents/uchat/server/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

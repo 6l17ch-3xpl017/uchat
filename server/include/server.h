@@ -16,7 +16,7 @@ typedef struct s_user {
     char *nickname;
     char *password;
     char *email;
-    int age;
+    char *age;
     char *fullname;
     char *ph_number;
     char *user_photo;
@@ -25,5 +25,6 @@ typedef struct s_user {
 } t_user;
 
 void check_route(char *str);
+bool user_sign_up(json_t *income_json);
 
 #endif
