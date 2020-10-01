@@ -11,15 +11,18 @@ INC_DIR		= inc/
 # main dir for jansson files
 J_INC_DIR   = resources/framework/jansson/inc/
 
+# whole path to dirs
+PATH_DIRS	= db json main router router/auth
+
 # list of subdirs in src/
-DIRS		= db json main router router/auth $(notdir $(wildcard $(SRC_DIR)))
+DIRS		= $(PATH_DIRS) $(notdir $(wildcard $(SRC_DIR)))
 # list of only source C-files without extansions
 FILES		= $(foreach dir, $(DIRS), $(basename $(wildcard \
 			  $(SRC_DIR)$(dir)/*.c)))
 # adding extansions .c to FILES
 SRC			= $(FILES:%=%.c)
 # adding extansions .o to FILES
-OBJ			= $(SRC:src/$(DIRS)%.c=$(OBJ_DIR)%.o)
+OBJ			= $(SRC:src/$(PATH_DIRS)%.c=$(OBJ_DIR)%.o)
 # list of header files
 INC_H		= $(wildcard $(INC_DIR)*.h)
 
@@ -29,7 +32,7 @@ J_INC_H		= $(wildcard $(J_INC_DIR)*.h)
 J_BIN = resources/framework/jansson/libjansson.a
 
 # main dir with any libraries
-LIB_DIR		= .
+LIB_DIR		= resources
 # list of all names of libraries in LIB_DIR
 LIB_LIST	= libmx
 # make path to library ../libs/<lib_name>/

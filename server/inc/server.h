@@ -13,6 +13,16 @@
 #include "jansson_config.h"
 #include "header_db_dev.h"
 
+typedef struct s_use_mutex {
+    pthread_mutex_t mutex;
+} t_use_mutex;
+
+// router
+void check_route(char *str);
+bool user_sign_in(json_t *income_json);
+
+#endif
+
 //typedef struct s_user {
 //    char *nickname;
 //    char *password;
@@ -24,9 +34,3 @@
 //    void *option;
 //    struct s_user *next;
 //} t_user;
-
-// router
-void check_route(char *str);
-bool user_sign_in(json_t *income_json);
-
-#endif

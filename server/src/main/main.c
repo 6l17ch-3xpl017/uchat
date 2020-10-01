@@ -13,8 +13,8 @@ void *connection_handler(void *socket_desc) {
             printf("Client Exit...\n");
             read_size = 0;
         }
-        check_route(client_message);
-
+//        check_route(client_message);
+    puts(client_message);
 //      client disconnected
         if (read_size == 0) {
             puts("Client disconnected");
@@ -56,7 +56,11 @@ int main(int argc, char *argv[]) {
     puts("Waiting for incoming connections...");
     c = sizeof(struct sockaddr_in);
     pthread_t thread_id;
+    t_use_mutex thread_mutex;
+// ---------------------------------
+    pthread_mutex_init(&thread_mutex.mutex, NULL);
 
+// ---------------------------------
     while ((client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t *) &c))) {
         puts("Connection accepted");
         if (pthread_create(&thread_id, NULL, connection_handler, (void *) &client_sock) < 0) {
