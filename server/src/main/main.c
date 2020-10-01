@@ -58,7 +58,9 @@ int main(int argc, char *argv[]) {
     pthread_t thread_id;
     t_use_mutex thread_mutex;
 // ---------------------------------
-    pthread_mutex_init(&thread_mutex.mutex, NULL);
+//    pthread_mutex_init(&thread_mutex.mutex, NULL);
+//    pthread_mutex_lock(&thread_mutex.mutex);
+
 
 // ---------------------------------
     while ((client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t *) &c))) {
