@@ -7,6 +7,12 @@ include_directories(client/inc)
 include_directories(server/inc)
 include_directories(server/libmx/inc)
 include_directories(client/resources/framework/jansson/inc)
+include_directories(client/resources/framework/macros.h)
+include_directories(client/resources/framework/cmc)
+include_directories(client/resources/framework/cmc/cmc)
+include_directories(client/resources/framework/cmc/cor)
+include_directories(client/resources/framework/cmc/ext)
+include_directories(client/resources/framework/cmc/utl)
 
 file(GLOB_RECURSE CLIENT_SRC RELATIVE ${CMAKE_SOURCE_DIR} "client/src/*.c")
 file(GLOB_RECURSE CLIENT_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "client/inc/*.h")
@@ -17,7 +23,10 @@ file(GLOB_RECURSE SERVER_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "server/inc/*.h")
 file(GLOB_RECURSE LIB_SRC RELATIVE ${CMAKE_SOURCE_DIR} "server/libmx/src/*.c")
 file(GLOB_RECURSE LIB_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "server/libmx/inc/*.h")
 
-add_executable(uchat_gui ${CLIENT_SRC} ${CLIENT_HEADERS} client/resources/framework/jansson/inc/jansson.h client/resources/framework/jansson/inc/jansson_config.h)
+add_executable(uchat_gui ${CLIENT_SRC} ${CLIENT_HEADERS}
+		client/resources/framework/jansson/inc/jansson.h
+		client/resources/framework/jansson/inc/jansson_config.h
+		client/resources/framework/macros.h/macros.h)
 
 target_link_libraries(uchat_gui -L/Users/dushakov/.brew/Cellar/gtk+3/3.24.23/lib
 		-L/Users/dushakov/.brew/Cellar/pango/1.46.2/lib
