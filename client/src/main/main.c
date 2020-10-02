@@ -64,9 +64,7 @@ static int create_user_data(GtkWidget *button, t_login_page *login_page)
     json_object_set_new(user, "ph_number", json_string("test"));
     json_object_set_new(user, "user_photo", json_string("test"));
     json_object_set_new(user, "option", json_string("test"));
-
-
-    json_object_set_new(json, "type", json_string("sign_in"));
+    json_object_set_new(json, "type", json_string(login_page->type));
     json_object_set_new(json, "user", user);
 
     send_json(json, login_page->soketfd);

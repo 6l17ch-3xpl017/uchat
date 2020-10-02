@@ -43,3 +43,4 @@ target_compile_options(uchat_gui PRIVATE -I/Users/dushakov/.brew/Cellar/libffi/3
 
 add_executable(uchat_server ${SERVER_SRC} ${SERVER_HEADERS})
 target_link_libraries(uchat_gui -L${CMAKE_SOURCE_DIR}/resources/framework/lib/jansson/ -ljansson -lsqlite3 -lpthread)
+/server/uchat_server.dSYM/
