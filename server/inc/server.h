@@ -20,6 +20,7 @@ typedef struct s_use_mutex {
 // router
 void check_route(char *str);
 bool user_sign_in(json_t *income_json);
+bool user_sign_up(json_t *income_json);
 
 #endif
 

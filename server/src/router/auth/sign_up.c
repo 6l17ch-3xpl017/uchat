@@ -4,7 +4,7 @@ bool user_sign_up(json_t *income_json) {
     json_t *user;
 
     user = json_object_get(income_json,"user");
-    if(!json_is_object(user)) {
+    if (!json_is_object(user)) {
         printf("error: user is not an json object");
         return 0;
     }
@@ -19,9 +19,6 @@ bool user_sign_up(json_t *income_json) {
     User->user_photo = strdup(json_string_value(json_object_get(user,"user_photo")));
     User->option = strdup(json_string_value(json_object_get(user,"option")));
     json_decref(user);
-
-
-
 
     return 1;
 }

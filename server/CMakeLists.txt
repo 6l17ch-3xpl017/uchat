@@ -4,7 +4,7 @@ project(uchat C)
 set(CMAKE_C_STANDARD 11)
 
 include_directories(server/inc)
-include_directories(server/libmx/inc)
+include_directories(server/resources/libmx/inc)
 include_directories(server/resources)
 include_directories(server/resources/framework)
 include_directories(server/resources/framework/jansson)

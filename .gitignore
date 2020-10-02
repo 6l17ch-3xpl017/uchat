@@ -17,5 +17,5 @@ client_unit_tests/
 mycert.pem
 /cmake-build-debug/
 .idea
-.txt
+*.txt
 uchat_server.dSYM
