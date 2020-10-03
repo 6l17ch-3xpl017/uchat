@@ -11,7 +11,7 @@
 
 #include "client.h"
 #include "page_selector.h"
-#include "log.h"
+#include "macro_collections.h"
 
 
 static int send_json(json_t *json, int socketfd)
@@ -84,7 +84,7 @@ static int init_connection()
 int main(int argc, char *argv[])
 {
     int sockfd;
-    gtk_init_check(&argc, &argv);
+    gtk_init(&argc, &argv);
     sockfd = init_connection();
 
     t_login_page *login_page = select_page(0, NULL);

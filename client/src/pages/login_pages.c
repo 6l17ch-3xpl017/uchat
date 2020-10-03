@@ -1,6 +1,6 @@
 #include "client.h"
 #include "page_selector.h"
-#include "log.h"
+#include "macro_collections.h"
 
 /**
  * Function initialize login_page struct and malloc memory
@@ -42,7 +42,6 @@ t_login_page *init_login_page(void)
     cmc_log_info("[login_page->windows creation]");
 
     login_page->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-
     gtk_window_set_title(GTK_WINDOW(login_page->window), "Login page");
     gtk_window_set_position(GTK_WINDOW(login_page->window), GTK_WIN_POS_CENTER);
     gtk_container_set_border_width(GTK_CONTAINER(login_page->window), 25);
