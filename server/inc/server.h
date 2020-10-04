@@ -23,15 +23,3 @@ bool user_sign_in(json_t *income_json);
 bool user_sign_up(json_t *income_json);
 
 #endif
-
-//typedef struct s_user {
-//    char *nickname;
-//    char *password;
-//    char *email;
-//    char *age;
-//    char *fullname;
-//    char *ph_number;
-//    char *user_photo;
-//    void *option;
-//    struct s_user *next;
-//} t_user;
