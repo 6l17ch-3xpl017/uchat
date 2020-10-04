@@ -89,33 +89,35 @@
 //#include <fcntl.h> // for open
 #include <unistd.h> // for close
 #include<pthread.h>
+#include <signal.h>
+#include <sys/stat.h>
+#include <syslog.h>
 
 char client_message[2000];
 char buffer[1024];
 
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
-
-void *socketThread(void *arg) {
+static void *socketThread(void *arg) {
     int newSocket = *((int *) arg);
-    recv(newSocket, client_message,2000, 0);
+    recv(newSocket, client_message, 2000, 0);
     // Send message to the client socket
     pthread_mutex_lock(&lock);
     char *message = malloc(sizeof(client_message) + 20);
-    strcpy(message,"Hello Client : ");
+    strcpy(message, "Hello Client : ");
     strcat(message, client_message);
-    strcat(message,"\n");
+    strcat(message, "\n");
     strcpy(buffer, message);
     free(message);
     pthread_mutex_unlock(&lock);
     sleep(1);
-    send(newSocket, buffer,13, 0);
+    send(newSocket, buffer, 13, 0);
     printf("Exit socketThread \n");
     close(newSocket);
     pthread_exit(NULL);
 }
 
-int main() {
+static void server_async_create() {
     int serverSocket, newSocket;
     struct sockaddr_in serverAddr;
     struct sockaddr_storage serverStorage;
@@ -150,11 +152,66 @@ int main() {
             printf("Failed to create thread\n");
         if (i >= 50) {
             i = 0;
-            while (i <50) {
+            while (i < 50) {
                 pthread_join(tid[i++], NULL);
             }
             i = 0;
         }
     }
-//    return 0;
+}
+
+static void skeleton_daemon() {
+    pid_t pid;
+    /* Fork off the parent process */
+    pid = fork();
+    /* An error occurred */
+    if (pid < 0)
+        exit(EXIT_FAILURE);
+    /* Success: Let the parent terminate */
+    if (pid > 0)
+        exit(EXIT_SUCCESS);
+    /* On success: The child process becomes session leader */
+    if (setsid() < 0)
+        exit(EXIT_FAILURE);
+    /* Catch, ignore and handle signals */
+    /*TODO: Implement a working signal handler */
+    signal(SIGCHLD, SIG_IGN);
+    signal(SIGHUP, SIG_IGN);
+    /* Fork off for the second time*/
+    pid = fork();
+    /* An error occurred */
+    if (pid < 0)
+        exit(EXIT_FAILURE);
+    /* Success: Let the parent terminate */
+    if (pid > 0)
+        exit(EXIT_SUCCESS);
+    /* Set new file permissions */
+    umask(0);
+    /* Change the working directory to the root directory */
+    /* or another appropriated directory */
+    chdir("/");
+    /* Close all open file descriptors */
+    int x;
+    for (x = sysconf(_SC_OPEN_MAX); x >= 0; x--)
+        close(x);
+    /* Open the log file */
+    openlog("firstdaemon", LOG_PID, LOG_DAEMON);
+}
+
+int main() {
+    skeleton_daemon();
+
+    while (1) {
+        //TODO: Insert daemon code here.
+//    server_async_create();
+        syslog(LOG_NOTICE, "First daemon started.");
+        sleep(20);
+        break;
+    }
+
+    syslog(LOG_NOTICE, "First daemon terminated.");
+    closelog();
+
+    return EXIT_SUCCESS;
+
 }
