@@ -8,7 +8,6 @@
  * @author Illia Marchenko
  * @brief Function creates database if database wasn't created before and creates all tables if they weren't created yet.
  * @name 'init_database' - because we should call it everytime before chat turning on to be sure that with database everything fine.
- *
  */
 
 void init_database() {

@@ -1,5 +1,43 @@
 #include "header_db_dev.h"
 
+static int get_len_of_item(char *item) {
+    if (item)
+        return (int)strlen(item) + 4;
+    else
+        return 6;
+}
+
+static int get_len_of_request(t_chat *Chat) {
+    int result = 70;
+    result += get_len_of_item(Chat->chat_name);
+    result += get_len_of_item(Chat->admin_id);
+    result += get_len_of_item(Chat->chat_photo);
+    result += get_len_of_item(Chat->option);
+    return result;
+}
+
+static void concatenate_with_request(char **request, char *info) {
+    static int counter = 0;
+    if (counter == 3) {
+        if (info) {
+            *request = strcat(*request, "'");
+            *request = strcat(*request, info);
+            *request = strcat(*request, "');");
+        }
+        else
+            *request = strcat(*request, "NULL);");
+    }
+    else {
+        if (info) {
+            *request = strcat(*request, "'");
+            *request = strcat(*request, info);
+            *request = strcat(*request, "', ");
+        } else
+            *request = strcat(*request, "NULL, ");
+        counter++;
+    }
+}
+
 /**
  * @author Ilay Marchenko
  * @brief Function add chat into table 'Chats' in database. Every variable of structure User must be NULL or must
@@ -14,30 +52,18 @@ void add_chat_to_db(t_chat *Chat) {
     char *error = NULL;
     char *request = NULL;
 
-    asprintf(&request, "INSERT INTO Chats (chat_name, admin_id, chat_photo, options)\n"
-             "VALUES ('%s', '%s', ", Chat->chat_name, Chat->admin_id);
+    request = (char *)malloc(sizeof(char) * get_len_of_request(Chat));
 
-    if (Chat->chat_photo) {
-        request = realloc(request, strlen(request) + strlen(Chat->chat_photo) + strlen("'', "));
-        request = strcat(request, "'");
-        request = strcat(request, Chat->chat_photo);
-        request = strcat(request, "', ");
-    }
-    else {
-        request = realloc(request, strlen(request) + strlen("NULL, "));
-        request = strcat(request, "NULL, ");
+    if (!Chat->chat_name || !Chat->admin_id) {
+        printf("Chat->chat_name or Chat->admin_id can't be NULL!\n");
+        return;
     }
 
-    if (Chat->option) {
-        request = realloc(request, strlen(request) + strlen(Chat->option) + strlen("'');"));
-        request = strcat(request, "'");
-        request = strcat(request, Chat->option);
-        request = strcat(request, "');");
-    }
-    else {
-        request = realloc(request, strlen(request) + strlen("NULL);"));
-        request = strcat(request, "NULL);");
-    }
+    request = strcpy(request, "INSERT INTO Chats (chat_name, admin_id, chat_photo, options) VALUES (");
+    concatenate_with_request(&request, Chat->chat_name);
+    concatenate_with_request(&request, Chat->admin_id);
+    concatenate_with_request(&request, Chat->chat_photo);
+    concatenate_with_request(&request, Chat->option);
 
     // ----------------------------adding to the database----------------------------
     result = sqlite3_open("chat_database.db", &db);
@@ -53,6 +79,8 @@ void add_chat_to_db(t_chat *Chat) {
     }
     sqlite3_close(db);
     // -------------------------------------------------------------------------------
+
+    add_id_to_struct_Chat(Chat);
 
     if (request)
         free(request);
