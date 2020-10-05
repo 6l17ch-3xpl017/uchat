@@ -42,7 +42,7 @@ static int create_user_data(GtkWidget *button, t_login_page *login_page)
     json_object_set_new(user, "option", json_string("test"));
 
 
-    json_object_set_new(json, "type", json_string("sign_in"));
+    json_object_set_new(json, "status", json_string("sign_in"));
     json_object_set_new(json, "user", user);
 
     send_json(json, login_page->soketfd);
@@ -83,9 +83,8 @@ static int init_connection()
 
 int main(int argc, char *argv[])
 {
-    int sockfd;
+    int sockfd = init_connection();
     gtk_init(&argc, &argv);
-    sockfd = init_connection();
 
     t_login_page *login_page = select_page(0, NULL);
     login_page->soketfd = sockfd;

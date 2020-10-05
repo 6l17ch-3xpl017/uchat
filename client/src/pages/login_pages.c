@@ -2,6 +2,7 @@
 #include "page_selector.h"
 #include "macro_collections.h"
 
+//ToDo: Rework this function using memset
 /**
  * Function initialize login_page struct and malloc memory
  * @param login_page

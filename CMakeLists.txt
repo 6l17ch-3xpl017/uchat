@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(uchat_gui C)
 
 set(CMAKE_C_STANDARD 11)
+#set(CMAKE_VERBOSE_MAKEFILE 1)
 include(CMakePrintHelpers)
 
 # Build uchat_gui #
@@ -20,10 +21,9 @@ set(MACROS_DIR ${CLIENT_DIR}/resources/framework/macros.h)
 
 # Find Packages #
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
 
 if(EXISTS "${C_LIB_DIR}/libmx.a")
-message(libmx all ready created)
+    message("libmx all ready created")
 else()
     execute_process (
             WORKING_DIRECTORY ${C_LIB_DIR}
@@ -31,16 +31,33 @@ else()
     )
 endif()
 
+execute_process(
+        COMMAND pkg-config --cflags gtk+-3.0
+        COMMAND xargs echo -n
+        OUTPUT_VARIABLE GTK3_IFLAGS
+)
+execute_process(
+        COMMAND pkg-config --libs gtk+-3.0
+        COMMAND xargs echo -n
+        OUTPUT_VARIABLE GTK3_LFLAGS
+)
+
+cmake_print_variables(GTK3_IFLAGS)
+cmake_print_variables(GTK3_LFLAGS)
+
 # Find client files #
 file(GLOB_RECURSE CLIENT_SRC RELATIVE ${CMAKE_SOURCE_DIR} "client/src/*.c")
 file(GLOB_RECURSE CLIENT_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "client/inc/*.h")
 
 add_executable(uchat_gui ${CLIENT_SRC} ${CLIENT_HEADERS})
+add_definitions(${GTK3_IFLAGS})
 
-target_compile_options(uchat_gui PRIVATE ${GTK3_CFLAGS_OTHER})
-target_include_directories(uchat_gui PRIVATE ${GTK3_INCLUDE_DIRS} ${CLIENT_DIR}/inc ${C_LIB_DIR}/inc
+target_compile_options(uchat_gui PRIVATE ${GTK3_IFLAGS})
+target_include_directories(
+        uchat_gui PRIVATE ${CLIENT_DIR}/inc ${C_LIB_DIR}/inc
         ${C_JANSSON_DIR}/inc ${CMC_DIR} ${MACROS_DIR})
-target_link_libraries(uchat_gui ${GTK3_LIBRARIES} ${C_LIB_DIR}/libmx.a -L${C_JANSSON_DIR}/ -ljansson)
+
+target_link_libraries(uchat_gui ${GTK3_LFLAGS} ${C_LIB_DIR}/libmx.a -L${C_JANSSON_DIR}/ -ljansson)
 
 # Finish building uchat_gui #
 
