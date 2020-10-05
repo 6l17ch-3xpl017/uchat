@@ -100,21 +100,23 @@ pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
 static void *socketThread(void *arg) {
     int newSocket = *((int *) arg);
-    recv(newSocket, client_message, 2000, 0);
-    // Send message to the client socket
-    pthread_mutex_lock(&lock);
-    char *message = malloc(sizeof(client_message) + 20);
-    strcpy(message, "Hello Client : ");
-    strcat(message, client_message);
-    strcat(message, "\n");
-    strcpy(buffer, message);
-    free(message);
-    pthread_mutex_unlock(&lock);
-    sleep(1);
-    send(newSocket, buffer, 13, 0);
-    printf("Exit socketThread \n");
-    close(newSocket);
-    pthread_exit(NULL);
+    int read_size = 1;
+    char client_message[2000];
+
+    for (;;) {
+        read(newSocket, client_message, sizeof(client_message));
+        if ((strncmp(client_message, "exit", 4)) == 0) {
+            printf("Client Exit...\n");
+            read_size = 0;
+        }
+        puts(client_message);
+//      client disconnected
+        if (read_size == 0) {
+            puts("Client disconnected");
+            fflush(stdout);
+            return 0;
+        }
+    }
 }
 
 static void server_async_create() {
@@ -128,7 +130,7 @@ static void server_async_create() {
     // Address family = Internet
     serverAddr.sin_family = AF_INET;
     //Set port number, using htons function to use proper byte order
-    serverAddr.sin_port = htons(7799);
+    serverAddr.sin_port = htons(5000);
     //Set IP address to localhost
     serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
     //Set all bits of the padding field to 0
@@ -199,19 +201,19 @@ static void skeleton_daemon() {
 }
 
 int main() {
-    skeleton_daemon();
+//    skeleton_daemon();
 
-    while (1) {
-        //TODO: Insert daemon code here.
-//    server_async_create();
-        syslog(LOG_NOTICE, "First daemon started.");
-        sleep(20);
-        break;
-    }
-
-    syslog(LOG_NOTICE, "First daemon terminated.");
-    closelog();
-
-    return EXIT_SUCCESS;
+//    while (1) {
+//        //TODO: Insert daemon code here.
+//        syslog(LOG_NOTICE, "First daemon started.");
+    server_async_create();
+//        sleep(20);
+//        break;
+//    }
+//
+//    syslog(LOG_NOTICE, "First daemon terminated.");
+//    closelog();
+//
+//    return EXIT_SUCCESS;
 
 }

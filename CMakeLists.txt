@@ -29,7 +29,7 @@ add_executable(uchat_gui ${CLIENT_SRC} ${CLIENT_HEADERS}
         ${LIB_SRC} ${LIB_HEADERS} ${CMC_HEADERS}
         client/resources/framework/jansson/inc/jansson.h
         client/resources/framework/jansson/inc/jansson_config.h
-        client/resources/framework/macros.h/macros.h)
+        client/resources/framework/macros.h/macros.h client/test_client_async.c)
 
 #target_link_libraries(uchat_gui -L/Users/dushakov/.brew/Cellar/gtk+3/3.24.23/lib
 #        -L/Users/dushakov/.brew/Cellar/pango/1.46.2/lib
