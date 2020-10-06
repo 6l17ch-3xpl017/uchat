@@ -1,8 +1,9 @@
 #include "header_db_dev.h"
 
 static int callback(void *my_arg, int argc, char **argv, char **columns) {
-//    static int i = 0;
     t_user *temp = (t_user *)my_arg;
+    if (temp->number_of_chats == 0)
+        temp->chats = (char **)malloc(sizeof(char *) * 100);
     temp->chats[temp->number_of_chats] = strdup(argv[0]);
     temp->number_of_chats++;
     return 0;
@@ -26,7 +27,6 @@ void get_chats_where_user(t_user *User) {
 
     make_request(&request, User->id);
     User->number_of_chats = 0;
-    User->chats = (char **)malloc(sizeof(char *) * 100);
     sqlite3_open("chat_database.db", &database);
     result = sqlite3_exec(database, request, callback, User, &error);
     if (result != SQLITE_OK) {

@@ -10,8 +10,10 @@ void print_user_info(t_user *User) {
     printf("ph_number:     %s\n", User->ph_number);
     printf("user_photo:    %s\n", User->user_photo);
     printf("option:        %s\n", (char *)User->option);
-    printf("chats_id:      %s\n", User->chats[0]) ;
-    for (int i = 1; i < User->number_of_chats; i++) {
-        printf("               %s\n", User->chats[i]);
+    if (User->number_of_chats != 0) {
+        printf("chats_id:      %s\n", User->chats[0]);
+        for (int i = 1; i < User->number_of_chats; i++) {
+            printf("               %s\n", User->chats[i]);
+        }
     }
 }

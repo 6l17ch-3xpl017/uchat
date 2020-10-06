@@ -50,8 +50,8 @@ void populate_User_struct(t_user *User) {
         request = make_request("SELECT * FROM Users WHERE email='", User->email);
 
     sqlite3_exec(database, request, callback, User, &error);
-
     free(request);
     sqlite3_close(database);
+    get_chats_where_user(User);
 }
 
