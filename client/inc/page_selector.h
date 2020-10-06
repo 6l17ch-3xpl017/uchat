@@ -2,6 +2,12 @@
 #define UCHAT_GUI_PAGE_SELECTOR_H
 
 
+typedef struct s_page
+{
+    GtkWidget **widgets;
+    char *type;
+
+}              t_page;
 
 typedef struct s_login_page
 {

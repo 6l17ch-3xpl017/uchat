@@ -10,9 +10,6 @@
 #define SA struct sockaddr
 
 #include "client.h"
-#include "page_selector.h"
-#include "macro_collections.h"
-
 
 static int send_json(json_t *json, int socketfd)
 {
@@ -80,30 +77,135 @@ static int init_connection()
 
     return sockfd;
 }
+//
+//int main(int argc, char *argv[])
+//{
+//    int sockfd = init_connection();
+//    gtk_init(&argc, &argv);
+//
+//    t_login_page *login_page = select_page(0, NULL);
+//    login_page->soketfd = sockfd;
+//
+//    //ToDo: Add this part to page creation
+//    g_signal_connect(login_page->sign_in_button, "clicked",
+//                     G_CALLBACK(create_user_data), login_page);
+//
+//    gtk_grid_attach(GTK_GRID(login_page->grid), login_page->sign_in_button, 0, 3, 2, 1);
+//
+//    g_signal_connect(login_page->sign_up_button, "clicked",
+//                     G_CALLBACK(create_user_data), login_page);
+//
+//    gtk_grid_attach(GTK_GRID(login_page->grid), login_page->sign_up_button, 0, 4, 2, 1);
+//
+//    gtk_widget_show_all(login_page->window);
+//    gtk_main();
+//
+//    // close the socket
+//    close(sockfd);
+//    gtk_main_quit();
+//    return 0;
+//}
 
-int main(int argc, char *argv[])
+static GtkWidget* create_window (void);
+
+static GtkWidget* create_window_register (void)
 {
-    int sockfd = init_connection();
+    /* это виджет окна */
+    GtkWidget *window;
+    /* это тот волшебный объект, который сделает за нас окошко */
+    GtkBuilder *builder;
+    /* сюда будем складывать ошибки */
+    GError* error = NULL;
+
+    /* тут загружаем файл с интерфейсом */
+    builder = gtk_builder_new ();
+    system("ls ../client/resources/glade/");
+    if (!gtk_builder_add_from_file (builder, "../client/resources/glade/register_page.glade", &error))
+    {
+        /* загрузить файл не удалось */
+        g_critical ("Не могу загрузить файл: %s", error->message);
+        g_error_free (error);
+    }
+
+    /* помните, мы подключали сигналы вручную? теперь это происходит автоматически! */
+    gtk_builder_connect_signals (builder, NULL);
+
+    /* получаем виджет окна, чтобы его показать */
+    window = GTK_WIDGET (gtk_builder_get_object (builder, "registeration_window"));
+    if (!window)
+    {
+        /* что-то не так, наверное, ошиблись в имени */
+        g_critical ("Ошибка при получении виджета окна");
+    }
+    g_object_unref (builder);
+
+    return window;
+}
+
+void on_login_button_clicked(GtkButton *login_button, GtkBox *password_box)
+{
+    GtkWidget *window;
+    window = create_window();
+
+    gtk_widget_show(window);
+}
+gboolean on_reg_button_activate_link(GtkLinkButton *reg_button, GtkBox *username)
+{
+    GtkWidget *window;
+    window = create_window_register();
+
+    gtk_widget_show(window);
+
+    return TRUE;
+}
+
+static GtkWidget* create_window (void)
+{
+    /* это виджет окна */
+    GtkWidget *window;
+    /* это тот волшебный объект, который сделает за нас окошко */
+    GtkBuilder *builder;
+    /* сюда будем складывать ошибки */
+    GError* error = NULL;
+
+    /* тут загружаем файл с интерфейсом */
+    builder = gtk_builder_new ();
+    system("ls ../client/resources/glade/");
+    if (!gtk_builder_add_from_file (builder, "../client/resources/glade/login_page.glade", &error))
+    {
+        /* загрузить файл не удалось */
+        g_critical ("Не могу загрузить файл: %s", error->message);
+        g_error_free (error);
+    }
+
+    /* помните, мы подключали сигналы вручную? теперь это происходит автоматически! */
+    gtk_builder_connect_signals (builder, NULL);
+
+    /* получаем виджет окна, чтобы его показать */
+    window = GTK_WIDGET (gtk_builder_get_object (builder, "login_window"));
+    if (!window)
+    {
+        /* что-то не так, наверное, ошиблись в имени */
+        g_critical ("Ошибка при получении виджета окна");
+    }
+    g_object_unref (builder);
+
+    return window;
+}
+
+int main (int argc, char *argv[])
+{
+    /* виджет окна */
+    GtkWidget *window;
+
+    /* запускаем GTK+ */
     gtk_init(&argc, &argv);
 
-    t_login_page *login_page = select_page(0, NULL);
-    login_page->soketfd = sockfd;
+    /* вызываем нашу функцию для создания окна */
+    window = create_window();
+    gtk_widget_show(window);
 
-    //ToDo: Add this part to page creation
-    g_signal_connect(login_page->sign_in_button, "clicked",
-                     G_CALLBACK(create_user_data), login_page);
-
-    gtk_grid_attach(GTK_GRID(login_page->grid), login_page->sign_in_button, 0, 3, 2, 1);
-
-    g_signal_connect(login_page->sign_up_button, "clicked",
-                     G_CALLBACK(create_user_data), login_page);
-
-    gtk_grid_attach(GTK_GRID(login_page->grid), login_page->sign_up_button, 0, 4, 2, 1);
-
-    gtk_widget_show_all(login_page->window);
+    /* передаём управление GTK+ */
     gtk_main();
-
-    // close the socket
-    close(sockfd);
-    gtk_main_quit();
+    return 0;
 }

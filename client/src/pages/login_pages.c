@@ -1,11 +1,9 @@
 #include "client.h"
-#include "page_selector.h"
-#include "macro_collections.h"
 
-//ToDo: Rework this function using memset
 /**
- * Function initialize login_page struct and malloc memory
- * @param login_page
+ * @brief Function initialize login_page struct and malloc and clean memory
+ * @author dushakov
+ * @return clean login_page struct;
  */
 static t_login_page *init_struct(void)
 {
@@ -15,26 +13,18 @@ static t_login_page *init_struct(void)
 
     if (!login_page)
         cmc_log_error("[login_page creation fail]");
-    else
-    {
-        login_page->window = NULL;
-        login_page->grid = NULL;
-        login_page->label_user = NULL;
-        login_page->label_pass = NULL;
-        login_page->username = NULL;
-        login_page->pass = NULL;
-        login_page->sign_in_button = NULL;
-        login_page->sign_up_button = NULL;
 
-        cmc_log_info("[Finish login_page struct initialization]");
-    }
+    memset(login_page, 0, sizeof(t_login_page));
+
+    cmc_log_info("[Finish login_page struct initialization]");
 
     return login_page;
 }
 
 /**
- * Function initialize login_page
- * @return
+ * @brief Function fills login_page struct with page data
+ * @author dushakov
+ * @return a filled structure
  */
 t_login_page *init_login_page(void)
 {

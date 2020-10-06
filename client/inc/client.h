@@ -4,6 +4,19 @@
 #define CMC_LOG_COLOR
 
 #include <gtk/gtk.h>
+#include <macro_collections.h>
+
+#include "page_selector.h"
+
+typedef struct s_connection
+{
+    int socket;
+}              t_connection;
+
+typedef struct s_client_data
+{
+
+}              t_client_data;
 
 typedef struct s_user_data
 {
