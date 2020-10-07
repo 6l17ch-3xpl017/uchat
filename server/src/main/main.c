@@ -1,85 +1,4 @@
 #include "server.h"
-//
-//void *connection_handler(void *socket_desc) {
-//    //Get the socket descriptor
-//    int sock = *(int *) socket_desc;
-//    int read_size = 1;
-//    char client_message[2000];
-//
-////    t_use_mutex *thread_mutex = (t_use_mutex *) socket_desc;
-//    for (;;) {
-////        pthread_mutex_lock(&(thread_mutex->mutex));
-//        read(sock, client_message, sizeof(client_message));
-////      client exit
-//        if ((strncmp(client_message, "exit", 4)) == 0) {
-//            printf("Client Exit...\n");
-//            read_size = 0;
-//        }
-////        check_route(client_message);
-//            puts(client_message);
-////      client disconnected
-//        if (read_size == 0) {
-//            puts("Client disconnected");
-//            fflush(stdout);
-//            return 0;
-//        }
-////        pthread_mutex_unlock(&(thread_mutex->mutex));
-//    }
-//}
-//
-//int main(int argc, char *argv[]) {
-//    (void) argc;
-//    (void) argv;
-//    int socket_desc, client_sock, c;
-//    struct sockaddr_in server, client;
-//    unsigned short port = 5000;
-//
-//    //Prepare the sock_address_in structure
-//    server.sin_family = AF_INET;
-//    server.sin_addr.s_addr = inet_addr("127.0.0.1");
-//    server.sin_port = htons(port);
-//
-//    //Create socket
-//    socket_desc = socket(AF_INET, SOCK_STREAM, 0);
-//    if (socket_desc == -1)
-//        printf("Could not create socket");
-//
-//    puts("Socket created");
-//    //Bind
-//    if (bind(socket_desc, (struct sockaddr *) &server, sizeof(server)) < 0) {
-//        //print the error message
-//        perror("bind failed. Error");
-//        return 1;
-//    }
-//    puts("bind done");
-//    //Listen
-//    listen(socket_desc, 3);
-//    //Accept and incoming connection
-//    puts("Waiting for incoming connections...");
-//    c = sizeof(struct sockaddr_in);
-//    //create and connect threads and mutex
-//    pthread_t thread_id;
-////    t_use_mutex thread_mutex;
-//
-////    pthread_mutex_init(&(thread_mutex.mutex), NULL);
-//
-//    while ((client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t *) &c))) {
-//        puts("Connection accepted");
-//        if (!pthread_create(&thread_id, NULL, connection_handler, (void *) &client_sock)) {
-//            perror("could not create thread");
-//            return 1;
-//        }
-//        //Now join the thread , so that we don't terminate before the thread
-//        //pthread_join( thread_id , NULL);
-//        puts("Handler assigned");
-//    }
-//    if (client_sock < 0) {
-//        perror("accept failed");
-//        return 1;
-//    }
-//}
-
-
 
 char client_message[2000];
 char buffer[1024];
@@ -88,21 +7,23 @@ pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
 static void *socketThread(void *arg) {
     int newSocket = *((int *) arg);
-    recv(newSocket, client_message, 2000, 0);
-    // Send message to the client socket
-    pthread_mutex_lock(&lock);
-    char *message = malloc(sizeof(client_message) + 20);
-    strcpy(message, "Hello Client : ");
-    strcat(message, client_message);
-    strcat(message, "\n");
-    strcpy(buffer, message);
-    free(message);
-    pthread_mutex_unlock(&lock);
-    sleep(1);
-    send(newSocket, buffer, 13, 0);
-    printf("Exit socketThread \n");
-    close(newSocket);
-    pthread_exit(NULL);
+    int read_size = 1;
+    char client_message[2000];
+
+    for (;;) {
+        read(newSocket, client_message, sizeof(client_message));
+        if ((strncmp(client_message, "exit", 4)) == 0) {
+            printf("Client Exit...\n");
+            read_size = 0;
+        }
+        puts(client_message);
+//      client disconnected
+        if (read_size == 0) {
+            puts("Client disconnected");
+            fflush(stdout);
+            return 0;
+        }
+    }
 }
 
 static void server_async_create() {
@@ -187,13 +108,12 @@ static void skeleton_daemon() {
 }
 
 int main() {
-    server_async_create();
 //    skeleton_daemon();
-//
+
 //    while (1) {
 //        //TODO: Insert daemon code here.
-////    server_async_create();
 //        syslog(LOG_NOTICE, "First daemon started.");
+    server_async_create();
 //        sleep(20);
 //        break;
 //    }

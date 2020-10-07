@@ -12,6 +12,8 @@
 #include "jansson.h"
 #include "jansson_config.h"
 #include "header_db_dev.h"
+#include<netinet/in.h>
+#include <arpa/inet.h>
 #include <signal.h>
 #include <sys/stat.h>
 #include <syslog.h>
