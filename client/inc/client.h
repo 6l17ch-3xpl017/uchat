@@ -28,4 +28,5 @@ typedef struct s_user_data
     char *options;
 }               t_user_data;
 
+
 #endif //UCHAT_GUI_CLIENT_H

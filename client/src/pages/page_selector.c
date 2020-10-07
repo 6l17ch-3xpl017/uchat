@@ -1,9 +1,10 @@
 #include "client.h"
 #include "page_selector.h"
 
+
 /**
  * Functions select page to show
- * @param page_id //T
+ * @param page_id
  * @param options debug options
  * @return result code
  */
