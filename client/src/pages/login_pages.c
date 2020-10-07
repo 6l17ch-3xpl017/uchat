@@ -1,6 +1,6 @@
 #include "client.h"
 #include "page_selector.h"
-#include "log.h"
+//#include "log.h"
 
 /**
  * Function initialize login_page struct and malloc memory

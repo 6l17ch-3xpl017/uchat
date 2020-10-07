@@ -8,7 +8,7 @@ OBJ_DIR		= obj/
 # main dir for header files
 INC_DIR		= inc/
 
-# main dir for jansson files
+# main dir for other libs header files
 J_INC_DIR   = resources/framework/jansson/inc/
 
 # list of subdirs in src/
@@ -29,7 +29,7 @@ J_INC_H		= $(wildcard $(J_INC_DIR)*.h)
 J_BIN = resources/framework/jansson/libjansson.a
 
 # main dir with any libraries
-LIB_DIR		= .
+LIB_DIR		= resources
 # list of all names of libraries in LIB_DIR
 LIB_LIST	= libmx
 # make path to library ../libs/<lib_name>/
@@ -43,16 +43,18 @@ LIB_INC		= $(addsuffix $(INC_DIR), $(LIB_DIRS))
 # compiler
 CC			= clang
 # general flags
-GFLAGS		= -std=c11 -pipe -Wall -Wextra -Werror -Wpedantic\
+GFLAGS		= -std=c11 -pipe -Wall -Wextra -Werror -g \
 	-Wno-unused-command-line-argument -Wno-unused-variable \
-	-Wno-unused-function -Wno-unused-parameter -g
+	-Wno-unused-function -Wno-unused-parameter
 # specific flags
 CFLAGS		= -lsqlite3 -lpthread $(shell pkg-config --cflags gtk+-3.0)
 
 # folder with header files
 IFLAGS		= $(addprefix -I , $(LIB_INC) $(INC_DIR) $(J_INC_DIR))
 
-COMPILE		= $(CC) $(GFLAGS) $(IFLAGS) $(CFLAGS) $(LIB_BIN) $(J_BIN)
+CMC_IFLAGS	= -I resources/framework/cmc
+
+COMPILE		= $(CC) $(GFLAGS) $(IFLAGS) $(CMC_IFLAGS) $(CFLAGS) $(LIB_BIN) $(J_BIN)
 MAKE_M		= make -sf Makefile -C
 MKDIR		= mkdir -p
 RM			= /bin/rm -rf

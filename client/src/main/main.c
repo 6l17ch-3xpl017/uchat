@@ -11,7 +11,7 @@
 
 #include "client.h"
 #include "page_selector.h"
-#include "log.h"
+//#include "log.h"
 
 
 static char *encode(char *pass)

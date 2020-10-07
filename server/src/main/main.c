@@ -1,4 +1,4 @@
-//#include "server.h"
+#include "server.h"
 //
 //void *connection_handler(void *socket_desc) {
 //    //Get the socket descriptor
@@ -80,18 +80,6 @@
 //}
 
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<sys/socket.h>
-#include<netinet/in.h>
-#include<string.h>
-#include <arpa/inet.h>
-//#include <fcntl.h> // for open
-#include <unistd.h> // for close
-#include<pthread.h>
-#include <signal.h>
-#include <sys/stat.h>
-#include <syslog.h>
 
 char client_message[2000];
 char buffer[1024];
@@ -199,19 +187,20 @@ static void skeleton_daemon() {
 }
 
 int main() {
-    skeleton_daemon();
-
-    while (1) {
-        //TODO: Insert daemon code here.
-//    server_async_create();
-        syslog(LOG_NOTICE, "First daemon started.");
-        sleep(20);
-        break;
-    }
-
-    syslog(LOG_NOTICE, "First daemon terminated.");
-    closelog();
-
-    return EXIT_SUCCESS;
+    server_async_create();
+//    skeleton_daemon();
+//
+//    while (1) {
+//        //TODO: Insert daemon code here.
+////    server_async_create();
+//        syslog(LOG_NOTICE, "First daemon started.");
+//        sleep(20);
+//        break;
+//    }
+//
+//    syslog(LOG_NOTICE, "First daemon terminated.");
+//    closelog();
+//
+//    return EXIT_SUCCESS;
 
 }

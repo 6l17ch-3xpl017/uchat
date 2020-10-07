@@ -5,6 +5,13 @@
 
 #include <gtk/gtk.h>
 
+#define DEBUG
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
+//#import "Macros.h"
+#pragma clang diagnostic pop
+#include "utl/log.h"
+
 typedef struct s_user_data
 {
     char *type;

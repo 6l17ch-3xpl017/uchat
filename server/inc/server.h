@@ -12,6 +12,9 @@
 #include "jansson.h"
 #include "jansson_config.h"
 #include "header_db_dev.h"
+#include <signal.h>
+#include <sys/stat.h>
+#include <syslog.h>
 
 typedef struct s_use_mutex {
     pthread_mutex_t mutex;

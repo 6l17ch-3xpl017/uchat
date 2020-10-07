@@ -1,14 +1,15 @@
 #include "server.h"
 
-static void struct_filling_with_null(t_user *User) {
-    User->user_photo = NULL;
+static void user_struct_filling_with_null(t_user *User) {
+    User->id = NULL;
+    User->nickname = NULL;
+    User->password = NULL;
+    User->email = NULL;
     User->age = NULL;
     User->fullname = NULL;
-    User->option = NULL;
     User->ph_number = NULL;
-    User->nickname = NULL;
-    User->email = NULL;
-    User->password = NULL;
+    User->user_photo = NULL;
+    User->option = NULL;
 }
 
 bool user_sign_in(json_t *income_json) {
@@ -28,7 +29,7 @@ bool user_sign_in(json_t *income_json) {
     password = json_object_get(user, "password");
 
     // move user`s input data to structure
-    struct_filling_with_null(User);
+    user_struct_filling_with_null(User);
     if (strcmp(json_string_value(nickname), "") != 0) {
         User->nickname = strdup(json_string_value(nickname));
     }
@@ -37,10 +38,12 @@ bool user_sign_in(json_t *income_json) {
     }
     User->password = strdup(json_string_value(password));
 
-    add_user_to_db(User);
+//    add_user_to_db(User);
     //-------------------------------------------------
     printf("%s",user_in_db(User));
-    printf("HERE\n");
+    printf("\nNICK: %s\n", User->nickname);
+    printf("PASS: %s\n", User->password);
+    printf("USER_IN_DB (sign_in func)\n");
     //-------------------------------------------------
 
     return 1; // true
