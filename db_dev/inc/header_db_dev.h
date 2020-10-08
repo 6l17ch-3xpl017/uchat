@@ -20,6 +20,16 @@
 #include <stddef.h>
 #include <sqlite3.h>
 
+
+typedef struct s_chat {
+    char *chat_id;
+    char *chat_name;
+    char *admin_id;
+    char *chat_photo;
+    void *option;
+    struct s_chat *next;
+}              t_chat;
+
 typedef struct s_user {
     char *id;
     char *nickname;
@@ -31,21 +41,18 @@ typedef struct s_user {
     char *user_photo;
     void *option;
     struct s_user *next;
-    char **chats;
+    struct s_chat *chats;
     int number_of_chats;
 }              t_user;
-
-typedef struct s_chat {
-    char *chat_id;
-    char *chat_name;
-    char *admin_id;
-    char *chat_photo;
-    void *option;
-}              t_chat;
 
 typedef struct s_password {
     char *password;
 }              t_password;
+
+typedef struct s_chats_id {
+    char **chat_id;
+    int number_of_chats;
+}              t_chats_id;
 
 char *mx_itoa(int number);
 void mx_del_strarr(char ***arr);

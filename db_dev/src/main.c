@@ -8,19 +8,20 @@ int main() {
     User->id = NULL;
     User->nickname = strdup("dushakov");
     User->password = strdup("qwerty");
-    User->email = strdup("deniska@gmail.com");
-    User->age = strdup("23");
+    User->email = NULL;
+    User->age = NULL;
     User->fullname = NULL;
     User->ph_number = NULL;
-    User->user_photo = strdup("img/photo12344312");
+    User->user_photo = NULL;
     User->option = NULL;
     User->chats = NULL;
-
-    printf("%s\n\n", user_in_db(User));
+    User->number_of_chats = 0;
 
 //    printf("%s\n\n", user_in_db(User));
+    user_in_db(User);
+
 //    add_user_to_db(User);
-//    print_user_info(User);
+    print_user_info(User);
 
 //    t_chat *Chat = malloc(sizeof(t_chat));
 //    Chat->chat_id = NULL;
@@ -33,7 +34,17 @@ int main() {
 //    add_id_to_struct_Chat(Chat);
 //    print_chat_info(Chat);
 
+//    printf("number of chats: %d\n", User->number_of_chats);
+//    t_chat *temp = User->chats;
+//    for (int i = 0; i < User->number_of_chats; i++) {
+//        printf("%s\n",temp->chat_name);
+//        temp = temp->next;
+//    }
+
+
+    printf("\n\n");
     system("leaks -q db_dev");
 
     return 0;
 }
+
