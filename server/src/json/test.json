@@ -1,5 +1,5 @@
 //{
-//  "s": "100",
+//  "size": "100",
 //  "type": "sign_up",
 //  "user": {
 //    "nickname": "illia",
@@ -12,9 +12,8 @@
 //    "option": "test"
 //  }
 //}
-
 {
-  "s": "100",
+  "size": "100",
   "user": "qwerty",
   "chat": "test",
   "message": [
