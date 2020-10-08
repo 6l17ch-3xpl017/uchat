@@ -12,7 +12,7 @@ client/src/*.cc
 server/src/*.cc
 ./*.json
 log.txt
-database.db
+*.db
 client_unit_tests/
 *.zsh
 mycert.pem

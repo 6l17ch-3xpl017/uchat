@@ -38,7 +38,6 @@ bool user_sign_in(json_t *income_json) {
     }
     User->password = strdup(json_string_value(password));
 
-//    add_user_to_db(User);
     //-------------------------------------------------
     printf("%s",user_in_db(User));
     printf("\nNICK: %s\n", User->nickname);

@@ -1,6 +1,6 @@
 #include "server.h"
 
-char client_message[2000];
+//char client_message[2000];
 char buffer[1024];
 
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
@@ -8,7 +8,7 @@ pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 static void *socketThread(void *arg) {
     int newSocket = *((int *) arg);
     int read_size = 1;
-    char client_message[2000];
+    char client_message[20000];
 
     for (;;) {
         read(newSocket, client_message, sizeof(client_message));
@@ -16,7 +16,9 @@ static void *socketThread(void *arg) {
             printf("Client Exit...\n");
             read_size = 0;
         }
+        check_route(client_message);
         puts(client_message);
+//        free(client_message);
 //      client disconnected
         if (read_size == 0) {
             puts("Client disconnected");
@@ -37,7 +39,7 @@ static void server_async_create() {
     // Address family = Internet
     serverAddr.sin_family = AF_INET;
     //Set port number, using htons function to use proper byte order
-    serverAddr.sin_port = htons(7799);
+    serverAddr.sin_port = htons(5000);
     //Set IP address to localhost
     serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
     //Set all bits of the padding field to 0
