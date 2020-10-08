@@ -100,5 +100,5 @@ target_compile_options(uchat_gui PRIVATE -I/Users/yksonzenko/.brew/Cellar/libffi
         -I/Users/yksonzenko/.brew/opt/gettext/include
         -I/Users/yksonzenko/.brew/Cellar/pcre/8.44/include)
 
-add_executable(uchat_server ${SERVER_SRC} ${SERVER_HEADERS} ${LIB_SRC} ${LIB_HEADERS})
+add_executable(uchat_server ${SERVER_SRC} ${SERVER_HEADERS} ${LIB_SRC} ${LIB_HEADERS} server/src/main/tls.c)
 target_link_libraries(uchat_server -L${CMAKE_SOURCE_DIR}/server/resources/framework/jansson/ -ljansson -lsqlite3 -lpthread)
