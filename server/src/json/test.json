@@ -21,31 +21,41 @@
       "from": "test1",
       "to": "test2",
       "message": "asdfghjkl",
-      "time": "03.10.2005"
+      "time": "03.10.2005",
+      "prev": "-1",
+      "next": "1"
     },
     {
       "from": "test1",
       "to": "test2",
       "message": "asdfghjkl",
-      "time": "03.10.2005"
+      "time": "03.10.2005",
+      "prev": "-1",
+      "next": "1"
     },
     {
       "from": "test1",
       "to": "test2",
       "message": "asdfghjkl",
-      "time": "03.10.2005"
+      "time": "03.10.2005",
+      "prev": "-1",
+      "next": "1"
     },
     {
       "from": "test1",
       "to": "test2",
       "message": "asdfghjkl",
-      "time": "03.10.2005"
+      "time": "03.10.2005",
+      "prev": "-1",
+      "next": "1"
     },
     {
       "from": "test1",
       "to": "test2",
       "message": "asdfghjkl",
-      "time": "03.10.2005"
+      "time": "03.10.2005",
+      "prev": "-1",
+      "next": "1"
     }
   ]
 }

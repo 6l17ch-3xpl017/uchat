@@ -14,32 +14,44 @@ static void user_struct_filling_with_null(t_user *User) {
 
 bool user_sign_in(json_t *income_json) {
     t_user *User;
-    json_t *user, *nickname, *email, *password;
+    json_t *user_in, *user_out, *nickname, *email, *password, *chat_array, *message;
 
     init_database();
-    User = (t_user *)malloc(sizeof(t_user));
-    user = json_object_get(income_json, "user");
-    if (!json_is_object(user)) {
-        printf("error: user is not an json object\n");
+    User = (t_user *) malloc(sizeof(t_user));
+    user_in = json_object_get(income_json, "user");
+    if (!json_is_object(user_in)) {
+        // init and send json error status
+//        send_json_to(socketfd, unknown_error, "sign_in"); //TODO add socketfd from struct list
         return 0; // false
     }
+    // init and send json OK status
+//    send_json_to(socketfd, ok, "sign_in"); //TODO add socketfd from struct list
+
+    user_out = json_object();
+    json_object_set_new(user_out, "user", json_string("//////////////////"));
+    chat_array = json_array();
+    //todo for to check how much chats has user!!!!!!!!!!!!!!!!
+    for (int i = 0; i < 20; i++) {
+        json_object_set_new(user_out, "chat", json_string("/////////////"));
+        json_array_set_new(chat_array, i, user_out);
+    }
+
     // extract input data from user
-    nickname = json_object_get(user, "nickname");
-    email = json_object_get(user, "email");
-    password = json_object_get(user, "password");
+    nickname = json_object_get(user_in, "nickname");
+    email = json_object_get(user_in, "email");
+    password = json_object_get(user_in, "password");
 
     // move user`s input data to structure
     user_struct_filling_with_null(User);
     if (strcmp(json_string_value(nickname), "") != 0) {
         User->nickname = strdup(json_string_value(nickname));
-    }
-    else {
+    } else {
         User->email = strdup(json_string_value(email));
     }
     User->password = strdup(json_string_value(password));
 
     //-------------------------------------------------
-    printf("%s",user_in_db(User));
+    printf("%s", user_in_db(User));
     printf("\nNICK: %s\n", User->nickname);
     printf("PASS: %s\n", User->password);
     printf("USER_IN_DB (sign_in func)\n");
