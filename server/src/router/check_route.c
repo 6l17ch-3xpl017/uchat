@@ -1,6 +1,7 @@
 #include "server.h"
 
-void check_route(char *str) {
+void check_route(char *str, int socket) {
+    (void)socket;
     json_t *income_json, *type;
     json_error_t error;
 
