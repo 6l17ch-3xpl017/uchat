@@ -222,7 +222,50 @@
 //
 //    return sockfd;
 //}
-//
+
+/** login_window **/
+void on_reg_button_activate_link()
+{
+    cmc_log_info("SIGN_UP BUTTON CLICKED");
+}
+
+//void test_callback(GtkWidget *widget, gpointer pVoid)
+//{
+//    cmc_log_info("DONE!");
+//}
+
+void on_login_button_clicked(GtkWindow *window, GtkContainer *cont)
+{
+    cmc_log_info("LOGIN BUTTON CLICKED");
+    GList *glist = gtk_container_get_children(cont);
+    cmc_log_info("Cont Test");
+}
+
+//ToDo: Change mistake
+void on_remembre_check_box_toggled()
+{
+    cmc_log_info("REMEMBER CHECKBOX TOGGLED");
+}
+
+void on_password_entry_changed()
+{
+    cmc_log_info("PASSWORD ENTRY CHANGED");
+}
+
+void on_username_entry_changed()
+{
+    cmc_log_info("USERNAME ENTRY CHANGED");
+}
+/***********************************************/
+
+/** register_page **/
+void on_click_to_login_button_clicked()
+{
+    cmc_log_info("CLICK TO LOGIN BUTTON");
+}
+/***********************************************/
+
+//ToDo: Split all on logical containers and get with gtk_container_foreach()
 int main(int argc, char *argv[])
 {
 //    int sockfd = init_connection();
@@ -232,6 +275,7 @@ int main(int argc, char *argv[])
 //    printf("%s\n", result[0]);
 //    printf("%s\n", result[1]);
 //    printf("%s\n", result[2]);
+
     gtk_init(&argc, &argv);
 
     t_page *page = select_page(0, NULL);

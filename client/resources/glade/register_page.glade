@@ -1,46 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.2 -->
+<!-- Generated with glade 3.38.1 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkWindow" id="registeration_window">
-    <property name="can_focus">False</property>
+  <object class="GtkWindow" id="reg_window">
+    <property name="can-focus">False</property>
+    <property name="double-buffered">False</property>
     <property name="resizable">False</property>
-    <property name="window_position">center</property>
-    <property name="default_width">300</property>
-    <property name="default_height">200</property>
-    <property name="icon_name">application-x-executable</property>
+    <property name="window-position">center</property>
+    <property name="default-width">300</property>
+    <property name="default-height">200</property>
+    <property name="icon-name">input-gaming</property>
     <property name="gravity">center</property>
-    <child type="titlebar">
-      <placeholder/>
-    </child>
     <child>
-      <object class="GtkBox" id="registeration_box">
+      <object class="GtkBox" id="reg_box">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
+        <property name="double-buffered">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkLabel" id="user_registeration">
+          <object class="GtkLabel" id="user_reg">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">User Registeration</property>
+            <property name="can-focus">False</property>
+            <property name="double-buffered">False</property>
+            <property name="label" translatable="yes">User Registration</property>
+            <attributes>
+              <attribute name="scale" value="3"/>
+            </attributes>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
+            <property name="padding">13</property>
             <property name="position">0</property>
           </packing>
         </child>
         <child>
           <object class="GtkEntry" id="fullname_entry">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="margin_left">65</property>
-            <property name="margin_right">65</property>
-            <property name="margin_top">10</property>
-            <property name="margin_bottom">10</property>
-            <property name="max_length">128</property>
-            <property name="primary_icon_stock">gtk-orientation-landscape</property>
-            <property name="placeholder_text" translatable="yes">Full Name</property>
+            <property name="can-focus">True</property>
+            <property name="double-buffered">False</property>
+            <property name="margin-start">65</property>
+            <property name="margin-end">65</property>
+            <property name="margin-top">10</property>
+            <property name="margin-bottom">10</property>
+            <property name="max-length">128</property>
+            <property name="primary-icon-stock">gtk-orientation-landscape</property>
+            <property name="placeholder-text" translatable="yes">Full Name</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -51,15 +56,16 @@
         <child>
           <object class="GtkEntry" id="email_entry">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="margin_left">65</property>
-            <property name="margin_right">65</property>
-            <property name="margin_top">10</property>
-            <property name="margin_bottom">10</property>
-            <property name="max_length">128</property>
-            <property name="shadow_type">out</property>
-            <property name="primary_icon_stock">gtk-bold</property>
-            <property name="placeholder_text" translatable="yes">Email Address</property>
+            <property name="can-focus">True</property>
+            <property name="double-buffered">False</property>
+            <property name="margin-start">65</property>
+            <property name="margin-end">65</property>
+            <property name="margin-top">10</property>
+            <property name="margin-bottom">10</property>
+            <property name="max-length">128</property>
+            <property name="shadow-type">out</property>
+            <property name="primary-icon-stock">gtk-bold</property>
+            <property name="placeholder-text" translatable="yes">Email Address</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -70,21 +76,23 @@
         <child>
           <object class="GtkBox" id="password_click_box">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
+            <property name="double-buffered">False</property>
             <property name="orientation">vertical</property>
             <child>
               <object class="GtkEntry" id="password_login_entry">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="margin_left">65</property>
-                <property name="margin_right">65</property>
-                <property name="margin_top">10</property>
-                <property name="margin_bottom">10</property>
-                <property name="max_length">128</property>
+                <property name="can-focus">True</property>
+                <property name="double-buffered">False</property>
+                <property name="margin-start">65</property>
+                <property name="margin-end">65</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
+                <property name="max-length">128</property>
                 <property name="visibility">False</property>
-                <property name="invisible_char">●</property>
-                <property name="primary_icon_name">emblem-readonly</property>
-                <property name="placeholder_text" translatable="yes">Password</property>
+                <property name="invisible-char">●</property>
+                <property name="primary-icon-name">emblem-readonly</property>
+                <property name="placeholder-text" translatable="yes">Password</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -95,16 +103,17 @@
             <child>
               <object class="GtkEntry" id="password_repeat_entry">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="margin_left">65</property>
-                <property name="margin_right">65</property>
-                <property name="margin_top">10</property>
-                <property name="margin_bottom">10</property>
-                <property name="max_length">128</property>
+                <property name="can-focus">True</property>
+                <property name="double-buffered">False</property>
+                <property name="margin-start">65</property>
+                <property name="margin-end">65</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
+                <property name="max-length">128</property>
                 <property name="visibility">False</property>
-                <property name="invisible_char">●</property>
-                <property name="primary_icon_name">emblem-readonly</property>
-                <property name="placeholder_text" translatable="yes">Repeat Password</property>
+                <property name="invisible-char">●</property>
+                <property name="primary-icon-name">emblem-readonly</property>
+                <property name="placeholder-text" translatable="yes">Repeat Password</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -116,31 +125,34 @@
               <object class="GtkButton" id="click_to_login_button">
                 <property name="label" translatable="yes">Click to Login</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="margin_left">65</property>
-                <property name="margin_right">65</property>
-                <property name="margin_top">10</property>
-                <property name="margin_bottom">10</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="double-buffered">False</property>
+                <property name="margin-start">95</property>
+                <property name="margin-end">95</property>
+                <signal name="clicked" handler="on_click_to_login_button_clicked" object="reg_box" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
+                <property name="padding">10</property>
                 <property name="position">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
+                <property name="double-buffered">False</property>
                 <child>
                   <object class="GtkLabel" id="Already_have_account">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
                     <property name="halign">start</property>
                     <property name="valign">start</property>
-                    <property name="margin_top">5</property>
+                    <property name="margin-start">15</property>
+                    <property name="margin-top">11</property>
                     <property name="hexpand">True</property>
                     <property name="label" translatable="yes">Already have Account ?</property>
                   </object>
@@ -153,14 +165,16 @@
                 </child>
                 <child>
                   <object class="GtkLinkButton" id="sing_in">
-                    <property name="label" translatable="yes">button</property>
+                    <property name="label" translatable="yes">sign in</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="double-buffered">False</property>
                     <property name="halign">end</property>
                     <property name="valign">end</property>
                     <property name="hexpand">True</property>
                     <property name="relief">none</property>
+                    <property name="image-position">right</property>
                     <property name="uri">http://glade.gnome.org</property>
                   </object>
                   <packing>

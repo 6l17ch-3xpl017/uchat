@@ -36,6 +36,7 @@ execute_process(
         COMMAND xargs echo -n
         OUTPUT_VARIABLE GTK3_IFLAGS
 )
+
 execute_process(
         COMMAND pkg-config --libs gtk+-3.0
         COMMAND xargs echo -n
