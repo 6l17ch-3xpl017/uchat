@@ -23,6 +23,12 @@ typedef struct s_use_mutex {
     pthread_mutex_t mutex;
 } t_use_mutex;
 
+typedef struct s_thread_sockuser {
+    int socket;
+    char *user;
+    struct s_thread_sockuser *next;
+} t_thread_sockuser;
+
 // router
 void check_route(char *str, int socket);
 bool user_sign_in(json_t *income_json);
