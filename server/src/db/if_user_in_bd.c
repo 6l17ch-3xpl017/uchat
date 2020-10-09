@@ -1,7 +1,3 @@
-//
-// Created by Illia Marchenko on 9/25/20.
-//
-
 #include "server.h"
 
 static int callback_number_of_email_or_nickname(void *my_arg, int argc, char **argv, char **array) {
@@ -18,8 +14,9 @@ static int callback_to_get_password(void *my_arg, int argc, char **argv, char **
 
 /**
  * @author Ilay Marchenko
- * @brief This function takes struct User, where we have nickname or email of user and his password, check it
- *        and return message of search result
+ * @brief This function takes struct 'User', where we have nickname or email of user and his password, check it
+ *        and return message of search result. If user was already registered, calls function 'populate_User_struct'
+ *        which copy all data from database to struct.
  * @param User struct that must contain email or nickname of user and his password.
  * @return - "User->nickname and User->email can't be NULL" if nickname and email are NULL.
  * @return - "Login incorrect" if nickname/email was not found in database.
@@ -30,36 +27,37 @@ static int callback_to_get_password(void *my_arg, int argc, char **argv, char **
  * @return - "Function fail" can't be in any case. If this function returned this message - something went wrong.
  */
 
-char *user_in_db(t_user *User) {
+int user_in_db(t_user *User) {
     sqlite3 *db;
     char *error = NULL;
     char *error1 = NULL;
     int result;
     char *request = NULL;
     int number_of_users_with_such_nick_or_email = 0;
-    bool in_db = false;
     t_password *password = malloc(sizeof(t_password));
 
     result = sqlite3_open("chat_database.db", &db);
     if (result != SQLITE_OK) {
         printf("Can't open database\n");
-        exit(1);
+        return can_not_open_db;
     }
 
     if (User->nickname) {
-        asprintf(&request, "SELECT id "
-                           "FROM Users "
-                           "WHERE nickname='%s';", User->nickname);
+        request = (char *)malloc(sizeof(char) * (39 + strlen(User->nickname)));
+        request = strcpy(request, "SELECT id FROM Users WHERE nickname='");
+        request = strcat(request, User->nickname);
+        request = strcat(request, "';");
     }
     else if (User->email) {
-        asprintf(&request, "SELECT id "
-                           "FROM Users "
-                           "WHERE email='%s';", User->email);
+        request = (char *)malloc(sizeof(char) * (36 + strlen(User->email)));
+        request = strcpy(request, "SELECT id FROM Users WHERE email='");
+        request = strcat(request, User->email);
+        request = strcat(request, "';");
     }
     else {
         sqlite3_close(db);
         free(password);
-        return "User->nickname and User->email can't be NULL";
+        return nickname_and_email_can_not_be_null;
     }
 
     result = sqlite3_exec(db, request, callback_number_of_email_or_nickname, &number_of_users_with_such_nick_or_email,
@@ -74,45 +72,44 @@ char *user_in_db(t_user *User) {
         sqlite3_close(db);
         free(request);
         free(password);
-        return "Login incorrect";
+        return login_incorrect;
     }
-    else
-        in_db = true;
 
     if (request)
         free(request);
 
-    if (in_db) {
-        if (User->nickname) {
-            asprintf(&request, "SELECT password "
-                               "FROM Users "
-                               "WHERE nickname='%s';", User->nickname);
+    if (User->nickname) {
+        request = (char *)malloc(sizeof(char) * (45 + strlen(User->nickname)));
+        request = strcpy(request, "SELECT password FROM Users WHERE nickname='");
+        request = strcat(request, User->nickname);
+        request = strcat(request, "';");
+    }
+    else if (User->email) {
+        request = (char *)malloc(sizeof(char) * (42 + strlen(User->email)));
+        request = strcpy(request, "SELECT password FROM Users WHERE email='");
+        request = strcat(request, User->email);
+        request = strcat(request, "';");
+    }
+    result = sqlite3_exec(db, request, callback_to_get_password, password, &error1);
+    if (result != SQLITE_OK) {
+        fprintf(stderr, "SQL error: %s\n", error);
+        sqlite3_free(error1);
+    }
+    if (password->password) {
+        if (strcmp(password->password, User->password) == 0) {
+            free(password->password);
+            free(password);
+            free(request);
+            sqlite3_close(db);
+            populate_User_struct(User);
+            return login_and_password_correct;
         }
-        else if (User->email) {
-            asprintf(&request, "SELECT password "
-                               "FROM Users "
-                               "WHERE email='%s';", User->email);
-        }
-        result = sqlite3_exec(db, request, callback_to_get_password, password, &error1);
-        if (result != SQLITE_OK) {
-            fprintf(stderr, "SQL error: %s\n", error);
-            sqlite3_free(error1);
-        }
-        if (password->password) {
-            if (strcmp(password->password, User->password) == 0) {
-                free(password->password);
-                free(password);
-                free(request);
-                sqlite3_close(db);
-                return "Login and password correct";
-            }
-            else {
-                free(password->password);
-                free(password);
-                free(request);
-                sqlite3_close(db);
-                return "Password incorrect";
-            }
+        else {
+            free(password->password);
+            free(password);
+            free(request);
+            sqlite3_close(db);
+            return password_incorrect;
         }
     }
 
@@ -122,5 +119,5 @@ char *user_in_db(t_user *User) {
     if (request)
         free(request);
 
-    return "Function fail";
+    return function_fail;
 }

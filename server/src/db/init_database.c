@@ -8,7 +8,6 @@
  * @author Illia Marchenko
  * @brief Function creates database if database wasn't created before and creates all tables if they weren't created yet.
  * @name 'init_database' - because we should call it everytime before chat turning on to be sure that with database everything fine.
- *
  */
 
 void init_database() {
@@ -30,7 +29,7 @@ void init_database() {
                               "\"email\"\tTEXT UNIQUE,\n"
                               "\"age\"\tINTEGER,\n"
                               "\"fullname\"\tTEXT,\n"
-                              "\"phone_number\"\tTEXT,\n"
+                              "\"phone_number\"\tTEXT UNIQUE,\n"
                               "\"user_photo\"\tTEXT,\n"
                               "\"options\"\tTEXT,\n"
                               "PRIMARY KEY(\"id\" AUTOINCREMENT)\n"
@@ -44,7 +43,7 @@ void init_database() {
     // -----------------------------=-Block to create Chats table-=-------------------------------
     result = sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS \"Chats\" (\n"
                               "\"chat_id\"\tINTEGER NOT NULL UNIQUE,\n"
-                              "\"chat_name\"\tTEXT,\n"
+                              "\"chat_name\"\tTEXT NOT NULL UNIQUE,\n"
                               "\"admin_id\"\tINTEGER NOT NULL,\n"
                               "\"chat_photo\"\tTEXT,\n"
                               "\"options\"\tTEXT,\n"

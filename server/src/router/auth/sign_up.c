@@ -4,6 +4,7 @@
 static void user_data_struct_fill(json_t *user) {
     t_user *User = NULL;
     User = (t_user *) malloc(sizeof(t_user));
+    User->id = NULL;
     User->nickname = strdup(json_string_value(json_object_get(user, "nickname")));
     User->password = strdup(json_string_value(json_object_get(user, "password")));
     User->email = strdup(json_string_value(json_object_get(user, "email")));
