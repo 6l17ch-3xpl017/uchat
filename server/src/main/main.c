@@ -25,6 +25,7 @@ static void *socketThread(void *arg) {
         if (status == unknown_error) {
             puts("Client disconnected");
             fflush(stdout);
+            free(thread);
             return 0;
         }
     }
