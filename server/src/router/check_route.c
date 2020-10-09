@@ -1,8 +1,7 @@
 #include "server.h"
 
-int check_route(char *str, int socket) {
-    (void)socket;
-//    mx_printint(socket);
+int check_route(char *str, t_thread_sockuser *socket) {
+    mx_printint(socket);
     json_t *income_json, *type;
     json_error_t error;
     // create new node

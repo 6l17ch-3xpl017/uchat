@@ -29,11 +29,10 @@ enum status {
 typedef struct s_thread_sockuser {
     int socket;
     char *user;
-    struct s_thread_sockuser *next;
 } t_thread_sockuser;
 
 // router
-int check_route(char *str, int socket);
+int check_route(char *str, t_thread_sockuser *thread);
 bool user_sign_in(json_t *income_json);
 bool user_sign_up(json_t *income_json);
 void send_json_to(int socketfd, int status, char *func);
