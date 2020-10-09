@@ -17,11 +17,14 @@
 #include <signal.h>
 #include <sys/stat.h>
 #include <syslog.h>
-//#include
+#include <time.h>
 
-typedef struct s_use_mutex {
-    pthread_mutex_t mutex;
-} t_use_mutex;
+enum status {
+    unknown_error = -10,
+    not_reg_user = -4,
+    ok_check_route = 5,
+    ok = 7,
+};
 
 typedef struct s_thread_sockuser {
     int socket;
@@ -30,8 +33,9 @@ typedef struct s_thread_sockuser {
 } t_thread_sockuser;
 
 // router
-void check_route(char *str, int socket);
+int check_route(char *str, int socket);
 bool user_sign_in(json_t *income_json);
 bool user_sign_up(json_t *income_json);
+void send_json_to(int socketfd, int status, char *func);
 
 #endif

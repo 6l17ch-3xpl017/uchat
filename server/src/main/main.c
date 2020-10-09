@@ -17,8 +17,8 @@ static void *socketThread(void *arg) {
     for (;;) {
         read(newSocket, client_message, sizeof(client_message));
 
-//        router
-        check_route(client_message, newSocket);
+//      router
+        check_route(client_message,newSocket);
 
         if ((strncmp(client_message, "exit", 4)) == 0) {
             printf("Client Exit...\n");
@@ -46,7 +46,7 @@ static void server_async_create() {
     // Address family = Internet
     serverAddr.sin_family = AF_INET;
     //Set port number, using htons function to use proper byte order
-    serverAddr.sin_port = htons(7799);
+    serverAddr.sin_port = htons(5000);
     //Set IP address to localhost
     serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
     //Set all bits of the padding field to 0
