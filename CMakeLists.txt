@@ -21,6 +21,7 @@ include_directories(server/resources/framework/jansson)
 include_directories(server/resources/framework/jansson/inc)
 include_directories(server/resources/framework/openssl)
 include_directories(server/resources/framework/openssl/inc)
+include_directories(server/resources/framework/openssl/inc/openssl)
 include_directories(server/resources/libmx/inc)
 
 add_executable(uchat
