@@ -18,7 +18,10 @@
 #include <sys/stat.h>
 #include <syslog.h>
 #include <time.h>
+//include openssl!!!
 #include "bio.h"
+#include "ssl.h"
+#include "err.h"
 
 enum status {
     unknown_error = -10,

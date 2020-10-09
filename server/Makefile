@@ -10,7 +10,7 @@ INC_DIR		= inc/
 
 # main dir for jansson files
 J_INC_DIR   = resources/framework/jansson/inc/
-O_INC_DIR   = resources/framework/openssl/inc/
+O_INC_DIR   = resources/framework/openssl/inc/openssl
 # whole path to dirs
 PATH_DIRS	= db json main router router/auth
 

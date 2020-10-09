@@ -5,6 +5,24 @@ pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 static void mutex_lock_unlock(void) {
 
 }
+static void InitializeSSL()
+{
+    SSL_load_error_strings();
+    SSL_library_init();
+    OpenSSL_add_all_algorithms();
+}
+
+static void DestroySSL()
+{
+    ERR_free_strings();
+    EVP_cleanup();
+}
+
+//static void ShutdownSSL()
+//{
+//    SSL_shutdown(cSSL);
+//    SSL_free(cSSL);
+//}
 
 static void *socketThread(void *arg) {
     int newSocket = *((int *) arg);
@@ -38,6 +56,10 @@ static void server_async_create() {
     struct sockaddr_storage serverStorage;
     socklen_t addr_size;
 
+    SSL_CTX *sslctx;
+    SSL *cSSL;
+
+    InitializeSSL();
     serverSocket = socket(PF_INET, SOCK_STREAM, 0);
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(5000);
