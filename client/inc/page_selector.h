@@ -1,6 +1,10 @@
 #ifndef UCHAT_GUI_PAGE_SELECTOR_H
 #define UCHAT_GUI_PAGE_SELECTOR_H
 
+#define LOGIN_PAGE "../client/resources/glade/login_page.glade"
+#define REG_PAGE "../client/resources/glade/register_page.glade"
+#define MAIN_PAGE "../client/resources/glade/main_page.glade"
+
 typedef enum _loging_page_selector
 {
     window,
@@ -41,9 +45,9 @@ typedef struct s_login_page
 }              t_login_page;
 
 
-void *select_page(int page_id, void *options);
-t_page *init_login_page(void);
+void *select_page(char *page_file_path);
 GSList *create_window(const char *glade_filename);
 gpointer *get_widget(GSList *glist, char *needle);
+gpointer g_list_get_widget(GList *glist, char *needle);
 
 #endif

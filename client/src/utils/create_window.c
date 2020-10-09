@@ -32,16 +32,6 @@ GSList *create_window(const char *glade_filename)
     /* помните, мы подключали сигналы вручную? теперь это происходит автоматически! */
     gtk_builder_connect_signals (builder, NULL);
 
-//    /* получаем виджет окна, чтобы его показать */
-//    window = GTK_WIDGET (gtk_builder_get_object (builder, "login_window"));
-//    if (!window)
-//        /* что-то не так, наверное, ошиблись в имени */
-//        g_critical("Ошибка при получении виджета окна");
-
-//    /* Get the names of our widgets */
-//    for (gtemp = glist; gtemp != NULL; gtemp = gtemp->next)
-//        g_print("%s\n", gtk_buildable_get_name(gtemp->data));
-
     /* free our builder */
     g_object_unref(builder);
 

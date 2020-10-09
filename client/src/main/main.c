@@ -229,20 +229,28 @@ void on_reg_button_activate_link()
     cmc_log_info("SIGN_UP BUTTON CLICKED");
 }
 
-//void test_callback(GtkWidget *widget, gpointer pVoid)
-//{
-//    cmc_log_info("DONE!");
-//}
-
-void on_login_button_clicked(GtkWindow *window, GtkContainer *cont)
+void on_login_button_clicked(GtkWindow *window, GtkContainer *main_box)
 {
     cmc_log_info("LOGIN BUTTON CLICKED");
-    GList *glist = gtk_container_get_children(cont);
+    GList *main_list = gtk_container_get_children(main_box);
+
+    GtkContainer *username_box = g_list_get_widget(main_list, "username_box");
+    GtkContainer *password_box = g_list_get_widget(main_list, "password_box");
+
+    GList *username_list = gtk_container_get_children(username_box);
+    GList *password_list = gtk_container_get_children(password_box);
+
+    GtkEntry *username_entry = g_list_get_widget(username_list, "username_entry");
+    GtkEntry *password_entry = g_list_get_widget(password_list, "password_entry");
+
+    cmc_log_info("username_entry = %s | password_entry = %s",
+                 gtk_entry_get_text(username_entry),
+                 gtk_entry_get_text(password_entry));
+
     cmc_log_info("Cont Test");
 }
 
-//ToDo: Change mistake
-void on_remembre_check_box_toggled()
+void on_remember_check_box_toggled()
 {
     cmc_log_info("REMEMBER CHECKBOX TOGGLED");
 }
@@ -278,7 +286,7 @@ int main(int argc, char *argv[])
 
     gtk_init(&argc, &argv);
 
-    t_page *page = select_page(0, NULL);
+    t_page *page = select_page(LOGIN_PAGE);
 
     gpointer *gp = get_widget(page->widgets, "login_window");
 

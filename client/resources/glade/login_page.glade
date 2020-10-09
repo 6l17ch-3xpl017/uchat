@@ -110,8 +110,8 @@
               </packing>
             </child>
             <child>
-              <object class="GtkCheckButton" id="remembre_check_box">
-                <property name="label" translatable="yes">Remembre me</property>
+              <object class="GtkCheckButton" id="remember_check_box">
+                <property name="label" translatable="yes">remember me</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">False</property>
@@ -120,7 +120,7 @@
                 <property name="margin-top">10</property>
                 <property name="margin-bottom">10</property>
                 <property name="draw-indicator">True</property>
-                <signal name="toggled" handler="on_remembre_check_box_toggled" object="username_box" swapped="no"/>
+                <signal name="toggled" handler="on_remember_check_box_toggled" object="username_box" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
