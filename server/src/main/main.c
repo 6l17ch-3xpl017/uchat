@@ -12,7 +12,7 @@ static void *socketThread(void *arg) {
     int status;
     t_thread_sockuser *thread = NULL;
 
-    thread = (t_thread_sockuser*)malloc(sizeof(t_thread_sockuser));
+    thread = (t_thread_sockuser *) malloc(sizeof(t_thread_sockuser));
     thread->socket = newSocket;
     for (;;) {
         read(newSocket, client_message, sizeof(client_message));
@@ -31,7 +31,7 @@ static void *socketThread(void *arg) {
 }
 
 static void server_async_create() {
-    int serverSocket, newSocket, i;
+    int serverSocket, newSocket, i = 0;
     struct sockaddr_in serverAddr;
     struct sockaddr_storage serverStorage;
     socklen_t addr_size;
