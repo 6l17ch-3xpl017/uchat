@@ -1,7 +1,6 @@
 #include "server.h"
 
 int check_route(char *str, t_thread_sockuser *socket) {
-    mx_printint(socket);
     json_t *income_json, *type;
     json_error_t error;
     // create new node
@@ -16,10 +15,9 @@ int check_route(char *str, t_thread_sockuser *socket) {
         user_sign_up(income_json);
     }
     else {
-//        printf("error_jopa\n");
         return unknown_error;
     }
-    free(income_json);
+    json_decref(income_json);
     return ok_check_route;
 }
 
