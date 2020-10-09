@@ -10,7 +10,7 @@ INC_DIR		= inc/
 
 # main dir for jansson files
 J_INC_DIR   = resources/framework/jansson/inc/
-
+O_INC_DIR   = resources/framework/openssl/inc/
 # whole path to dirs
 PATH_DIRS	= db json main router router/auth
 
@@ -28,9 +28,11 @@ INC_H		= $(wildcard $(INC_DIR)*.h)
 
 # list of jansson header files
 J_INC_H		= $(wildcard $(J_INC_DIR)*.h)
+O_INC_H     = $(wildcard $(O_INC_DIR)*.h)
+
 
 J_BIN = resources/framework/jansson/libjansson.a
-
+O_BIN = resources/framework/openssl/*.a
 # main dir with any libraries
 LIB_DIR		= resources
 # list of all names of libraries in LIB_DIR
@@ -51,10 +53,11 @@ GFLAGS		= -std=c11 -pipe -Wall -Wextra -Werror -Wpedantic\
 	-Wno-unused-function -Wno-unused-parameter -g
 # specific flags
 CFLAGS		= -lsqlite3 -lpthread
+OFLAGS		= -L resources/framework/openssl -lssl -lcrypto
 # folder with header files
-IFLAGS		= $(addprefix -I , $(LIB_INC) $(INC_DIR) $(J_INC_DIR))
+IFLAGS		= $(addprefix -I , $(LIB_INC) $(INC_DIR) $(J_INC_DIR) $(O_INC_DIR))
 
-COMPILE		= $(CC) $(GFLAGS) $(IFLAGS) $(CFLAGS) $(LIB_BIN) $(J_BIN)
+COMPILE		= $(CC) $(GFLAGS) $(IFLAGS) $(CFLAGS) $(OFLAGS) $(LIB_BIN) $(J_BIN)
 MAKE_M		= make -sf Makefile -C
 MKDIR		= mkdir -p
 RM			= /bin/rm -rf
