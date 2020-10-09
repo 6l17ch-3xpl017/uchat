@@ -17,7 +17,7 @@ int check_route(char *str, int socket) {
         user_sign_up(income_json);
     }
     else {
-        printf("error_jopa\n");
+//        printf("error_jopa\n");
         return unknown_error;
     }
     free(income_json);

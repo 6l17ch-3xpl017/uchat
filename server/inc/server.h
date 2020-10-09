@@ -21,6 +21,7 @@
 
 enum status {
     unknown_error = -10,
+    not_reg_user = -4,
     ok_check_route = 5,
     ok = 7,
 };
