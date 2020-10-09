@@ -5,6 +5,10 @@ char buffer[1024];
 
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
+static void mutex_lock_unlock(void) {
+
+}
+
 static void *socketThread(void *arg) {
     int newSocket = *((int *) arg);
     int read_size = 1;
@@ -14,14 +18,14 @@ static void *socketThread(void *arg) {
         read(newSocket, client_message, sizeof(client_message));
 
 //        router
-        check_route(client_message,newSocket);
+        check_route(client_message, newSocket);
 
         if ((strncmp(client_message, "exit", 4)) == 0) {
             printf("Client Exit...\n");
             read_size = 0;
         }
         puts(client_message);
-        free(client_message);
+//        free(client_message);
 //      client disconnected
         if (read_size == 0) {
             puts("Client disconnected");
