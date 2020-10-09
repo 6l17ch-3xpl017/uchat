@@ -12,12 +12,13 @@
 #include "jansson.h"
 #include "jansson_config.h"
 #include "header_db_dev.h"
-#include<netinet/in.h>
+#include <netinet/in.h>
 #include <arpa/inet.h>
 #include <signal.h>
 #include <sys/stat.h>
 #include <syslog.h>
 #include <time.h>
+#include "bio.h"
 
 enum status {
     unknown_error = -10,
@@ -33,8 +34,17 @@ typedef struct s_thread_sockuser {
 
 // router
 int check_route(char *str, t_thread_sockuser *thread);
+<<<<<<< HEAD
 bool user_sign_in(json_t *income_json, t_thread_sockuser *socket);
 bool user_sign_up(json_t *income_json, t_thread_sockuser *socket);
 void send_json_to_socket(int socketfd, int status, char *func);
+=======
+
+bool user_sign_in(json_t *income_json);
+
+bool user_sign_up(json_t *income_json);
+
+void send_json_to(int socketfd, int status, char *func);
+>>>>>>> b7e92de55d5afe43d6af298c9f11d1e76832aad0
 
 #endif

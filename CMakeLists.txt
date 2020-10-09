@@ -1,104 +1,333 @@
-cmake_minimum_required(VERSION 3.16)
-project(uchat_gui C)
+cmake_minimum_required(VERSION 3.17)
+project(uchat C)
 
 set(CMAKE_C_STANDARD 11)
 
 include_directories(client/inc)
-include_directories(server/inc)
-include_directories(server/resources/libmx/inc)
-include_directories(client/resources/framework/jansson/inc)
-include_directories(client/resources/framework/macros.h)
+include_directories(client/resources/framework)
 include_directories(client/resources/framework/cmc)
 include_directories(client/resources/framework/cmc/cmc)
 include_directories(client/resources/framework/cmc/cor)
 include_directories(client/resources/framework/cmc/ext)
+include_directories(client/resources/framework/cmc/ext/cmc)
 include_directories(client/resources/framework/cmc/utl)
+include_directories(client/resources/framework/jansson)
+include_directories(client/resources/framework/jansson/inc)
+include_directories(client/resources/framework/macros.h)
+include_directories(client/resources/libmx/inc)
+include_directories(server/inc)
+include_directories(server/resources/framework)
+include_directories(server/resources/framework/jansson)
+include_directories(server/resources/framework/jansson/inc)
+include_directories(server/resources/framework/openssl)
+include_directories(server/resources/framework/openssl/inc)
+include_directories(server/resources/libmx/inc)
 
-file(GLOB_RECURSE CLIENT_SRC RELATIVE ${CMAKE_SOURCE_DIR} "client/src/*.c")
-file(GLOB_RECURSE CLIENT_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "client/inc/*.h")
-
-file(GLOB_RECURSE SERVER_SRC RELATIVE ${CMAKE_SOURCE_DIR} "server/src/*.c")
-file(GLOB_RECURSE SERVER_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "server/inc/*.h")
-
-file(GLOB_RECURSE LIB_SRC RELATIVE ${CMAKE_SOURCE_DIR} "server/resources/libmx/src/*.c")
-file(GLOB_RECURSE LIB_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "server/resources/libmx/inc/*.h")
-
-file(GLOB_RECURSE CMC_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "client/resources/framework/cmc/*.h")
-
-add_executable(uchat_gui ${CLIENT_SRC} ${CLIENT_HEADERS}
-        ${LIB_SRC} ${LIB_HEADERS} ${CMC_HEADERS}
+add_executable(uchat
+        client/inc/client.h
+        client/inc/encryption.h
+        client/inc/page_selector.h
+        client/resources/framework/cmc/cmc/bitset.h
+        client/resources/framework/cmc/cmc/deque.h
+        client/resources/framework/cmc/cmc/hashbidimap.h
+        client/resources/framework/cmc/cmc/hashmap.h
+        client/resources/framework/cmc/cmc/hashmultimap.h
+        client/resources/framework/cmc/cmc/hashmultiset.h
+        client/resources/framework/cmc/cmc/hashset.h
+        client/resources/framework/cmc/cmc/heap.h
+        client/resources/framework/cmc/cmc/intervalheap.h
+        client/resources/framework/cmc/cmc/linkedlist.h
+        client/resources/framework/cmc/cmc/list.h
+        client/resources/framework/cmc/cmc/queue.h
+        client/resources/framework/cmc/cmc/sortedlist.h
+        client/resources/framework/cmc/cmc/stack.h
+        client/resources/framework/cmc/cmc/treemap.h
+        client/resources/framework/cmc/cmc/treeset.h
+        client/resources/framework/cmc/cor/alloc.h
+        client/resources/framework/cmc/cor/bitset.h
+        client/resources/framework/cmc/cor/callbacks.h
+        client/resources/framework/cmc/cor/core.h
+        client/resources/framework/cmc/cor/flags.h
+        client/resources/framework/cmc/cor/ftable.h
+        client/resources/framework/cmc/cor/hashtable.h
+        client/resources/framework/cmc/cor/heap.h
+        client/resources/framework/cmc/ext/cmc/bitset.h
+        client/resources/framework/cmc/ext/cmc/deque.h
+        client/resources/framework/cmc/ext/cmc/hashbidimap.h
+        client/resources/framework/cmc/ext/cmc/hashmap.h
+        client/resources/framework/cmc/ext/cmc/hashmultimap.h
+        client/resources/framework/cmc/ext/cmc/hashmultiset.h
+        client/resources/framework/cmc/ext/cmc/hashset.h
+        client/resources/framework/cmc/ext/cmc/heap.h
+        client/resources/framework/cmc/ext/cmc/intervalheap.h
+        client/resources/framework/cmc/ext/cmc/linkedlist.h
+        client/resources/framework/cmc/ext/cmc/list.h
+        client/resources/framework/cmc/ext/cmc/queue.h
+        client/resources/framework/cmc/ext/cmc/sortedlist.h
+        client/resources/framework/cmc/ext/cmc/stack.h
+        client/resources/framework/cmc/ext/cmc/treemap.h
+        client/resources/framework/cmc/ext/cmc/treeset.h
+        client/resources/framework/cmc/utl/assert.h
+        client/resources/framework/cmc/utl/foreach.h
+        client/resources/framework/cmc/utl/futils.h
+        client/resources/framework/cmc/utl/log.h
+        client/resources/framework/cmc/utl/mutex.h
+        client/resources/framework/cmc/utl/test.h
+        client/resources/framework/cmc/utl/thread.h
+        client/resources/framework/cmc/utl/timer.h
+        client/resources/framework/cmc/macro_collections.h
         client/resources/framework/jansson/inc/jansson.h
         client/resources/framework/jansson/inc/jansson_config.h
-        client/resources/framework/macros.h/macros.h client/test_client_async.c)
-
-#target_link_libraries(uchat_gui -L/Users/dushakov/.brew/Cellar/gtk+3/3.24.23/lib
-#        -L/Users/dushakov/.brew/Cellar/pango/1.46.2/lib
-#        -L/Users/dushakov/.brew/Cellar/harfbuzz/2.7.2/lib
-#        -L/Users/dushakov/.brew/Cellar/atk/2.36.0/lib
-#        -L/Users/dushakov/.brew/Cellar/cairo/1.16.0_3/lib
-#        -L/Users/dushakov/.brew/Cellar/gdk-pixbuf/2.40.0_1/lib
-#        -L/Users/dushakov/.brew/Cellar/glib/2.66.0/lib
-#        -L/Users/dushakov/.brew/opt/gettext/lib
-#        -L${CMAKE_SOURCE_DIR}/client/resources/framework/jansson/
-#        -lgtk-3 -lgdk-3 -Wl,-framework,Cocoa -Wl,-framework,Carbon -Wl,-framework,CoreGraphics
-#        -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0
-#        -lgio-2.0 -lgobject-2.0 -lglib-2.0 -lintl -ljansson)
-#target_compile_options(uchat_gui PRIVATE -I/Users/dushakov/.brew/Cellar/libffi/3.3/include
-#        -I/Users/dushakov/.brew/Cellar/gtk+3/3.24.23/include/gtk-3.0
-#        -I/Users/dushakov/.brew/Cellar/glib/2.66.0/include/gio-unix-2.0
-#        -I/Users/dushakov/.brew/Cellar/cairo/1.16.0_3/include/cairo
-#        -I/Users/dushakov/.brew/Cellar/libepoxy/1.5.4_1/include
-#        -I/Users/dushakov/.brew/Cellar/pango/1.46.2/include/pango-1.0
-#        -I/Users/dushakov/.brew/Cellar/fribidi/1.0.10/include/fribidi
-#        -I/Users/dushakov/.brew/Cellar/harfbuzz/2.7.2/include/harfbuzz
-#        -I/Users/dushakov/.brew/Cellar/graphite2/1.3.14/include
-#        -I/Users/dushakov/.brew/Cellar/atk/2.36.0/include/atk-1.0
-#        -I/Users/dushakov/.brew/Cellar/cairo/1.16.0_3/include/cairo
-#        -I/Users/dushakov/.brew/Cellar/pixman/0.40.0/include/pixman-1
-#        -I/Users/dushakov/.brew/Cellar/fontconfig/2.13.1/include
-#        -I/Users/dushakov/.brew/opt/freetype/include/freetype2
-#        -I/Users/dushakov/.brew/Cellar/libpng/1.6.37/include/libpng16
-#        -I/Users/dushakov/.brew/Cellar/gdk-pixbuf/2.40.0_1/include/gdk-pixbuf-2.0
-#        -I/Users/dushakov/.brew/Cellar/glib/2.66.0/include
-#        -I/Users/dushakov/.brew/Cellar/glib/2.66.0/include/glib-2.0
-#        -I/Users/dushakov/.brew/Cellar/glib/2.66.0/lib/glib-2.0/include
-#        -I/Users/dushakov/.brew/opt/gettext/include -I/Users/dushakov/.brew/Cellar/pcre/8.44/include)
-
-# Jenia
-target_link_libraries(uchat_gui -L/Users/yksonzenko/.brew/Cellar/gtk+3/3.24.23/lib
-        -L/Users/yksonzenko/.brew/Cellar/pango/1.46.2/lib
-        -L/Users/yksonzenko/.brew/Cellar/harfbuzz/2.7.2/lib
-        -L/Users/yksonzenko/.brew/Cellar/atk/2.36.0/lib
-        -L/Users/yksonzenko/.brew/Cellar/cairo/1.16.0_3/lib
-        -L/Users/yksonzenko/.brew/Cellar/gdk-pixbuf/2.40.0_1/lib
-        -L/Users/yksonzenko/.brew/Cellar/glib/2.66.0/lib
-        -L/Users/yksonzenko/.brew/opt/gettext/lib
-        -L${CMAKE_SOURCE_DIR}/client/resources/framework/jansson/
-        -lgtk-3 -lgdk-3 -Wl,-framework,Cocoa -Wl,-framework,Carbon -Wl,-framework,CoreGraphics
-        -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0
-        -lgio-2.0 -lgobject-2.0 -lglib-2.0 -lintl -ljansson)
-
-target_compile_options(uchat_gui PRIVATE -I/Users/yksonzenko/.brew/Cellar/libffi/3.3/include
-        -I/Users/yksonzenko/.brew/Cellar/gtk+3/3.24.23/include/gtk-3.0
-        -I/Users/yksonzenko/.brew/Cellar/glib/2.66.0/include/gio-unix-2.0
-        -I/Users/yksonzenko/.brew/Cellar/cairo/1.16.0_3/include/cairo
-        -I/Users/yksonzenko/.brew/Cellar/libepoxy/1.5.4_1/include
-        -I/Users/yksonzenko/.brew/Cellar/pango/1.46.2/include/pango-1.0
-        -I/Users/yksonzenko/.brew/Cellar/fribidi/1.0.10/include/fribidi
-        -I/Users/yksonzenko/.brew/Cellar/harfbuzz/2.7.2/include/harfbuzz
-        -I/Users/yksonzenko/.brew/Cellar/graphite2/1.3.14/include
-        -I/Users/yksonzenko/.brew/Cellar/atk/2.36.0/include/atk-1.0
-        -I/Users/yksonzenko/.brew/Cellar/cairo/1.16.0_3/include/cairo
-        -I/Users/yksonzenko/.brew/Cellar/pixman/0.40.0/include/pixman-1
-        -I/Users/yksonzenko/.brew/Cellar/fontconfig/2.13.1/include
-        -I/Users/yksonzenko/.brew/opt/freetype/include/freetype2
-        -I/Users/yksonzenko/.brew/Cellar/libpng/1.6.37/include/libpng16
-        -I/Users/yksonzenko/.brew/Cellar/gdk-pixbuf/2.40.0_1/include/gdk-pixbuf-2.0
-        -I/Users/yksonzenko/.brew/Cellar/glib/2.66.0/include
-        -I/Users/yksonzenko/.brew/Cellar/glib/2.66.0/include/glib-2.0
-        -I/Users/yksonzenko/.brew/Cellar/glib/2.66.0/lib/glib-2.0/include
-        -I/Users/yksonzenko/.brew/opt/gettext/include
-        -I/Users/yksonzenko/.brew/Cellar/pcre/8.44/include)
-
-add_executable(uchat_server ${SERVER_SRC} ${SERVER_HEADERS} ${LIB_SRC} ${LIB_HEADERS} server/src/main/tls.c)
-target_link_libraries(uchat_server -L${CMAKE_SOURCE_DIR}/server/resources/framework/jansson/ -ljansson -lsqlite3 -lpthread)
+        client/resources/framework/macros.h/macros.h
+        client/resources/libmx/inc/libmx.h
+        client/resources/libmx/src/mx_atoi.c
+        client/resources/libmx/src/mx_binary_search.c
+        client/resources/libmx/src/mx_bubble_sort.c
+        client/resources/libmx/src/mx_count_substr.c
+        client/resources/libmx/src/mx_count_words.c
+        client/resources/libmx/src/mx_create_node.c
+        client/resources/libmx/src/mx_del_extra_spaces.c
+        client/resources/libmx/src/mx_del_intarr.c
+        client/resources/libmx/src/mx_del_strarr.c
+        client/resources/libmx/src/mx_file_to_str.c
+        client/resources/libmx/src/mx_foreach.c
+        client/resources/libmx/src/mx_get_char_index.c
+        client/resources/libmx/src/mx_get_substr_index.c
+        client/resources/libmx/src/mx_hex_to_nbr.c
+        client/resources/libmx/src/mx_intlen.c
+        client/resources/libmx/src/mx_isalpha.c
+        client/resources/libmx/src/mx_isdigit.c
+        client/resources/libmx/src/mx_isspace.c
+        client/resources/libmx/src/mx_itoa.c
+        client/resources/libmx/src/mx_list_size.c
+        client/resources/libmx/src/mx_memccpy.c
+        client/resources/libmx/src/mx_memchr.c
+        client/resources/libmx/src/mx_memcmp.c
+        client/resources/libmx/src/mx_memcpy.c
+        client/resources/libmx/src/mx_memmem.c
+        client/resources/libmx/src/mx_memmove.c
+        client/resources/libmx/src/mx_memrchr.c
+        client/resources/libmx/src/mx_memset.c
+        client/resources/libmx/src/mx_nbr_length.c
+        client/resources/libmx/src/mx_nbr_to_hex.c
+        client/resources/libmx/src/mx_pop_back.c
+        client/resources/libmx/src/mx_pop_front.c
+        client/resources/libmx/src/mx_pow.c
+        client/resources/libmx/src/mx_print_intarr.c
+        client/resources/libmx/src/mx_print_strarr.c
+        client/resources/libmx/src/mx_print_unicode.c
+        client/resources/libmx/src/mx_printchar.c
+        client/resources/libmx/src/mx_printerr.c
+        client/resources/libmx/src/mx_printint.c
+        client/resources/libmx/src/mx_printstr.c
+        client/resources/libmx/src/mx_push_back.c
+        client/resources/libmx/src/mx_push_front.c
+        client/resources/libmx/src/mx_quicksort.c
+        client/resources/libmx/src/mx_realloc.c
+        client/resources/libmx/src/mx_replace_substr.c
+        client/resources/libmx/src/mx_sort_list.c
+        client/resources/libmx/src/mx_sqrt.c
+        client/resources/libmx/src/mx_str_reverse.c
+        client/resources/libmx/src/mx_strcat.c
+        client/resources/libmx/src/mx_strcmp.c
+        client/resources/libmx/src/mx_strcpy.c
+        client/resources/libmx/src/mx_strdel.c
+        client/resources/libmx/src/mx_strdup.c
+        client/resources/libmx/src/mx_strjoin.c
+        client/resources/libmx/src/mx_strlen.c
+        client/resources/libmx/src/mx_strncmp.c
+        client/resources/libmx/src/mx_strncpy.c
+        client/resources/libmx/src/mx_strndup.c
+        client/resources/libmx/src/mx_strnew.c
+        client/resources/libmx/src/mx_strsplit.c
+        client/resources/libmx/src/mx_strstr.c
+        client/resources/libmx/src/mx_strtrim.c
+        client/resources/libmx/src/mx_swap_char.c
+        client/src/encryption/ssem.c
+        client/src/main/main.c
+        client/src/pages/login_pages.c
+        client/src/pages/page_selector.c
+        client/test_client_async.c
+        server/inc/header_db_dev.h
+        server/inc/server.h
+        server/resources/framework/jansson/inc/jansson.h
+        server/resources/framework/jansson/inc/jansson_config.h
+        server/resources/framework/openssl/inc/aes.h
+        server/resources/framework/openssl/inc/asn1.h
+        server/resources/framework/openssl/inc/asn1_mac.h
+        server/resources/framework/openssl/inc/asn1err.h
+        server/resources/framework/openssl/inc/asn1t.h
+        server/resources/framework/openssl/inc/async.h
+        server/resources/framework/openssl/inc/asyncerr.h
+        server/resources/framework/openssl/inc/bio.h
+        server/resources/framework/openssl/inc/bioerr.h
+        server/resources/framework/openssl/inc/blowfish.h
+        server/resources/framework/openssl/inc/bn.h
+        server/resources/framework/openssl/inc/bnerr.h
+        server/resources/framework/openssl/inc/buffer.h
+        server/resources/framework/openssl/inc/buffererr.h
+        server/resources/framework/openssl/inc/camellia.h
+        server/resources/framework/openssl/inc/cast.h
+        server/resources/framework/openssl/inc/cmac.h
+        server/resources/framework/openssl/inc/cms.h
+        server/resources/framework/openssl/inc/cmserr.h
+        server/resources/framework/openssl/inc/comp.h
+        server/resources/framework/openssl/inc/comperr.h
+        server/resources/framework/openssl/inc/conf.h
+        server/resources/framework/openssl/inc/conf_api.h
+        server/resources/framework/openssl/inc/conferr.h
+        server/resources/framework/openssl/inc/crypto.h
+        server/resources/framework/openssl/inc/cryptoerr.h
+        server/resources/framework/openssl/inc/ct.h
+        server/resources/framework/openssl/inc/cterr.h
+        server/resources/framework/openssl/inc/des.h
+        server/resources/framework/openssl/inc/dh.h
+        server/resources/framework/openssl/inc/dherr.h
+        server/resources/framework/openssl/inc/dsa.h
+        server/resources/framework/openssl/inc/dsaerr.h
+        server/resources/framework/openssl/inc/dtls1.h
+        server/resources/framework/openssl/inc/e_os2.h
+        server/resources/framework/openssl/inc/ebcdic.h
+        server/resources/framework/openssl/inc/ec.h
+        server/resources/framework/openssl/inc/ecdh.h
+        server/resources/framework/openssl/inc/ecdsa.h
+        server/resources/framework/openssl/inc/ecerr.h
+        server/resources/framework/openssl/inc/engine.h
+        server/resources/framework/openssl/inc/engineerr.h
+        server/resources/framework/openssl/inc/err.h
+        server/resources/framework/openssl/inc/evp.h
+        server/resources/framework/openssl/inc/evperr.h
+        server/resources/framework/openssl/inc/hmac.h
+        server/resources/framework/openssl/inc/idea.h
+        server/resources/framework/openssl/inc/kdf.h
+        server/resources/framework/openssl/inc/kdferr.h
+        server/resources/framework/openssl/inc/lhash.h
+        server/resources/framework/openssl/inc/md2.h
+        server/resources/framework/openssl/inc/md4.h
+        server/resources/framework/openssl/inc/md5.h
+        server/resources/framework/openssl/inc/mdc2.h
+        server/resources/framework/openssl/inc/modes.h
+        server/resources/framework/openssl/inc/obj_mac.h
+        server/resources/framework/openssl/inc/objects.h
+        server/resources/framework/openssl/inc/objectserr.h
+        server/resources/framework/openssl/inc/ocsp.h
+        server/resources/framework/openssl/inc/ocsperr.h
+        server/resources/framework/openssl/inc/opensslconf.h
+        server/resources/framework/openssl/inc/opensslv.h
+        server/resources/framework/openssl/inc/ossl_typ.h
+        server/resources/framework/openssl/inc/pem.h
+        server/resources/framework/openssl/inc/pem2.h
+        server/resources/framework/openssl/inc/pemerr.h
+        server/resources/framework/openssl/inc/pkcs12.h
+        server/resources/framework/openssl/inc/pkcs12err.h
+        server/resources/framework/openssl/inc/pkcs7.h
+        server/resources/framework/openssl/inc/pkcs7err.h
+        server/resources/framework/openssl/inc/rand.h
+        server/resources/framework/openssl/inc/rand_drbg.h
+        server/resources/framework/openssl/inc/randerr.h
+        server/resources/framework/openssl/inc/rc2.h
+        server/resources/framework/openssl/inc/rc4.h
+        server/resources/framework/openssl/inc/rc5.h
+        server/resources/framework/openssl/inc/ripemd.h
+        server/resources/framework/openssl/inc/rsa.h
+        server/resources/framework/openssl/inc/rsaerr.h
+        server/resources/framework/openssl/inc/safestack.h
+        server/resources/framework/openssl/inc/seed.h
+        server/resources/framework/openssl/inc/sha.h
+        server/resources/framework/openssl/inc/srp.h
+        server/resources/framework/openssl/inc/srtp.h
+        server/resources/framework/openssl/inc/ssl.h
+        server/resources/framework/openssl/inc/ssl2.h
+        server/resources/framework/openssl/inc/ssl3.h
+        server/resources/framework/openssl/inc/sslerr.h
+        server/resources/framework/openssl/inc/stack.h
+        server/resources/framework/openssl/inc/store.h
+        server/resources/framework/openssl/inc/storeerr.h
+        server/resources/framework/openssl/inc/symhacks.h
+        server/resources/framework/openssl/inc/tls1.h
+        server/resources/framework/openssl/inc/ts.h
+        server/resources/framework/openssl/inc/tserr.h
+        server/resources/framework/openssl/inc/txt_db.h
+        server/resources/framework/openssl/inc/ui.h
+        server/resources/framework/openssl/inc/uierr.h
+        server/resources/framework/openssl/inc/whrlpool.h
+        server/resources/framework/openssl/inc/x509.h
+        server/resources/framework/openssl/inc/x509_vfy.h
+        server/resources/framework/openssl/inc/x509err.h
+        server/resources/framework/openssl/inc/x509v3.h
+        server/resources/framework/openssl/inc/x509v3err.h
+        server/resources/libmx/inc/libmx.h
+        server/resources/libmx/src/mx_atoi.c
+        server/resources/libmx/src/mx_binary_search.c
+        server/resources/libmx/src/mx_bubble_sort.c
+        server/resources/libmx/src/mx_count_substr.c
+        server/resources/libmx/src/mx_count_words.c
+        server/resources/libmx/src/mx_create_node.c
+        server/resources/libmx/src/mx_del_extra_spaces.c
+        server/resources/libmx/src/mx_del_intarr.c
+        server/resources/libmx/src/mx_del_strarr.c
+        server/resources/libmx/src/mx_file_to_str.c
+        server/resources/libmx/src/mx_foreach.c
+        server/resources/libmx/src/mx_get_char_index.c
+        server/resources/libmx/src/mx_get_substr_index.c
+        server/resources/libmx/src/mx_hex_to_nbr.c
+        server/resources/libmx/src/mx_intlen.c
+        server/resources/libmx/src/mx_isalpha.c
+        server/resources/libmx/src/mx_isdigit.c
+        server/resources/libmx/src/mx_isspace.c
+        server/resources/libmx/src/mx_itoa.c
+        server/resources/libmx/src/mx_list_size.c
+        server/resources/libmx/src/mx_memccpy.c
+        server/resources/libmx/src/mx_memchr.c
+        server/resources/libmx/src/mx_memcmp.c
+        server/resources/libmx/src/mx_memcpy.c
+        server/resources/libmx/src/mx_memmem.c
+        server/resources/libmx/src/mx_memmove.c
+        server/resources/libmx/src/mx_memrchr.c
+        server/resources/libmx/src/mx_memset.c
+        server/resources/libmx/src/mx_nbr_length.c
+        server/resources/libmx/src/mx_nbr_to_hex.c
+        server/resources/libmx/src/mx_pop_back.c
+        server/resources/libmx/src/mx_pop_front.c
+        server/resources/libmx/src/mx_pow.c
+        server/resources/libmx/src/mx_print_intarr.c
+        server/resources/libmx/src/mx_print_strarr.c
+        server/resources/libmx/src/mx_print_unicode.c
+        server/resources/libmx/src/mx_printchar.c
+        server/resources/libmx/src/mx_printerr.c
+        server/resources/libmx/src/mx_printint.c
+        server/resources/libmx/src/mx_printstr.c
+        server/resources/libmx/src/mx_push_back.c
+        server/resources/libmx/src/mx_push_front.c
+        server/resources/libmx/src/mx_quicksort.c
+        server/resources/libmx/src/mx_realloc.c
+        server/resources/libmx/src/mx_replace_substr.c
+        server/resources/libmx/src/mx_sort_list.c
+        server/resources/libmx/src/mx_sqrt.c
+        server/resources/libmx/src/mx_str_reverse.c
+        server/resources/libmx/src/mx_strcat.c
+        server/resources/libmx/src/mx_strcmp.c
+        server/resources/libmx/src/mx_strcpy.c
+        server/resources/libmx/src/mx_strdel.c
+        server/resources/libmx/src/mx_strdup.c
+        server/resources/libmx/src/mx_strjoin.c
+        server/resources/libmx/src/mx_strlen.c
+        server/resources/libmx/src/mx_strncmp.c
+        server/resources/libmx/src/mx_strncpy.c
+        server/resources/libmx/src/mx_strndup.c
+        server/resources/libmx/src/mx_strnew.c
+        server/resources/libmx/src/mx_strsplit.c
+        server/resources/libmx/src/mx_strstr.c
+        server/resources/libmx/src/mx_strtrim.c
+        server/resources/libmx/src/mx_swap_char.c
+        server/src/db/add_chat_to_db.c
+        server/src/db/add_id_to_struct_chat.c
+        server/src/db/add_id_to_struct_user.c
+        server/src/db/add_user_to_db.c
+        server/src/db/if_user_in_bd.c
+        server/src/db/init_database.c
+        server/src/main/main.c
+        server/src/router/auth/send_json_to.c
+        server/src/router/auth/sign_in.c
+        server/src/router/auth/sign_up.c
+        server/src/router/check_route.c)
