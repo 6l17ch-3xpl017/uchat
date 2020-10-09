@@ -16,23 +16,23 @@ static void user_data_struct_fill(json_t *user) {
     add_user_to_db(User);
 }
 
-bool user_sign_up(json_t *income_json) {
+bool user_sign_up(json_t *income_json, t_thread_sockuser *socket) {
     json_t *user, *chat, *message;
 // receive json from client and check its correctness
     user = json_object_get(income_json,"user");
     if (!json_is_object(user)) {
         // init and send json error status
-//        send_json_to(socketfd, unknown_error, "sign_up"); //TODO add socketfd from struct list
+        send_json_to_socket(socket->socket, unknown_error, "sign_up");
         json_decref(user);
         return 0;
     }
 // get all data from json and add it to struct / send OK status to client
     else {
-        // init and send json OK status
-//        send_json_to(socketfd, ok, "sign_up"); //TODO add socketfd from struct list
     // add user data to database (process locked by mutex)
     // TODO add mutex function
         user_data_struct_fill(user);
+        // init and send json OK status
+        send_json_to_socket(socket->socket, ok, "sign_up");
         json_decref(user);
         return 1;
     }
