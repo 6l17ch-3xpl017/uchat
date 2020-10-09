@@ -29,7 +29,7 @@ void init_database() {
                               "\"email\"\tTEXT UNIQUE,\n"
                               "\"age\"\tINTEGER,\n"
                               "\"fullname\"\tTEXT,\n"
-                              "\"phone_number\"\tTEXT,\n"
+                              "\"phone_number\"\tTEXT UNIQUE,\n"
                               "\"user_photo\"\tTEXT,\n"
                               "\"options\"\tTEXT,\n"
                               "PRIMARY KEY(\"id\" AUTOINCREMENT)\n"

@@ -14,6 +14,7 @@ add_executable(db_dev
         src/sqlite3_lib/user_in_bd.c
         src/sqlite3_lib/init_database.c
         src/main.c
+        src/sqlite3_lib/check_valid_data_for_sign_up.c
         src/additional/mx_itoa.c src/sqlite3_lib/populate_User_struct.c src/additional/print_user_info.c src/sqlite3_lib/add_id_to_struct_User.c src/sqlite3_lib/add_id_to_struct_Chat.c src/additional/print_chat_info.c src/sqlite3_lib/get_chats_where_user.c src/additional/mx_del_strarr.c src/additional/mx_strdel.c src/additional/mx_strnew.c)
 
 include_directories(/usr/include)

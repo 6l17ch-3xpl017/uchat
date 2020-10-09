@@ -6,8 +6,8 @@ int main() {
 
     t_user *User = (t_user *)malloc(sizeof(t_user));
     User->id = NULL;
-    User->nickname = strdup("dushakov");
-    User->password = strdup("qwerty");
+    User->nickname = NULL;
+    User->password = NULL;
     User->email = NULL;
     User->age = NULL;
     User->fullname = NULL;
@@ -17,11 +17,11 @@ int main() {
     User->chats = NULL;
     User->number_of_chats = 0;
 
-//    printf("%s\n\n", user_in_db(User));
-    user_in_db(User);
+//    printf("%d\n\n", user_in_db(User));
+//    user_in_db(User);
 
-//    add_user_to_db(User);
-    print_user_info(User);
+    printf("%d\n", add_user_to_db(User));
+//    print_user_info(User);
 
 //    t_chat *Chat = malloc(sizeof(t_chat));
 //    Chat->chat_id = NULL;

@@ -27,7 +27,7 @@ static int callback_to_get_password(void *my_arg, int argc, char **argv, char **
  * @return - "Function fail" can't be in any case. If this function returned this message - something went wrong.
  */
 
-char *user_in_db(t_user *User) {
+int user_in_db(t_user *User) {
     sqlite3 *db;
     char *error = NULL;
     char *error1 = NULL;
@@ -39,7 +39,7 @@ char *user_in_db(t_user *User) {
     result = sqlite3_open("chat_database.db", &db);
     if (result != SQLITE_OK) {
         printf("Can't open database\n");
-        exit(1);
+        return can_not_open_db;
     }
 
     if (User->nickname) {
@@ -57,7 +57,7 @@ char *user_in_db(t_user *User) {
     else {
         sqlite3_close(db);
         free(password);
-        return "User->nickname and User->email can't be NULL";
+        return nickname_and_email_can_not_be_null;
     }
 
     result = sqlite3_exec(db, request, callback_number_of_email_or_nickname, &number_of_users_with_such_nick_or_email,
@@ -72,7 +72,7 @@ char *user_in_db(t_user *User) {
         sqlite3_close(db);
         free(request);
         free(password);
-        return "Login incorrect";
+        return login_incorrect;
     }
 
     if (request)
@@ -102,14 +102,14 @@ char *user_in_db(t_user *User) {
             free(request);
             sqlite3_close(db);
             populate_User_struct(User);
-            return "Login and password correct";
+            return login_and_password_correct;
         }
         else {
             free(password->password);
             free(password);
             free(request);
             sqlite3_close(db);
-            return "Password incorrect";
+            return password_incorrect;
         }
     }
 
@@ -119,6 +119,6 @@ char *user_in_db(t_user *User) {
     if (request)
         free(request);
 
-    return "Function fail";
+    return function_fail;
 }
 
