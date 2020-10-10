@@ -13,7 +13,9 @@ static t_page *init_page(char *page_file_path)
 
     t_page *login_page = calloc(1, sizeof(t_page));
     login_page->widgets_count = 1;
+
     login_page->widgets = create_window(page_file_path);
+
     login_page->widgets_names = malloc(sizeof(char *) * login_page->widgets_count);
 
     //ToDo: rework this

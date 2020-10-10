@@ -30,7 +30,7 @@ GSList *create_window(const char *glade_filename)
     glist = gtk_builder_get_objects(builder);
 
     /* помните, мы подключали сигналы вручную? теперь это происходит автоматически! */
-    gtk_builder_connect_signals (builder, NULL);
+    gtk_builder_connect_signals(builder, NULL);
 
     /* free our builder */
     g_object_unref(builder);

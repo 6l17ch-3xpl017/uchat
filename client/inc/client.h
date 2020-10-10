@@ -6,27 +6,46 @@
 #include <gtk/gtk.h>
 #include <macro_collections.h>
 
+#include <jansson.h>
+#include <netdb.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+
+
 #include "page_selector.h"
 
-typedef struct s_connection
-{
-    int socket;
-}              t_connection;
+#define MAXL 8000
+#define PORT 5000
+#define SA struct sockaddr
 
-typedef struct s_client_data
-{
-
-}              t_client_data;
+#define LOGIN "sing_in"
+#define REGISTER "sing_up"
 
 typedef struct s_user_data
 {
-    char *type;
+    char *status;
+    char *type; //ToDo: Rename
 
-    const gchar *login;
-    const gchar *pass;
+    struct s_user_attributes
+    {
+        char username[128];
+        char password[128];
+        char email[128];
+        char age[128];
+        char fullname[128];
+        char ph_number[128];
+        char user_photo[128];
+        char options[128];
+    } user_attributes;
 
-    char *options;
-}               t_user_data;
+    struct s_server_attributes
+    {
+        int socket;
+    } server_attributes;
+
+}              t_user_data;
 
 
 #endif //UCHAT_GUI_CLIENT_H
