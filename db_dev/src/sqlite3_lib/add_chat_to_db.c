@@ -46,18 +46,15 @@ static void concatenate_with_request(char **request, char *info) {
  *        can't be NULL.
  */
 
-void add_chat_to_db(t_chat *Chat) {
+int add_chat_to_db(t_chat *Chat) {
     int result;
     sqlite3 *db;
-    char *error = NULL;
     char *request = NULL;
 
-    request = (char *)malloc(sizeof(char) * get_len_of_request(Chat));
+    if (!Chat->chat_name || !Chat->admin_id)
+        return chat_name_and_admin_id_can_not_be_null;
 
-    if (!Chat->chat_name || !Chat->admin_id) {
-        printf("Chat->chat_name or Chat->admin_id can't be NULL!\n");
-        return;
-    }
+    request = (char *)malloc(sizeof(char) * get_len_of_request(Chat));
 
     request = strcpy(request, "INSERT INTO Chats (chat_name, admin_id, chat_photo, options) VALUES (");
     concatenate_with_request(&request, Chat->chat_name);
@@ -68,14 +65,14 @@ void add_chat_to_db(t_chat *Chat) {
     // ----------------------------adding to the database----------------------------
     result = sqlite3_open("chat_database.db", &db);
     if (result != SQLITE_OK) {
-        printf("Can't open database\n");
-        exit(1);
+        mx_strdel(&request);
+        return can_not_open_db;
     }
 
-    result = sqlite3_exec(db, request, 0, 0, &error);
+    result = sqlite3_exec(db, request, 0, 0, 0);
     if (result != SQLITE_OK) {
-        fprintf(stderr, "SQL error: %s\n", error);
-        sqlite3_free(error);
+        mx_strdel(&request);
+        return can_not_add_to_database;
     }
     sqlite3_close(db);
     // -------------------------------------------------------------------------------
@@ -84,4 +81,6 @@ void add_chat_to_db(t_chat *Chat) {
 
     if (request)
         free(request);
+
+    return successfully_added_to_db;
 }

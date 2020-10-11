@@ -38,9 +38,10 @@ static char *make_request(char *wrapper,char *filling) {
  * @param User - pointer to structure in which function will copy data from database.
  */
 
-void populate_User_struct(t_user *User) {
+int populate_User_struct(t_user *User) {
     sqlite3 *database;
     char *request = NULL;
+    int temp_res;
 
     sqlite3_open("chat_database.db", &database);
     if (User->nickname)
@@ -51,6 +52,9 @@ void populate_User_struct(t_user *User) {
     sqlite3_exec(database, request, callback, User, 0);
     free(request);
     sqlite3_close(database);
-    get_chats_where_user(User);
+    if ((temp_res = get_chats_where_user(User)) != success) {
+        return temp_res;
+    }
+    return success;
 }
 

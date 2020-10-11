@@ -101,7 +101,8 @@ int user_in_db(t_user *User) {
             free(password);
             free(request);
             sqlite3_close(db);
-            populate_User_struct(User);
+            if (populate_User_struct(User) != success)
+                return function_fail;
             return login_and_password_correct;
         }
         else {

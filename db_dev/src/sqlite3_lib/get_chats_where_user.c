@@ -34,10 +34,9 @@ static void make_request(char **request, char *id, char *request_content) {
     *request = strcat(*request, "\";");
 }
 
-void get_chats_where_user(t_user *User) {
+int get_chats_where_user(t_user *User) {
     sqlite3 *database;
     char *request = NULL;
-    char *error;
     int result;
 
 // temp structure to keep all id numbers
@@ -46,11 +45,17 @@ void get_chats_where_user(t_user *User) {
 
 // first request to get all user's chat id numbers
     make_request(&request, User->id, "SELECT chat_id FROM Chat_User WHERE user_id = \"");
-    sqlite3_open("chat_database.db", &database);
-    result = sqlite3_exec(database, request, callback_for_id, chats_id, &error);
+    result = sqlite3_open("chat_database.db", &database);
     if (result != SQLITE_OK) {
-        fprintf(stderr, "SQL error: %s\n", error);
-        sqlite3_free(error);
+        mx_strdel(&request);
+        free(chats_id);
+        return can_not_open_db;
+    }
+    result = sqlite3_exec(database, request, callback_for_id, chats_id, 0);
+    if (result != SQLITE_OK) {
+        mx_strdel(&request);
+        free(chats_id);
+        return request_failed;
     }
     mx_strdel(&request);
 
@@ -60,7 +65,7 @@ void get_chats_where_user(t_user *User) {
     t_chat *temp_chat = User->chats;
     for (int i = 0; i < chats_id->number_of_chats; i++) {
         make_request(&request, chats_id->chat_id[i], "SELECT * FROM Chats WHERE chat_id = \"");
-        sqlite3_exec(database, request, callback_for_data, temp_chat, &error);
+        sqlite3_exec(database, request, callback_for_data, temp_chat, 0);
         temp_chat->next = (t_chat *) malloc(sizeof(t_chat));
         temp_chat = temp_chat->next;
         mx_strdel(&request);
@@ -75,4 +80,5 @@ void get_chats_where_user(t_user *User) {
 
     free(chats_id);
     sqlite3_close(database);
+    return success;
 }
