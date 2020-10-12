@@ -12,21 +12,29 @@
 #include "jansson.h"
 #include "jansson_config.h"
 #include "header_db_dev.h"
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <signal.h>
+#include <sys/stat.h>
+#include <syslog.h>
+#include <time.h>
+//#include "openssl/inc/openssl/bio.h"
 
-//typedef struct s_user {
-//    char *nickname;
-//    char *password;
-//    char *email;
-//    char *age;
-//    char *fullname;
-//    char *ph_number;
-//    char *user_photo;
-//    void *option;
-//    struct s_user *next;
-//} t_user;
+enum status {
+    unknown_error = -10,
+    ok_check_route = 5,
+    ok = 7,
+};
+
+typedef struct s_thread_sockuser {
+    int socket;
+    char *user;
+} t_thread_sockuser;
 
 // router
-void check_route(char *str);
-bool user_sign_in(json_t *income_json);
+int check_route(char *str, t_thread_sockuser *thread);
+bool user_sign_in(json_t *income_json, t_thread_sockuser *socket);
+bool user_sign_up(json_t *income_json, t_thread_sockuser *socket);
+void send_status(int socketfd, int status, char *func);
 
 #endif

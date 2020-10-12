@@ -1,13 +1,63 @@
+//{
+//  "size": "100",
+//  "type": "sign_up",
+//  "user": {
+//    "nickname": "illia",
+//    "password": "123asd",
+//    "email": "test@test.test",
+//    "age": "18",
+//    "fullname": "illiash",
+//    "ph_number": "0983303840",
+//    "user_photo": "101010101",
+//    "option": "test"
+//  }
+//}
 {
-  "type": "sign_up",
-  "user": {
-    "nickname": "illia",
-    "password": "123asd",
-    "email": "test@test.test",
-    "age": "18",
-    "fullname": "illiash",
-    "ph_number": "0983303840",
-    "user_photo": "101010101",
-    "option": "test"
-  }
+  "size": "100",
+  "user": "qwerty",
+  "chat": "test",
+  "message": [
+    {
+      "from": "test1",
+      "to": "test2",
+      "message": "asdfghjkl",
+      "time": "03.10.2005",
+      "prev": "-1",
+      "next": "1"
+    },
+    {
+      "from": "test1",
+      "to": "test2",
+      "message": "asdfghjkl",
+      "time": "03.10.2005",
+      "prev": "-1",
+      "next": "1"
+    },
+    {
+      "from": "test1",
+      "to": "test2",
+      "message": "asdfghjkl",
+      "time": "03.10.2005",
+      "prev": "-1",
+      "next": "1"
+    },
+    {
+      "from": "test1",
+      "to": "test2",
+      "message": "asdfghjkl",
+      "time": "03.10.2005",
+      "prev": "-1",
+      "next": "1"
+    },
+    {
+      "from": "test1",
+      "to": "test2",
+      "message": "asdfghjkl",
+      "time": "03.10.2005",
+      "prev": "-1",
+      "next": "1"
+    }
+  ]
 }
+
+
