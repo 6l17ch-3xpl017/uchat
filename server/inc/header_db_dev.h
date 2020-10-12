@@ -65,29 +65,43 @@ enum sing_in_sing_up_db {
     can_not_add_to_database = 108,
     nickname_was_already_signed_up = 109,
     email_was_already_signed_up = 110,
+    id_can_not_be_null = 111,
     phone_number_was_already_signed_up = 112,
     success = 113,
-    nickname_and_password_can_not_be_null = 114
+    nickname_and_password_can_not_be_null = 114,
+    chat_name_and_admin_id_can_not_be_null = 115,
+    request_failed = 116
 };
 
-//char *mx_itoa(int number);
-//void mx_del_strarr(char ***arr);
-//void mx_strdel(char **str);
-//char *mx_strnew(int size);
+enum db_init {
+    can_not_create_users_table = 117,
+    can_not_create_chats_table = 118,
+    can_not_create_chat_user_table = 119,
+    can_not_create_messages_table = 120,
+    database_was_connected = 121
+};
+
+
+
+char *mx_itoa(int number);
+void mx_del_strarr(char ***arr);
+void mx_strdel(char **str);
+char *mx_strnew(int size);
+void decoding_enum(int enum_number);
 
 int user_in_db(t_user *User);
-void populate_User_struct(t_user *User);
-void init_database();
+int populate_User_struct(t_user *User);
+int init_database();
 void drop_all();
-void get_chats_where_user(t_user *User);
+int get_chats_where_user(t_user *User);
 int check_valid_data_for_sign_up(t_user *User);
-
+int delete_user(t_user *User);
 int add_user_to_db(t_user *User);
-void add_chat_to_db(t_chat *Chat);
-
+int add_chat_to_db(t_chat *Chat);
+int update_nickname_of_user(t_user *User, char *new_nickname);
 void print_user_info(t_user *User);
 void print_chat_info(t_chat *Chat);
-
+int update_email_of_user(t_user *User, char *new_email);
 void add_id_to_struct_User(t_user *User);
 void add_id_to_struct_Chat(t_chat *Chat);
 

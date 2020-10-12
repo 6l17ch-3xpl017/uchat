@@ -1,4 +1,4 @@
-#include "server.h"
+#include "header_db_dev.h"
 
 static int callback_number_of_email_or_nickname(void *my_arg, int argc, char **argv, char **array) {
     int *result = (int *)my_arg;
@@ -101,7 +101,8 @@ int user_in_db(t_user *User) {
             free(password);
             free(request);
             sqlite3_close(db);
-            populate_User_struct(User);
+            if (populate_User_struct(User) != success)
+                return function_fail;
             return login_and_password_correct;
         }
         else {
@@ -121,3 +122,4 @@ int user_in_db(t_user *User) {
 
     return function_fail;
 }
+

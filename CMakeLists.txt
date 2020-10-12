@@ -321,14 +321,8 @@ add_executable(uchat
         server/resources/libmx/src/mx_strstr.c
         server/resources/libmx/src/mx_strtrim.c
         server/resources/libmx/src/mx_swap_char.c
-        server/src/db/add_chat_to_db.c
-        server/src/db/add_id_to_struct_chat.c
-        server/src/db/add_id_to_struct_user.c
-        server/src/db/add_user_to_db.c
-        server/src/db/if_user_in_bd.c
-        server/src/db/init_database.c
         server/src/main/main.c
-        server/src/router/auth/send_json_to.c
+        server/src/router/auth/send_errors.c
         server/src/router/auth/sign_in.c
         server/src/router/auth/sign_up.c
         server/src/router/check_route.c)

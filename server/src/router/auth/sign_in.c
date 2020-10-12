@@ -10,6 +10,8 @@ static void user_struct_filling_with_null(t_user *User) {
     User->ph_number = NULL;
     User->user_photo = NULL;
     User->option = NULL;
+    User->number_of_chats = 0;
+    User->chats = NULL;
 }
 
 static void json_sign_in_parse(t_user *User, json_t *user_in) {
@@ -32,25 +34,27 @@ static void json_sign_in_parse(t_user *User, json_t *user_in) {
 bool user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
     t_user *User;
     json_t *user_in, *user_out, *chat_array;
+    int check_status;
 
     init_database();
     User = (t_user *) malloc(sizeof(t_user));
     user_in = json_object_get(income_json, "user");
     if (!json_is_object(user_in)) {
         // init and send json error status
-        send_json_to_socket(socket->socket, unknown_error, "sign_in");
+        send_status(socket->socket, unknown_error, "sign_in");
         return 0; // false
     } else {
         // move user`s input data to structure
         user_struct_filling_with_null(User);
         // extract input data from user
         json_sign_in_parse(User, user_in);
-        // check whether client is registered
-//        if (user_in_db(User) == -4) { //todo add enum in db inc for errors
-//            send_json_to_socket(socket->socket, not_reg_user, "sign_in");
-//        } else {
+        // check whether user is already registered
+        check_status = user_in_db(User);
+        send_status(socket->socket, check_status, "sign_in");
+
+//        else {
 //            // init and send json OK status to client
-//            send_json_to_socket(socket->socket, ok, "sign_in");
+//            send_errors(socket->socket, ok, "sign_in");
 //            user_out = json_object();
 //            json_object_set_new(user_out, "user", json_string("//////////////////"));
 //            chat_array = json_array();
@@ -65,6 +69,7 @@ bool user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
     printf("%d", user_in_db(User));
     printf("\nNICK: %s\n", User->nickname);
     printf("PASS: %s\n", User->password);
+    printf("AGE: %s\n", User->age);
     printf("USER_IN_DB (sign_in func)\n");
     //-------------------------------------------------
 

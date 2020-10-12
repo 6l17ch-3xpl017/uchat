@@ -1,4 +1,4 @@
-#include "server.h"
+#include "header_db_dev.h"
 
 static int get_len_of_item(char *item) {
     if (item)
@@ -71,7 +71,7 @@ int add_user_to_db(t_user *User) {
     // -----------------------------------making request-----------------------------------------------
     request = (char *)malloc(sizeof(char) * get_len_of_request(User));
     request = strcpy(request, "INSERT INTO Users (nickname, password, email, age, fullname, phone_number"
-                              ", user_photo, options) VALUES ('");
+                                  ", user_photo, options) VALUES ('");
     request = strcat(request, User->nickname);
     request = strcat(request, "', '");
     request = strcat(request, User->password);
