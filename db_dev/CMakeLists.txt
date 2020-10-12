@@ -7,17 +7,19 @@ include_directories(inc)
 
 add_executable(db_dev
         inc/header_db_dev.h
-        src/sqlite3_lib/add_chat_to_db.c
-        src/sqlite3_lib/add_message_to_db.c
-        src/sqlite3_lib/add_user_to_db.c
-        src/sqlite3_lib/drop_all.c
-        src/sqlite3_lib/user_in_bd.c
-        src/sqlite3_lib/init_database.c
+        src/sqlite3_lib/create/add_chat_to_db.c
+        src/sqlite3_lib/create/add_message_to_db.c
+        src/sqlite3_lib/create/add_user_to_db.c
+        src/sqlite3_lib/delete/drop_all.c
+        src/sqlite3_lib/insert/user_in_bd.c
+        src/sqlite3_lib/create/init_database.c
         src/main.c
-        src/sqlite3_lib/check_valid_data_for_sign_up.c
-        src/additional/decoding_enum.c
-        src/sqlite3_lib/delete_user.c
-        src/additional/mx_itoa.c src/sqlite3_lib/populate_User_struct.c src/additional/print_user_info.c src/sqlite3_lib/add_id_to_struct_User.c src/sqlite3_lib/add_id_to_struct_Chat.c src/additional/print_chat_info.c src/sqlite3_lib/get_chats_where_user.c src/additional/mx_del_strarr.c src/additional/mx_strdel.c src/additional/mx_strnew.c)
+        src/sqlite3_lib/insert/check_valid_data_for_sign_up.c
+        src/additional/sql/decoding_enum.c
+        src/sqlite3_lib/delete/delete_user.c
+        src/sqlite3_lib/update/update_nickname_of_user.c
+        src/sqlite3_lib/update/update_email_of_user.c
+        src/additional/lib/mx_itoa.c src/sqlite3_lib/insert/populate_User_struct.c src/additional/sql/print_user_info.c src/sqlite3_lib/insert/add_id_to_struct_User.c src/sqlite3_lib/insert/add_id_to_struct_Chat.c src/additional/sql/print_chat_info.c src/sqlite3_lib/insert/get_chats_where_user.c src/additional/lib/mx_del_strarr.c src/additional/lib/mx_strdel.c src/additional/lib/mx_strnew.c)
 
 include_directories(/usr/include)
 link_directories(/usr/lib)

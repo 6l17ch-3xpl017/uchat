@@ -98,10 +98,10 @@ int check_valid_data_for_sign_up(t_user *User);
 int delete_user(t_user *User);
 int add_user_to_db(t_user *User);
 int add_chat_to_db(t_chat *Chat);
-
+int update_nickname_of_user(t_user *User, char *new_nickname);
 void print_user_info(t_user *User);
 void print_chat_info(t_chat *Chat);
-
+int update_email_of_user(t_user *User, char *new_email);
 void add_id_to_struct_User(t_user *User);
 void add_id_to_struct_Chat(t_chat *Chat);
 

@@ -6,7 +6,7 @@ int main() {
 
     t_user *User = (t_user *)malloc(sizeof(t_user));
     User->id = NULL;
-    User->nickname = strdup("dusha");
+    User->nickname = strdup("anechytail");
     User->password = strdup("qwerty");
     User->email = NULL;
     User->age = NULL;
@@ -18,7 +18,7 @@ int main() {
     User->number_of_chats = 0;
 
     decoding_enum(user_in_db(User));
-    decoding_enum(delete_user(User));
+    decoding_enum(update_email_of_user(User, "new_email@gmail.com"));
 
 //    printf("%d\n", add_user_to_db(User));
 //    print_user_info(User);
