@@ -5,6 +5,7 @@ static t_user_data user_data;
 static int send_json(json_t *json, int socket)
 {
     char *result = json_dumps(json, 0);
+    printf("%s", result);
     write(socket, result, strlen(result));
     json_decref(json);
     return 1;
@@ -81,6 +82,7 @@ void on_reg_button_activate_link()
     gtk_widget_show(GTK_WIDGET(gp));
 }
 
+// ToDo: Rework this function
 void on_login_button_clicked(GtkWindow *window, GtkContainer *main_box)
 {
     cmc_log_info("LOGIN BUTTON CLICKED");
@@ -113,14 +115,16 @@ void on_remember_check_box_toggled()
     cmc_log_info("REMEMBER CHECKBOX TOGGLED");
 }
 
-void on_password_entry_changed()
+void on_password_entry_changed(GtkEntry *entry)
 {
     cmc_log_info("PASSWORD ENTRY CHANGED");
+    strcpy(user_data.user_attributes.password, gtk_entry_get_text(entry));
 }
 
-void on_username_entry_changed()
+void on_username_entry_changed(GtkEntry *entry)
 {
     cmc_log_info("USERNAME ENTRY CHANGED");
+    strcpy(user_data.user_attributes.username, gtk_entry_get_text(entry));
 }
 /***********************************************/
 
@@ -129,24 +133,8 @@ void on_username_entry_changed()
 void on_submit_button_clicked(GtkButton *button, GtkContainer *entry_box)
 {
     cmc_log_info("CLICK TO SUBMIT BUTTON");
-
-
-    // ToDo: make function get entry text
-//    user_data.user_attributes.fullname = g_list_get_widget(entry_list, "fullname_entry");
-//    user_data.user_attributes.username = g_list_get_widget(entry_list, "username_entry");
-//    user_data.user_attributes.password = g_list_get_widget(entry_list, "password_entry");
-//    //ToDo: raise error on rep_password;
-//
-//    if (strcmp(user_data.user_attributes.password, g_list_get_widget(entry_list, "rep_password_entry")) == 0)
-//
-//    user_data.user_attributes.fullname = g_list_get_widget(entry_list, "fullname_entry");
-//    user_data.user_attributes.fullname = g_list_get_widget(entry_list, "fullname_entry");
-//    user_data.user_attributes.fullname = g_list_get_widget(entry_list, "fullname_entry");
-//    user_data.user_attributes.fullname = g_list_get_widget(entry_list, "fullname_entry");
-
-
-
-
+    user_data.type = REGISTER;
+    create_user_data();
 }
 
 void on_email_entry_changed(GtkEntry *entry)
