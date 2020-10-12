@@ -4,9 +4,11 @@ static t_user_data user_data;
 
 static int send_json(json_t *json, int socket)
 {
+
     char *result = json_dumps(json, 0);
     printf("%s", result);
     write(socket, result, strlen(result));
+    cmc_log_info("%s", result);
     json_decref(json);
     return 1;
 }
@@ -184,7 +186,7 @@ void on_user_logo_press(GtkEntry *entry)
 //ToDo: Split all on logical containers and get with gtk_container_foreach()
 int main(int argc, char *argv[])
 {
-//    init_connection();
+    init_connection();
 
     gtk_init(&argc, &argv);
     t_page *page = select_page(LOGIN_PAGE);
