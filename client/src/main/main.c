@@ -2,14 +2,21 @@
 
 static t_user_data user_data;
 
+static void read_socket()
+{
+    char buf[20000];
+    read(user_data.server_attributes.socket, buf, 20000);
+    cmc_log_info("[%s]", buf);
+}
+
 static int send_json(json_t *json, int socket)
 {
-
     char *result = json_dumps(json, 0);
     printf("%s", result);
     write(socket, result, strlen(result));
     cmc_log_info("%s", result);
     json_decref(json);
+    read_socket();
     return 1;
 }
 
@@ -31,7 +38,7 @@ static int create_user_data()
         json_object_set_new(user, "options", json_string(user_data.user_attributes.options));
     }
 
-    json_object_set_new(json, "status", json_string(user_data.type));
+    json_object_set_new(json, "type", json_string(user_data.type));
     json_object_set_new(json, "user", user);
 
     send_json(json, user_data.server_attributes.socket);
@@ -80,7 +87,6 @@ void on_reg_button_activate_link()
 
     //ToDo: rename variable
     gpointer *gp = get_widget(page->widgets, "reg_window");
-
     gtk_widget_show(GTK_WIDGET(gp));
 }
 
@@ -186,14 +192,14 @@ void on_user_logo_press(GtkEntry *entry)
 //ToDo: Split all on logical containers and get with gtk_container_foreach()
 int main(int argc, char *argv[])
 {
-    init_connection();
+//    init_connection();
 
     gtk_init(&argc, &argv);
-    t_page *page = select_page(LOGIN_PAGE);
+    t_page *page = select_page(REG_PAGE);
 
     //ToDo: rename variable
     gpointer *gp = get_widget(page->widgets, "login_window");
-
+//    cmc_log_info("%s", strerror(errno));
     gtk_widget_show(GTK_WIDGET(gp));
 
     gtk_main();

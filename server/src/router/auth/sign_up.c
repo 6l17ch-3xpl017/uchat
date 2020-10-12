@@ -14,7 +14,7 @@ static void user_data_struct_fill(json_t *user, t_thread_sockuser *socket) {
     User->fullname = strdup(json_string_value(json_object_get(user, "fullname")));
     User->ph_number = strdup(json_string_value(json_object_get(user, "ph_number")));
     User->user_photo = strdup(json_string_value(json_object_get(user, "user_photo")));
-    User->option = strdup(json_string_value(json_object_get(user, "option")));
+    User->option = NULL;//strdup(json_string_value(json_object_get(user, "option")));
     User->number_of_chats = 0;
     User->chats = NULL;
     check_status = add_user_to_db(User);

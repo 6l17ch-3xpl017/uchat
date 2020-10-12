@@ -20,8 +20,8 @@
 #define PORT 5000
 #define SA struct sockaddr
 
-#define LOGIN "sing_in"
-#define REGISTER "sing_up"
+#define LOGIN "sign_in"
+#define REGISTER "sign_up"
 
 #define DEBUG
 #pragma clang diagnostic push

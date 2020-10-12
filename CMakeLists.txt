@@ -73,12 +73,23 @@ else()
     set(S_JANSSON_DIR ${SERVER_DIR}/resources/framework/jansson/temp_for_linux)
 endif ()
 
+#if(EXISTS "${S_LIB_DIR}/libmx.a")
+#    message("libmx all ready created")
+#else()
+#    execute_process (
+#            WORKING_DIRECTORY ${S_LIB_DIR}
+#            COMMAND make
+#    )
+#endif()
+
 # Find server files #
 file(GLOB_RECURSE SERVER_SRC RELATIVE ${CMAKE_SOURCE_DIR} "server/src/*.c")
 file(GLOB_RECURSE SERVER_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "server/inc/*.h")
-
-add_executable(uchat_server ${SERVER_SRC} ${SERVER_HEADERS})
-target_include_directories(uchat_server PRIVATE ${SERVER_DIR}/inc ${S_LIB_DIR}/inc ${S_JANSSON_DIR}/inc)
-target_link_libraries(uchat_server -L${S_JANSSON_DIR} -L${S_LIB_DIR} -ljansson -lsqlite3 -lpthread)
+file(GLOB_RECURSE SERVER_LIB RELATIVE ${CMAKE_SOURCE_DIR} "server/resources/libmx/src/*.c")
+file(GLOB_RECURSE SERVER_LIB_H RELATIVE ${CMAKE_SOURCE_DIR} "server/resources/libmx/inc/*.h")
+include_directories(server/resources/libmx/inc)
+add_executable(uchat_server ${SERVER_SRC} ${SERVER_HEADERS} ${SERVER_LIB} ${SERVER_LIB_H})
+target_include_directories(uchat_server PRIVATE ${SERVER_DIR}/inc ${S_JANSSON_DIR}/inc)
+target_link_libraries(uchat_server -L${S_JANSSON_DIR} -ljansson -lsqlite3 -lpthread)
 
 # Finish building uchat_server #
