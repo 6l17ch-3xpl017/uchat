@@ -19,7 +19,8 @@ add_executable(db_dev
         src/sqlite3_lib/delete/delete_user.c
         src/sqlite3_lib/update/update_nickname_of_user.c
         src/sqlite3_lib/update/update_email_of_user.c
-        src/additional/lib/mx_itoa.c src/sqlite3_lib/insert/populate_User_struct.c src/additional/sql/print_user_info.c src/sqlite3_lib/insert/add_id_to_struct_User.c src/sqlite3_lib/insert/add_id_to_struct_Chat.c src/additional/sql/print_chat_info.c src/sqlite3_lib/insert/get_chats_where_user.c src/additional/lib/mx_del_strarr.c src/additional/lib/mx_strdel.c src/additional/lib/mx_strnew.c)
+        src/sqlite3_lib/insert/mx_del_chat_list.c
+        src/additional/lib/mx_itoa.c src/sqlite3_lib/insert/populate_User_struct.c src/additional/sql/print_user_info.c src/sqlite3_lib/insert/add_id_to_struct_User.c src/sqlite3_lib/insert/add_id_to_struct_Chat.c src/additional/sql/print_chat_info.c src/sqlite3_lib/insert/get_chats_where_user.c src/additional/lib/mx_del_strarr.c src/additional/lib/mx_strdel.c src/additional/lib/mx_strnew.c src/sqlite3_lib/insert/mx_pop_back_for_chat.c src/sqlite3_lib/insert/init_chat_struct.c src/sqlite3_lib/update/update_password_of_user.c)
 
 include_directories(/usr/include)
 link_directories(/usr/lib)

@@ -1,6 +1,8 @@
 #include "header_db_dev.h"
 
 static void free_and_dup(char **a, char *b) {
+    if (*a)
+        free(*a);
     if (b)
         *a = strdup(b);
     else
@@ -65,6 +67,7 @@ int get_chats_where_user(t_user *User) {
     t_chat *temp_chat = User->chats;
     for (int i = 0; i < chats_id->number_of_chats; i++) {
         make_request(&request, chats_id->chat_id[i], "SELECT * FROM Chats WHERE chat_id = \"");
+        init_chat_struct(temp_chat);
         sqlite3_exec(database, request, callback_for_data, temp_chat, 0);
         temp_chat->next = (t_chat *) malloc(sizeof(t_chat));
         temp_chat = temp_chat->next;

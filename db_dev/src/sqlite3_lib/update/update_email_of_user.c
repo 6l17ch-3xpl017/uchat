@@ -35,7 +35,6 @@ int update_email_of_user(t_user *User, char *new_email) {
     sqlite3 *db;
     char *request = NULL;
     int result;
-    char *err_msg;
 
     if (check_new_email(new_email) == email_was_already_signed_up)
         return email_was_already_signed_up;
@@ -49,11 +48,13 @@ int update_email_of_user(t_user *User, char *new_email) {
     else
         make_request_for_null(&request, User->id);
 
-    result = sqlite3_exec(db, request, 0, 0, &err_msg);
+    result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&request);
     sqlite3_close(db);
     if (result != SQLITE_OK)
         return request_failed;
+
+    populate_User_struct(User);
 
     return success;
 }

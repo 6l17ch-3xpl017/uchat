@@ -18,7 +18,8 @@ int main() {
     User->number_of_chats = 0;
 
     decoding_enum(user_in_db(User));
-    decoding_enum(update_email_of_user(User, "new_email@gmail.com"));
+    decoding_enum(update_email_of_user(User, "new_email@gmail.com.ua"));
+    print_user_info(User);
 
 //    printf("%d\n", add_user_to_db(User));
 //    print_user_info(User);

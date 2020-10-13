@@ -52,9 +52,13 @@ int populate_User_struct(t_user *User) {
     sqlite3_exec(database, request, callback, User, 0);
     free(request);
     sqlite3_close(database);
-    if ((temp_res = get_chats_where_user(User)) != success) {
+
+    if (User->chats != NULL)
+        mx_del_chat_list(User->chats, User->number_of_chats);
+
+    if ((temp_res = get_chats_where_user(User)) != success)
         return temp_res;
-    }
+
     return success;
 }
 

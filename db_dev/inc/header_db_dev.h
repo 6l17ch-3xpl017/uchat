@@ -33,12 +33,12 @@ typedef struct s_chat {
 typedef struct s_user {
     char *id;
     char *nickname;
-    char *password;
+    char *password; //todo change
     char *email;
-    char *age;
-    char *fullname;
-    char *ph_number;
-    char *user_photo;
+    char *age; //todo change
+    char *fullname; //todo change
+    char *ph_number; //todo change
+    char *user_photo; //todo change
     void *option;
     struct s_user *next;
     struct s_chat *chats;
@@ -54,6 +54,8 @@ typedef struct s_chats_id {
     int number_of_chats;
 }              t_chats_id;
 
+
+// --------------------------RESULTS OF FUNCTIONS------------------------
 enum sing_in_sing_up_db {
     can_not_open_db = 101,
     nickname_and_email_can_not_be_null = 102,
@@ -80,29 +82,48 @@ enum db_init {
     can_not_create_messages_table = 120,
     database_was_connected = 121
 };
+// -----------------------------------------------------------------------
 
 
+// ------------------------------SQLITE3_LIB------------------------------
+// CREATE
+int init_database();
+int add_user_to_db(t_user *User);
+int add_chat_to_db(t_chat *Chat);
 
+// DELETE
+void drop_all();
+int delete_user(t_user *User);
+
+//INSERT
+int user_in_db(t_user *User);
+int populate_User_struct(t_user *User);
+void init_chat_struct(t_chat *Chat);
+int get_chats_where_user(t_user *User);
+int check_valid_data_for_sign_up(t_user *User);
+void add_id_to_struct_User(t_user *User);
+void add_id_to_struct_Chat(t_chat *Chat);
+void mx_del_chat_list(t_chat *list, int leng);
+void mx_pop_back_for_chat(t_chat **head);
+
+// UPDATE
+int update_nickname_of_user(t_user *User, char *new_nickname);
+int update_password_of_user(t_user *User, char *new_password);
+int update_email_of_user(t_user *User, char *new_email);
+// -----------------------------------------------------------------------
+
+// ------------------------------ADDITIONAL-------------------------------
+// LIBRARY
 char *mx_itoa(int number);
 void mx_del_strarr(char ***arr);
 void mx_strdel(char **str);
 char *mx_strnew(int size);
-void decoding_enum(int enum_number);
 
-int user_in_db(t_user *User);
-int populate_User_struct(t_user *User);
-int init_database();
-void drop_all();
-int get_chats_where_user(t_user *User);
-int check_valid_data_for_sign_up(t_user *User);
-int delete_user(t_user *User);
-int add_user_to_db(t_user *User);
-int add_chat_to_db(t_chat *Chat);
-int update_nickname_of_user(t_user *User, char *new_nickname);
+// SQL
+void decoding_enum(int enum_number);
 void print_user_info(t_user *User);
 void print_chat_info(t_chat *Chat);
-int update_email_of_user(t_user *User, char *new_email);
-void add_id_to_struct_User(t_user *User);
-void add_id_to_struct_Chat(t_chat *Chat);
+// -----------------------------------------------------------------------
+
 
 #endif //UCHAT_HEADER_DB_DEV_H
