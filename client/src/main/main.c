@@ -79,15 +79,15 @@ static void init_connection(void)
 }
 
 /** login_window **/
-void on_reg_button_activate_link()
+void on_reg_button_activate_link(GtkWidget *window, GtkWidget *windoww)
 {
     cmc_log_info("SIGN_UP BUTTON CLICKED");
-
-    t_page *page = select_page(REG_PAGE);
-
-    //ToDo: rename variable
-    gpointer *gp = get_widget(page->widgets, "reg_window");
-    gtk_widget_show(GTK_WIDGET(gp));
+//
+//    t_page *page = select_page(REG_PAGE);
+//
+//    //ToDo: rename variable
+//    gpointer *gp = get_widget(page->widgets, "reg_window");
+    gtk_widget_show_now(windoww);
 }
 
 // ToDo: Rework this function
@@ -99,7 +99,7 @@ void on_login_button_clicked(GtkWindow *window, GtkContainer *main_box)
 
     GList *main_list = gtk_container_get_children(main_box);
 
-    GtkContainer *username_box = g_list_get_widget(main_list, "username_box");
+    GtkContainer *username_box = g_list_get_widget(main_list, "login_username_box");
     GtkContainer *password_box = g_list_get_widget(main_list, "password_box");
 
     GList *username_list = gtk_container_get_children(username_box);
@@ -195,12 +195,12 @@ int main(int argc, char *argv[])
 //    init_connection();
 
     gtk_init(&argc, &argv);
-    t_page *page = select_page(REG_PAGE);
+    t_page *page = select_page(TEST_PAGE);
 
     //ToDo: rename variable
     gpointer *gp = get_widget(page->widgets, "login_window");
 //    cmc_log_info("%s", strerror(errno));
-    gtk_widget_show(GTK_WIDGET(gp));
+    gtk_widget_show_now(GTK_WIDGET(gp));
 
     gtk_main();
     system("leaks -q uchat_gui");

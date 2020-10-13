@@ -26,7 +26,6 @@ GSList *create_window(const char *glade_filename)
         g_critical("Не могу загрузить файл: %s", error->message);
         g_error_free(error);
     }
-
     glist = gtk_builder_get_objects(builder);
 
     /* помните, мы подключали сигналы вручную? теперь это происходит автоматически! */

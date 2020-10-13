@@ -16,14 +16,14 @@ static t_page *init_page(char *page_file_path)
 
     login_page->widgets = create_window(page_file_path);
 
-    login_page->widgets_names = malloc(sizeof(char *) * login_page->widgets_count);
-
-    //ToDo: rework this
-    for (GSList *gtemp = login_page->widgets; gtemp != NULL; gtemp = gtemp->next)
-    {
-        login_page->widgets_names[login_page->widgets_count - 1] = strdup(gtk_buildable_get_name(gtemp->data));
-        login_page->widgets_names = realloc(login_page->widgets_names, ++login_page->widgets_count);
-    }
+//    login_page->widgets_names = malloc(sizeof(char *) * login_page->widgets_count);
+//
+//    //ToDo: rework this
+//    for (GSList *gtemp = login_page->widgets; gtemp != NULL; gtemp = gtemp->next)
+//    {
+//        login_page->widgets_names[login_page->widgets_count - 1] = strdup(gtk_buildable_get_name(gtemp->data));
+//        login_page->widgets_names = realloc(login_page->widgets_names, ++login_page->widgets_count);
+//    }
 
     return login_page;
 }

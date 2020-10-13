@@ -4,6 +4,7 @@
 #define LOGIN_PAGE "../client/resources/glade/login_page.glade"
 #define REG_PAGE "../client/resources/glade/register_page_2.glade"
 #define MAIN_PAGE "../client/resources/glade/main_page.glade"
+#define TEST_PAGE "../client/resources/glade/test_all_window.glade"
 
 typedef enum _loging_page_selector
 {

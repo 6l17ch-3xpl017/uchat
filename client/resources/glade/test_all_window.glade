@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <!-- Generated with glade 3.38.1 -->
+<!-- Generated with glade 3.38.1 -->
 <interface>
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.24"/>
+  <!-- interface-local-resource-path images -->
   <object class="GtkWindow" id="login_window">
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">xChat</property>
@@ -16,7 +17,7 @@
         <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkImage" id="logo">
+          <object class="GtkImage" id="login_logo">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="pixbuf">logo.png</property>
@@ -28,12 +29,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="username_box">
+          <object class="GtkBox" id="login_username_box">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkEntry" id="log_username_entry">
+              <object class="GtkEntry" id="username_entry">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="margin-left">65</property>
@@ -44,7 +45,7 @@
                 <property name="primary-icon-stock">gtk-edit</property>
                 <property name="secondary-icon-stock">gtk-delete</property>
                 <property name="placeholder-text" translatable="yes">Username</property>
-                <signal name="changed" handler="on_username_entry_changed" object="username_box" swapped="no"/>
+                <signal name="changed" handler="on_username_entry_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -76,7 +77,7 @@
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkEntry" id="log_password_entry">
+              <object class="GtkEntry" id="password_entry">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="margin-left">65</property>
@@ -120,7 +121,7 @@
                 <property name="margin-top">10</property>
                 <property name="margin-bottom">10</property>
                 <property name="draw-indicator">True</property>
-                <signal name="toggled" handler="on_remember_check_box_toggled" object="username_box" swapped="no"/>
+                <signal name="toggled" handler="on_remember_check_box_toggled" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -151,7 +152,7 @@
                 <property name="margin-right">95</property>
                 <property name="margin-top">10</property>
                 <property name="margin-bottom">10</property>
-                <signal name="clicked" handler="on_login_button_clicked" object="main_box" swapped="no"/>
+                <signal name="clicked" handler="on_login_button_clicked" object="login_window" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -174,7 +175,7 @@
                     <property name="hexpand">True</property>
                     <property name="relief">none</property>
                     <property name="use-underline">True</property>
-                    <signal name="activate-link" handler="on_reg_button_activate_link" object="username_box" swapped="no"/>
+                    <signal name="activate-link" handler="on_reg_button_activate_link" object="reg_window" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -219,7 +220,6 @@
       </object>
     </child>
   </object>
-        <!-- interface-local-resource-path images -->
   <object class="GtkWindow" id="reg_window">
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">xChat</property>
@@ -233,7 +233,7 @@
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <child>
-          <object class="GtkBox" id="left_box">
+          <object class="GtkBox" id="reg_left_box">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="valign">center</property>
@@ -242,12 +242,12 @@
             <property name="vexpand">True</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkEventBox" id="user_avatar_event_box">
+              <object class="GtkEventBox" id="reg_user_avatar_event_box">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <signal name="button-press-event" handler="on_user_logo_press" object="entry_box" swapped="no"/>
+                <signal name="button-press-event" handler="on_user_logo_press" swapped="no"/>
                 <child>
-                  <object class="GtkImage" id="user_avatar">
+                  <object class="GtkImage" id="reg_user_avatar">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="pixbuf">profiles-avatar-svgrepo-com.svg</property>
@@ -263,13 +263,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="decor_box">
+              <object class="GtkBox" id="reg_decor_box">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <child>
-                  <object class="GtkLabel" id="hey_lable">
+                  <object class="GtkLabel" id="reg_hey_lable">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="margin-end">5</property>
@@ -285,7 +285,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="new_user_lable">
+                  <object class="GtkLabel" id="reg_new_user_lable">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">I AM NEW USER</property>
@@ -314,7 +314,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="right_box">
+          <object class="GtkBox" id="reg_right_box">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
@@ -337,20 +337,20 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="entry_box">
+              <object class="GtkBox" id="reg_entry_box">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkEntry" id="fullname_entry">
+                  <object class="GtkEntry" id="reg_fullname_entry">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="max-length">128</property>
                     <property name="shadow-type">none</property>
                     <property name="primary-icon-stock">gtk-orientation-portrait</property>
                     <property name="placeholder-text" translatable="yes">Full Name</property>
-                    <signal name="changed" handler="on_fullname_entry_changed" object="entry_box" swapped="no"/>
+                    <signal name="changed" handler="on_fullname_entry_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -365,7 +365,7 @@
                     <property name="max-length">128</property>
                     <property name="primary-icon-stock">gtk-dialog-question</property>
                     <property name="placeholder-text" translatable="yes">Nickname</property>
-                    <signal name="changed" handler="on_username_entry_changed" object="new_user_lable" swapped="no"/>
+                    <signal name="changed" handler="on_username_entry_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -382,7 +382,7 @@
                     <property name="invisible-char">*</property>
                     <property name="primary-icon-stock">gtk-preferences</property>
                     <property name="placeholder-text" translatable="yes">Password</property>
-                    <signal name="changed" handler="on_password_entry_changed" object="entry_box" swapped="no"/>
+                    <signal name="changed" handler="on_password_entry_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -399,7 +399,7 @@
                     <property name="invisible-char">*</property>
                     <property name="primary-icon-stock">gtk-disconnect</property>
                     <property name="placeholder-text" translatable="yes">Confirm Password</property>
-                    <signal name="changed" handler="on_rep_password_entry_changed" object="password_entry" swapped="no"/>
+                    <signal name="changed" handler="on_rep_password_entry_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -408,13 +408,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="age_entry">
+                  <object class="GtkEntry" id="reg_age_entry">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="max-length">128</property>
                     <property name="primary-icon-stock">gtk-properties</property>
                     <property name="placeholder-text" translatable="yes">Age</property>
-                    <signal name="changed" handler="on_age_entry_changed" object="entry_box" swapped="no"/>
+                    <signal name="changed" handler="on_age_entry_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -423,13 +423,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="phonenumber_entry">
+                  <object class="GtkEntry" id="reg_phonenumber_entry">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="max-length">128</property>
                     <property name="primary-icon-stock">gtk-dialog-authentication</property>
                     <property name="placeholder-text" translatable="yes">Phone Number</property>
-                    <signal name="changed" handler="on_phonenumber_entry_changed" object="entry_box" swapped="no"/>
+                    <signal name="changed" handler="on_phonenumber_entry_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -438,13 +438,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="email_entry">
+                  <object class="GtkEntry" id="reg_email_entry">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="max-length">128</property>
                     <property name="primary-icon-stock">gtk-bold</property>
                     <property name="placeholder-text" translatable="yes">Email</property>
-                    <signal name="changed" handler="on_email_entry_changed" object="entry_box" swapped="no"/>
+                    <signal name="changed" handler="on_email_entry_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -460,14 +460,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="submit_button">
+              <object class="GtkButton" id="reg_submit_button">
                 <property name="label" translatable="yes">SUBMIT</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <property name="margin-start">35</property>
                 <property name="margin-end">35</property>
-                <signal name="clicked" handler="on_submit_button_clicked" object="entry_box" swapped="no"/>
+                <signal name="clicked" handler="on_submit_button_clicked" object="reg_entry_box" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>

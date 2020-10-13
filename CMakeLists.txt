@@ -53,7 +53,7 @@ file(GLOB_RECURSE CLIENT_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "client/inc/*.h")
 add_executable(uchat_gui ${CLIENT_SRC} ${CLIENT_HEADERS})
 add_definitions(${GTK3_IFLAGS})
 
-target_compile_options(uchat_gui PRIVATE ${GTK3_IFLAGS})
+target_compile_options(uchat_gui PRIVATE ${GTK3_IFLAGS} -rdynamic)
 target_include_directories(
         uchat_gui PRIVATE ${CLIENT_DIR}/inc ${C_LIB_DIR}/inc
         ${C_JANSSON_DIR}/inc ${CMC_DIR} ${MACROS_DIR})
