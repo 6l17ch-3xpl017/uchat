@@ -32,6 +32,7 @@
 
 typedef struct s_user_data
 {
+    t_page *page;
     char *status;
     char *type; //ToDo: Rename
 

@@ -189,19 +189,59 @@ void on_user_logo_press(GtkEntry *entry)
 
 /***********************************************/
 
+
+
+
+
+
+/* Test Chat Window */
+
+void send_msg(GtkButton *chat_send_btn, GtkTextView *chat_msg_entry)
+{
+    GtkTextIter start, end;
+    GtkTextBuffer *buffer = gtk_text_view_get_buffer (chat_msg_entry);
+    gchar *text;
+
+    gtk_text_buffer_get_bounds (buffer, &start, &end);
+    text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+
+//    cmc_log_info("[Buffer text: %s]", text);
+
+    gpointer *gp = get_widget(user_data.page->widgets, "chat_msg_lst_box");
+    GtkWidget *msg = gtk_label_new(text);
+
+    gtk_list_box_insert(GTK_LIST_BOX(gp), msg, -1);
+    gtk_widget_show_all(GTK_WIDGET(gp));
+
+    g_free(text);
+}
+
+/***********************************************/
+
+
+
+
 //ToDo: Split all on logical containers and get with gtk_container_foreach()
 int main(int argc, char *argv[])
 {
 //    init_connection();
 
     gtk_init(&argc, &argv);
-    t_page *page = select_page(TEST_PAGE);
+    user_data.page = select_page(TEST_PAGE);
 
     //ToDo: rename variable
-    gpointer *gp = get_widget(page->widgets, "login_window");
+    gpointer *gp = get_widget(user_data.page->widgets, "chat_app");
 //    cmc_log_info("%s", strerror(errno));
     gtk_widget_show_now(GTK_WIDGET(gp));
 
+    gp = get_widget(user_data.page->widgets, "chat_room_lst");
+
+    GtkWidget *btn = gtk_button_new_with_label("Test");
+    GtkWidget *btn1 = gtk_button_new_with_label("Test1");
+
+    gtk_list_box_insert(GTK_LIST_BOX(gp), btn, -1);
+    gtk_list_box_insert(GTK_LIST_BOX(gp), btn1, -1);
+    gtk_widget_show_all(GTK_WIDGET(gp));
     gtk_main();
     system("leaks -q uchat_gui");
     return 0;
