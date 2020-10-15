@@ -26,7 +26,7 @@ typedef struct s_user {
     char *password;
     char *email;
     char *age;
-    char *fullname; //todo change
+    char *fullname;
     char *ph_number; //todo change
     char *user_photo; //todo change
     void *option;
@@ -113,6 +113,8 @@ int update_nickname_of_user(t_user *User, char *new_nickname);
 int update_password_of_user(t_user *User, char *new_password);
 int update_email_of_user(t_user *User, char *new_email);
 int update_age_of_user(t_user *User, char *new_age);
+int update_fullname_of_user(t_user *User, char *new_fullname);
+int update_phone_number_of_user(t_user *User, char *new_phone_number);
 // -----------------------------------------------------------------------
 
 // ------------------------------ADDITIONAL-------------------------------

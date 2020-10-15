@@ -18,7 +18,7 @@ int main() {
     User->number_of_chats = 0;
 
     decoding_enum(user_in_db(User));
-    decoding_enum(update_age_of_user(User, "56"));
+    decoding_enum(update_phone_number_of_user(User, NULL)); //"+380 63 599 64 20"
     print_user_info(User);
 
 //    t_chat *Chat = malloc(sizeof(t_chat));

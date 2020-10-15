@@ -69,7 +69,10 @@ int get_chats_where_user(t_user *User) {
         make_request(&request, chats_id->chat_id[i], "SELECT * FROM Chats WHERE chat_id = \"");
         init_chat_struct(temp_chat);
         sqlite3_exec(database, request, callback_for_data, temp_chat, 0);
-        temp_chat->next = (t_chat *) malloc(sizeof(t_chat));
+        if ((i + 1) < chats_id->number_of_chats)
+            temp_chat->next = (t_chat *) malloc(sizeof(t_chat));
+        else
+            temp_chat->next = NULL;
         temp_chat = temp_chat->next;
         mx_strdel(&request);
     }

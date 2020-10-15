@@ -13,8 +13,6 @@ void mx_pop_back_for_chat(t_chat **head) {
         temp = *head;
         while (temp && temp->next->next != NULL)
             temp = temp->next;
-        free(temp->next);
-        temp->next = NULL;
         if (temp->chat_id)
             mx_strdel(&temp->chat_id);
         if (temp->chat_name)
@@ -25,5 +23,7 @@ void mx_pop_back_for_chat(t_chat **head) {
             mx_strdel(&temp->chat_photo);
         if (temp->option)
             mx_strdel((char **)(&temp->option));
+        free(temp->next);
+        temp->next = NULL;
     }
 }

@@ -44,7 +44,9 @@ int populate_User_struct(t_user *User) {
     int temp_res;
 
     sqlite3_open("chat_database.db", &database);
-    if (User->nickname)
+    if (User->id)
+        request = make_request("SELECT * FROM Users WHERE id='", User->id);
+    else if (User->nickname)
         request = make_request("SELECT * FROM Users WHERE nickname='", User->nickname);
     else if (User->email)
         request = make_request("SELECT * FROM Users WHERE email='", User->email);
