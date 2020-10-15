@@ -1,8 +1,8 @@
-#include "server.h"
+#include "header_db_dev.h"
 
 static int callback(void *my_arg, int argc, char **argv, char **column) {
-    t_user *temp = (t_user *)my_arg;
-    temp->id = strdup(argv[0]);
+    t_chat *temp = (t_chat *)my_arg;
+    temp->chat_id = strdup(argv[0]);
     return 0;
 }
 
@@ -15,12 +15,12 @@ static char *make_request(char *wrapper,char *filling) {
     return request;
 }
 
-void add_id_to_struct_User(t_user *User) {
+void add_id_to_struct_Chat(t_chat *Chat) {
     sqlite3 *database;
     char *request;
-    request = make_request("SELECT id FROM Users WHERE nickname='", User->nickname);
+    request = make_request("SELECT chat_id FROM Chats WHERE chat_name='", Chat->chat_name);
     sqlite3_open("chat_database.db", &database);
-    sqlite3_exec(database, request, callback, User, 0);
+    sqlite3_exec(database, request, callback, Chat, 0);
     sqlite3_close(database);
     free(request);
 }
