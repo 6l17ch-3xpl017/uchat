@@ -1,15 +1,6 @@
 #ifndef UCHAT_HEADER_DB_DEV_H
 #define UCHAT_HEADER_DB_DEV_H
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/ioctl.h>
-#include <sys/xattr.h>
-#include <grp.h>
-#include <dirent.h>
-#include <unistd.h>
-#include <pwd.h>
-#include <time.h>
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +8,6 @@
 #include <string.h>
 #include <fcntl.h>
 #include <stdbool.h>
-#include <stddef.h>
 #include <sqlite3.h>
 
 
@@ -33,9 +23,9 @@ typedef struct s_chat {
 typedef struct s_user {
     char *id;
     char *nickname;
-    char *password; //todo change
+    char *password;
     char *email;
-    char *age; //todo change
+    char *age;
     char *fullname; //todo change
     char *ph_number; //todo change
     char *user_photo; //todo change
@@ -90,6 +80,7 @@ enum db_init {
 int init_database();
 int add_user_to_db(t_user *User);
 int add_chat_to_db(t_chat *Chat);
+int add_user_in_chat(t_user *User, t_chat *Chat);
 
 // DELETE
 void drop_all();
@@ -110,6 +101,7 @@ void mx_pop_back_for_chat(t_chat **head);
 int update_nickname_of_user(t_user *User, char *new_nickname);
 int update_password_of_user(t_user *User, char *new_password);
 int update_email_of_user(t_user *User, char *new_email);
+int update_age_of_user(t_user *User, char *new_age);
 // -----------------------------------------------------------------------
 
 // ------------------------------ADDITIONAL-------------------------------

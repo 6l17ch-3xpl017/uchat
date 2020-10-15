@@ -18,22 +18,20 @@ int main() {
     User->number_of_chats = 0;
 
     decoding_enum(user_in_db(User));
-    decoding_enum(update_email_of_user(User, "new_email@gmail.com.ua"));
+    decoding_enum(update_age_of_user(User, "56"));
     print_user_info(User);
-
-//    printf("%d\n", add_user_to_db(User));
-//    print_user_info(User);
 
 //    t_chat *Chat = malloc(sizeof(t_chat));
 //    Chat->chat_id = NULL;
-//    Chat->chat_name = strdup("SChat");
+//    Chat->chat_name = strdup("test_chat_user");
 //    Chat->admin_id = strdup("1");
-//    Chat->chat_photo = strdup("/img/qq12xx.jpg");
+//    Chat->chat_photo = strdup("/img/qqfgebcfex.jpg");
 //    Chat->option = NULL;
-
+//
 //    add_chat_to_db(Chat);
-//    add_id_to_struct_Chat(Chat);
 //    print_chat_info(Chat);
+//
+//    decoding_enum(add_user_in_chat(User, Chat));
 
 
     printf("\n\n");
