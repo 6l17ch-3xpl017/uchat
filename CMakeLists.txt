@@ -16,6 +16,7 @@ else()
 endif ()
 
 set(C_LIB_DIR ${CLIENT_DIR}/resources/libmx)
+set(SOUND_LIB ${CLIENT_DIR}/resources/framework/libsoundio)
 set(CMC_DIR ${CLIENT_DIR}/resources/framework/cmc)
 set(MACROS_DIR ${CLIENT_DIR}/resources/framework/macros.h)
 
@@ -55,10 +56,10 @@ add_definitions(${GTK3_IFLAGS})
 
 target_compile_options(uchat_gui PRIVATE ${GTK3_IFLAGS} -rdynamic)
 target_include_directories(
-        uchat_gui PRIVATE ${CLIENT_DIR}/inc ${C_LIB_DIR}/inc
+        uchat_gui PRIVATE ${CLIENT_DIR}/inc ${C_LIB_DIR}/inc ${SOUND_LIB}/include
         ${C_JANSSON_DIR}/inc ${CMC_DIR} ${MACROS_DIR})
 
-target_link_libraries(uchat_gui ${GTK3_LFLAGS} ${C_LIB_DIR}/libmx.a -L${C_JANSSON_DIR}/ -ljansson)
+target_link_libraries(uchat_gui ${GTK3_LFLAGS} ${C_LIB_DIR}/libmx.a -L${C_JANSSON_DIR}/ -L${SOUND_LIB} -ljansson -lm -lsoundio)
 
 # Finish building uchat_gui #
 
