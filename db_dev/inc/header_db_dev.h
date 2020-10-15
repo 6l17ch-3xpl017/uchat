@@ -12,27 +12,27 @@
 
 
 typedef struct s_chat {
+    struct s_chat *next;
+    void *option;
     char *chat_id;
     char *chat_name;
     char *admin_id;
     char *chat_photo;
-    void *option;
-    struct s_chat *next;
 }              t_chat;
 
 typedef struct s_user {
+    struct s_user *next;
+    struct s_chat *chats;
+    int number_of_chats;
+    void *option;
     char *id;
     char *nickname;
     char *password;
     char *email;
     char *age;
     char *fullname;
-    char *ph_number; //todo change
+    char *ph_number;
     char *user_photo; //todo change
-    void *option;
-    struct s_user *next;
-    struct s_chat *chats;
-    int number_of_chats;
 }              t_user;
 
 typedef struct s_message {
@@ -41,7 +41,7 @@ typedef struct s_message {
     char *chat_id;
     char *message_content;
     char *time;
-    char *changed; //todo change
+    char changed; //todo change
     char *option; //todo change
 }              t_message;
 
@@ -50,8 +50,8 @@ typedef struct s_password {
 }              t_password;
 
 typedef struct s_chats_id {
-    char **chat_id;
     int number_of_chats;
+    char **chat_id;
 }              t_chats_id;
 
 
@@ -115,6 +115,7 @@ int update_email_of_user(t_user *User, char *new_email);
 int update_age_of_user(t_user *User, char *new_age);
 int update_fullname_of_user(t_user *User, char *new_fullname);
 int update_phone_number_of_user(t_user *User, char *new_phone_number);
+int update_photo_of_user(t_user *User, char *new_photo);
 // -----------------------------------------------------------------------
 
 // ------------------------------ADDITIONAL-------------------------------

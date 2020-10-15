@@ -30,7 +30,7 @@ static int callback_for_id(void *my_arg, int argc, char **argv, char **columns) 
 
 
 static void make_request(char **request, char *id, char *request_content) {
-    *request = mx_strnew((int)strlen(request_content) + (int)strlen(id));
+    *request = mx_strnew((int)strlen(request_content) + (int)strlen(id) + 10);
     *request = strcpy(*request, request_content);
     *request = strcat(*request, id);
     *request = strcat(*request, "\";");
@@ -74,7 +74,9 @@ int get_chats_where_user(t_user *User) {
         else
             temp_chat->next = NULL;
         temp_chat = temp_chat->next;
-        mx_strdel(&request);
+//        mx_strdel(&request);
+        free(request);
+        request = NULL;
     }
 
 // block to close db and clean memory
