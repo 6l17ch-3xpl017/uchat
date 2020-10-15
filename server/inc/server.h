@@ -19,9 +19,10 @@
 #include <syslog.h>
 #include <time.h>
 //include openssl!!!
-#include "bio.h"
-#include "ssl.h"
-#include "err.h"
+//#include "openssl/bio.h"
+//#include "openssl/ssl.h"
+//#include "openssl/err.h"
+//#include "openssl/e_os2.h"
 
 enum status {
     unknown_error = -10,
