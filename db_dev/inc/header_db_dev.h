@@ -35,6 +35,16 @@ typedef struct s_user {
     int number_of_chats;
 }              t_user;
 
+typedef struct s_message {
+    char *message_id;
+    char *message_owner_id;
+    char *chat_id;
+    char *message_content;
+    char *time;
+    char *changed; //todo change
+    char *option; //todo change
+}              t_message;
+
 typedef struct s_password {
     char *password;
 }              t_password;
@@ -62,7 +72,8 @@ enum sing_in_sing_up_db {
     success = 113,
     nickname_and_password_can_not_be_null = 114,
     chat_name_and_admin_id_can_not_be_null = 115,
-    request_failed = 116
+    request_failed = 116,
+    message_cannot_be_empty = 122
 };
 
 enum db_init {
