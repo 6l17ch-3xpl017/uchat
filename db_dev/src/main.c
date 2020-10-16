@@ -6,7 +6,7 @@ int main() {
 
     t_user *User = (t_user *)malloc(sizeof(t_user));
     User->id = NULL;
-    User->nickname = strdup("imarchenko");
+    User->nickname = strdup("anechytail");
     User->password = strdup("qwerty");
     User->email = NULL;
     User->age = NULL;
@@ -18,8 +18,8 @@ int main() {
     User->number_of_chats = 0;
 
     decoding_enum(user_in_db(User));
-    decoding_enum(update_photo_of_user(User, NULL));
-    print_user_info(User);
+//    decoding_enum(update_phone_number_of_user(User, "+380 66 41 789 45"));
+//    print_user_info(User);
 
 //    t_chat *Chat = malloc(sizeof(t_chat));
 //    Chat->chat_id = NULL;
@@ -34,8 +34,17 @@ int main() {
 //    decoding_enum(add_user_in_chat(User, Chat));
 
 
+    int i = 1;
+    get_all_messages_from_struct(User->chats);
+    t_message *temp = User->chats->next_message;
+    while (temp) {
+        printf("%d) - %s\n", i, temp->message_content);
+        temp = temp->next;
+        i++;
+    }
 //    printf("\n\n");
 //    system("leaks -q db_dev");
+
 
     return 0;
 }

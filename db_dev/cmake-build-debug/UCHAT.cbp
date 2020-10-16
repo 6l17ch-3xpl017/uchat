@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="UCHAT"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="UCHAT">
+				<Option output="/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/UCHAT" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/imarchenko/CLionProjects/uchat/db_dev/inc"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 UCHAT"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="UCHAT/fast">
+				<Option output="/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/UCHAT" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/imarchenko/CLionProjects/uchat/db_dev/inc"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 UCHAT/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/imarchenko/CLionProjects/uchat/db_dev/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/imarchenko/CLionProjects/uchat/db_dev/inc/header_db_dev.h">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/imarchenko/CLionProjects/uchat/db_dev/src/main.c">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/imarchenko/CLionProjects/uchat/db_dev/src/mx_itoa.c">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/imarchenko/CLionProjects/uchat/db_dev/src/sqlite3_lib/add_chat_to_db.c">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/imarchenko/CLionProjects/uchat/db_dev/src/sqlite3_lib/add_user_to_db.c">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/imarchenko/CLionProjects/uchat/db_dev/src/sqlite3_lib/drop_all.c">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/imarchenko/CLionProjects/uchat/db_dev/src/sqlite3_lib/if_user_in_bd.c">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/imarchenko/CLionProjects/uchat/db_dev/src/sqlite3_lib/init_database.c">
+			<Option target="UCHAT"/>
+		</Unit>
+		<Unit filename="/Users/imarchenko/CLionProjects/uchat/db_dev/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

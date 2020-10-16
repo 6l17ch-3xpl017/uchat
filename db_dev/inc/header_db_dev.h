@@ -9,10 +9,25 @@
 #include <fcntl.h>
 #include <stdbool.h>
 #include <sqlite3.h>
+#include <time.h>
+
+
+typedef struct s_message {
+    struct s_message *next;
+    time_t time;
+    char *message_id;
+    char *message_owner_id;
+    char *chat_id;
+    char *message_content;
+    int changed;
+    char *option;
+}              t_message;
 
 
 typedef struct s_chat {
     struct s_chat *next;
+    struct s_message *next_message;
+    int number_of_messages;
     void *option;
     char *chat_id;
     char *chat_name;
@@ -32,18 +47,9 @@ typedef struct s_user {
     char *age;
     char *fullname;
     char *ph_number;
-    char *user_photo; //todo change
+    char *user_photo;
 }              t_user;
 
-typedef struct s_message {
-    char *message_id;
-    char *message_owner_id;
-    char *chat_id;
-    char *message_content;
-    char *time;
-    char changed; //todo change
-    char *option; //todo change
-}              t_message;
 
 typedef struct s_password {
     char *password;
@@ -107,6 +113,7 @@ void add_id_to_struct_User(t_user *User);
 void add_id_to_struct_Chat(t_chat *Chat);
 void mx_del_chat_list(t_chat *list, int leng);
 void mx_pop_back_for_chat(t_chat **head);
+int get_all_messages_from_struct(t_chat *Chat);
 
 // UPDATE
 int update_nickname_of_user(t_user *User, char *new_nickname);
@@ -133,3 +140,4 @@ void print_chat_info(t_chat *Chat);
 
 
 #endif //UCHAT_HEADER_DB_DEV_H
+
