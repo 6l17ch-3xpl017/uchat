@@ -247,12 +247,12 @@
 //    return 0;
 //}
 
-/*
- * Copyright (c) 2015 Andrew Kelley
- *
- * This file is part of libsoundio, which is MIT licensed.
- * See http://opensource.org/licenses/MIT
- */
+///*
+// * Copyright (c) 2015 Andrew Kelley
+// *
+// * This file is part of libsoundio, which is MIT licensed.
+// * See http://opensource.org/licenses/MIT
+// */
 
 #include <soundio/soundio.h>
 #include <stdio.h>
