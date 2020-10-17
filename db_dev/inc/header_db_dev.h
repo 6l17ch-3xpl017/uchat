@@ -60,6 +60,11 @@ typedef struct s_chats_id {
     char **chat_id;
 }              t_chats_id;
 
+typedef struct s_messages_id {
+    int number_of_messages;
+    char **message_id;
+}              t_messages_id;
+
 
 // --------------------------RESULTS OF FUNCTIONS------------------------
 enum sing_in_sing_up_db {
@@ -107,6 +112,7 @@ int delete_user(t_user *User);
 int user_in_db(t_user *User);
 int populate_User_struct(t_user *User);
 void init_chat_struct(t_chat *Chat);
+void init_message_struct(t_message *Message);
 int get_chats_where_user(t_user *User);
 int check_valid_data_for_sign_up(t_user *User);
 void add_id_to_struct_User(t_user *User);

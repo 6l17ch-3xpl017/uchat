@@ -70,13 +70,11 @@ int get_chats_where_user(t_user *User) {
         init_chat_struct(temp_chat);
         sqlite3_exec(database, request, callback_for_data, temp_chat, 0);
         if ((i + 1) < chats_id->number_of_chats)
-            temp_chat->next = (t_chat *) malloc(sizeof(t_chat));
+            temp_chat->next = (t_chat *)malloc(sizeof(t_chat));
         else
             temp_chat->next = NULL;
         temp_chat = temp_chat->next;
-//        mx_strdel(&request);
-        free(request);
-        request = NULL;
+        mx_strdel(&request);
     }
 
 // block to close db and clean memory
