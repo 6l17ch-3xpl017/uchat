@@ -1,12 +1,5 @@
 #include "header_db_dev.h"
 
-static void make_request_for_null(char **request, char *id) {
-    *request = mx_strnew((int)strlen(id) + 47);
-    strcpy(*request, "UPDATE Users SET phone_number=NULL WHERE id=\"");
-    strcat(*request, id);
-    strcat(*request, "\";");
-}
-
 static int check_new_phone(char *new_phone_number) {
     int result;
     t_user *temp;
@@ -31,6 +24,17 @@ static void make_request(char **request, char *id, char *new_phone_number) {
     strcat(*request, "\";");
 }
 
+/**
+ * @brief This function takes information about user and change his phone number by a new one.
+ * Structure 'User' will be updated too.
+ * @param User - structure with all data about user.
+ * @param new_nickname - new nickname which was chosen by user.
+ * @return 'phone_number_was_already_signed_up' if new phone number is unavailable.
+ * @return 'can_not_open_db' if connection with database was lost.
+ * @return 'request_failed' if request was failed.
+ * @return 'success' if phone number was successfully updated.
+ */
+
 int update_phone_number_of_user(t_user *User, char *new_phone_number) {
     sqlite3 *db;
     char *request = NULL;
@@ -46,7 +50,7 @@ int update_phone_number_of_user(t_user *User, char *new_phone_number) {
     if (new_phone_number != NULL)
         make_request(&request, User->id, new_phone_number);
     else
-        make_request_for_null(&request, User->id);
+        make_request_for_null(&request, User->id, "phone_number");
     result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&request);
     sqlite3_close(db);

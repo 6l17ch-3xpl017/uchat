@@ -1,12 +1,5 @@
 #include "header_db_dev.h"
 
-static void make_request_for_null(char **request, char *id) {
-    *request = mx_strnew((int)strlen(id) + 44);
-    strcpy(*request, "UPDATE Users SET user_photo=NULL WHERE id=\"");
-    strcat(*request, id);
-    strcat(*request, "\";");
-}
-
 static void make_request(char **request, char *id, char *new_photo) {
     *request = mx_strnew((int)(strlen(id) + strlen(new_photo)) + 50);
     strcpy(*request, "UPDATE Users SET user_photo=\"");
@@ -15,6 +8,16 @@ static void make_request(char **request, char *id, char *new_photo) {
     strcat(*request, id);
     strcat(*request, "\";");
 }
+
+/**
+ * @brief This function takes information about user and changes his photo by a new one.
+ * Structure 'User' will be updated too.
+ * @param User - structure with all data about user.
+ * @param new_photo - new photo which was chosen by user.
+ * @return 'can_not_open_db' if connection with database was lost.
+ * @return 'request_failed' if request was failed.
+ * @return 'success' if age was successfully updated.
+ */
 
 int update_photo_of_user(t_user *User, char *new_photo) {
     sqlite3 *db;
@@ -28,7 +31,7 @@ int update_photo_of_user(t_user *User, char *new_photo) {
     if (new_photo != NULL)
         make_request(&request, User->id, new_photo);
     else
-        make_request_for_null(&request, User->id);
+        make_request_for_null(&request, User->id, "user_photo");
 
     result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&request);

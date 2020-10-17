@@ -129,6 +129,7 @@ int update_age_of_user(t_user *User, char *new_age);
 int update_fullname_of_user(t_user *User, char *new_fullname);
 int update_phone_number_of_user(t_user *User, char *new_phone_number);
 int update_photo_of_user(t_user *User, char *new_photo);
+void make_request_for_null(char **request, char *id, char *column_in_db);
 // -----------------------------------------------------------------------
 
 // ------------------------------ADDITIONAL-------------------------------

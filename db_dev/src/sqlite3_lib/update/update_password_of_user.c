@@ -9,6 +9,17 @@ static void make_request(char **request, char *id, char *new_pass) {
     strcat(*request, "\";");
 }
 
+/**
+ * @brief This function takes information about user and change his password by a new one.
+ * Structure 'User' will be updated too.
+ * @param User - structure with all data about user.
+ * @param new_password - new password which was chosen by user.
+ * @return 'nickname_and_password_can_not_be_null' if new_password = NULL.
+ * @return 'can_not_open_db' if connection with database was lost.
+ * @return 'request_failed' if request was failed.
+ * @return 'success' if password was successfully updated.
+ */
+
 int update_password_of_user(t_user *User, char *new_password) {
     sqlite3 *db;
     char *request = NULL;
