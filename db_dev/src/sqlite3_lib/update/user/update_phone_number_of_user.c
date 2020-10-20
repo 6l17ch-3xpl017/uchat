@@ -50,7 +50,7 @@ int update_phone_number_of_user(t_user *User, char *new_phone_number) {
     if (new_phone_number != NULL)
         make_request(&request, User->id, new_phone_number);
     else
-        make_request_for_null(&request, User->id, "phone_number");
+        make_request_for_null_user(&request, User->id, "phone_number");
     result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&request);
     sqlite3_close(db);

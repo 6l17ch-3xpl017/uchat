@@ -51,7 +51,7 @@ int update_email_of_user(t_user *User, char *new_email) {
     if (new_email)
         make_request(&request, User->id, new_email);
     else
-        make_request_for_null(&request, User->id, "email");
+        make_request_for_null_user(&request, User->id, "email");
     result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&request);
     sqlite3_close(db);

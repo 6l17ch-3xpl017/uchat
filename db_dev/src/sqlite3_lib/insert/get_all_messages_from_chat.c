@@ -45,6 +45,9 @@ int get_all_messages_from_struct(t_chat *Chat) {
     char *request = NULL;
     int result;
 
+    if (!Chat)
+        return 0;
+
     t_messages_id *messages_id = (t_messages_id *) malloc(sizeof(t_messages_id));
     messages_id->number_of_messages = 0;
 

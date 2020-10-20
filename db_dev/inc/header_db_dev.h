@@ -94,6 +94,12 @@ enum db_init {
     can_not_create_messages_table = 120,
     database_was_connected = 121
 };
+
+enum chat_update {
+    chat_name_can_not_be_null = 140,
+    chat_does_not_exist = 141,
+    admin_id_can_not_be_null = 142
+};
 // -----------------------------------------------------------------------
 
 
@@ -122,6 +128,7 @@ void mx_pop_back_for_chat(t_chat **head);
 int get_all_messages_from_struct(t_chat *Chat);
 
 // UPDATE
+// user
 int update_nickname_of_user(t_user *User, char *new_nickname);
 int update_password_of_user(t_user *User, char *new_password);
 int update_email_of_user(t_user *User, char *new_email);
@@ -129,7 +136,13 @@ int update_age_of_user(t_user *User, char *new_age);
 int update_fullname_of_user(t_user *User, char *new_fullname);
 int update_phone_number_of_user(t_user *User, char *new_phone_number);
 int update_photo_of_user(t_user *User, char *new_photo);
-void make_request_for_null(char **request, char *id, char *column_in_db);
+void make_request_for_null_user(char **request, char *id, char *column_in_db);
+
+// chat
+void refresh_data_after_chat_update(t_chat *Chat, sqlite3 *db);
+int update_chat_name(t_chat *Chat, char *new_chat_name);
+int update_admin_id_of_chat(t_chat *Chat, char *new_admin_id);
+int update_chat_photo(t_chat *Chat, char *new_photo_of_chat);
 // -----------------------------------------------------------------------
 
 // ------------------------------ADDITIONAL-------------------------------

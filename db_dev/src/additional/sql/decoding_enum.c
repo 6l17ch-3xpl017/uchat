@@ -43,5 +43,9 @@ void decoding_enum(int enum_number) {
         printf("can_not_create_messages_table\n");
     else if (enum_number == 121)
         printf("database_was_connected\n");
+    else if (enum_number == 140)
+        printf("chat_name_can_not_be_null\n");
+    else if (enum_number == 141)
+        printf("chat_does_not_exist\n");
 
 }
