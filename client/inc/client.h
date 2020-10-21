@@ -23,6 +23,10 @@
 #define LOGIN "sign_in"
 #define REGISTER "sign_up"
 
+#define P_MSG 1
+#define C_MSG 2
+
+
 #define DEBUG
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
@@ -55,5 +59,6 @@ typedef struct s_user_data
 
 }              t_user_data;
 
+GtkWidget *msg_widget_factory(int msg_type, char *text_msg);
 
 #endif //UCHAT_GUI_CLIENT_H

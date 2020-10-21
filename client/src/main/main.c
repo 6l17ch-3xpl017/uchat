@@ -208,9 +208,9 @@ void send_msg(GtkButton *chat_send_btn, GtkTextView *chat_msg_entry)
 //    cmc_log_info("[Buffer text: %s]", text);
 
     gpointer *gp = get_widget(user_data.page->widgets, "chat_msg_lst_box");
-    GtkWidget *msg = gtk_label_new(text);
+    GtkWidget *msg = msg_widget_factory(P_MSG, text);
 
-    gtk_list_box_insert(GTK_LIST_BOX(gp), msg, -1);
+    gtk_list_box_insert(GTK_LIST_BOX(gp), GTK_WIDGET(msg), -1);
     gtk_widget_show_all(GTK_WIDGET(gp));
 
     g_free(text);

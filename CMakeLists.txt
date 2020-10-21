@@ -55,11 +55,9 @@ add_executable(uchat_gui ${CLIENT_SRC} ${CLIENT_HEADERS})
 add_definitions(${GTK3_IFLAGS})
 
 target_compile_options(uchat_gui PRIVATE ${GTK3_IFLAGS} -rdynamic)
-target_include_directories(
-        uchat_gui PRIVATE ${CLIENT_DIR}/inc ${C_LIB_DIR}/inc ${SOUND_LIB}/include
-        ${C_JANSSON_DIR}/inc ${CMC_DIR} ${MACROS_DIR})
+target_include_directories(uchat_gui PRIVATE ${CLIENT_DIR}/inc ${C_LIB_DIR}/inc ${C_JANSSON_DIR}/inc ${CMC_DIR} ${MACROS_DIR})                      # ${SOUND_LIB}/include
 
-target_link_libraries(uchat_gui ${GTK3_LFLAGS} ${C_LIB_DIR}/libmx.a -L${C_JANSSON_DIR}/ -L${SOUND_LIB} -ljansson -lm -lsoundio)
+target_link_libraries(uchat_gui ${GTK3_LFLAGS} ${C_LIB_DIR}/libmx.a -L${C_JANSSON_DIR}/ -ljansson -lm)                                              # -lsoundio -L${SOUND_LIB}
 
 # Finish building uchat_gui #
 
