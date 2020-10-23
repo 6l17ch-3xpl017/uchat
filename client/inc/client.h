@@ -4,6 +4,28 @@
 #define CMC_LOG_COLOR
 
 #include <gtk/gtk.h>
+#include <macro_collections.h>
+
+#include <jansson.h>
+#include <netdb.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+
+
+#include "page_selector.h"
+
+#define MAXL 8000
+#define PORT 5000
+#define SA struct sockaddr
+
+#define LOGIN "sign_in"
+#define REGISTER "sign_up"
+
+#define P_MSG 1
+#define C_MSG 2
+
 
 #define DEBUG
 #pragma clang diagnostic push
@@ -14,12 +36,29 @@
 
 typedef struct s_user_data
 {
-    char *type;
+    t_page *page;
+    char *status;
+    char *type; //ToDo: Rename
 
-    const gchar *login;
-    const gchar *pass;
+    struct s_user_attributes
+    {
+        char username[128];
+        char password[128];
+        char email[128];
+        char age[128];
+        char fullname[128];
+        char ph_number[128];
+        char user_photo[128];
+        char options[128];
+    } user_attributes;
 
-    char *options;
-}               t_user_data;
+    struct s_server_attributes
+    {
+        int socket;
+    } server_attributes;
+
+}              t_user_data;
+
+GtkWidget *msg_widget_factory(int msg_type, char *text_msg);
 
 #endif //UCHAT_GUI_CLIENT_H

@@ -36,8 +36,8 @@ static void *socketThread(void *arg) {
         read(thread->socket, client_message, sizeof(client_message));
 
 //      router
-        status = check_route(client_message, thread);
         puts(client_message);
+        status = check_route(client_message, thread);
 
 //      client disconnected
         if (status == unknown_error) {
@@ -65,6 +65,7 @@ static void server_async_create() {
     serverAddr.sin_port = htons(5000);
     serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
     memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);
+    init_database();
     bind(serverSocket, (struct sockaddr *) &serverAddr, sizeof(serverAddr));
     if (listen(serverSocket, 50) == 0)
         printf("Listening\n");

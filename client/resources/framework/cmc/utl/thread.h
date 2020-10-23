@@ -32,6 +32,8 @@
 #define CMC_THREAD_WINDOWS
 #elif defined(__unix__)
 #define CMC_THREAD_UNIX
+#elif defined(__APPLE__)
+#define CMC_THREAD_UNIX
 #else
 #error "Unknown platform for CMC Threads"
 #endif

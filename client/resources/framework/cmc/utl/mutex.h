@@ -33,6 +33,8 @@
 #define CMC_MUTEX_WINDOWS
 #elif defined(__unix__)
 #define CMC_MUTEX_UNIX
+#elif defined(__APPLE__)
+#define CMC_MUTEX_UNIX
 #else
 #error "Unknown platform for CMC Mutex"
 #endif

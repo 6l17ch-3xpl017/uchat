@@ -1,4 +1,4 @@
-#include "header_db_dev.h"
+#include "server.h"
 
 static void make_request(char **request, char *id, char *new_nickname) {
     *request = mx_strnew((int)(strlen(id) + strlen(new_nickname)) + 41);

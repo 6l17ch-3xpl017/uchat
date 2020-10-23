@@ -184,7 +184,7 @@ static inline bool cmc_imax_str(FILE *file, intmax_t element)
     return fprintf(file, "%" PRIiMAX "", element) > 0;
 }
 
-static inline bool cmc_umax_str(FILE *file, uintmax_t element)
+static inline bool cmc_umax_str(FILE *file, unsigned long long element)
 {
     return fprintf(file, "%" PRIu64 "", element) > 0;
 }

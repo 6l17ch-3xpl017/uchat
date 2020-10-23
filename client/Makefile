@@ -64,7 +64,7 @@ all: $(NAME)
 
 # LIB_BIN for libs dependency
 $(NAME): $(LIB_LIST) $(OBJ_DIR) $(OBJ)
-	@$(COMPILE) $(OBJ) -lmx $(shell pkg-config --libs gtk+-3.0) -o $(NAME)
+	@$(COMPILE) $(OBJ) -lmx $(shell pkg-config --libs gtk+-3.0) -o ../build/$(NAME)
 	@printf "\r\33[2K$@ \033[32;1mcreated\033[0m\n"
 
 $(LIB_BIN): $(LIB_LIST)
