@@ -26,13 +26,13 @@ static long long read_socket()
     }
 }
 
-static int send_json(json_t *json, int socket)
+static long long send_json(json_t *json, int socket)
 {
     char *result = json_dumps(json, 0);
     write(socket, result, strlen(result));
     cmc_log_info("%s", result);
     json_decref(json);
-    return read_socket();;
+    return read_socket();
 }
 
 static int create_user_data()
@@ -128,7 +128,7 @@ void on_login_button_clicked(GtkWidget *button, GtkWindow *reg_window)
                  user_data.user_attributes.username,
                  user_data.user_attributes.password);
 
-    if ((errno = create_user_data()) == 107)
+    if ((errno = create_user_data()) == 104)
     {
         gtk_widget_show_now(GTK_WIDGET(reg_window));
         GtkWidget *toplevel = gtk_widget_get_toplevel(button);
@@ -250,11 +250,11 @@ void send_msg(GtkButton *chat_send_btn, GtkTextView *chat_msg_entry)
 //    cmc_log_info("[Buffer text: %s]", text);
 
     gpointer *gp = get_widget(user_data.page->widgets, "chat_msg_lst_box");
-    GtkWidget *msg = msg_widget_factory(P_MSG, text);
+    GtkWidget *msg = msg_widget_factory(P_MSG, text, user_data.user_attributes.username);
 
     gtk_list_box_insert(GTK_LIST_BOX(gp), GTK_WIDGET(msg), -1);
     gtk_widget_show_all(GTK_WIDGET(gp));
-
+    gtk_text_buffer_set_text(buffer, "", -1);
     g_free(text);
 }
 

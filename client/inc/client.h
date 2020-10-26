@@ -59,6 +59,6 @@ typedef struct s_user_data
 
 }              t_user_data;
 
-GtkWidget *msg_widget_factory(int msg_type, char *text_msg);
+GtkWidget *msg_widget_factory(int msg_type, char *text_msg, char *username);
 
 #endif //UCHAT_GUI_CLIENT_H
