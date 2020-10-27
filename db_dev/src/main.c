@@ -4,33 +4,44 @@
 
 int main() {
 
-    decoding_enum(init_database());
+decoding_enum(init_database());
+//
+//    t_user *User = (t_user *)malloc(sizeof(t_user));
+//    User->id = NULL;
+//    User->nickname = strdup("imarchenko");
+//    User->password = strdup("qwerty");
+//    User->email = strdup("anech@gmail.com");
+//    User->age = strdup("17");
+//    User->fullname = strdup("Andrey Nechytail");
+//    User->ph_number = strdup("+380 67 588 47 66");
+//    User->user_photo = strdup("img/345678.jpg");
+//    User->option = NULL;
+//    User->chats = NULL;
+//    User->number_of_chats = 0;
+//
+    t_message *Message = (t_message *)malloc(sizeof(t_message));
+    Message->message_id = NULL;
+    Message->message_owner_id = strdup("1");
+    Message->chat_id = strdup("1");
+    Message->message_content = strdup("call");
+    Message->time = 316326;
+    Message->changed = 0;
+    Message->option = NULL;
 
-    t_user *User = (t_user *)malloc(sizeof(t_user));
-    User->id = NULL;
-    User->nickname = strdup("imarchenko");
-    User->password = strdup("qwerty");
-    User->email = strdup("anech@gmail.com");
-    User->age = strdup("17");
-    User->fullname = strdup("Andrey Nechytail");
-    User->ph_number = strdup("+380 67 588 47 66");
-    User->user_photo = strdup("img/345678.jpg");
-    User->option = NULL;
-    User->chats = NULL;
-    User->number_of_chats = 0;
 
-    decoding_enum(user_in_db(User));
+
+//    decoding_enum(user_in_db(User));
 //    decoding_enum(update_photo_of_user(User, "img/photo/23492394.png"));
 //    print_user_info(User);
-    if (User->chats->chat_photo)
-        printf("before : %s\n", User->chats->chat_photo);
-    else
-        printf("before : <null>\n");
-    decoding_enum(update_chat_photo(User->chats, "/img/new_photo.png"));
-    if (User->chats->chat_photo)
-        printf("after : %s\n", User->chats->chat_photo);
-    else
-        printf("after : <null>\n");
+//    if (User->chats->chat_photo)
+//        printf("before : %s\n", User->chats->chat_photo);
+//    else
+//        printf("before : <null>\n");
+//    decoding_enum(update_chat_photo(User->chats, "/img/new_photo.png"));
+//    if (User->chats->chat_photo)
+//        printf("after : %s\n", User->chats->chat_photo);
+//    else
+//        printf("after : <null>\n");
 
 //    t_chat *Chat = malloc(sizeof(t_chat));
 //    Chat->chat_id = NULL;
@@ -52,7 +63,10 @@ int main() {
 //            iterator = iterator->next;
 //        }
 //    }
-    printf("\n\n");
+
+    add_message_to_db(Message);
+    //printf("%s\n", Message->message_id);
+    //printf("\n\n");
     system("leaks -q db_dev");
 
 
