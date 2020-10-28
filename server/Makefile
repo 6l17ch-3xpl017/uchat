@@ -10,9 +10,9 @@ INC_DIR		= inc/
 
 # main dir for jansson files
 J_INC_DIR   = resources/framework/jansson/inc/
-O_INC_DIR   = resources/framework/openssl/inc/
+O_INC_DIR   = resources/framework/openssl/inc/openssl
 # whole path to dirs
-PATH_DIRS	= db db/create db/delete db/insert db/update json main router router/auth
+PATH_DIRS	= db db/create db/delete db/insert db/update json main router router/auth router/messages
 
 # list of subdirs in src/
 DIRS		= $(PATH_DIRS) $(notdir $(wildcard $(SRC_DIR)))

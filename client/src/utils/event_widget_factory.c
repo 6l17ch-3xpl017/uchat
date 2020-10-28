@@ -1,6 +1,6 @@
 #include "client.h"
 
-static GtkWidget *create_parent_msg_widget(char *text_msg)
+static GtkWidget *create_parent_msg_widget(char *text_msg, char *username)
 {
 
     time_t t = time(NULL);
@@ -12,7 +12,7 @@ static GtkWidget *create_parent_msg_widget(char *text_msg)
     GtkWidget *top_box  = gtk_box_new(GTK_ORIENTATION_HORIZONTAL,   5);
 
     GtkWidget *user_avatar = gtk_image_new_from_file("../client/resources/glade/images/user.svg");
-    GtkWidget *username = gtk_label_new("username");
+    GtkWidget *username_label = gtk_label_new(username);
     GtkWidget *msg_time = gtk_label_new(asctime(localtime(&t)));
 
     GtkWidget *msg_text = gtk_label_new(text_msg);
@@ -23,7 +23,7 @@ static GtkWidget *create_parent_msg_widget(char *text_msg)
     gtk_label_set_line_wrap_mode(GTK_LABEL(msg_text), PANGO_WRAP_WORD_CHAR);
 
     gtk_container_add(GTK_CONTAINER(main_box), user_avatar);
-    gtk_container_add(GTK_CONTAINER(top_box), username);
+    gtk_container_add(GTK_CONTAINER(top_box), username_label);
     gtk_container_add(GTK_CONTAINER(top_box), msg_time);
 
     gtk_container_add(GTK_CONTAINER(widget), main_box);
@@ -40,11 +40,11 @@ static GtkWidget *create_child_msg_widget()
     return widget;
 }
 
-GtkWidget *msg_widget_factory(int msg_type, char *text_msg)
+GtkWidget *msg_widget_factory(int msg_type, char *text_msg, char *username)
 {
 
     if (msg_type == P_MSG)
-        return create_parent_msg_widget(text_msg);
+        return create_parent_msg_widget(text_msg, username);
 
     else if (msg_type == C_MSG)
         create_child_msg_widget();

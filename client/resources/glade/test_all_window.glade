@@ -290,7 +290,7 @@
                 <property name="margin-right">95</property>
                 <property name="margin-top">10</property>
                 <property name="margin-bottom">10</property>
-                <signal name="clicked" handler="on_login_button_clicked" object="login_window" swapped="no"/>
+                <signal name="clicked" handler="on_login_button_clicked" object="chat_app" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -692,7 +692,7 @@
                 <property name="receives-default">True</property>
                 <property name="margin-start">35</property>
                 <property name="margin-end">35</property>
-                <signal name="clicked" handler="on_submit_button_clicked" object="reg_entry_box" swapped="no"/>
+                <signal name="clicked" handler="on_submit_button_clicked" object="chat_app" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>

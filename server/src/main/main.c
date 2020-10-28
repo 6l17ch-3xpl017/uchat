@@ -5,24 +5,25 @@ pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 static void mutex_lock_unlock(void) {
 
 }
-static void InitializeSSL()
-{
-    SSL_load_error_strings();
-    SSL_library_init();
-    OpenSSL_add_all_algorithms();
-}
-
-static void DestroySSL()
-{
-    ERR_free_strings();
-    EVP_cleanup();
-}
+//static void InitializeSSL()
+//{
+//    SSL_load_error_strings();
+//    SSL_library_init();
+//    OpenSSL_add_all_algorithms();
+//}
+//
+//static void DestroySSL()
+//{
+//    ERR_free_strings();
+//    EVP_cleanup();
+//}
 
 //static void ShutdownSSL()
 //{
 //    SSL_shutdown(cSSL);
 //    SSL_free(cSSL);
 //}
+
 
 static void *socketThread(void *arg) {
     int newSocket = *((int *) arg);
@@ -32,12 +33,13 @@ static void *socketThread(void *arg) {
 
     thread = (t_thread_sockuser *) malloc(sizeof(t_thread_sockuser));
     thread->socket = newSocket;
+
     for (;;) {
-        read(thread->socket, client_message, sizeof(client_message));
+        read(newSocket, client_message, sizeof(client_message));
 
 //      router
-        puts(client_message);
         status = check_route(client_message, thread);
+        puts(client_message);
 
 //      client disconnected
         if (status == unknown_error) {
@@ -56,16 +58,16 @@ static void server_async_create() {
     struct sockaddr_storage serverStorage;
     socklen_t addr_size;
 
-    SSL_CTX *sslctx;
-    SSL *cSSL;
+//    SSL_CTX *sslctx;
+//    SSL *cSSL;
 
-    InitializeSSL();
+//    InitializeSSL();
     serverSocket = socket(PF_INET, SOCK_STREAM, 0);
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(5000);
     serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
-    memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);
     init_database();
+    memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);
     bind(serverSocket, (struct sockaddr *) &serverAddr, sizeof(serverAddr));
     if (listen(serverSocket, 50) == 0)
         printf("Listening\n");
@@ -115,15 +117,7 @@ int main() {
 
 //    while (1) {
 //        //TODO: Insert daemon code here.
-//        syslog(LOG_NOTICE, "First daemon started.");
     server_async_create();
-//        sleep(20);
-//        break;
 //    }
-//
-//    syslog(LOG_NOTICE, "First daemon terminated.");
-//    closelog();
-//
-//    return EXIT_SUCCESS;
 
 }

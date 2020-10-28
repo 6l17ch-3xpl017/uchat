@@ -2,22 +2,37 @@
 
 static t_user_data user_data;
 
-static void read_socket()
+static long long read_socket()
 {
     char buf[20000];
     read(user_data.server_attributes.socket, buf, 20000);
-    cmc_log_info("[%s]", buf);
+
+    json_error_t error;
+    json_t *response = json_loads(buf, 0, &error);
+
+    json_t *status_j = json_object_get(response, "status");
+
+    long long status = json_integer_value(status_j);
+
+    if (status == 107)
+    {
+        return status;
+    }
+    else
+    {
+        //ToDo: Rise error in window
+        cmc_log_error("error: %i", status);
+        return status;
+    }
 }
 
-static int send_json(json_t *json, int socket)
+static long long send_json(json_t *json, int socket)
 {
     char *result = json_dumps(json, 0);
-    printf("%s", result);
     write(socket, result, strlen(result));
     cmc_log_info("%s", result);
     json_decref(json);
-    read_socket();
-    return 1;
+    return read_socket();
 }
 
 static int create_user_data()
@@ -41,9 +56,7 @@ static int create_user_data()
     json_object_set_new(json, "type", json_string(user_data.type));
     json_object_set_new(json, "user", user);
 
-    send_json(json, user_data.server_attributes.socket);
-
-    return 1;  //ToDo: Return server response status
+    return send_json(json, user_data.server_attributes.socket);
 }
 
 static void init_connection(void)
@@ -91,31 +104,42 @@ void on_reg_button_activate_link(GtkWidget *window, GtkWidget *windoww)
 }
 
 // ToDo: Rework this function
-void on_login_button_clicked(GtkWindow *window, GtkContainer *main_box)
+void on_login_button_clicked(GtkWidget *button, GtkWindow *reg_window)
 {
     cmc_log_info("LOGIN BUTTON CLICKED");
 
     user_data.type = LOGIN;
 
-    GList *main_list = gtk_container_get_children(main_box);
-
-    GtkContainer *username_box = g_list_get_widget(main_list, "login_username_box");
-    GtkContainer *password_box = g_list_get_widget(main_list, "password_box");
-
-    GList *username_list = gtk_container_get_children(username_box);
-    GList *password_list = gtk_container_get_children(password_box);
-
-    GtkEntry *username_entry = g_list_get_widget(username_list, "username_entry");
-    GtkEntry *password_entry = g_list_get_widget(password_list, "password_entry");
-
-    strcpy(user_data.user_attributes.username, gtk_entry_get_text(username_entry));
-    strcpy(user_data.user_attributes.password , gtk_entry_get_text(password_entry));
+//    GList *main_list = gtk_container_get_children(main_box);
+//
+//    GtkContainer *username_box = g_list_get_widget(main_list, "login_username_box");
+//    GtkContainer *password_box = g_list_get_widget(main_list, "password_box");
+//
+//    GList *username_list = gtk_container_get_children(username_box);
+//    GList *password_list = gtk_container_get_children(password_box);
+//
+//    GtkEntry *username_entry = g_list_get_widget(username_list, "username_entry");
+//    GtkEntry *password_entry = g_list_get_widget(password_list, "password_entry");
+//
+//    strcpy(user_data.user_attributes.username, gtk_entry_get_text(username_entry));
+//    strcpy(user_data.user_attributes.password , gtk_entry_get_text(password_entry));
 
     cmc_log_info("username_entry = %s | password_entry = %s",
-                 gtk_entry_get_text(username_entry),
-                 gtk_entry_get_text(password_entry));
+                 user_data.user_attributes.username,
+                 user_data.user_attributes.password);
 
-    create_user_data();
+    if ((errno = create_user_data()) == 104)
+    {
+        gtk_widget_show_now(GTK_WIDGET(reg_window));
+        GtkWidget *toplevel = gtk_widget_get_toplevel(button);
+        cmc_log_info("TEST");
+    }
+    else
+    {
+        //ToDo: Raise error in window
+        cmc_log_error("error: %d", errno);
+    }
+
 }
 
 void on_remember_check_box_toggled()
@@ -138,11 +162,21 @@ void on_username_entry_changed(GtkEntry *entry)
 
 /** register_page **/
 
-void on_submit_button_clicked(GtkButton *button, GtkContainer *entry_box)
+void on_submit_button_clicked(GtkWidget *button, GtkWidget *chat_app)
 {
     cmc_log_info("CLICK TO SUBMIT BUTTON");
     user_data.type = REGISTER;
-    create_user_data();
+    if ((errno = create_user_data()) == 107)
+    {
+        gtk_widget_show_now(GTK_WIDGET(chat_app));
+        GtkWidget *toplevel = gtk_widget_get_toplevel(button);
+        cmc_log_info("TEST");
+    }
+    else
+    {
+        //ToDo: Raise error in window
+        cmc_log_error("error: %d", errno);
+    }
 }
 
 void on_email_entry_changed(GtkEntry *entry)
@@ -169,10 +203,10 @@ void on_age_entry_changed(GtkEntry *entry)
 
 void on_rep_password_entry_changed(GtkEntry *rep_password, GtkEntry *password)
 {
-    if (strcmp(gtk_entry_get_text(rep_password), gtk_entry_get_text(password)) == 0)
-        cmc_log_info("REP_PASSWORD ENTRY CHANGED");
-    else
-        cmc_log_info("PASSWORD ENTRY INCORRECT");
+//    if (strcmp(gtk_entry_get_text(rep_password), gtk_entry_get_text(password)) == 0)
+//        cmc_log_info("REP_PASSWORD ENTRY CHANGED");
+//    else
+//        cmc_log_info("PASSWORD ENTRY INCORRECT");
 }
 
 void on_fullname_entry_changed(GtkEntry *entry)
@@ -196,6 +230,14 @@ void on_user_logo_press(GtkEntry *entry)
 
 /* Test Chat Window */
 
+
+void create_msg_json(gchar *msg_text)
+{
+    json_t *json = json_object();
+    json_object_set_new(json, "msg_text", json_string(msg_text));
+    send_json(json, user_data.server_attributes.socket);
+}
+
 void send_msg(GtkButton *chat_send_btn, GtkTextView *chat_msg_entry)
 {
     GtkTextIter start, end;
@@ -208,12 +250,17 @@ void send_msg(GtkButton *chat_send_btn, GtkTextView *chat_msg_entry)
 //    cmc_log_info("[Buffer text: %s]", text);
 
     gpointer *gp = get_widget(user_data.page->widgets, "chat_msg_lst_box");
-    GtkWidget *msg = msg_widget_factory(P_MSG, text);
+    GtkWidget *msg = msg_widget_factory(P_MSG, text, user_data.user_attributes.username);
 
     gtk_list_box_insert(GTK_LIST_BOX(gp), GTK_WIDGET(msg), -1);
     gtk_widget_show_all(GTK_WIDGET(gp));
-
+    gtk_text_buffer_set_text(buffer, "", -1);
     g_free(text);
+}
+
+void create_chats_buttons(gpointer *chat_list)
+{
+
 }
 
 /***********************************************/
@@ -224,24 +271,24 @@ void send_msg(GtkButton *chat_send_btn, GtkTextView *chat_msg_entry)
 //ToDo: Split all on logical containers and get with gtk_container_foreach()
 int main(int argc, char *argv[])
 {
-//    init_connection();
+    init_connection();
 
     gtk_init(&argc, &argv);
     user_data.page = select_page(TEST_PAGE);
 
     //ToDo: rename variable
-    gpointer *gp = get_widget(user_data.page->widgets, "chat_app");
+    gpointer *gp = get_widget(user_data.page->widgets, "login_window");
 //    cmc_log_info("%s", strerror(errno));
     gtk_widget_show_now(GTK_WIDGET(gp));
 
-    gp = get_widget(user_data.page->widgets, "chat_room_lst");
-
-    GtkWidget *btn = gtk_button_new_with_label("Test");
-    GtkWidget *btn1 = gtk_button_new_with_label("Test1");
-
-    gtk_list_box_insert(GTK_LIST_BOX(gp), btn, -1);
-    gtk_list_box_insert(GTK_LIST_BOX(gp), btn1, -1);
-    gtk_widget_show_all(GTK_WIDGET(gp));
+//    gp = get_widget(user_data.page->widgets, "chat_room_lst");
+//
+//    GtkWidget *btn = gtk_button_new_with_label("Test");
+//    GtkWidget *btn1 = gtk_button_new_with_label("Test1");
+//
+//    gtk_list_box_insert(GTK_LIST_BOX(gp), btn, -1);
+//    gtk_list_box_insert(GTK_LIST_BOX(gp), btn1, -1);
+//    gtk_widget_show_all(GTK_WIDGET(gp));
     gtk_main();
     system("leaks -q uchat_gui");
     return 0;

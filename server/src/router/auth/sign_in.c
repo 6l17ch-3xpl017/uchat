@@ -31,17 +31,26 @@ static void json_sign_in_parse(t_user *User, json_t *user_in) {
     json_decref(password);
 }
 
+/**
+ * @author Yevheniia Ksonzenko
+ * @brief Function to get all data about user incl chats from database and send to client while authentication
+ * @param income_json string with user`s info to check availability in database (nickname/email, password)
+ * @param User structure to fill with NULL or user data to send to database
+ * @param Chat structure that contains name(s) of chat(s)
+ */
+
 bool user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
     t_user *User;
-    json_t *user_in, *user_out, *chat_array;
+    t_chat *Chat = NULL;
+    json_t *user_in;
     int check_status;
 
-    init_database();
     User = (t_user *) malloc(sizeof(t_user));
     user_in = json_object_get(income_json, "user");
     if (!json_is_object(user_in)) {
         // init and send json error status
-        send_status(socket->socket, unknown_error, "sign_in");
+        Chat->chat_name = NULL;
+        send_status(User, Chat, socket->socket, unknown_error, "sign_in");
         return 0; // false
     } else {
         // move user`s input data to structure
@@ -50,20 +59,7 @@ bool user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
         json_sign_in_parse(User, user_in);
         // check whether user is already registered
         check_status = user_in_db(User);
-        send_status(socket->socket, check_status, "sign_in");
-
-//        else {
-//            // init and send json OK status to client
-//            send_errors(socket->socket, ok, "sign_in");
-//            user_out = json_object();
-//            json_object_set_new(user_out, "user", json_string("//////////////////"));
-//            chat_array = json_array();
-//            //todo for_loop to check how much chats has user!!!!!!!!!!!!!!!!
-//            for (int i = 0; i < 20; i++) {
-//                json_object_set_new(user_out, "chat", json_string("/////////////"));
-//                json_array_set_new(chat_array, i, user_out);
-//            }
-//        }
+        send_status(User, Chat, socket->socket, check_status, "sign_in");
     }
     //-------------------------------------------------
     printf("%d", user_in_db(User));

@@ -18,16 +18,17 @@
 #include <sys/stat.h>
 #include <syslog.h>
 #include <time.h>
-//include openssl!!!
-#include "bio.h"
-#include "ssl.h"
-#include "err.h"
+#include <sys/types.h>
+#include <sys/signal.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+//#include "openssl/inc/openssl/bio.h"
+
+#define check(expr) if (!(expr)) { perror(#expr); kill(0, SIGTERM); }
 
 enum status {
     unknown_error = -10,
-    not_reg_user = -4,
-    ok_check_route = 5,
-    ok = 7,
+    ok_check_route = 5
 };
 
 typedef struct s_thread_sockuser {
@@ -39,6 +40,7 @@ typedef struct s_thread_sockuser {
 int check_route(char *str, t_thread_sockuser *thread);
 bool user_sign_in(json_t *income_json, t_thread_sockuser *socket);
 bool user_sign_up(json_t *income_json, t_thread_sockuser *socket);
-void send_status(int socketfd, int status, char *func);
+void send_status(t_user *User, t_chat *Chat, int socketfd, int status, char *func);
+int create_new_chat(json_t *income_json, t_thread_sockuser *socket);
 
 #endif
