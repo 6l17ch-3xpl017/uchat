@@ -110,7 +110,7 @@ static void skeleton_daemon() {
     openlog("firstdaemon", LOG_PID, LOG_DAEMON);
 }
 
-int main() {
+int old_main() {
 //    skeleton_daemon();
 
 //    while (1) {
@@ -125,5 +125,19 @@ int main() {
 //    closelog();
 //
 //    return EXIT_SUCCESS;
+
+}
+
+static void init_server()
+{
+
+}
+
+int main(int argc, char **argv)
+{
+    /* Server attributes initialization */
+    if (argc != 2)
+        cmc_log_fatal("usage: %s [port]", argv[0]);
+
 
 }
