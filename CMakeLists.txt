@@ -66,8 +66,8 @@ ADD_DEFINITIONS(${GTK3_CFLAGS_OTHER})
 target_compile_options(uchat_gui PRIVATE -rdynamic)
 target_include_directories(uchat_gui PRIVATE ${CLIENT_DIR}/inc ${C_LIB_DIR}/inc ${C_JANSSON_DIR}/inc ${CMC_DIR} ${MACROS_DIR})                      # ${SOUND_LIB}/include
 
-target_link_libraries(uchat_gui uv ${GTK3_LIBRARIES} ${C_LIB_DIR}/libmx.a -L${C_JANSSON_DIR}/ -ljansson -lm -lpthread -ldl -lrt)                                              # -lsoundio -L${SOUND_LIB}
-set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -luv")
+target_link_libraries(uchat_gui uv ${GTK3_LIBRARIES} ${C_LIB_DIR}/libmx.a -L${C_JANSSON_DIR}/ -ljansson -lm)                                              # -lsoundio -L${SOUND_LIB}
+#set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -luv")
 # Finish building uchat_gui #
 
 # Build uchat_server #
@@ -100,7 +100,7 @@ file(GLOB_RECURSE SERVER_LIB RELATIVE ${CMAKE_SOURCE_DIR} "server/resources/libm
 file(GLOB_RECURSE SERVER_LIB_H RELATIVE ${CMAKE_SOURCE_DIR} "server/resources/libmx/inc/*.h")
 include_directories(server/resources/libmx/inc)
 add_executable(uchat_server ${SERVER_SRC} ${SERVER_HEADERS} ${SERVER_LIB} ${SERVER_LIB_H})
-target_include_directories(uchat_server PRIVATE ${SERVER_DIR}/inc ${S_JANSSON_DIR}/inc ${CMC_DIR})
-target_link_libraries(uchat_server uv dl rt -L${S_JANSSON_DIR} -ljansson -lsqlite3 -lpthread)
+target_include_directories(uchat_server PRIVATE ${SERVER_DIR}/inc ${S_JANSSON_DIR}/inc ${CMC_DIR} /Users/dushakov/CLionProjects/uchat_test/server/resources/framework/libuv/include)
+target_link_libraries(uchat_server uv dl -L/Users/dushakov/CLionProjects/uchat_test/server/resources/framework/libuv/lib -L${S_JANSSON_DIR} -ljansson -lsqlite3 -lpthread)
 
 # Finish building uchat_server #
