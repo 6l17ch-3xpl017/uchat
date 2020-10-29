@@ -54,9 +54,7 @@ static void concatenate_with_request(char **request, char *info) {
 int add_message_to_db(t_message *Message) {
     int result;
     sqlite3 *db;
-    char *error = NULL;
     char *request = NULL;
-    int test_in_db;
 
     // ----------------------------check if nickname and password not NULL-----------------------------
     if (!Message->message_content)
@@ -93,7 +91,6 @@ int add_message_to_db(t_message *Message) {
     }
     sqlite3_close(db);
     // ------------------------------------------------------------------------------------------------
-
 
     add_id_to_struct_Message(Message);
 

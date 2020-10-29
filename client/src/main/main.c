@@ -607,9 +607,6 @@
 ////}
 
 #include "client.h"
-#include <uv.h>
-#include <stdlib.h>
-#include <utl/log.h>
 
 static uv_loop_t *loop;
 static void on_close(uv_handle_t* handle);
@@ -660,43 +657,67 @@ static void alloc_cb(uv_handle_t* handle, size_t size, uv_buf_t* buf) {
     *buf = uv_buf_init(malloc(size), size);
 }
 
+void on_reg_button_activate_link(GtkWidget *window, GtkWidget *windoww)
+{
+    cmc_log_info("SIGN_UP BUTTON CLICKED");
+//
+//    t_page *page = select_page(REG_PAGE);
+//
+//    //ToDo: rename variable
+//    gpointer *gp = get_widget(page->widgets, "reg_window");
+//    gtk_widget_show_now(windoww);
+
+    uv_connect_t *stream = uv_loop_get_data(loop);
+
+    write2(stream->handle, "reg_button_pressed", 18);
+    uv_read_start(stream->handle, alloc_cb, on_read);
+}
+
 void on_connect(uv_connect_t* connection, int status)
 {
+    t_user_data *user_data = uv_loop_get_data(loop);
+
     // ToDo: Add more info
     if (status < 0)
         cmc_log_fatal("failed to connect: %s\n", uv_strerror(status));
 
-    cmc_log_info("connected. %p %d\n", connection, status);
+    cmc_log_info("connected %p %d\n", connection, status);
 
-    uv_stream_t* stream = connection->handle;
-    free(connection);
-    write2(stream, "echo  world!", 12);
-    uv_read_start(stream, alloc_cb, on_read);
+    uv_loop_set_data(loop, connection);
+    user_data->server_attributes.connection = connection;
 }
 
 void init_connection(char *host, int port)
 {
-    uv_tcp_t *socket = malloc(sizeof(uv_tcp_t));
-    uv_tcp_init(loop, socket);
-    uv_tcp_keepalive(socket, 1, 60);
+    t_user_data *user_data = uv_loop_get_data(loop);
+    user_data->server_attributes.server_socket = malloc(sizeof(uv_tcp_t));
 
-    struct sockaddr_in dest; // Where send data
-    uv_ip4_addr(host, port, &dest);
+    uv_tcp_init(loop, user_data->server_attributes.server_socket);
+    uv_tcp_keepalive(user_data->server_attributes.server_socket, 1, 60);
 
-    uv_connect_t *connection = malloc(sizeof(uv_connect_t));
-    cmc_log_info("allocated %p\n", connection);
-    uv_tcp_connect(connection, socket, (const struct sockaddr*)&dest, on_connect);
+    uv_ip4_addr(host, port, &user_data->server_attributes.server);
+
+    user_data->server_attributes.connection = malloc(sizeof(uv_connect_t));
+
+    uv_tcp_connect(user_data->server_attributes.connection,
+                   user_data->server_attributes.server_socket,
+                   (const struct sockaddr*)&user_data->server_attributes.server, on_connect);
 }
 
+void on_chat_open(GtkWidget *login_window, GtkDialog *err_dialog)
+{
+    uv_run(loop, UV_RUN_DEFAULT);
+}
 
 
 //ToDo: Split all on logical containers and get with gtk_container_foreach()
 int main(int argc, char **argv)
 {
     // ToDo: Free that memory
-    t_user_data *user_data = malloc(sizeof(t_user_data));
+    t_user_data *user_data = calloc(0, sizeof(t_user_data));
 
     loop = uv_default_loop();
+    uv_loop_set_data(loop, user_data);
     init_connection(argc != 2 ? "127.0.0.1" : argv[1], 5000);
 
     gtk_init(&argc, &argv);
@@ -706,7 +727,6 @@ int main(int argc, char **argv)
     gpointer *gp = get_widget(user_data->page->widgets, "login_window");
 
     gtk_widget_show_now(GTK_WIDGET(gp));
-    uv_loop_set_data(loop, user_data);
 
     // ToDo: Free gtk
     gtk_main();
