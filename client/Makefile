@@ -7,6 +7,8 @@ SRC_DIR		= src/
 OBJ_DIR		= obj/
 # main dir for header files
 INC_DIR		= inc/
+# dir for uchat bin files
+U_BIN		= ../build/
 
 # main dir for other libs header files
 J_INC_DIR   = resources/framework/jansson/inc/
@@ -64,7 +66,7 @@ all: $(NAME)
 
 # LIB_BIN for libs dependency
 $(NAME): $(LIB_LIST) $(OBJ_DIR) $(OBJ)
-	@$(COMPILE) $(OBJ) -lmx $(shell pkg-config --libs gtk+-3.0) -o $(NAME)
+	@$(COMPILE) $(OBJ) -lmx $(shell pkg-config --libs gtk+-3.0) -o $(U_BIN)$(NAME)
 	@printf "\r\33[2K$@ \033[32;1mcreated\033[0m\n"
 
 $(LIB_BIN): $(LIB_LIST)

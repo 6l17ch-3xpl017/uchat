@@ -7,6 +7,8 @@ SRC_DIR		= src/
 OBJ_DIR		= obj/
 # main dir for header files
 INC_DIR		= inc/
+# dir for uchat bin files
+U_BIN		= ../build/
 
 # main dir for jansson files
 J_INC_DIR   = resources/framework/jansson/inc/
@@ -29,7 +31,6 @@ INC_H		= $(wildcard $(INC_DIR)*.h)
 # list of jansson header files
 J_INC_H		= $(wildcard $(J_INC_DIR)*.h)
 O_INC_H     = $(wildcard $(O_INC_DIR)*.h)
-
 
 J_BIN = resources/framework/jansson/libjansson.a
 O_BIN = resources/framework/openssl/*.a
@@ -67,7 +68,7 @@ all: $(NAME)
 
 # LIB_BIN for libs dependency
 $(NAME): $(LIB_LIST) $(OBJ_DIR) $(OBJ)
-	@$(COMPILE) $(OBJ) -lmx -o $(NAME)
+	@$(COMPILE) $(OBJ) -lmx -o $(U_BIN)$(NAME)
 	@printf "\r\33[2K$@ \033[32;1mcreated\033[0m\n"
 
 $(LIB_BIN): $(LIB_LIST)
@@ -92,7 +93,7 @@ clean:
 
 uninstall:
 	@$(MAKE_M) $(LIB_DIR)/$(LIB_LIST) $@
-	@$(RM) $(OBJ_DIR) $(NAME)
+	@$(RM) $(OBJ_DIR) $(U_BIN) $(NAME)
 	@printf "$(NAME)\t \033[31;1muninstalled\033[0m\n"
 
 reinstall: uninstall all

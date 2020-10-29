@@ -31,13 +31,13 @@ int check_route(char *str, t_thread_sockuser *socket) {
     else if (strcmp(json_string_value(type), "sign_up") == 0) {
         user_sign_up(income_json, socket);
     }
-    // todo create new chat
-    else if (strcmp(json_string_value(type), "new_chat") == 0) {
-        create_new_chat(income_json, socket);
-    }
+//    // todo create new chat
+//    else if (strcmp(json_string_value(type), "new_chat") == 0) {
+//        create_new_chat(income_json, socket);
+//    }
     // todo get messages
-    else if (strcmp(json_string_value(type), "get_message") == 0) {
-        
+    else if (strcmp(json_string_value(type), "send_message") == 0) {
+        create_new_chat(income_json, socket); // send message to our test_group_chat
     }
     // todo if client logged out/disconnected
     else if (strcmp(json_string_value(type), "log_out") == 0) {

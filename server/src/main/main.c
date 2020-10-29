@@ -5,6 +5,18 @@ pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 static void mutex_lock_unlock(void) {
 
 }
+//--------------------------------------------------------
+static t_chat *chat_struct_filling_with_null() {
+    t_chat *Chat = malloc(sizeof(t_chat));
+    Chat->chat_name = "1";
+    Chat->chat_photo = NULL;
+    Chat->chat_id = NULL;
+    Chat->option = NULL;
+    Chat->admin_id = "1";
+    return Chat;
+}
+//--------------------------------------------------------
+
 //static void InitializeSSL()
 //{
 //    SSL_load_error_strings();
@@ -58,6 +70,10 @@ static void server_async_create() {
     struct sockaddr_storage serverStorage;
     socklen_t addr_size;
 
+//--------------------------------------------------------
+
+    add_chat_to_db(chat_struct_filling_with_null());
+//--------------------------------------------------------
 //    SSL_CTX *sslctx;
 //    SSL *cSSL;
 
@@ -66,7 +82,9 @@ static void server_async_create() {
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(5000);
     serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+
     init_database();
+
     memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);
     bind(serverSocket, (struct sockaddr *) &serverAddr, sizeof(serverAddr));
     if (listen(serverSocket, 50) == 0)

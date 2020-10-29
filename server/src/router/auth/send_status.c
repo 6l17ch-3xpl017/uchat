@@ -18,7 +18,7 @@ void send_status(t_user *User, t_chat *Chat, int socketfd, int status, char *fun
     /* in case of success function execution */
     if (status == 104 || status == 107) {
         user_out = json_object();
-        json_object_set_new(json, "user_nick", json_string(User->nickname));
+//        json_object_set_new(json, "user_nick", json_string(User->nickname));
         chat_array = json_array();
         if (User->number_of_chats != 0) {
             for (int i = 0; i < User->number_of_chats; i++) {
