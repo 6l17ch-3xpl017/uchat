@@ -1,6 +1,6 @@
 //#include "client.h"
 //
-//static t_user_data user_data;
+
 //
 //static long long read_socket()
 //{
@@ -268,31 +268,6 @@
 //
 //
 //
-////ToDo: Split all on logical containers and get with gtk_container_foreach()
-//int main(int argc, char *argv[])
-//{
-//    init_connection();
-//
-//    gtk_init(&argc, &argv);
-//    user_data.page = select_page(TEST_PAGE);
-//
-//    //ToDo: rename variable
-//    gpointer *gp = get_widget(user_data.page->widgets, "login_window");
-////    cmc_log_info("%s", strerror(errno));
-//    gtk_widget_show_now(GTK_WIDGET(gp));
-//
-////    gp = get_widget(user_data.page->widgets, "chat_room_lst");
-////
-////    GtkWidget *btn = gtk_button_new_with_label("Test");
-////    GtkWidget *btn1 = gtk_button_new_with_label("Test1");
-////
-////    gtk_list_box_insert(GTK_LIST_BOX(gp), btn, -1);
-////    gtk_list_box_insert(GTK_LIST_BOX(gp), btn1, -1);
-////    gtk_widget_show_all(GTK_WIDGET(gp));
-//    gtk_main();
-//    system("leaks -q uchat_gui");
-//    return 0;
-//}
 //
 /////*
 //// * Copyright (c) 2015 Andrew Kelley
@@ -631,13 +606,14 @@
 ////    return 0;
 ////}
 
+#include "client.h"
 #include <uv.h>
 #include <stdlib.h>
 #include <utl/log.h>
 
 static uv_loop_t *loop;
 static void on_close(uv_handle_t* handle);
-static void on_connect(uv_connect_t* req, int status);
+static void on_connect(uv_connect_t* connection, int status);
 static void on_write(uv_write_t* req, int status);
 
 
@@ -698,7 +674,8 @@ void on_connect(uv_connect_t* connection, int status)
     uv_read_start(stream, alloc_cb, on_read);
 }
 
-void init_connection(char *host, int port) {
+void init_connection(char *host, int port)
+{
     uv_tcp_t *socket = malloc(sizeof(uv_tcp_t));
     uv_tcp_init(loop, socket);
     uv_tcp_keepalive(socket, 1, 60);
@@ -713,10 +690,26 @@ void init_connection(char *host, int port) {
 
 
 
-int main(int argc, char **argv) {
+//ToDo: Split all on logical containers and get with gtk_container_foreach()
+int main(int argc, char **argv)
+{
+    // ToDo: Free that memory
+    t_user_data *user_data = malloc(sizeof(t_user_data));
+
     loop = uv_default_loop();
+    init_connection(argc != 2 ? "127.0.0.1" : argv[1], 5000);
 
-    init_connection("127.0.0.1", 5000);
+    gtk_init(&argc, &argv);
+    user_data->page = select_page(TEST_PAGE);
 
-    uv_run(loop, UV_RUN_DEFAULT);
+    //ToDo: rename variable
+    gpointer *gp = get_widget(user_data->page->widgets, "login_window");
+
+    gtk_widget_show_now(GTK_WIDGET(gp));
+    uv_loop_set_data(loop, user_data);
+
+    // ToDo: Free gtk
+    gtk_main();
+    system("leaks -q uchat_gui");
+    return 0;
 }

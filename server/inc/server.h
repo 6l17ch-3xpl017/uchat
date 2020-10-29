@@ -37,6 +37,6 @@ typedef struct s_thread_sockuser {
 int check_route(char *str, t_thread_sockuser *thread);
 bool user_sign_in(json_t *income_json, t_thread_sockuser *socket);
 bool user_sign_up(json_t *income_json, t_thread_sockuser *socket);
-void send_status(int socketfd, int status, char *func);
+void send_status(t_user *User, t_chat *Chat, int socketfd, int status, char *func);
 
 #endif

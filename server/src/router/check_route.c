@@ -33,7 +33,7 @@ int check_route(char *str, t_thread_sockuser *socket) {
     }
     // todo create new chat
     else if (strcmp(json_string_value(type), "new_chat") == 0) {
-        create_new_chat(income_json, socket);
+//        create_new_chat(income_json, socket);
     }
     // todo get messages
     else if (strcmp(json_string_value(type), "get_message") == 0) {
