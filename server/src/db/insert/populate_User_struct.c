@@ -1,4 +1,4 @@
-#include "server.h"
+#include "header_db_dev.h"
 
 static void free_and_dup(char **a, char *b) {
     if (*a)
@@ -44,7 +44,9 @@ int populate_User_struct(t_user *User) {
     int temp_res;
 
     sqlite3_open("chat_database.db", &database);
-    if (User->nickname)
+    if (User->id)
+        request = make_request("SELECT * FROM Users WHERE id='", User->id);
+    else if (User->nickname)
         request = make_request("SELECT * FROM Users WHERE nickname='", User->nickname);
     else if (User->email)
         request = make_request("SELECT * FROM Users WHERE email='", User->email);
@@ -52,9 +54,13 @@ int populate_User_struct(t_user *User) {
     sqlite3_exec(database, request, callback, User, 0);
     free(request);
     sqlite3_close(database);
-    if ((temp_res = get_chats_where_user(User)) != success) {
+
+    if (User->chats != NULL)
+        mx_del_chat_list(User->chats, User->number_of_chats);
+
+    if ((temp_res = get_chats_where_user(User)) != success)
         return temp_res;
-    }
+
     return success;
 }
 

@@ -28,6 +28,7 @@ static void mutex_lock_unlock(void) {
 //    SSL_free(cSSL);
 //}
 
+
 static void *socketThread(void *arg) {
     int newSocket = *((int *) arg);
     char client_message[20000];
@@ -36,12 +37,13 @@ static void *socketThread(void *arg) {
 
     thread = (t_thread_sockuser *) malloc(sizeof(t_thread_sockuser));
     thread->socket = newSocket;
+
     for (;;) {
         read(newSocket, client_message, sizeof(client_message));
 
 //      router
-        puts(client_message);
         status = check_route(client_message, thread);
+        puts(client_message); // print json
 
 //      client disconnected
         if (status == unknown_error) {
@@ -68,8 +70,8 @@ static void server_async_create() {
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(5000);
     serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
-    memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);
     init_database();
+    memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);
     bind(serverSocket, (struct sockaddr *) &serverAddr, sizeof(serverAddr));
     if (listen(serverSocket, 50) == 0)
         printf("Listening\n");
@@ -119,15 +121,7 @@ int old_main() {
 
 //    while (1) {
 //        //TODO: Insert daemon code here.
-//        syslog(LOG_NOTICE, "First daemon started.");
     server_async_create();
-//        sleep(20);
-//        break;
 //    }
-//
-//    syslog(LOG_NOTICE, "First daemon terminated.");
-//    closelog();
-//
-//    return EXIT_SUCCESS;
 
 }

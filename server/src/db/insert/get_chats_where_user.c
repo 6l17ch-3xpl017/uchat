@@ -1,6 +1,8 @@
-#include "server.h"
+#include "header_db_dev.h"
 
 static void free_and_dup(char **a, char *b) {
+    if (*a)
+        free(*a);
     if (b)
         *a = strdup(b);
     else
@@ -28,7 +30,7 @@ static int callback_for_id(void *my_arg, int argc, char **argv, char **columns) 
 
 
 static void make_request(char **request, char *id, char *request_content) {
-    *request = mx_strnew((int)strlen(request_content) + (int)strlen(id));
+    *request = mx_strnew((int)strlen(request_content) + (int)strlen(id) + 10);
     *request = strcpy(*request, request_content);
     *request = strcat(*request, id);
     *request = strcat(*request, "\";");
@@ -61,12 +63,17 @@ int get_chats_where_user(t_user *User) {
 
 // block to make linked list of data about user's chats
     User->number_of_chats = chats_id->number_of_chats;
-    User->chats = (t_chat *) malloc(sizeof(t_chat));
+    if (User->number_of_chats != 0)
+        User->chats = (t_chat *) malloc(sizeof(t_chat));
     t_chat *temp_chat = User->chats;
     for (int i = 0; i < chats_id->number_of_chats; i++) {
         make_request(&request, chats_id->chat_id[i], "SELECT * FROM Chats WHERE chat_id = \"");
+        init_chat_struct(temp_chat);
         sqlite3_exec(database, request, callback_for_data, temp_chat, 0);
-        temp_chat->next = (t_chat *) malloc(sizeof(t_chat));
+        if ((i + 1) < chats_id->number_of_chats)
+            temp_chat->next = (t_chat *)malloc(sizeof(t_chat));
+        else
+            temp_chat->next = NULL;
         temp_chat = temp_chat->next;
         mx_strdel(&request);
     }

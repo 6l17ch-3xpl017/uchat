@@ -1,4 +1,4 @@
-#include "server.h"
+#include "header_db_dev.h"
 
 static int get_len_of_item(char *item) {
     if (item)
@@ -26,6 +26,7 @@ static void concatenate_with_request(char **request, char *info) {
         }
         else
             *request = strcat(*request, "NULL);");
+        counter = 0;
     }
     else {
         if (info) {
