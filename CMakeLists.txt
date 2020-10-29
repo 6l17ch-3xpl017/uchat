@@ -22,6 +22,8 @@ set(MACROS_DIR ${CLIENT_DIR}/resources/framework/macros.h)
 
 # Find Packages #
 find_package(PkgConfig REQUIRED)
+PKG_CHECK_MODULES(GTK3 REQUIRED gtk+-3.0)
+PKG_CHECK_MODULES(LIBUV REQUIRED libuv)
 
 if(EXISTS "${C_LIB_DIR}/libmx.a")
     message("libmx all ready created")
@@ -46,6 +48,10 @@ execute_process(
 
 cmake_print_variables(GTK3_IFLAGS)
 cmake_print_variables(GTK3_LFLAGS)
+cmake_print_variables(LIBUV_IFLAGS)
+cmake_print_variables(LIBUV_LFLAGS)
+cmake_print_variables(LIBUV_LIBRARIES)
+cmake_print_variables(LIBUV_LDFLAGS)
 
 # Find client files #
 file(GLOB_RECURSE CLIENT_SRC RELATIVE ${CMAKE_SOURCE_DIR} "client/src/*.c")
@@ -54,11 +60,14 @@ file(GLOB_RECURSE CLIENT_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "client/inc/*.h")
 add_executable(uchat_gui ${CLIENT_SRC} ${CLIENT_HEADERS})
 add_definitions(${GTK3_IFLAGS})
 
-target_compile_options(uchat_gui PRIVATE ${GTK3_IFLAGS} -rdynamic)
+INCLUDE_DIRECTORIES(${GTK3_INCLUDE_DIRS})
+LINK_DIRECTORIES(${GTK3_LIBRARY_DIRS})
+ADD_DEFINITIONS(${GTK3_CFLAGS_OTHER})
+target_compile_options(uchat_gui PRIVATE -rdynamic)
 target_include_directories(uchat_gui PRIVATE ${CLIENT_DIR}/inc ${C_LIB_DIR}/inc ${C_JANSSON_DIR}/inc ${CMC_DIR} ${MACROS_DIR})                      # ${SOUND_LIB}/include
 
-target_link_libraries(uchat_gui ${GTK3_LFLAGS} ${C_LIB_DIR}/libmx.a -L${C_JANSSON_DIR}/ -ljansson -lm)                                              # -lsoundio -L${SOUND_LIB}
-
+target_link_libraries(uchat_gui uv ${GTK3_LIBRARIES} ${C_LIB_DIR}/libmx.a -L${C_JANSSON_DIR}/ -ljansson -lm -lpthread -ldl -lrt)                                              # -lsoundio -L${SOUND_LIB}
+set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -luv")
 # Finish building uchat_gui #
 
 # Build uchat_server #
@@ -92,6 +101,6 @@ file(GLOB_RECURSE SERVER_LIB_H RELATIVE ${CMAKE_SOURCE_DIR} "server/resources/li
 include_directories(server/resources/libmx/inc)
 add_executable(uchat_server ${SERVER_SRC} ${SERVER_HEADERS} ${SERVER_LIB} ${SERVER_LIB_H})
 target_include_directories(uchat_server PRIVATE ${SERVER_DIR}/inc ${S_JANSSON_DIR}/inc ${CMC_DIR})
-target_link_libraries(uchat_server -L${S_JANSSON_DIR} -ljansson -lsqlite3 -lpthread)
+target_link_libraries(uchat_server uv dl rt -L${S_JANSSON_DIR} -ljansson -lsqlite3 -lpthread)
 
 # Finish building uchat_server #

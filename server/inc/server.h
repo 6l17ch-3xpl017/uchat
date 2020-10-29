@@ -19,6 +19,7 @@
 #include <syslog.h>
 #include <time.h>
 #include <utl/log.h>
+#include <uv.h>
 //#include "openssl/inc/openssl/bio.h"
 
 enum status {
