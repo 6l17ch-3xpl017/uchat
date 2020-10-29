@@ -15,7 +15,7 @@ static void user_struct_filling_with_null(t_user *User) {
 }
 
 static void json_sign_in_parse(t_user *User, json_t *user_in) {
-    json_t *user_out, *nickname, *email, *password;
+    json_t *nickname, *email, *password;
 
     nickname = json_object_get(user_in, "nickname");
     email = json_object_get(user_in, "email");
@@ -41,15 +41,15 @@ static void json_sign_in_parse(t_user *User, json_t *user_in) {
 
 bool user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
     t_user *User;
-    t_chat *Chat = NULL;
+    t_chat *Chat;
     json_t *user_in;
     int check_status;
 
-    User = (t_user *) malloc(sizeof(t_user));
+    User = (t_user *)malloc(sizeof(t_user));
     user_in = json_object_get(income_json, "user");
     if (!json_is_object(user_in)) {
         // init and send json error status
-        Chat->chat_name = NULL;
+        Chat = NULL;
         send_status(User, Chat, socket->socket, unknown_error, "sign_in");
         return 0; // false
     } else {
@@ -59,14 +59,13 @@ bool user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
         json_sign_in_parse(User, user_in);
         // check whether user is already registered
         check_status = user_in_db(User);
-        send_status(User, Chat, socket->socket, check_status, "sign_in");
+        if (check_status == 104) {
+            get_chats_where_user(User);
+        }
+        send_status(User, User->chats, socket->socket, check_status, "sign_in");
     }
     //-------------------------------------------------
-    printf("%d", user_in_db(User));
-    printf("\nNICK: %s\n", User->nickname);
-    printf("PASS: %s\n", User->password);
-    printf("AGE: %s\n", User->age);
-    printf("USER_IN_DB (sign_in func)\n");
+    printf("%d\n", user_in_db(User)); // print db function result
     //-------------------------------------------------
 
     return 1; // true

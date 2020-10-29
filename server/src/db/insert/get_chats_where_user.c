@@ -63,7 +63,8 @@ int get_chats_where_user(t_user *User) {
 
 // block to make linked list of data about user's chats
     User->number_of_chats = chats_id->number_of_chats;
-    User->chats = (t_chat *) malloc(sizeof(t_chat));
+    if (User->number_of_chats != 0)
+        User->chats = (t_chat *) malloc(sizeof(t_chat));
     t_chat *temp_chat = User->chats;
     for (int i = 0; i < chats_id->number_of_chats; i++) {
         make_request(&request, chats_id->chat_id[i], "SELECT * FROM Chats WHERE chat_id = \"");

@@ -15,6 +15,7 @@
 typedef struct s_message {
     struct s_message *next;
     time_t time;
+    //time_t ms_time;
     char *message_id;
     char *message_owner_id;
     char *chat_id;
@@ -36,7 +37,7 @@ typedef struct s_chat {
 }              t_chat;
 
 typedef struct s_user {
-    struct s_user *next;
+//    struct s_user *next;
     struct s_chat *chats;
     int number_of_chats;
     void *option;
@@ -108,6 +109,7 @@ enum chat_update {
 int init_database();
 int add_user_to_db(t_user *User);
 int add_chat_to_db(t_chat *Chat);
+int add_message_to_db(t_message *Message);
 int add_user_in_chat(t_user *User, t_chat *Chat);
 
 // DELETE
@@ -123,6 +125,7 @@ int get_chats_where_user(t_user *User);
 int check_valid_data_for_sign_up(t_user *User);
 void add_id_to_struct_User(t_user *User);
 void add_id_to_struct_Chat(t_chat *Chat);
+void add_id_to_struct_Message(t_message *Message);
 void mx_del_chat_list(t_chat *list, int leng);
 void mx_pop_back_for_chat(t_chat **head);
 int get_all_messages_from_struct(t_chat *Chat);
@@ -160,4 +163,3 @@ void print_chat_info(t_chat *Chat);
 
 
 #endif //UCHAT_HEADER_DB_DEV_H
-

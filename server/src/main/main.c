@@ -39,7 +39,7 @@ static void *socketThread(void *arg) {
 
 //      router
         status = check_route(client_message, thread);
-        puts(client_message);
+        puts(client_message); // print json
 
 //      client disconnected
         if (status == unknown_error) {

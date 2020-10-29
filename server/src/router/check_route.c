@@ -5,7 +5,6 @@ int check_route(char *str, t_thread_sockuser *socket) {
     json_error_t error;
     // create new node
     struct t_thread_sockuser *prev, *head;
-    puts("HERE_CHECK");
 
     int errorr = 0;
     socklen_t len = sizeof (error);
@@ -30,7 +29,6 @@ int check_route(char *str, t_thread_sockuser *socket) {
         user_sign_in(income_json, socket);
     }
     else if (strcmp(json_string_value(type), "sign_up") == 0) {
-        puts("CHECK_ROUTE_SIGN_UP");
         user_sign_up(income_json, socket);
     }
     // todo create new chat
