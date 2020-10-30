@@ -28,43 +28,70 @@
 #define P_MSG 1
 #define C_MSG 2
 
+#define U_GET 1
+#define U_SET 2
 
-#define DEBUG
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
-//#import "Macros.h"
-#pragma clang diagnostic pop
 #include "utl/log.h"
+
+#define S_FIELDS \
+    X(t_page *, page) \
+    X(char *, status) \
+    X(char *, type)   \
+    X(char *, response) \
+
+
+#define USER_FIELDS\
+    X(char *, username) \
+    X(char *, password) \
+    X(char *, email) \
+    X(char *, age) \
+    X(char *, fullname) \
+    X(char *, ph_number) \
+    X(char *, user_photo) \
+    X(char *, options) \
+
+#define SERVER_FIELDS\
+    X(uv_connect_t *, connection) \
+    X(struct sockaddr_in *, server) \
+    X(uv_tcp_t *, server_socket) \
+    X(int *, socket) \
 
 typedef struct s_user_data
 {
-    t_page *page;
-    char *status;
-    char *type; //ToDo: Rename
+    struct s_attr{
+    #define X(type, name) type name;
+        S_FIELDS
+    #undef X
+    } struct_attr;
 
-    struct s_user_attributes
+    struct s_user_attr{
+    #define X(type, name) type name;
+            USER_FIELDS
+    #undef X
+    } user_attr;
+
+    struct s_server_attr
     {
-        char username[128];
-        char password[128];
-        char email[128];
-        char age[128];
-        char fullname[128];
-        char ph_number[128];
-        char user_photo[128];
-        char options[128];
-    } user_attributes;
-
-    struct s_server_attributes
-    {
-        uv_connect_t *connection;
-        struct sockaddr_in server;
-        uv_tcp_t *server_socket;
-        int socket;
-
-    } server_attributes;
+    #define X(type, name) type name;
+        SERVER_FIELDS
+    #undef X
+    } server_attr;
 
 }              t_user_data;
 
+uv_loop_t *loop;
+
+#define GET_USER_DATA t_user_data *user_data = uv_loop_get_data(loop);
+
+
 GtkWidget *msg_widget_factory(int msg_type, char *text_msg, char *username);
+void on_write(uv_write_t* req, int status);
+void alloc_cb(uv_handle_t* handle, size_t size, uv_buf_t* buf);
+void on_read(uv_stream_t* tcp, ssize_t nread, const uv_buf_t* buf);
+void on_close(uv_handle_t* handle);
+
+/* Functions */
+void write_to_server(uv_stream_t* stream, char *data, int len);
+
 
 #endif //UCHAT_GUI_CLIENT_H

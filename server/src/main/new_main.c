@@ -96,15 +96,15 @@ int main()
     uv_tcp_bind(&server, (const struct sockaddr *)&addr, 0);
     r = uv_listen((uv_stream_t*) &server, DEFAULT_BACKLOG, on_new_connection);
 
-    print_ip_port(server);
-
+//    print_ip_port(server);
+//
     if(r)
         cmc_log_fatal("Listen error %s\n", uv_strerror(r));
-
-    // ToDo: Add more info about server
-    cmc_log_info("Server create successful\n"
-                 "IP: %"
-                 "PORT:");
+//
+//    // ToDo: Add more info about server
+//    cmc_log_info("Server create successful\n"
+//                 "IP: %"
+//                 "PORT:");
 
     return uv_run(loop, UV_RUN_DEFAULT);
 }

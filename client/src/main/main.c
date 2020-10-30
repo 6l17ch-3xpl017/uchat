@@ -607,55 +607,52 @@
 ////}
 
 #include "client.h"
+uv_loop_t *loop;
 
-static uv_loop_t *loop;
-static void on_close(uv_handle_t* handle);
-static void on_connect(uv_connect_t* connection, int status);
-static void on_write(uv_write_t* req, int status);
+//static void on_connect(uv_connect_t* connection, int status);
 
-
-void on_close(uv_handle_t* handle)
-{
-    cmc_log_info("closed.");
-}
-
-void on_write(uv_write_t* req, int status)
-{
-    if (status) {
-        perror( "uv_write error ");
-        return;
-    }
-    cmc_log_info("wrote.\n");
-    free(req);
-}
-
-void on_read(uv_stream_t* tcp, ssize_t nread, const uv_buf_t* buf)
-{
-    cmc_log_info("on_read. %p\n", tcp);
-
-    if(nread >= 0) {
-        cmc_log_info("read: %s\n", tcp->data);
-        cmc_log_info("read: %s\n", buf->base);
-    }
-    else {
-        cmc_log_error("we got an EOF");
-        uv_close((uv_handle_t*)tcp, on_close);
-    }
-
-    free(buf->base);
-}
-
-void write2(uv_stream_t* stream, char *data, int len2) {
-    uv_buf_t buffer[] = {
-            {.base = data, .len = len2}
-    };
-    uv_write_t *req = malloc(sizeof(uv_write_t));
-    uv_write(req, stream, buffer, 1, on_write);
-}
-
-static void alloc_cb(uv_handle_t* handle, size_t size, uv_buf_t* buf) {
-    *buf = uv_buf_init(malloc(size), size);
-}
+//void on_close(uv_handle_t* handle)
+//{
+//    cmc_log_info("closed.");
+//}
+//
+//void on_write(uv_write_t* req, int status)
+//{
+//    if (status) {
+//        perror( "uv_write error ");
+//        return;
+//    }
+//    cmc_log_info("wrote.\n");
+//    free(req);
+//}
+//
+//void on_read(uv_stream_t* tcp, ssize_t nread, const uv_buf_t* buf)
+//{
+//    cmc_log_info("on_read. %p\n", tcp);
+//
+//    if(nread >= 0) {
+//        cmc_log_info("read: %s\n", tcp->data);
+//        cmc_log_info("read: %s\n", buf->base);
+//    }
+//    else {
+//        cmc_log_error("we got an EOF");
+//        uv_close((uv_handle_t*)tcp, on_close);
+//    }
+//
+//    free(buf->base);
+//}
+//
+//void write2(uv_stream_t* stream, char *data, int len2) {
+//    uv_buf_t buffer[] = {
+//            {.base = data, .len = len2}
+//    };
+//    uv_write_t *req = malloc(sizeof(uv_write_t));
+//    uv_write(req, stream, buffer, 1, on_write);
+//}
+//
+//static void alloc_cb(uv_handle_t* handle, size_t size, uv_buf_t* buf) {
+//    *buf = uv_buf_init(malloc(size), size);
+//}
 
 void on_reg_button_activate_link(GtkWidget *window, GtkWidget *windoww)
 {
@@ -669,7 +666,7 @@ void on_reg_button_activate_link(GtkWidget *window, GtkWidget *windoww)
 
     uv_connect_t *stream = uv_loop_get_data(loop);
 
-    write2(stream->handle, "reg_button_pressed", 18);
+    write_to_server(stream->handle, "reg_button_pressed", 18);
     uv_read_start(stream->handle, alloc_cb, on_read);
 }
 
@@ -684,24 +681,26 @@ void on_connect(uv_connect_t* connection, int status)
     cmc_log_info("connected %p %d\n", connection, status);
 
     uv_loop_set_data(loop, connection);
-    user_data->server_attributes.connection = connection;
+    user_data->server_attr.connection = connection;
 }
 
 void init_connection(char *host, int port)
 {
+    //ToDo: Add error dialog
+
     t_user_data *user_data = uv_loop_get_data(loop);
-    user_data->server_attributes.server_socket = malloc(sizeof(uv_tcp_t));
+//    user_data->server_attr.server_socket = malloc(sizeof(uv_tcp_t));
 
-    uv_tcp_init(loop, user_data->server_attributes.server_socket);
-    uv_tcp_keepalive(user_data->server_attributes.server_socket, 1, 60);
+    uv_tcp_init(loop, user_data->server_attr.server_socket);
+    uv_tcp_keepalive(user_data->server_attr.server_socket, 1, 60);
 
-    uv_ip4_addr(host, port, &user_data->server_attributes.server);
+    uv_ip4_addr(host, port, user_data->server_attr.server);
 
-    user_data->server_attributes.connection = malloc(sizeof(uv_connect_t));
+//    user_data->server_attr.connection = malloc(sizeof(uv_connect_t));
 
-    uv_tcp_connect(user_data->server_attributes.connection,
-                   user_data->server_attributes.server_socket,
-                   (const struct sockaddr*)&user_data->server_attributes.server, on_connect);
+    uv_tcp_connect(user_data->server_attr.connection,
+                   user_data->server_attr.server_socket,
+                   (const struct sockaddr*)&user_data->server_attr.server, on_connect);
 }
 
 void on_chat_open(GtkWidget *login_window, GtkDialog *err_dialog)
@@ -709,22 +708,67 @@ void on_chat_open(GtkWidget *login_window, GtkDialog *err_dialog)
     uv_run(loop, UV_RUN_DEFAULT);
 }
 
+////--- first describe the structure, the fields, their types and how to print them
+//#define X_FIELDS \
+//    X(int, some, "%d") \
+//    X(int, two, "%d") \
+//    X(char, three, "%c") \
+//    X(char *, hello, "%s")
+//
+////--- define the structure, the X macro will be expanded once per field
+//typedef struct {
+//#define X(type, name, format) type name;
+//    X_FIELDS
+//#undef X
+//} mystruct;
+//
+//void iterate(mystruct *aStruct)
+//{
+////--- "iterate" over all the fields of the structure
+//#define X(type, name, format) \
+//         printf("mystruct.%s is "format"\n", #name, aStruct->name);
+//    X_FIELDS
+//#undef X
+//}
 
+void init_user_data(t_user_data *user_data)
+{
+    #define X(type, name) \
+        user_data->user_attr.name = malloc(sizeof(type));
+        USER_FIELDS
+    #undef X
+
+    //ToDo: Dangerous code
+    #define X(type, name) \
+        user_data->server_attr.name = malloc(sizeof(type));
+        SERVER_FIELDS
+    #undef X
+
+    //ToDo: Dangerous code
+    #define X(type, name) \
+        user_data->struct_attr.name = malloc(sizeof(type));
+        S_FIELDS
+    #undef X
+
+}
+
+//ToDo: Clear attributes in struct
 //ToDo: Split all on logical containers and get with gtk_container_foreach()
 int main(int argc, char **argv)
 {
     // ToDo: Free that memory
     t_user_data *user_data = calloc(0, sizeof(t_user_data));
+    init_user_data(user_data);
 
     loop = uv_default_loop();
     uv_loop_set_data(loop, user_data);
     init_connection(argc != 2 ? "127.0.0.1" : argv[1], 5000);
 
     gtk_init(&argc, &argv);
-    user_data->page = select_page(TEST_PAGE);
+    user_data->struct_attr.page = select_page(TEST_PAGE2);
 
     //ToDo: rename variable
-    gpointer *gp = get_widget(user_data->page->widgets, "login_window");
+    gpointer *gp = get_widget(user_data->struct_attr.page->widgets, "login_wnd");
 
     gtk_widget_show_now(GTK_WIDGET(gp));
 
