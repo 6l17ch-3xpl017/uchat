@@ -15,7 +15,6 @@
 typedef struct s_message {
     struct s_message *next;
     time_t time;
-    //time_t ms_time;
     char *message_id;
     char *message_owner_id;
     char *chat_id;
@@ -115,6 +114,7 @@ int add_user_in_chat(t_user *User, t_chat *Chat);
 // DELETE
 void drop_all();
 int delete_user(t_user *User);
+int delete_chat_from_db(t_chat *Chat);
 
 //INSERT
 int user_in_db(t_user *User);
