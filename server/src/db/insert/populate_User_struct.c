@@ -23,15 +23,6 @@ static int callback(void *my_arg, int argc, char **argv, char **columns) {
     return 0;
 }
 
-static char *make_request(char *wrapper,char *filling) {
-    char *request = NULL;
-    request = (char *)malloc(sizeof(char) * (38 + strlen(filling)));
-    request = strcpy(request, wrapper);
-    request = strcat(request, filling);
-    request = strcat(request, "';");
-    return request;
-}
-
 /**
  * @brief Function copy all data from database to structure 'User'. If in structure we have some data, this data
  *        will be refreshed.
@@ -45,11 +36,11 @@ int populate_User_struct(t_user *User) {
 
     sqlite3_open("chat_database.db", &database);
     if (User->id)
-        request = make_request("SELECT * FROM Users WHERE id='", User->id);
+        make_sql_request(&request, "SELECT * FROM Users WHERE id = %s ;", User->id);
     else if (User->nickname)
-        request = make_request("SELECT * FROM Users WHERE nickname='", User->nickname);
+        make_sql_request(&request, "SELECT * FROM Users WHERE nickname = %s ;", User->nickname);
     else if (User->email)
-        request = make_request("SELECT * FROM Users WHERE email='", User->email);
+        make_sql_request(&request, "SELECT * FROM Users WHERE email = %s ;", User->email);
 
     sqlite3_exec(database, request, callback, User, 0);
     free(request);

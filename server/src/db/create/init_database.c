@@ -1,7 +1,3 @@
-//
-// Created by Illia Marchenko on 9/27/20.
-//
-
 #include "header_db_dev.h"
 
 /**
@@ -17,7 +13,6 @@ int init_database() {
     result = sqlite3_open("chat_database.db", &db);
     if (result != SQLITE_OK)
         return can_not_open_db;
-
     // -----------------------------=-Block to create Users table-=-------------------------------
     result = sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS\"Users\" (\n"
                               "\"id\"\tINTEGER NOT NULL UNIQUE,\n"

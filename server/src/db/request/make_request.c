@@ -29,7 +29,7 @@ static char *mx_replace_one_substr(const char *str, const char *sub, const char 
                 if (!strncmp((char *) str, (char *) sub, strlen(sub))) {
                     stop = true;
                     str += strlen(sub);
-                    for (int j = 0; j < strlen(replace); i++, j++)
+                    for (unsigned long j = 0; j < strlen(replace); i++, j++)
                         memory[i] = replace[j];
                 }
             }

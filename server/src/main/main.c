@@ -70,10 +70,6 @@ static void server_async_create() {
     struct sockaddr_storage serverStorage;
     socklen_t addr_size;
 
-//--------------------------------------------------------
-
-    add_chat_to_db(chat_struct_filling_with_null());
-//--------------------------------------------------------
 //    SSL_CTX *sslctx;
 //    SSL *cSSL;
 
@@ -84,6 +80,9 @@ static void server_async_create() {
     serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
     init_database();
+//--------------------------------------------------------
+    add_chat_to_db(chat_struct_filling_with_null());
+//--------------------------------------------------------
 
     memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);
     bind(serverSocket, (struct sockaddr *) &serverAddr, sizeof(serverAddr));
@@ -130,12 +129,54 @@ static void skeleton_daemon() {
     openlog("firstdaemon", LOG_PID, LOG_DAEMON);
 }
 
+
+
+
+//static void user_data_struct_fill() {
+//    t_user *User = NULL;
+//    int check_status;
+//
+//    User = (t_user *) malloc(sizeof(t_user));
+//    User->id = NULL;
+//    User->nickname = strdup(json_string_value(json_object_get(user, "nickname")));
+//    User->password = strdup(json_string_value(json_object_get(user, "password")));
+//    User->email = strdup(json_string_value(json_object_get(user, "email")));
+//    User->age = strdup(json_string_value(json_object_get(user, "age")));
+//    User->fullname = strdup(json_string_value(json_object_get(user, "fullname")));
+//    User->ph_number = strdup(json_string_value(json_object_get(user, "ph_number")));
+//    User->user_photo = strdup(json_string_value(json_object_get(user, "user_photo")));
+//    User->option = NULL; //strdup(json_string_value(json_object_get(user, "option")));
+//    User->number_of_chats = 0;
+//    User->chats = NULL;
+//    check_status = add_user_to_db(User);
+//    send_status(User, Chat, socket->socket, check_status, "sign_up");
+//    json_decref(user);
+//}
+
 int main() {
 //    skeleton_daemon();
 
 //    while (1) {
 //        //TODO: Insert daemon code here.
     server_async_create();
+//------------------------------
+//    t_user *User = NULL;
+//    t_thread_sockuser *thread = NULL;
+//    thread = (t_thread_sockuser *) malloc(sizeof(t_thread_sockuser));
+//    thread->socket = 1;
+//    init_database();
+//    add_chat_to_db(chat_struct_filling_with_null());
+//    user_data_struct_fill();
+//    add_user_to_db();
+//    json_t *message = json_object();
+//    json_object_set_new(message, "message_id", json_string("1"));
+//    json_object_set_new(message, "message_content", json_string("First message"));
+//    json_object_set_new(message, "message_owner_id", json_string("1"));
+//    json_object_set_new(message, "time", json_string("2020"));
+//    create_new_chat(message, thread);
+//------------------------------
+
+
 //    }
 
 }

@@ -1,12 +1,5 @@
 #include "header_db_dev.h"
 
-static void make_request(char **request, char *data, char *content) {
-    *request = mx_strnew((int)strlen(content) + (int)strlen(data) + 2);
-    *request = strcpy(*request, content);
-    *request = strcat(*request, data);
-    *request = strcat(*request, "\";");
-}
-
 static int callback(void *my_arg, int argc, char **argv, char **columns) {
     int *res = (int *)my_arg;
     *res = argc;
@@ -45,17 +38,17 @@ static int send_request(char *request) {
 int check_valid_data_for_sign_up(t_user *User) {
     char *request = NULL;
     if (User->nickname) {
-        make_request(&request, User->nickname, "SELECT id FROM Users WHERE nickname=\"");
+        make_sql_request(&request, "SELECT id FROM Users WHERE nickname=%s", User->nickname);
         if (send_request(request) == 1)
             return nickname_was_already_signed_up;
     }
     if (User->email) {
-        make_request(&request, User->email, "SELECT id FROM Users WHERE email=\"");
+        make_sql_request(&request, "SELECT id FROM Users WHERE email=%s", User->email);
         if (send_request(request) == 1)
             return email_was_already_signed_up;
     }
     if (User->ph_number) {
-        make_request(&request, User->ph_number, "SELECT id FROM Users WHERE phone_number=\"");
+        make_sql_request(&request, "SELECT id FROM Users WHERE phone_number=%s", User->ph_number);
         if (send_request(request) == 1)
             return phone_number_was_already_signed_up;
     }

@@ -10,17 +10,18 @@
 #include <stdbool.h>
 #include <sqlite3.h>
 #include <time.h>
+#include <stdarg.h>
 
 
 typedef struct s_message {
     struct s_message *next;
     time_t time;
-    //time_t ms_time;
     char *message_id;
     char *message_owner_id;
     char *chat_id;
     char *message_content;
     int changed;
+    int deleted;
     char *option;
 }              t_message;
 
@@ -37,7 +38,7 @@ typedef struct s_chat {
 }              t_chat;
 
 typedef struct s_user {
-//    struct s_user *next;
+    struct s_user *next;
     struct s_chat *chats;
     int number_of_chats;
     void *option;
@@ -115,6 +116,7 @@ int add_user_in_chat(t_user *User, t_chat *Chat);
 // DELETE
 void drop_all();
 int delete_user(t_user *User);
+int delete_chat_from_db(t_chat *Chat);
 
 //INSERT
 int user_in_db(t_user *User);
@@ -128,7 +130,7 @@ void add_id_to_struct_Chat(t_chat *Chat);
 void add_id_to_struct_Message(t_message *Message);
 void mx_del_chat_list(t_chat *list, int leng);
 void mx_pop_back_for_chat(t_chat **head);
-int get_all_messages_from_struct(t_chat *Chat);
+int get_all_messages_from_db(t_chat *Chat);
 
 // UPDATE
 // user
@@ -139,7 +141,6 @@ int update_age_of_user(t_user *User, char *new_age);
 int update_fullname_of_user(t_user *User, char *new_fullname);
 int update_phone_number_of_user(t_user *User, char *new_phone_number);
 int update_photo_of_user(t_user *User, char *new_photo);
-void make_request_for_null_user(char **request, char *id, char *column_in_db);
 
 // chat
 void refresh_data_after_chat_update(t_chat *Chat, sqlite3 *db);
@@ -161,5 +162,8 @@ void print_user_info(t_user *User);
 void print_chat_info(t_chat *Chat);
 // -----------------------------------------------------------------------
 
+char *make_sql_request(char **dst, char *body, ...);
+
 
 #endif //UCHAT_HEADER_DB_DEV_H
+

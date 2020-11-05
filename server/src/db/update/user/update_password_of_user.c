@@ -1,14 +1,5 @@
 #include "header_db_dev.h"
 
-static void make_request(char **request, char *id, char *new_pass) {
-    *request = mx_strnew((int)(strlen(id) + strlen(new_pass)) + 41);
-    strcpy(*request, "UPDATE Users SET password=\"");
-    strcat(*request, new_pass);
-    strcat(*request, "\" WHERE id=\"");
-    strcat(*request, id);
-    strcat(*request, "\";");
-}
-
 /**
  * @brief This function takes information about user and change his password by a new one.
  * Structure 'User' will be updated too.
@@ -18,6 +9,7 @@ static void make_request(char **request, char *id, char *new_pass) {
  * @return 'can_not_open_db' if connection with database was lost.
  * @return 'request_failed' if request was failed.
  * @return 'success' if password was successfully updated.
+ * @return 1 if user wasn't sign in
  */
 
 int update_password_of_user(t_user *User, char *new_password) {
@@ -32,7 +24,10 @@ int update_password_of_user(t_user *User, char *new_password) {
     if (result != SQLITE_OK)
         return can_not_open_db;
 
-    make_request(&request, User->id, new_password);
+    if (User->id)
+        make_sql_request(&request, "UPDATE Users SET password = %s WHERE id = %s ;", new_password, User->id);
+    else
+        return 0;
     result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&request);
     sqlite3_close(db);

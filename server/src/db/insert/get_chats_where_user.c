@@ -28,14 +28,6 @@ static int callback_for_id(void *my_arg, int argc, char **argv, char **columns) 
     return 0;
 }
 
-
-static void make_request(char **request, char *id, char *request_content) {
-    *request = mx_strnew((int)strlen(request_content) + (int)strlen(id) + 10);
-    *request = strcpy(*request, request_content);
-    *request = strcat(*request, id);
-    *request = strcat(*request, "\";");
-}
-
 int get_chats_where_user(t_user *User) {
     sqlite3 *database;
     char *request = NULL;
@@ -46,7 +38,7 @@ int get_chats_where_user(t_user *User) {
     chats_id->number_of_chats = 0;
 
 // first request to get all user's chat id numbers
-    make_request(&request, User->id, "SELECT chat_id FROM Chat_User WHERE user_id = \"");
+    make_sql_request(&request, "SELECT chat_id FROM Chat_User WHERE user_id = %s ;", User->id);
     result = sqlite3_open("chat_database.db", &database);
     if (result != SQLITE_OK) {
         mx_strdel(&request);
@@ -63,11 +55,10 @@ int get_chats_where_user(t_user *User) {
 
 // block to make linked list of data about user's chats
     User->number_of_chats = chats_id->number_of_chats;
-    if (User->number_of_chats != 0)
-        User->chats = (t_chat *) malloc(sizeof(t_chat));
+    User->chats = (t_chat *) malloc(sizeof(t_chat));
     t_chat *temp_chat = User->chats;
     for (int i = 0; i < chats_id->number_of_chats; i++) {
-        make_request(&request, chats_id->chat_id[i], "SELECT * FROM Chats WHERE chat_id = \"");
+        make_sql_request(&request, "SELECT * FROM Chats WHERE chat_id = %s ;", chats_id->chat_id[i]);
         init_chat_struct(temp_chat);
         sqlite3_exec(database, request, callback_for_data, temp_chat, 0);
         if ((i + 1) < chats_id->number_of_chats)

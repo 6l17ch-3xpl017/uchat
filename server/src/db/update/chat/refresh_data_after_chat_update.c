@@ -1,12 +1,5 @@
 #include "header_db_dev.h"
 
-static void make_request(t_chat *Chat, char **request) {
-    *request = mx_strnew((int)(strlen(Chat->chat_id) + 38));
-    strcpy(*request, "SELECT * FROM Chats WHERE chat_id='");
-    strcat(*request, Chat->chat_id);
-    strcat(*request, "';");
-}
-
 static void free_and_dup(char **a, char *b) {
     if (*a)
         free(*a);
@@ -28,7 +21,7 @@ static int callback(void *my_arg, int argc, char **argv, char **columns) {
 
 void refresh_data_after_chat_update(t_chat *Chat, sqlite3 *db) {
     char *request = NULL;
-    make_request(Chat, &request);
+    make_sql_request(&request, "SELECT * FROM Chats WHERE chat_id = %s ;", Chat->chat_id);
     sqlite3_exec(db, request, callback, Chat, 0);
     mx_strdel(&request);
 }

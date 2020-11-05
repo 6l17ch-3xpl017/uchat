@@ -18,14 +18,20 @@ void send_status(t_user *User, t_chat *Chat, int socketfd, int status, char *fun
     /* in case of success function execution */
     if (status == 104 || status == 107) {
         user_out = json_object();
-//        json_object_set_new(json, "user_nick", json_string(User->nickname));
         chat_array = json_array();
         if (User->number_of_chats != 0) {
             for (int i = 0; i < User->number_of_chats; i++) {
-                json_object_set_new(user_out, "chat", json_string(Chat->chat_name));
+                json_object_set_new(user_out, "chat", json_string(Chat->chat_id));
                 json_array_append(chat_array, user_out);
             }
         }
+//        else if (Chat->number_of_messages != 0 && strcmp(func, "send_message") == 0) {
+//        }
+//        else if (Chat->number_of_messages != 0 && strcmp(func, "open_chat") == 0) {
+//            for (t_message *head = Chat->next_message; head; head == head->next) {
+//
+//            }
+//        }
         json_object_set_new(json, "user_chats", chat_array);
         result = json_dumps(json, 0);
         write(socketfd, result, strlen(result));

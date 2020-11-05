@@ -39,7 +39,7 @@ static void json_sign_in_parse(t_user *User, json_t *user_in) {
  * @param Chat structure that contains name(s) of chat(s)
  */
 
-bool user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
+t_user *user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
     t_user *User;
     t_chat *Chat;
     json_t *user_in;
@@ -68,5 +68,5 @@ bool user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
     printf("%d\n", user_in_db(User)); // print db function result
     //-------------------------------------------------
 
-    return 1; // true
+    return User; // true
 }

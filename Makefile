@@ -19,8 +19,6 @@ $(SERVER_NAME):
 	@$(MAKE_M) $(SERVER_DIR)
 
 $(shell mkdir -p $(U_BIN_DIR))
-#$(U_BIN_DIR):
-#	@$(MKDIR) $@
 
 clean:
 	@$(MAKE_M) $(SERVER_DIR) $@

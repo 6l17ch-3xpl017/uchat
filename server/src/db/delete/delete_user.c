@@ -1,12 +1,5 @@
 #include "header_db_dev.h"
 
-static void make_request(char **request, char *id, char *content) {
-    *request = mx_strnew((int)strlen(id) + (int)strlen(content) + 2);
-    strcpy(*request, content);
-    strcat(*request, id);
-    strcat(*request, "\";");
-}
-
 int delete_user(t_user *User) {
     sqlite3 *db;
     char *request = NULL;
@@ -19,10 +12,8 @@ int delete_user(t_user *User) {
     if (result != SQLITE_OK)
         return can_not_open_db;
 
-    make_request(&request, User->id, "DELETE FROM Users WHERE id=\"");
-
+    make_sql_request(&request, "DELETE FROM Users WHERE id=%s;", User->id);
     result = sqlite3_exec(db, request, 0, 0, 0);
-
     mx_strdel(&request);
     sqlite3_close(db);
 

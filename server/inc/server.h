@@ -38,9 +38,9 @@ typedef struct s_thread_sockuser {
 
 // router
 int check_route(char *str, t_thread_sockuser *thread);
-bool user_sign_in(json_t *income_json, t_thread_sockuser *socket);
-bool user_sign_up(json_t *income_json, t_thread_sockuser *socket);
+t_user *user_sign_in(json_t *income_json, t_thread_sockuser *socket);
+t_user *user_sign_up(json_t *income_json, t_thread_sockuser *socket);
 void send_status(t_user *User, t_chat *Chat, int socketfd, int status, char *func);
-int create_new_chat(json_t *income_json, t_thread_sockuser *socket);
+int create_new_message(json_t *income_json, t_thread_sockuser *socket, t_user *User);
 
 #endif

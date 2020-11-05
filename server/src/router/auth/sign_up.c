@@ -1,7 +1,7 @@
 #include "server.h"
 
 /* get all data from json and add it to struct */
-static void user_data_struct_fill(json_t *user, t_thread_sockuser *socket, t_chat *Chat) {
+static t_user *user_data_struct_fill(json_t *user, t_thread_sockuser *socket, t_chat *Chat) {
     t_user *User = NULL;
     int check_status;
 
@@ -20,6 +20,7 @@ static void user_data_struct_fill(json_t *user, t_thread_sockuser *socket, t_cha
     check_status = add_user_to_db(User);
     send_status(User, Chat, socket->socket, check_status, "sign_up");
     json_decref(user);
+    return User;
 }
 
 /**
@@ -30,9 +31,10 @@ static void user_data_struct_fill(json_t *user, t_thread_sockuser *socket, t_cha
  * @param User structure to fill with NULL and/or user data to send it to database
  * @param Chat structure to init empty chat
  */
-bool user_sign_up(json_t *income_json, t_thread_sockuser *socket) {
+t_user *user_sign_up(json_t *income_json, t_thread_sockuser *socket) {
     t_user *User = NULL;
     t_chat *Chat = NULL;
+    t_user *r_user;
     json_t *user;
     /* receive json from client and check its correctness */
     user = json_object_get(income_json,"user");
@@ -47,8 +49,8 @@ bool user_sign_up(json_t *income_json, t_thread_sockuser *socket) {
     else {
         /* add user data to database (process locked by mutex) */
     // TODO add mutex function
-        user_data_struct_fill(user, socket, Chat);
-        return 1;
+        User = user_data_struct_fill(user, socket, Chat);
+        return User;
     }
 }
 
