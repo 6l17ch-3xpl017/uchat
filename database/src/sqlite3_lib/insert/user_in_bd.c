@@ -42,18 +42,10 @@ int user_in_db(t_user *User) {
         return can_not_open_db;
     }
 
-    if (User->nickname) {
-        request = (char *)malloc(sizeof(char) * (39 + strlen(User->nickname)));
-        request = strcpy(request, "SELECT id FROM Users WHERE nickname='");
-        request = strcat(request, User->nickname);
-        request = strcat(request, "';");
-    }
-    else if (User->email) {
-        request = (char *)malloc(sizeof(char) * (36 + strlen(User->email)));
-        request = strcpy(request, "SELECT id FROM Users WHERE email='");
-        request = strcat(request, User->email);
-        request = strcat(request, "';");
-    }
+    if (User->nickname)
+        make_sql_request(&request, "SELECT id FROM Users WHERE nickname = %s ;", User->nickname);
+    else if (User->email)
+        make_sql_request(&request, "SELECT id FROM Users WHERE email = %s ;", User->email);
     else {
         sqlite3_close(db);
         free(password);
@@ -78,18 +70,11 @@ int user_in_db(t_user *User) {
     if (request)
         free(request);
 
-    if (User->nickname) {
-        request = (char *)malloc(sizeof(char) * (45 + strlen(User->nickname)));
-        request = strcpy(request, "SELECT password FROM Users WHERE nickname='");
-        request = strcat(request, User->nickname);
-        request = strcat(request, "';");
-    }
-    else if (User->email) {
-        request = (char *)malloc(sizeof(char) * (42 + strlen(User->email)));
-        request = strcpy(request, "SELECT password FROM Users WHERE email='");
-        request = strcat(request, User->email);
-        request = strcat(request, "';");
-    }
+    if (User->nickname)
+        make_sql_request(&request, "SELECT password FROM Users WHERE nickname = %s ;", User->nickname);
+    else if (User->email)
+        make_sql_request(&request, "SELECT password FROM Users WHERE email = %s ;", User->email);
+
     result = sqlite3_exec(db, request, callback_to_get_password, password, &error1);
     if (result != SQLITE_OK) {
         fprintf(stderr, "SQL error: %s\n", error);
