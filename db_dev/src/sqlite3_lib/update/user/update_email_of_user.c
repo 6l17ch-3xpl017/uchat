@@ -1,14 +1,5 @@
 #include "header_db_dev.h"
 
-static void make_request(char **request, char *id, char *new_email) {
-    *request = mx_strnew((int)(strlen(id) + strlen(new_email)) + 38);
-    strcpy(*request, "UPDATE Users SET email=\"");
-    strcat(*request, new_email);
-    strcat(*request, "\" WHERE id=\"");
-    strcat(*request, id);
-    strcat(*request, "\";");
-}
-
 static int check_new_email (char *new_email) {
     int result;
     t_user *temp;
@@ -33,6 +24,7 @@ static int check_new_email (char *new_email) {
  * @return 'can_not_open_db' if connection with database was lost.
  * @return 'request_failed' if request was failed.
  * @return 'success' if email was successfully updated.
+ * @return 1 if user wasn't sign in
  */
 
 int update_email_of_user(t_user *User, char *new_email) {
@@ -48,10 +40,10 @@ int update_email_of_user(t_user *User, char *new_email) {
     if (result != SQLITE_OK)
         return can_not_open_db;
 
-    if (new_email)
-        make_request(&request, User->id, new_email);
+    if (User->id)
+        make_sql_request(&request, "UPDATE Users SET email = %s WHERE id = %s ;", new_email, User->id);
     else
-        make_request_for_null_user(&request, User->id, "email");
+        return 1;
     result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&request);
     sqlite3_close(db);

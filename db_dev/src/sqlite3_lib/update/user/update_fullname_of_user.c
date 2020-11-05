@@ -1,14 +1,5 @@
 #include "header_db_dev.h"
 
-static void make_request(char **request, char *id, char *new_fullname) {
-    *request = mx_strnew((int)(strlen(id) + strlen(new_fullname)) + 41);
-    strcpy(*request, "UPDATE Users SET fullname=\"");
-    strcat(*request, new_fullname);
-    strcat(*request, "\" WHERE id=\"");
-    strcat(*request, id);
-    strcat(*request, "\";");
-}
-
 /**
  * @brief This function takes information about user and changes his fullname by a new one.
  * Structure 'User' will be updated too.
@@ -17,6 +8,7 @@ static void make_request(char **request, char *id, char *new_fullname) {
  * @return 'can_not_open_db' if connection with database was lost.
  * @return 'request_failed' if request was failed.
  * @return 'success' if fullname was successfully updated.
+ * @return 1 if user wasn't sign in
  */
 
 int update_fullname_of_user(t_user *User, char *new_fullname) {
@@ -28,11 +20,10 @@ int update_fullname_of_user(t_user *User, char *new_fullname) {
     if (result != SQLITE_OK)
         return can_not_open_db;
 
-    if (new_fullname)
-        make_request(&request, User->id, new_fullname);
+    if (User->id)
+        make_sql_request(&request, "UPDATE Users SET fullname = %s WHERE id = %s ;", new_fullname, User->id);
     else
-        make_request_for_null_user(&request, User->id, "fullname");
-
+        return 1;
     result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&request);
     sqlite3_close(db);

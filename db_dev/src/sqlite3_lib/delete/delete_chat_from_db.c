@@ -1,14 +1,5 @@
 #include "header_db_dev.h"
 
-
-static void make_request(char **request, char *id, char *content) {
-    *request = mx_strnew((int)strlen(id) + (int)strlen(content) + 2);
-    strcpy(*request, content);
-    strcat(*request, id);
-    strcat(*request, "';");
-}
-
-
 int delete_chat_from_db(t_chat *Chat) {
     sqlite3 *db;
     char *request = NULL;
@@ -21,10 +12,8 @@ int delete_chat_from_db(t_chat *Chat) {
     if (result != SQLITE_OK)
         return can_not_open_db;
 
-    make_request(&request, Chat->chat_id, "DELETE FROM Chats WHERE chat_id='");
-
+    make_sql_request(&request, "DELETE FROM Chats WHERE chat_id=%s;", Chat->chat_id);
     result = sqlite3_exec(db, request, 0, 0, 0);
-
     mx_strdel(&request);
     sqlite3_close(db);
 

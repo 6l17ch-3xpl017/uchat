@@ -15,15 +15,6 @@ static int check_new_phone(char *new_phone_number) {
     return 0;
 }
 
-static void make_request(char **request, char *id, char *new_phone_number) {
-    *request = mx_strnew((int)(strlen(id) + strlen(new_phone_number)) + 45);
-    strcpy(*request, "UPDATE Users SET phone_number=\"");
-    strcat(*request, new_phone_number);
-    strcat(*request, "\" WHERE id=\"");
-    strcat(*request, id);
-    strcat(*request, "\";");
-}
-
 /**
  * @brief This function takes information about user and change his phone number by a new one.
  * Structure 'User' will be updated too.
@@ -33,6 +24,7 @@ static void make_request(char **request, char *id, char *new_phone_number) {
  * @return 'can_not_open_db' if connection with database was lost.
  * @return 'request_failed' if request was failed.
  * @return 'success' if phone number was successfully updated.
+ * @return 1 if user wasn't sign in
  */
 
 int update_phone_number_of_user(t_user *User, char *new_phone_number) {
@@ -46,11 +38,10 @@ int update_phone_number_of_user(t_user *User, char *new_phone_number) {
     result = sqlite3_open("chat_database.db", &db);
     if (result != SQLITE_OK)
         return can_not_open_db;
-
-    if (new_phone_number != NULL)
-        make_request(&request, User->id, new_phone_number);
+    if (User->id)
+        make_sql_request(&request, "UPDATE Users SET phone_number = %s WHERE id = %s ;", new_phone_number, User->id);
     else
-        make_request_for_null_user(&request, User->id, "phone_number");
+        return 1;
     result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&request);
     sqlite3_close(db);

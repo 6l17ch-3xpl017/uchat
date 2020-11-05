@@ -1,14 +1,5 @@
 #include "header_db_dev.h"
 
-static void make_request(char **request, char *id, char *new_admin_id) {
-    *request = mx_strnew((int)sizeof(char) * ((int)strlen(id) + (int)strlen(new_admin_id) + 50));
-    *request = strcpy(*request, "UPDATE Chats SET admin_id='");
-    *request = strcat(*request, new_admin_id);
-    *request = strcat(*request, "' WHERE chat_id='");
-    *request = strcat(*request, id);
-    *request = strcat(*request, "';");
-}
-
 /**
  * @param Chat - structure with information about chat
  * @param new_admin_id - new id of chat's admin
@@ -36,7 +27,7 @@ int update_admin_id_of_chat(t_chat *Chat, char *new_admin_id) {
         return can_not_open_db;
 
 //  make and send request
-    make_request(&request, Chat->chat_id, new_admin_id);
+    make_sql_request(&request, "UPDATE Chats SET admin_id = %s WHERE chat_id = %s ;", new_admin_id, Chat->chat_id);
     result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&request);
     refresh_data_after_chat_update(Chat, db);

@@ -29,10 +29,10 @@ add_executable(db_dev
         src/sqlite3_lib/update/user/update_fullname_of_user.c src/sqlite3_lib/create/add_user_in_chat.c
         src/sqlite3_lib/update/user/update_phone_number_of_user.c src/sqlite3_lib/update/user/update_photo_of_user.c
         src/sqlite3_lib/insert/get_all_messages_from_chat.c src/sqlite3_lib/insert/init_message_struct.c
-        src/sqlite3_lib/update/user/make_request_for_null_user.c src/sqlite3_lib/update/chat/update_chat_name.c
+        src/sqlite3_lib/update/chat/update_chat_name.c
         src/sqlite3_lib/update/chat/update_admin_id_of_chat.c
         src/sqlite3_lib/update/chat/refresh_data_after_chat_update.c src/sqlite3_lib/update/chat/update_chat_photo.c
-        src/sqlite3_lib/insert/add_id_to_struct_Message.c src/sqlite3_lib/delete/delete_chat_from_db.c)
+        src/sqlite3_lib/insert/add_id_to_struct_Message.c src/sqlite3_lib/delete/delete_chat_from_db.c src/sqlite3_lib/request/make_request.c)
 
 include_directories(/usr/include)
 link_directories(/usr/lib)

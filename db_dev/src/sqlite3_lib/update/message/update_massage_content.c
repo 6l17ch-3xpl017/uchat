@@ -1,14 +1,5 @@
 #include "header_db_dev.h"
 
-static void make_request(char **request, char *new_content, char *id) {
-    *request = mx_strnew((int)(strlen(new_content) + 1000000));
-    strcpy(*request, "UPDATE Messages SET message_content='");
-    strcat(*request, new_content);
-    strcat(*request, "' WHERE message_id='");
-    strcat(*request, id);
-    strcat(*request, "';");
-}
-
 int update_message_content(t_message *Message, char *new_content) {
     sqlite3 *db;
     char *request = NULL;
@@ -18,7 +9,7 @@ int update_message_content(t_message *Message, char *new_content) {
     if (result != SQLITE_OK)
         return can_not_open_db;
 
-    make_request(&request, new_content, Message->message_id);
+    make_sql_request(&request, "UPDATE Messages SET message_content = %s WHERE message_id = %s ;", new_content, Message->message_id);
     result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&request);
     sqlite3_close(db);

@@ -32,15 +32,7 @@ static int callback_for_data(void *my_arg, int argc, char **argv, char **columns
     return 0;
 }
 
-
-static void make_request(char **request, char *id, char *request_content, char *end_of_request) {
-    *request = mx_strnew((int)strlen(request_content) + (int)strlen(id) + (int)strlen(end_of_request));
-    *request = strcpy(*request, request_content);
-    *request = strcat(*request, id);
-    *request = strcat(*request, end_of_request);
-}
-
-int get_all_messages_from_struct(t_chat *Chat) {
+int get_all_messages_from_db(t_chat *Chat) {
     sqlite3 *database;
     char *request = NULL;
     int result;
@@ -52,7 +44,7 @@ int get_all_messages_from_struct(t_chat *Chat) {
     messages_id->number_of_messages = 0;
 
 // first request to get all messages id numbers
-    make_request(&request, Chat->chat_id, "SELECT message_id FROM Messages WHERE chat_id='", "' ORDER BY time;");
+    make_sql_request(&request, "SELECT message_id FROM Messages WHERE chat_id=%s ORDER BY time;", Chat->chat_id);
     result = sqlite3_open("chat_database.db", &database);
     if (result != SQLITE_OK) {
         mx_strdel(&request);
@@ -72,7 +64,7 @@ int get_all_messages_from_struct(t_chat *Chat) {
     Chat->next_message = (t_message *)malloc(sizeof(t_message));
     t_message *current_message = Chat->next_message;
     for (int i = 0; i < messages_id->number_of_messages; i++) {
-        make_request(&request, messages_id->message_id[i], "SELECT * FROM Messages WHERE message_id='", "';");
+        make_sql_request(&request, "SELECT * FROM Messages WHERE message_id=%s;", messages_id->message_id[i]);
         init_message_struct(current_message);
         sqlite3_exec(database, request, callback_for_data, current_message, 0);
         if ((i + 1) < messages_id->number_of_messages)

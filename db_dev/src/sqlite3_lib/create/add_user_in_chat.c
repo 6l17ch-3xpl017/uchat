@@ -1,14 +1,5 @@
 #include "header_db_dev.h"
 
-static int get_len_of_item(char *item) {
-    int result = 5;
-    if (item)
-        return result + (int)strlen(item) + 4;
-    else
-        return result;
-}
-
-
 /**
  * @brief Function takes structure with data and paste this data into database. Every variable of structure User must be
  * NULL or must contain some information about user.
@@ -24,13 +15,8 @@ int add_user_in_chat(t_user *User, t_chat *Chat) {
     sqlite3 *db;
     char *request = NULL;
     // -----------------------------------making request-----------------------------------------------
-    request = (char *)malloc(sizeof(char) * (get_len_of_item(User->id)+get_len_of_item(Chat->chat_id)+53));
-    request = strcpy(request, "INSERT INTO Chat_User (chat_id, user_id) VALUES (");
-    request = strcat(request, Chat->chat_id);
-    request = strcat(request, ", ");
-    request = strcat(request, User->id);
-    request = strcat(request, ");");
-
+    request = make_sql_request(&request, "INSERT INTO Chat_User (chat_id, user_id) VALUES (%s, %s);",
+                               Chat->chat_id, User->id);
     // ----------------------------adding to the database---------------------------------------------
     result = sqlite3_open("chat_database.db", &db);
     if (result != SQLITE_OK) {
