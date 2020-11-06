@@ -12,23 +12,26 @@
 #include <time.h>
 #include <stdarg.h>
 
+struct s_user;
 
 typedef struct s_message {
     struct s_message *next;
     time_t time;
+    int changed;
     char *message_id;
     char *message_owner_id;
     char *chat_id;
     char *message_content;
-    int changed;
     char *option;
 }              t_message;
 
 
 typedef struct s_chat {
+    struct s_user *user_in_chat;
     struct s_chat *next;
     struct s_message *next_message;
     int number_of_messages;
+    int number_of_users;
     void *option;
     char *chat_id;
     char *chat_name;
@@ -60,6 +63,11 @@ typedef struct s_chats_id {
     int number_of_chats;
     char **chat_id;
 }              t_chats_id;
+
+typedef struct s_user_id {
+    int number_of_users;
+    char **user_id;
+}              t_user_id;
 
 typedef struct s_messages_id {
     int number_of_messages;
@@ -122,6 +130,7 @@ int user_in_db(t_user *User);
 int populate_User_struct(t_user *User);
 void init_chat_struct(t_chat *Chat);
 void init_message_struct(t_message *Message);
+void init_user_struct(t_user *User);
 int get_chats_where_user(t_user *User);
 int check_valid_data_for_sign_up(t_user *User);
 void add_id_to_struct_User(t_user *User);
@@ -130,6 +139,7 @@ void add_id_to_struct_Message(t_message *Message);
 void mx_del_chat_list(t_chat *list, int leng);
 void mx_pop_back_for_chat(t_chat **head);
 int get_all_messages_from_db(t_chat *Chat);
+int get_users_list_for_chat(t_chat *Chat);
 
 // UPDATE
 // user
