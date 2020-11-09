@@ -27,7 +27,6 @@ int check_route(char *str, t_thread_sockuser *socket) {
     type = json_object_get(income_json, "type");
 
     if (strcmp(json_string_value(type), "sign_in") == 0) {
-
         r_user = user_sign_in(income_json, socket);
     }
     else if (strcmp(json_string_value(type), "sign_up") == 0) {
@@ -39,7 +38,7 @@ int check_route(char *str, t_thread_sockuser *socket) {
     }
     // todo get messages
     else if (strcmp(json_string_value(type), "send_message") == 0) {
-        create_new_message(income_json, socket, r_user); // send message to our test_group_chat
+        create_new_message(income_json, socket); // send message to our test_group_chat
     }
     // todo if client logged out/disconnected
     else if (strcmp(json_string_value(type), "log_out") == 0) {

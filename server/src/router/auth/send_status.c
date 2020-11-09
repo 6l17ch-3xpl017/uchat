@@ -37,10 +37,10 @@ void send_status(t_user *User, t_chat *Chat, int socketfd, int status, char *fun
         write(socketfd, result, strlen(result));
     }
     /* send message pack in case of success function execution */
-    if (status == 107 && (strcmp(func, "send_message") == 0)) {
-        result = message_pack_send(User->chats, Chat->next_message, json);
-        write(socketfd, result, strlen(result));
-    }
+//    if (status == 107 && (strcmp(func, "send_message") == 0)) {
+//        result = message_pack_send(Chat, Chat->next_message, json);
+//        write(socketfd, result, strlen(result));
+//    }
         /* in case of any other errors */
     else {
         result = json_dumps(json, 0);

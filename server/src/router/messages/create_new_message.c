@@ -20,10 +20,11 @@ static t_message *json_new_chat_parse(json_t *income_json) {
     return Message;
 }
 
-void create_new_message(json_t *income_json, t_thread_sockuser *socket, t_user *User) {
+void create_new_message(json_t *income_json, t_thread_sockuser *socket) {
     t_message *msg = NULL;
     int check_status = 0;
     msg = json_new_chat_parse(income_json);
     check_status = add_message_to_db(msg);
+    message_pack_send(msg, check_status);
 //    send_status(User, User->chats, 5, check_status, "send_message");
 }
