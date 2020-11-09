@@ -51,7 +51,7 @@ CC			= clang
 # general flags
 GFLAGS		= -std=c11 -pipe -Wall -Wextra -Werror -Wpedantic\
 	-Wno-unused-command-line-argument -Wno-unused-variable \
-	-Wno-unused-function -Wno-unused-parameter -g
+	-Wno-unused-function -Wno-unused-parameter -g #-fsanitize=address
 # specific flags
 CFLAGS		= -lsqlite3 -lpthread
 OFLAGS		= -L resources/framework/openssl -lssl -lcrypto

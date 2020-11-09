@@ -81,7 +81,7 @@ static void server_async_create() {
 
     init_database();
 //--------------------------------------------------------
-    add_chat_to_db(chat_struct_filling_with_null());
+//    add_chat_to_db(chat_struct_filling_with_null());
 //--------------------------------------------------------
 
     memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);
