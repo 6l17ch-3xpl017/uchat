@@ -136,33 +136,33 @@ int main() {
 
 //    while (1) {
 //        //TODO: Insert daemon code here.
-//    server_async_create();
+    server_async_create();
 //------------------------------
-    t_thread_sockuser *thread = NULL;
-    char *send_msg;
+//    t_thread_sockuser *thread = NULL;
+//    char *send_msg;
 //    int newSocket = *(int*)5;
 
-    thread = (t_thread_sockuser *) malloc(sizeof(t_thread_sockuser));
-    thread->socket = 5;
-    init_database();
-    add_chat_to_db(chat_struct_filling_with_null());
-    json_t *message = json_object();
-    json_t *json = json_object();
-    json_object_set_new(message, "chat_id", json_string("1"));
-    json_object_set_new(message, "chat_type", json_string("public"));
-    json_object_set_new(message, "chat_name", json_string("chatik"));
-    json_object_set_new(message, "admin_id", json_string("1"));
-    json_object_set_new(message, "message_id", json_string("1"));
-    json_object_set_new(message, "message_content", json_string("Second message"));
-    json_object_set_new(message, "message_owner_id", json_string("1"));
-    json_object_set_new(message, "type", json_string("text"));
-    json_object_set_new(message, "time", json_string("2020"));
-
-    json_object_set_new(json, "type", json_string("send_message"));
-    json_object_set_new(json, "message", message);
-
-    send_msg = json_dumps(json, 0);
-    check_route(send_msg, thread);
+//    thread = (t_thread_sockuser *) malloc(sizeof(t_thread_sockuser));
+//    thread->socket = 5;
+//    init_database();
+//    add_chat_to_db(chat_struct_filling_with_null());
+//    json_t *message = json_object();
+//    json_t *json = json_object();
+//    json_object_set_new(message, "chat_id", json_string("1"));
+//    json_object_set_new(message, "chat_type", json_string("public"));
+//    json_object_set_new(message, "chat_name", json_string("chatik"));
+//    json_object_set_new(message, "admin_id", json_string("1"));
+//    json_object_set_new(message, "message_id", json_string("1"));
+//    json_object_set_new(message, "message_content", json_string("Second message"));
+//    json_object_set_new(message, "message_owner_id", json_string("1"));
+//    json_object_set_new(message, "type", json_string("text"));
+//    json_object_set_new(message, "time", json_string("2020"));
+//
+//    json_object_set_new(json, "type", json_string("send_message"));
+//    json_object_set_new(json, "message", message);
+//
+//    send_msg = json_dumps(json, 0);
+//    check_route(send_msg, thread);
 //------------------------------
 
 
