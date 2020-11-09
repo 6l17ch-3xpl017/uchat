@@ -34,7 +34,6 @@ static t_user *user_data_struct_fill(json_t *user, t_thread_sockuser *socket, t_
 t_user *user_sign_up(json_t *income_json, t_thread_sockuser *socket) {
     t_user *User = NULL;
     t_chat *Chat = NULL;
-    t_user *r_user;
     json_t *user;
     /* receive json from client and check its correctness */
     user = json_object_get(income_json,"user");

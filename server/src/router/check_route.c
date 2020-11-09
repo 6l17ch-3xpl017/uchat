@@ -12,11 +12,11 @@ int check_route(char *str, t_thread_sockuser *socket) {
     int retval = getsockopt (socket->socket, SOL_SOCKET, SO_ERROR, &errorr, &len);
 
 
-    if (retval != 0) {
-        /* there was a problem getting the error code */
-        fprintf(stderr, "error getting socket error code: %s\n", strerror(retval));
-        return unknown_error;
-    }
+//    if (retval != 0) {
+//        /* there was a problem getting the error code */
+//        fprintf(stderr, "error getting socket error code: %s\n", strerror(retval));
+//        return unknown_error;
+//    }
 
     if (errorr != 0) {
         /* socket has a non zero error status */
@@ -34,9 +34,9 @@ int check_route(char *str, t_thread_sockuser *socket) {
         r_user = user_sign_up(income_json, socket);
     }
 //    // todo create new chat
-//    else if (strcmp(json_string_value(type), "new_chat") == 0) {
-//        create_new_chat(income_json, socket);
-//    }
+    else if (strcmp(json_string_value(type), "new_chat") == 0) {
+        create_new_empty_chat(income_json, socket);
+    }
     // todo get messages
     else if (strcmp(json_string_value(type), "send_message") == 0) {
         create_new_message(income_json, socket, r_user); // send message to our test_group_chat
@@ -48,7 +48,7 @@ int check_route(char *str, t_thread_sockuser *socket) {
     else {
         return unknown_error;
     }
-    puts(r_user->nickname);
+//    puts(r_user->nickname);
 //    json_decref(income_json);
     return ok_check_route;
 }

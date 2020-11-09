@@ -41,6 +41,8 @@ int check_route(char *str, t_thread_sockuser *thread);
 t_user *user_sign_in(json_t *income_json, t_thread_sockuser *socket);
 t_user *user_sign_up(json_t *income_json, t_thread_sockuser *socket);
 void send_status(t_user *User, t_chat *Chat, int socketfd, int status, char *func);
-int create_new_message(json_t *income_json, t_thread_sockuser *socket, t_user *User);
+void create_new_message(json_t *income_json, t_thread_sockuser *socket, t_user *User);
+char *message_pack_send(t_chat *Chat, t_message *Message, json_t *json);
+void create_new_empty_chat(json_t *income_json, t_thread_sockuser *socket);
 
 #endif

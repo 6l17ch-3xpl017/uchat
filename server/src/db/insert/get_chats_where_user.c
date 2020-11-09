@@ -65,6 +65,7 @@ int get_chats_where_user(t_user *User) {
             temp_chat->next = (t_chat *)malloc(sizeof(t_chat));
         else
             temp_chat->next = NULL;
+        get_users_list_for_chat(temp_chat);
         temp_chat = temp_chat->next;
         mx_strdel(&request);
     }
