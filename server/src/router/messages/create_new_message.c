@@ -10,8 +10,8 @@ static t_message *json_new_chat_parse(json_t *income_json) {
     Message->message_id = strdup(json_string_value(json_object_get(user_message, "message_id")));
     Message->message_owner_id = strdup(json_string_value(json_object_get(user_message, "message_owner_id")));
     Message->message_content = strdup(json_string_value(json_object_get(user_message, "message_content")));
-    Message->type = strdup(json_string_value(json_object_get(user_message, "type")));
-    Message->time = json_integer_value(json_object_get(user_message, "time"));
+    Message->type = NULL; //strdup(json_string_value(json_object_get(user_message, "type")));
+    Message->time = 0; // json_integer_value(json_object_get(user_message, "time"));
     Message->option = NULL;
     Message->changed = 0;
     Message->deleted = 0;

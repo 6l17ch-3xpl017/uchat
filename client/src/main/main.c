@@ -14,16 +14,16 @@ static long long read_socket()
 
     long long status = json_integer_value(status_j);
 
-    if (status == 107)
-    {
+//    if (status == 107 || status == 0)
+//    {
         return status;
-    }
-    else
-    {
-        //ToDo: Rise error in window
-        cmc_log_error("error: %i", status);
-        return status;
-    }
+//    }
+//    else
+//    {
+//        //ToDo: Rise error in window
+//        cmc_log_error("error: %i", status);
+//        return status;
+//    }
 }
 
 static long long send_json(json_t *json, int socket)
@@ -223,18 +223,21 @@ void on_user_logo_press(GtkEntry *entry)
 
 /***********************************************/
 
-
-
-
-
-
 /* Test Chat Window */
-
 
 void create_msg_json(gchar *msg_text)
 {
     json_t *json = json_object();
-    json_object_set_new(json, "msg_text", json_string(msg_text));
+    json_t *msg = json_object();
+
+    json_object_set_new(json, "type", json_string("send_message"));
+
+    json_object_set_new(msg, "message_content", json_string(msg_text));
+    json_object_set_new(msg, "message_owner_id", json_string(user_data.user_attributes.username));
+    json_object_set_new(msg, "message_id", json_string("1"));
+    json_object_set_new(msg, "chat_id", json_string("1"));
+    json_object_set_new(json, "message", msg);
+
     send_json(json, user_data.server_attributes.socket);
 }
 
@@ -255,6 +258,8 @@ void send_msg(GtkButton *chat_send_btn, GtkTextView *chat_msg_entry)
     gtk_list_box_insert(GTK_LIST_BOX(gp), GTK_WIDGET(msg), -1);
     gtk_widget_show_all(GTK_WIDGET(gp));
     gtk_text_buffer_set_text(buffer, "", -1);
+    create_msg_json(text);
+
     g_free(text);
 }
 
