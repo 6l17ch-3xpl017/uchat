@@ -44,14 +44,11 @@ t_user *user_sign_up(json_t *income_json, t_thread_sockuser *socket) {
         json_decref(user);
         return 0;
     }
-    /* get all data from json and add it to struct / send OK status to client */
+        /* get all data from json and add it to struct / send OK status to client */
     else {
         /* add user data to database (process locked by mutex) */
-    // TODO add mutex function
+        // TODO add mutex function
         User = user_data_struct_fill(user, socket, Chat);
         return User;
     }
 }
-
-
-
