@@ -7,7 +7,7 @@ static t_message *json_new_chat_parse(json_t *income_json) {
 
     user_message = json_object_get(income_json, "message");
     Message->chat_id = strdup(json_string_value(json_object_get(user_message, "chat_id")));
-    Message->message_id = strdup(json_string_value(json_object_get(user_message, "message_id")));
+    Message->message_id = NULL;
     Message->message_owner_id = strdup(json_string_value(json_object_get(user_message, "message_owner_id")));
     Message->message_content = strdup(json_string_value(json_object_get(user_message, "message_content")));
     Message->type = NULL; //strdup(json_string_value(json_object_get(user_message, "type")));
@@ -22,9 +22,12 @@ static t_message *json_new_chat_parse(json_t *income_json) {
 
 void create_new_message(json_t *income_json, t_thread_sockuser *socket) {
     t_message *msg = NULL;
+    char *result;
     int check_status = 0;
+
     msg = json_new_chat_parse(income_json);
     check_status = add_message_to_db(msg);
-    message_pack_send(msg, check_status);
-//    send_status(User, User->chats, 5, check_status, "send_message");
+    result = message_pack_send(msg, check_status);
+//    send_status(Chat->user_in_chat, Chat, 5, check_status, "send_message");
+    write(5, result, strlen(result));
 }

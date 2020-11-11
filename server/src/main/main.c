@@ -141,7 +141,7 @@ int main() {
 //    t_thread_sockuser *thread = NULL;
 //    char *send_msg;
 //    int newSocket = *(int*)5;
-
+//
 //    thread = (t_thread_sockuser *) malloc(sizeof(t_thread_sockuser));
 //    thread->socket = 5;
 //    init_database();

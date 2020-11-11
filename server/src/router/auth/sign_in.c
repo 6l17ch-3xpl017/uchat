@@ -39,9 +39,9 @@ static void json_sign_in_parse(t_user *User, json_t *user_in) {
  * @param Chat structure that contains name(s) of chat(s)
  */
 
-t_user *user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
-    t_user *User;
-    t_chat *Chat;
+int user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
+    t_user *User = NULL;
+    t_chat *Chat = NULL;
     json_t *user_in;
     int check_status;
 
@@ -49,7 +49,6 @@ t_user *user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
     user_in = json_object_get(income_json, "user");
     if (!json_is_object(user_in)) {
         // init and send json error status
-        Chat = NULL;
         send_status(User, Chat, socket->socket, unknown_error, "sign_in");
         return 0; // false
     } else {
@@ -68,5 +67,5 @@ t_user *user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
     printf("%d\n", user_in_db(User)); // print db function result
     //-------------------------------------------------
 
-    return User; // true
+    return 0; // true
 }

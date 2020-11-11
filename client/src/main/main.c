@@ -233,8 +233,9 @@ void create_msg_json(gchar *msg_text)
     json_object_set_new(json, "type", json_string("send_message"));
 
     json_object_set_new(msg, "message_content", json_string(msg_text));
-    json_object_set_new(msg, "message_owner_id", json_string(user_data.user_attributes.username));
-    json_object_set_new(msg, "message_id", json_string("1"));
+//    json_object_set_new(msg, "message_owner_id", json_string(user_data.user_attributes.username));
+    json_object_set_new(msg, "message_owner_id", json_string("6"));
+//    json_object_set_new(msg, "message_id", json_string("1"));
     json_object_set_new(msg, "chat_id", json_string("1"));
     json_object_set_new(json, "message", msg);
 
