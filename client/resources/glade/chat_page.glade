@@ -127,7 +127,7 @@
                             <property name="orientation">vertical</property>
                             <child>
                               <object class="GtkListBox">
-                                <property name="height-request">800</property>
+                                <property name="height-response">800</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="activate-on-single-click">False</property>

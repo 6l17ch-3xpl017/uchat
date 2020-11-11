@@ -1,7 +1,7 @@
 #include "server.h"
 
 /* get all data from json and add it to struct */
-static t_user *user_data_struct_fill(json_t *user, t_thread_sockuser *socket, t_chat *Chat) {
+static t_user *user_data_struct_fill(json_t *user, struct ns_connection *socket, t_chat *Chat) {
     t_user *User = NULL;
     int check_status;
 
@@ -18,7 +18,7 @@ static t_user *user_data_struct_fill(json_t *user, t_thread_sockuser *socket, t_
     User->number_of_chats = 0;
     User->chats = NULL;
     check_status = add_user_to_db(User);
-    send_status(User, Chat, socket->socket, check_status, "sign_up");
+    send_status(User, Chat, socket, check_status, "sign_up");
     json_decref(user);
     return User;
 }
@@ -31,7 +31,7 @@ static t_user *user_data_struct_fill(json_t *user, t_thread_sockuser *socket, t_
  * @param User structure to fill with NULL and/or user data to send it to database
  * @param Chat structure to init empty chat
  */
-t_user *user_sign_up(json_t *income_json, t_thread_sockuser *socket) {
+t_user *user_sign_up(json_t *income_json, struct ns_connection *socket) {
     t_user *User = NULL;
     t_chat *Chat = NULL;
     json_t *user;
@@ -40,7 +40,7 @@ t_user *user_sign_up(json_t *income_json, t_thread_sockuser *socket) {
     if (!json_is_object(user)) {
         /* init and send json error status */
         User->nickname = NULL;
-        send_status(User, Chat, socket->socket, unknown_error, "sign_up");
+        send_status(User, Chat, socket, unknown_error, "sign_up");
         json_decref(user);
         return 0;
     }

@@ -22,7 +22,7 @@ static int check_new_email (char *new_email) {
  * @param new_email - new email which was chosen by user.
  * @return 'email_was_already_signed_up' if email is unavailable.
  * @return 'can_not_open_db' if connection with database was lost.
- * @return 'request_failed' if request was failed.
+ * @return 'request_failed' if response was failed.
  * @return 'success' if email was successfully updated.
  * @return 1 if user wasn't sign in
  */

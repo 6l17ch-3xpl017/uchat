@@ -39,7 +39,7 @@ static void json_sign_in_parse(t_user *User, json_t *user_in) {
  * @param Chat structure that contains name(s) of chat(s)
  */
 
-t_user *user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
+t_user *user_sign_in(json_t *income_json, struct ns_connection *socket) {
     t_user *User;
     t_chat *Chat;
     json_t *user_in;
@@ -50,7 +50,7 @@ t_user *user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
     if (!json_is_object(user_in)) {
         // init and send json error status
         Chat = NULL;
-        send_status(User, Chat, socket->socket, unknown_error, "sign_in");
+        send_status(User, Chat, socket, unknown_error, "sign_in");
         return 0; // false
     } else {
         // move user`s input data to structure
@@ -62,7 +62,7 @@ t_user *user_sign_in(json_t *income_json, t_thread_sockuser *socket) {
         if (check_status == 104) {
             get_chats_where_user(User);
         }
-        send_status(User, User->chats, socket->socket, check_status, "sign_in");
+        send_status(User, User->chats, socket, check_status, "sign_in");
     }
     //-------------------------------------------------
     printf("%d\n", user_in_db(User)); // print db function result

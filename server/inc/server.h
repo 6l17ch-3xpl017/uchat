@@ -22,6 +22,7 @@
 #include <sys/signal.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
+#include "net_skeleton.h"
 //#include "openssl/inc/openssl/bio.h"
 
 #define check(expr) if (!(expr)) { perror(#expr); kill(0, SIGTERM); }
@@ -37,12 +38,12 @@ typedef struct s_thread_sockuser {
 } t_thread_sockuser;
 
 // router
-int check_route(char *str, t_thread_sockuser *thread);
-t_user *user_sign_in(json_t *income_json, t_thread_sockuser *socket);
-t_user *user_sign_up(json_t *income_json, t_thread_sockuser *socket);
-void send_status(t_user *User, t_chat *Chat, int socketfd, int status, char *func);
-void create_new_message(json_t *income_json, t_thread_sockuser *socket, t_user *User);
+int check_route(char *str, struct ns_connection *socket);
+t_user *user_sign_in(json_t *income_json, struct ns_connection *socket);
+t_user *user_sign_up(json_t *income_json, struct ns_connection *socket);
+void send_status(t_user *User, t_chat *Chat, struct ns_connection *conn, int status, char *func);
+void create_new_message(json_t *income_json, struct ns_connection *socket, t_user *User);
 char *message_pack_send(t_chat *Chat, t_message *Message, json_t *json);
-void create_new_empty_chat(json_t *income_json, t_thread_sockuser *socket);
+void create_new_empty_chat(json_t *income_json, struct ns_connection *socket);
 
 #endif

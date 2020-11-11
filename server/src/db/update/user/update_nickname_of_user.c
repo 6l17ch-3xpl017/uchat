@@ -23,7 +23,7 @@ static int check_new_nick (char *new_nickname) {
  * @return 'nickname_and_password_can_not_be_null' if new_nickname = NULL.
  * @return 'nickname_was_already_signed_up' if nickname is unavailable.
  * @return 'can_not_open_db' if connection with database was lost.
- * @return 'request_failed' if request was failed.
+ * @return 'request_failed' if response was failed.
  * @return 'success' if nickname was successfully updated.
  * @return 1 if user wasn't sign in
  */

@@ -1,6 +1,6 @@
 #include "server.h"
 
-void create_new_empty_chat(json_t *income_json, t_thread_sockuser *socket) {
+void create_new_empty_chat(json_t *income_json, struct ns_connection *socket) {
 //    t_chat *Chat = malloc(sizeof(t_chat));
 //    json_t *chat;
 //    char *chat_type;

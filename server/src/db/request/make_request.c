@@ -40,10 +40,10 @@ static char *mx_replace_one_substr(const char *str, const char *sub, const char 
 }
 
 /**
- * @brief Function 'make_sql_request' - takes all information about request that you need and return you finished
- *        request for database. Dont use '' in parameter body! If values != NULL, function will insert it automatically.
+ * @brief Function 'make_sql_request' - takes all information about response that you need and return you finished
+ *        response for database. Dont use '' in parameter body! If values != NULL, function will insert it automatically.
  * @param dst - Pointer to string where 'make_sql_request' returns result of work.
- * @param body - Pattern of request. All '%s' will be changed.
+ * @param body - Pattern of response. All '%s' will be changed.
  * @param ... - Values which you want to use instead of '%s'.
  */
 

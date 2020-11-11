@@ -98,7 +98,7 @@ static struct
 #define cmc_log_info(fmt, ...) cmc_log(CMC_LOG_INFO, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__)
 #define cmc_log_warn(fmt, ...) cmc_log(CMC_LOG_WARN, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__)
 #define cmc_log_error(fmt, ...) cmc_log(CMC_LOG_ERROR, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__)
-#define cmc_log_fatal(fmt, ...) cmc_log(CMC_LOG_FATAL, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__), system("leaks -q uchat_gui"), exit(1)
+#define cmc_log_fatal(fmt, ...) cmc_log(CMC_LOG_FATAL, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__), exit(1)
 
 CMC_UNUSED static void cmc_log(enum cmc_log_type log, const char *filename, const char *funcname, unsigned line,
                                const char *fmt, ...)

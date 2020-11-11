@@ -43,7 +43,7 @@ int get_all_messages_from_db(t_chat *Chat) {
     t_messages_id *messages_id = (t_messages_id *) malloc(sizeof(t_messages_id));
     messages_id->number_of_messages = 0;
 
-// first request to get all messages id numbers
+// first response to get all messages id numbers
     make_sql_request(&request, "SELECT message_id FROM Messages WHERE chat_id=%s ORDER BY time;", Chat->chat_id);
     result = sqlite3_open("chat_database.db", &database);
     if (result != SQLITE_OK) {

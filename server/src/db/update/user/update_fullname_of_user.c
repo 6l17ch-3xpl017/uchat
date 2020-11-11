@@ -6,7 +6,7 @@
  * @param User - structure with all data about user.
  * @param new_fullname - new fullname which was chosen by user.
  * @return 'can_not_open_db' if connection with database was lost.
- * @return 'request_failed' if request was failed.
+ * @return 'request_failed' if response was failed.
  * @return 'success' if fullname was successfully updated.
  * @return 1 if user wasn't sign in
  */

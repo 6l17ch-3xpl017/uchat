@@ -37,7 +37,7 @@ int get_chats_where_user(t_user *User) {
     t_chats_id *chats_id = (t_chats_id *) malloc(sizeof(t_chats_id));
     chats_id->number_of_chats = 0;
 
-// first request to get all user's chat id numbers
+// first response to get all user's chat id numbers
     make_sql_request(&request, "SELECT chat_id FROM Chat_User WHERE user_id = %s ;", User->id);
     result = sqlite3_open("chat_database.db", &database);
     if (result != SQLITE_OK) {

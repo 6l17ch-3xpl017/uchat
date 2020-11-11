@@ -23,7 +23,7 @@ static char *chat_array_send(t_user *User, t_chat *Chat, json_t *json) {
  * @param func shows name of function in which actions were executed
  */
 
-void send_status(t_user *User, t_chat *Chat, int socketfd, int status, char *func) {
+void send_status(t_user *User, t_chat *Chat, struct ns_connection *conn, int status, char *func) {
     json_t *json;
     char *result = NULL;
 
@@ -34,17 +34,23 @@ void send_status(t_user *User, t_chat *Chat, int socketfd, int status, char *fun
     /* send array with all chats in case of success function execution */
     if ((status == 104 || status == 107) && (strcmp(func, "sign_up") == 0 || strcmp(func, "sign_in") == 0)) {
         result = chat_array_send(User, Chat, json);
-        write(socketfd, result, strlen(result));
+        ns_send(conn, mx_itoa(strlen(result)), strlen(mx_itoa(strlen(result))));
+        ns_send(conn, "{", 1);
+        ns_send(conn, result, strlen(result));
     }
     /* send message pack in case of success function execution */
-    if (status == 107 && (strcmp(func, "send_message") == 0)) {
+    else if (status == 107 && (strcmp(func, "send_message") == 0)) {
         result = message_pack_send(User->chats, Chat->next_message, json);
-        write(socketfd, result, strlen(result));
+        ns_send(conn, mx_itoa(strlen(result)), strlen(mx_itoa(strlen(result))));
+        ns_send(conn, "{", 1);
+        ns_send(conn, result, strlen(result));
     }
         /* in case of any other errors */
     else {
         result = json_dumps(json, 0);
-        write(socketfd, result, strlen(result));
+        ns_send(conn, mx_itoa(strlen(result)), strlen(mx_itoa(strlen(result))));
+        ns_send(conn, "{", 1);
+        ns_send(conn, result, strlen(result));
     }
     puts(result); // print json
     json_decref(json);

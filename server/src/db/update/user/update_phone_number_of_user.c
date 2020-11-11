@@ -22,7 +22,7 @@ static int check_new_phone(char *new_phone_number) {
  * @param new_nickname - new nickname which was chosen by user.
  * @return 'phone_number_was_already_signed_up' if new phone number is unavailable.
  * @return 'can_not_open_db' if connection with database was lost.
- * @return 'request_failed' if request was failed.
+ * @return 'request_failed' if response was failed.
  * @return 'success' if phone number was successfully updated.
  * @return 1 if user wasn't sign in
  */
