@@ -3,25 +3,15 @@
 int check_route(char *str, t_thread_sockuser *socket) {
     json_t *income_json, *type;
     json_error_t error;
-    // create new node
-    struct t_thread_sockuser *prev, *head;
 
     int errorr = 0;
     socklen_t len = sizeof (error);
     int retval = getsockopt (socket->socket, SOL_SOCKET, SO_ERROR, &errorr, &len);
 
-
-//    if (retval != 0) {
-//        /* there was a problem getting the error code */
-//        fprintf(stderr, "error getting socket error code: %s\n", strerror(retval));
-//        return unknown_error;
-//    }
-
     if (errorr != 0) {
         /* socket has a non zero error status */
         fprintf(stderr, "socket error: %s\n", strerror(errorr));
     }
-
     income_json = json_loads(str, 0, &error);
     type = json_object_get(income_json, "type");
 
@@ -44,12 +34,20 @@ int check_route(char *str, t_thread_sockuser *socket) {
     }
     // todo if client logged out/disconnected
     else if (strcmp(json_string_value(type), "log_out") == 0) {
-        
+//        puts("LOG_OUT");
+        json_decref(income_json);
+        return log_out;
+    }
+    else if (!income_json) {
+        puts("FORCE_LOG_OUT");
+        mx_printstr("socket: ");
+        mx_printint(socket->socket);
+        mx_printchar('\n');
+        json_decref(income_json);
+        return log_out;
     }
     else {
         return unknown_error;
     }
-//    puts(r_user->nickname);
-//    json_decref(income_json);
     return ok_check_route;
 }

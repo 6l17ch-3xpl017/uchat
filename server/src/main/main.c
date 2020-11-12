@@ -54,7 +54,7 @@ static void *socketThread(void *arg) {
         puts(client_message); // print json
 
 //      client disconnected
-        if (status == unknown_error) {
+        if (status == unknown_error || status == log_out) {
             puts("Client disconnected");
             fflush(stdout);
             close(thread->socket);
@@ -62,6 +62,8 @@ static void *socketThread(void *arg) {
             return 0;
         }
     }
+    close(thread->socket);
+    free(thread);
 }
 
 static void server_async_create() {

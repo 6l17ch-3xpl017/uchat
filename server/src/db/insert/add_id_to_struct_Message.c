@@ -30,7 +30,7 @@ void add_id_to_struct_Message(t_message *Message) {
             Message->message_owner_id, Message->chat_id, Message->message_content, time);
     sqlite3_open("chat_database.db", &database);
     sqlite3_exec(database, request, callback, Message, 0);
-    puts("msg id: ");
+    puts("msg id(add_id_to_struct_Message): ");
     puts(Message->message_id);
     sqlite3_close(database);
     mx_strdel(&time);

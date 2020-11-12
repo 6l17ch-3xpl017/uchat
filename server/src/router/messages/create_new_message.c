@@ -28,6 +28,5 @@ void create_new_message(json_t *income_json, t_thread_sockuser *socket) {
     msg = json_new_chat_parse(income_json);
     check_status = add_message_to_db(msg);
     result = message_pack_send(msg, check_status);
-//    send_status(Chat->user_in_chat, Chat, 5, check_status, "send_message");
-    write(5, result, strlen(result));
+    write(socket->socket, result, strlen(result));
 }

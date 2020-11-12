@@ -28,7 +28,8 @@
 
 enum status {
     unknown_error = -10,
-    ok_check_route = 5
+    ok_check_route = 5,
+    log_out = 0
 };
 
 typedef struct s_thread_sockuser {

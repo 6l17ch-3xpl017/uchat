@@ -32,19 +32,16 @@ static t_user *user_data_struct_fill(json_t *user, t_thread_sockuser *socket) {
  * @param Chat structure to init empty chat
  */
 int user_sign_up(json_t *income_json, t_thread_sockuser *socket) {
-//    t_user *User = NULL;
     t_chat *Chat = NULL;
     json_t *user;
     /* receive json from client and check its correctness */
     user = json_object_get(income_json,"user");
     if (!json_is_object(user)) {
         /* init and send json error status */
-//        User->nickname = NULL;
         send_status(Chat->user_in_chat, Chat, socket->socket, unknown_error, "sign_up");
         json_decref(user);
         return 0;
     }
-        /* get all data from json and add it to struct / send OK status to client */
     else {
         /* add user data to database (process locked by mutex) */
         // TODO add mutex function
