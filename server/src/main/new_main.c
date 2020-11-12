@@ -1,5 +1,16 @@
 #include "server.h"
 
+static t_chat *chat_struct_filling_with_null() {
+    t_chat *Chat = malloc(sizeof(t_chat));
+    Chat->chat_name = "1";
+    Chat->chat_photo = NULL;
+    Chat->chat_id = NULL;
+    Chat->option = NULL;
+    Chat->admin_id = "1";
+    return Chat;
+}
+
+
 static void ev_handler(struct ns_connection *nc, int ev, void *p) {
     struct iobuf *io = &nc->recv_iobuf;
     char *income_json = NULL;
@@ -27,6 +38,11 @@ int main(void) {
 
     ns_mgr_init(&mgr, NULL);
     init_database();
+
+
+//    add_chat_to_db(chat_struct_filling_with_null());
+
+
     ns_bind(&mgr, "7777", ev_handler, NULL);
 
     printf("Starting server on port: %s\n", "7777");

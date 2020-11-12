@@ -30,7 +30,7 @@ void send_status(t_user *User, t_chat *Chat, struct ns_connection *conn, int sta
     json = json_object();
     json_object_set_new(json, "type", json_string(func));
     json_object_set_new(json, "status", json_integer(status));
-
+    User != NULL ? json_object_set_new(json, "user_id", json_string(User->id)) : 0;
     /* send array with all chats in case of success function execution */
     if ((status == 104 || status == 107) && (strcmp(func, "sign_up") == 0 || strcmp(func, "sign_in") == 0)) {
         result = chat_array_send(User, Chat, json);
@@ -40,7 +40,7 @@ void send_status(t_user *User, t_chat *Chat, struct ns_connection *conn, int sta
     }
     /* send message pack in case of success function execution */
     else if (status == 107 && (strcmp(func, "send_message") == 0)) {
-        result = message_pack_send(User->chats, Chat->next_message, json);
+        result = json_dumps(json, 0);
         ns_send(conn, mx_itoa(strlen(result)), strlen(mx_itoa(strlen(result))));
         ns_send(conn, "{", 1);
         ns_send(conn, result, strlen(result));

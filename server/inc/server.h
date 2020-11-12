@@ -29,21 +29,18 @@
 
 enum status {
     unknown_error = -10,
-    ok_check_route = 5
+    ok_check_route = 5,
+    log_out = 0
 };
-
-typedef struct s_thread_sockuser {
-    int socket;
-    char *user;
-} t_thread_sockuser;
 
 // router
 int check_route(char *str, struct ns_connection *socket);
 t_user *user_sign_in(json_t *income_json, struct ns_connection *socket);
 t_user *user_sign_up(json_t *income_json, struct ns_connection *socket);
 void send_status(t_user *User, t_chat *Chat, struct ns_connection *conn, int status, char *func);
-void create_new_message(json_t *income_json, struct ns_connection *socket, t_user *User);
-char *message_pack_send(t_chat *Chat, t_message *Message, json_t *json);
+void create_new_message(json_t *income_json, struct ns_connection *socket);
+char *message_pack_send(t_message *Message, int status);
 void create_new_empty_chat(json_t *income_json, struct ns_connection *socket);
+void open_selected_chat(json_t *income_json, struct ns_connection *socket);
 
 #endif
