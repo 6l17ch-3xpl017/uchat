@@ -40,20 +40,20 @@ int main(void) {
     init_database();
 
 
-//    add_chat_to_db(chat_struct_filling_with_null());
+    add_chat_to_db(chat_struct_filling_with_null());
 
 
     ns_bind(&mgr, "7777", ev_handler, NULL);
 
     printf("Starting server on port: %s\n", "7777");
 
-//    for (;;)
-//        ns_mgr_poll(&mgr, 1000);
-//
-//    ns_mgr_free(&mgr);
-//
-//    return 0;
+    for (;;)
+        ns_mgr_poll(&mgr, 1000);
 
+    ns_mgr_free(&mgr);
+
+    return 0;
+/*
     //------------------------------
     char *send_msg;
     init_database();
@@ -94,5 +94,5 @@ int main(void) {
 //    check_route(send_msg, mgr.active_connections);
 ////------------------------------
 
-
+*/
 }

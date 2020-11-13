@@ -96,4 +96,6 @@ int create_user_data(t_client_data *client_data);
 int read_socket(t_client_data *client_data);
 /* ********* */
 
+void send_msg(GtkButton *chat_send_btn, t_client_data *client_data);
+
 #endif //UCHAT_GUI_CLIENT_H
