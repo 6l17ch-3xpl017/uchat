@@ -14,7 +14,7 @@ U_BIN		= ../build/
 J_INC_DIR   = resources/framework/jansson/inc/
 O_INC_DIR   = resources/framework/openssl/inc/openssl
 # whole path to dirs
-PATH_DIRS	= db db/create db/delete db/insert db/response db/update json main router router/auth router/messages
+PATH_DIRS	= db db/create db/delete db/insert db/request db/update json main router router/auth router/messages
 
 # list of subdirs in src/
 DIRS		= $(PATH_DIRS) $(notdir $(wildcard $(SRC_DIR)))
@@ -51,7 +51,7 @@ CC			= clang
 # general flags
 GFLAGS		= -std=c11 -pipe -Wall -Wextra -Werror -Wpedantic\
 	-Wno-unused-command-line-argument -Wno-unused-variable \
-	-Wno-unused-function -Wno-unused-parameter -g
+	-Wno-unused-function -Wno-unused-parameter -g #-fsanitize=address
 # specific flags
 CFLAGS		= -lsqlite3 -lpthread
 OFLAGS		= -L resources/framework/openssl -lssl -lcrypto

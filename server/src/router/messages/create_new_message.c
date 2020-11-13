@@ -10,8 +10,8 @@ static t_message *json_new_chat_parse(json_t *income_json) {
     Message->message_id = NULL;
     Message->message_owner_id = strdup(json_string_value(json_object_get(user_message, "message_owner_id")));
     Message->message_content = strdup(json_string_value(json_object_get(user_message, "message_content")));
-    Message->type = NULL; //strdup(json_string_value(json_object_get(user_message, "type")));
-    Message->time = 0; // json_integer_value(json_object_get(user_message, "time"));
+    Message->type = strdup(json_string_value(json_object_get(user_message, "type")));
+    Message->time = json_integer_value(json_object_get(user_message, "time"));
     Message->option = NULL;
     Message->changed = 0;
     Message->deleted = 0;
@@ -26,6 +26,5 @@ void create_new_message(json_t *income_json, struct ns_connection *socket) {
     int check_status = 0;
     msg = json_new_chat_parse(income_json);
     check_status = add_message_to_db(msg);
-//    result = message_pack_send(msg, check_status);
     send_status(NULL, NULL, socket, check_status, "send_message");
 }

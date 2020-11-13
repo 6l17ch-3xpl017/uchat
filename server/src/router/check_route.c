@@ -13,7 +13,6 @@ static t_chat *chat_struct_filling_with_null() {
 int check_route(char *str, struct ns_connection *socket) {
     json_t *income_json, *type;
     json_error_t error;
-    t_user *r_user = NULL;
 
     income_json = json_loads(str, 0, &error);
 
@@ -38,7 +37,6 @@ int check_route(char *str, struct ns_connection *socket) {
     }
         // todo if client logged out/disconnected
     else if (strcmp(json_string_value(type), "log_out") == 0) {
-//        puts("LOG_OUT");
         json_decref(income_json);
         return log_out;
     }
@@ -49,6 +47,7 @@ int check_route(char *str, struct ns_connection *socket) {
         mx_printchar('\n');
         json_decref(income_json);
         return log_out;
+        //TODO check shutdown()
     }
     else {
         return unknown_error;

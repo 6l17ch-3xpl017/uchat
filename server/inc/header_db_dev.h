@@ -15,7 +15,7 @@
 struct s_user;
 
 typedef struct s_message {
-    struct s_message *prev;
+//    struct s_message *prev;
     struct s_message *next;
     time_t time;
     int changed;

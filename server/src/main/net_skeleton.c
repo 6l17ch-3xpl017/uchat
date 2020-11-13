@@ -16,7 +16,7 @@
 //
 // $Date: 2014-09-28 05:04:41 UTC $
 
-#include "../inc/net_skeleton.h"
+#include "net_skeleton.h"
 
 #ifndef NS_MALLOC
 #define NS_MALLOC malloc

@@ -47,7 +47,7 @@ CC			= clang
 # general flags
 GFLAGS		= -std=c11 -pipe -Wall -Wextra -Werror -g \
 	-Wno-unused-command-line-argument -Wno-unused-variable \
-	-Wno-unused-function -Wno-unused-parameter
+	-Wno-unused-function -Wno-unused-parameter -fsanitize=address
 # specific flags
 CFLAGS		= -lsqlite3 -lpthread $(shell pkg-config --cflags gtk+-3.0)
 

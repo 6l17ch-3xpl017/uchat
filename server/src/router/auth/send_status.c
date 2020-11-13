@@ -11,6 +11,7 @@ static char *chat_array_send(t_user *User, t_chat *Chat, json_t *json) {
             json_array_append(chat_array, user_out);
         }
     }
+    json_object_set_new(json, "num_of_chats", json_integer(User->number_of_chats));
     json_object_set_new(json, "user_chats", chat_array);
     result = json_dumps(json, 0);
     return result;

@@ -47,10 +47,52 @@ int main(void) {
 
     printf("Starting server on port: %s\n", "7777");
 
-    for (;;)
-        ns_mgr_poll(&mgr, 1000);
+//    for (;;)
+//        ns_mgr_poll(&mgr, 1000);
+//
+//    ns_mgr_free(&mgr);
+//
+//    return 0;
 
-    ns_mgr_free(&mgr);
+    //------------------------------
+    char *send_msg;
+    init_database();
+//    add_chat_to_db(chat_struct_filling_with_null());
+    json_t *message = json_object();
+    json_t *json = json_object();
 
+    json_object_set_new(message, "chat_id", json_string("1"));
+    json_object_set_new(message, "chat_name", json_string("chatik"));
+    json_object_set_new(message, "chat_type", json_string("public"));
+    json_object_set_new(message, "user_id", json_string("1"));
+//    json_object_set_new(message, "time", json_string("2020"));
+
+    json_object_set_new(json, "type", json_string("open_chat"));
+    json_object_set_new(json, "chat", message);
+
+    send_msg = json_dumps(json, 0);
+    check_route(send_msg, mgr.active_connections);
     return 0;
+    //------------------------------
+//
+//    json_t *message = json_object();
+//    json_t *json = json_object();
+//    json_object_set_new(message, "chat_id", json_string("1"));
+//    json_object_set_new(message, "chat_type", json_string("public"));
+//    json_object_set_new(message, "chat_name", json_string("chatik"));
+//    json_object_set_new(message, "admin_id", json_string("1"));
+////    json_object_set_new(message, "message_id", json_string("1"));
+//    json_object_set_new(message, "message_content", json_string("Test message"));
+//    json_object_set_new(message, "message_owner_id", json_string("1"));
+//    json_object_set_new(message, "type", json_string("text"));
+//    json_object_set_new(message, "time", json_string("2020"));
+//
+//    json_object_set_new(json, "type", json_string("send_message"));
+//    json_object_set_new(json, "message", message);
+//
+//    send_msg = json_dumps(json, 0);
+//    check_route(send_msg, mgr.active_connections);
+////------------------------------
+
+
 }

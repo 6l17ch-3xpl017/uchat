@@ -1,10 +1,10 @@
-//#include "server.h"
+#include "server.h"
 //
 //pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 //
-//static void mutex_lock_unlock(void) {
+static void mutex_lock_unlock(void) {
 //
-//}
+}
 ////--------------------------------------------------------
 //static t_chat *chat_struct_filling_with_null() {
 //    t_chat *Chat = malloc(sizeof(t_chat));

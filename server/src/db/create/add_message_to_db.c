@@ -21,12 +21,14 @@ int add_message_to_db(t_message *Message) {
     // -----------------------------------making response-----------------------------------------------
     char *time_str = mx_itoa(Message->time);
     char *change_str = mx_itoa(Message->changed);
+    char *delete_str = mx_itoa(Message->deleted);
     make_sql_request(&request, "INSERT INTO Messages (message_owner_id, chat_id, message_content, time, changed,"
-                               " options) VALUES (%s, %s, %s, %s, %s, %s);", Message->message_owner_id,
+                               " options, type, deleted) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);", Message->message_owner_id,
                                Message->chat_id, Message->message_content, time_str, change_str,
-                               (char *)Message->option);
+                               (char *)Message->option, Message->type, delete_str);
     mx_strdel(&time_str);
     mx_strdel(&change_str);
+    mx_strdel(&delete_str);
     // ----------------------------adding to the database---------------------------------------------
     result = sqlite3_open("chat_database.db", &db);
     if (result != SQLITE_OK) {
@@ -36,6 +38,7 @@ int add_message_to_db(t_message *Message) {
     result = sqlite3_exec(db, request, 0, 0, 0);
     if (result != SQLITE_OK) {
         sqlite3_close(db);
+        puts(request);
         mx_strdel(&request);
         return can_not_add_to_database;
     }
