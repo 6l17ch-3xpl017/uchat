@@ -13,16 +13,15 @@ U_BIN		= ../build/
 # main dir for other libs header files
 J_INC_DIR   = resources/framework/jansson/inc/
 
-PATH_DIRS	= pages/login_wnd pages/login_wnd/signals pages/main_app pages/main_app/signals pages/reg_wnd pages/reg_wnd/signals
 # list of subdirs in src/
-DIRS		= $(PATH_DIRS) $(notdir $(wildcard $(SRC_DIR)*))
+DIRS		= $(notdir $(wildcard $(SRC_DIR)*))
 # list of only source C-files without extansions
 FILES		= $(foreach dir, $(DIRS), $(basename $(wildcard \
 			  $(SRC_DIR)$(dir)/*.c)))
 # adding extansions .c to FILES
 SRC			= $(FILES:%=%.c)
 # adding extansions .o to FILES
-OBJ			= $(SRC:src/$(PATH_DIRS)%.c=$(OBJ_DIR)%.o)
+OBJ			= $(SRC:src/%.c=$(OBJ_DIR)%.o)
 # list of header files
 INC_H		= $(wildcard $(INC_DIR)*.h)
 
@@ -48,7 +47,7 @@ CC			= clang
 # general flags
 GFLAGS		= -std=c11 -pipe -Wall -Wextra -Werror -g \
 	-Wno-unused-command-line-argument -Wno-unused-variable \
-	-Wno-unused-function -Wno-unused-parameter -fsanitize=address
+	-Wno-unused-function -Wno-unused-parameter
 # specific flags
 CFLAGS		= -lsqlite3 -lpthread $(shell pkg-config --cflags gtk+-3.0)
 

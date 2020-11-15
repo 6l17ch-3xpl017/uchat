@@ -45,6 +45,8 @@ t_user *user_sign_in(json_t *income_json, struct ns_connection *socket) {
     json_t *user_in;
     int check_status;
 
+    puts(json_dumps(income_json, 0));
+
     User = (t_user *)malloc(sizeof(t_user));
     user_in = json_object_get(income_json, "user");
     if (!json_is_object(user_in)) {

@@ -16,6 +16,7 @@
         <property name="can_focus">False</property>
         <child>
           <object class="GtkScrolledWindow" id="chat_room_scrld">
+            <property name="width_request">175</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="shadow_type">in</property>
@@ -27,6 +28,7 @@
                   <object class="GtkListBox" id="chat_room_lst">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <signal name="row-selected" handler="choose_chat" swapped="no"/>
                   </object>
                 </child>
               </object>

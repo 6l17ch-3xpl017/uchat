@@ -50,4 +50,22 @@ int main(int argc, char *argv[])
     gtk_main();
     system("leaks -q uchat_gui");
     return 0;
+
+//    json_t *array = json_array();
+//    char **msg = calloc(5, sizeof(char *));
+//
+//    for (int i = 0; i <= 5; i++)
+//        msg[i] = calloc(32, sizeof(char));
+//
+//    json_array_append(array, json_string("Hello"));
+//    json_array_append_new(array, json_string("Hello1"));
+//    json_array_append_new(array, json_string("Hello2"));
+//    json_array_append_new(array, json_string("Hello3"));
+//    json_array_append_new(array, json_string("Hello4"));
+//
+//    int result = json_unpack(array, "[s!]", msg);
+//
+//    for (int j = 0; j <= 5; j++)
+//        printf("%s", msg[j]);
+
 }

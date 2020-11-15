@@ -69,7 +69,7 @@ typedef struct s_client_data
     struct s_server_attr
     {
         int socket;
-        char *response;
+        json_t *response;
         json_t *request;
         int response_size;
     } server_attr;
@@ -80,6 +80,8 @@ typedef struct s_client_data
 
 /*    GTK    */
 GtkWidget *msg_widget_factory(int msg_type, char *text_msg, char *username);
+GtkWidget *chat_widget_factory(const char *chat_name, gpointer *chat_id);
+GtkBuilder *create_widget_from_template(const char *glade_filename);
 void create_window(const char *glade_filename, t_client_data *client_data);
 /* ********  */
 
@@ -95,7 +97,5 @@ int create_user_data(t_client_data *client_data);
 /*   Utils   */
 int read_socket(t_client_data *client_data);
 /* ********* */
-
-void send_msg(GtkButton *chat_send_btn, t_client_data *client_data);
 
 #endif //UCHAT_GUI_CLIENT_H

@@ -20,9 +20,15 @@ void open_selected_chat(json_t *income_json, struct ns_connection *socket) {
 
     user_message = json_object_get(income_json, "chat");
     init_chat_struct(Chat);
-    if (strcmp(json_string_value(json_object_get(user_message, "chat_type")), "public") == 0) {
-        Chat->chat_name = strdup(json_string_value(json_object_get(user_message, "chat_name")));
-    }
+
+//
+//    if (strcmp(json_string_value(json_object_get(user_message, "chat_type")), "public") == 0) {
+//        Chat->chat_name = strdup(json_string_value(json_object_get(user_message, "chat_name")));
+//    }
+
+    puts(json_dumps(income_json, 0));
+
+
     input_user_id = strdup(json_string_value(json_object_get(user_message, "user_id")));
     Chat->chat_id = strdup(json_string_value(json_object_get(user_message, "chat_id")));
     u_status = get_users_list_for_chat(Chat);
@@ -60,8 +66,8 @@ void open_selected_chat(json_t *income_json, struct ns_connection *socket) {
     json_object_set_new(json, "receivers", users_array);
     json_object_set_new(json, "messages", msg_array);
     result = json_dumps(json, 0);
-    ns_send(socket, result, strlen(result));
-    ns_send(socket, "{", 1);
+//    ns_send(socket, result, strlen(result));
+//    ns_send(socket, "{", 1);
     ns_send(socket, result, strlen(result));
 //    mx_printstr("from server (open_selected_chat): ");
     puts(result);

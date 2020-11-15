@@ -24,7 +24,6 @@ int create_user_data(t_client_data *client_data)
 
     json_object_set_new(client_data->server_attr.request, "type", json_string(client_data->type));
     json_object_set_new(client_data->server_attr.request, "user", user);
-//    json_decref(user);
 
     return send_json(client_data);
 }
