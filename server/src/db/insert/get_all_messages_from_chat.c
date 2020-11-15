@@ -26,9 +26,9 @@ static int callback_for_data(void *my_arg, int argc, char **argv, char **columns
     free_and_dup(&message->message_owner_id,      argv[1]);
     free_and_dup(&message->chat_id,               argv[2]);
     free_and_dup(&message->message_content,       argv[3]);
-    free_and_dup((char **)(&message->option),     argv[6]);
     free_and_dup(&message->type,       argv[7]);
-    message->deleted = atoi(argv[8]);
+    free_and_dup((char **)(&message->option),     argv[8]);
+    message->deleted = atoi(argv[6]);
     message->time = atoi(argv[4]);
     message->changed = atoi(argv[5]);
     return 0;

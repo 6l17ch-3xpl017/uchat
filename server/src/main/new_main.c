@@ -40,8 +40,7 @@ int main(void) {
     init_database();
 
 
-    add_chat_to_db(chat_struct_filling_with_null());
-
+////    add_chat_to_db(chat_struct_filling_with_null());
 
     ns_bind(&mgr, "7777", ev_handler, NULL);
 
@@ -53,38 +52,35 @@ int main(void) {
     ns_mgr_free(&mgr);
 
     return 0;
-/*
+
     //------------------------------
-    char *send_msg;
-    init_database();
-//    add_chat_to_db(chat_struct_filling_with_null());
-    json_t *message = json_object();
-    json_t *json = json_object();
-
-    json_object_set_new(message, "chat_id", json_string("1"));
-    json_object_set_new(message, "chat_name", json_string("chatik"));
-    json_object_set_new(message, "chat_type", json_string("public"));
-    json_object_set_new(message, "user_id", json_string("1"));
-//    json_object_set_new(message, "time", json_string("2020"));
-
-    json_object_set_new(json, "type", json_string("open_chat"));
-    json_object_set_new(json, "chat", message);
-
-    send_msg = json_dumps(json, 0);
-    check_route(send_msg, mgr.active_connections);
-    return 0;
-    //------------------------------
+//    char *send_msg;
+//    json_t *message = json_object();
+//    json_t *json = json_object();
 //
+//    json_object_set_new(message, "chat_id", json_string("1"));
+//    json_object_set_new(message, "chat_name", json_string("chatik"));
+//    json_object_set_new(message, "chat_type", json_string("public"));
+//    json_object_set_new(message, "user_id", json_string("1"));
+//    json_object_set_new(message, "time", json_string("2020"));
+//
+//    json_object_set_new(json, "type", json_string("open_chat"));
+//    json_object_set_new(json, "chat", message);
+//
+//    send_msg = json_dumps(json, 0);
+//    check_route(send_msg, mgr.active_connections);
+//    return 0;
+    //------------------------------
+//    char *send_msg;
 //    json_t *message = json_object();
 //    json_t *json = json_object();
 //    json_object_set_new(message, "chat_id", json_string("1"));
 //    json_object_set_new(message, "chat_type", json_string("public"));
 //    json_object_set_new(message, "chat_name", json_string("chatik"));
 //    json_object_set_new(message, "admin_id", json_string("1"));
-////    json_object_set_new(message, "message_id", json_string("1"));
 //    json_object_set_new(message, "message_content", json_string("Test message"));
 //    json_object_set_new(message, "message_owner_id", json_string("1"));
-//    json_object_set_new(message, "type", json_string("text"));
+//    json_object_set_new(message, "msg_type", json_string("text"));
 //    json_object_set_new(message, "time", json_string("2020"));
 //
 //    json_object_set_new(json, "type", json_string("send_message"));
@@ -94,5 +90,4 @@ int main(void) {
 //    check_route(send_msg, mgr.active_connections);
 ////------------------------------
 
-*/
 }

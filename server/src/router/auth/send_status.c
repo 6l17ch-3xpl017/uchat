@@ -42,14 +42,14 @@ void send_status(t_user *User, t_chat *Chat, struct ns_connection *conn, int sta
     /* send message pack in case of success function execution */
     else if (status == 107 && (strcmp(func, "send_message") == 0)) {
         result = json_dumps(json, 0);
-        ns_send(conn, mx_itoa(strlen(result)), strlen(mx_itoa(strlen(result))));
+        ns_send(conn, result, strlen(result));
         ns_send(conn, "{", 1);
         ns_send(conn, result, strlen(result));
     }
         /* in case of any other errors */
     else {
         result = json_dumps(json, 0);
-        ns_send(conn, mx_itoa(strlen(result)), strlen(mx_itoa(strlen(result))));
+        ns_send(conn, result, strlen(result));
         ns_send(conn, "{", 1);
         ns_send(conn, result, strlen(result));
     }

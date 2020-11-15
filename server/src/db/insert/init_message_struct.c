@@ -10,4 +10,5 @@ void init_message_struct(t_message *Message) {
     Message->changed = 0;
     Message->deleted = 0;
     Message->option = NULL;
+//    Message->next = NULL;
 }

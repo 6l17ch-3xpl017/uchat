@@ -68,6 +68,8 @@ int init_database() {
                               "\"message_content\"\tTEXT NOT NULL,\n"
                               "\"time\"\tINTEGER,\n"
                               "\"changed\"\tINTEGER,\n"
+                              "\"deleted\"\tINTEGER,\n"
+                              "\"type\"\tTEXT,\n"
                               "\"options\"\tTEXT,\n"
                               "PRIMARY KEY(\"message_id\" AUTOINCREMENT)\n"
                               "FOREIGN KEY(\"message_owner_id\") REFERENCES Users (\"id\")\n"
