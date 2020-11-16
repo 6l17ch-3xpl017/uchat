@@ -33,9 +33,11 @@ void open_selected_chat(json_t *income_json, struct ns_connection *socket) {
     Chat->chat_id = strdup(json_string_value(json_object_get(user_message, "chat_id")));
     u_status = get_users_list_for_chat(Chat);
     m_status = get_all_messages_from_db(Chat);
+
     if (m_status != u_status) {
         check_status = request_failed;
     }
+
     users = json_object();
     msg = json_object();
     users_array = json_array();
@@ -44,6 +46,7 @@ void open_selected_chat(json_t *income_json, struct ns_connection *socket) {
     /* send array of all chat users except inquiring user */
     for (t_user *head = Chat->user_in_chat; head; head = head->next) {
         json_object_set_new(users, "users_id", json_string(head->id));
+        json_object_set_new(users, "username", json_string(head->nickname));
         json_array_append_new(users_array, users);
         users = json_object();
     }

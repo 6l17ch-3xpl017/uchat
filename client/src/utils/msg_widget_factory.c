@@ -34,9 +34,9 @@ static GtkWidget *create_parent_msg_widget(char *text_msg, char *username)
     return widget;
 }
 
-static GtkWidget *create_child_msg_widget()
+static GtkWidget *create_child_msg_widget(char *text_msg)
 {
-    GtkWidget *widget = gtk_event_box_new();
+    GtkWidget *widget = gtk_label_new(text_msg);
     return widget;
 }
 
@@ -47,7 +47,7 @@ GtkWidget *msg_widget_factory(int msg_type, char *text_msg, char *username)
         return create_parent_msg_widget(text_msg, username);
 
     else if (msg_type == C_MSG)
-        create_child_msg_widget();
+        return create_child_msg_widget(text_msg);
 
     cmc_log_fatal("Invalid msg_type [%d]", msg_type);
 }

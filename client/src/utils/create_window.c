@@ -1,10 +1,12 @@
 #include "client.h"
 
+
 /**
  * Function create builder from glade file and connects signals with costume user_data
  * @param glade_filename
  * @param client_data
  */
+
 void create_window(const char *glade_filename, t_client_data *client_data)
 {
     client_data->gtk_attr.builder = gtk_builder_new();

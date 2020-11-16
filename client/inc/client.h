@@ -31,6 +31,11 @@
 
 #define get_widget(widget_name) GTK_WIDGET(gtk_builder_get_object(client_data->gtk_attr.builder, widget_name))
 
+#define and &&
+#define not !
+#define is ==
+#define or ||
+
 #define DEBUG
 
 #define check_error(err_result, success_msg, error_msg) err_result ? cmc_log_fatal("[%s]", error_msg) : cmc_log_info("[%s]", success_msg);
@@ -55,7 +60,7 @@ typedef struct s_client_data
 
     struct s_user_attr
     {
-        int user_id;
+        char *user_id;
         char username[128];
         char password[128];
         char email[128];
@@ -71,7 +76,6 @@ typedef struct s_client_data
         int socket;
         json_t *response;
         json_t *request;
-        int response_size;
     } server_attr;
 
 }              t_client_data;
