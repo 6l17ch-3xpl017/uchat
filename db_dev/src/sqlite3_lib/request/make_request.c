@@ -41,7 +41,7 @@ static char *mx_replace_one_substr(const char *str, const char *sub, const char 
 
 /**
  * @brief Function 'make_sql_request' - takes all information about request that you need and return you finished
- *        request for database. Dont use '' in parameter body! If values != NULL, function will insert it automatically.
+ *        request for database. Dont use '' in parameter body! If values != NULL, function will read it automatically.
  * @param dst - Pointer to string where 'make_sql_request' returns result of work.
  * @param body - Pattern of request. All '%s' will be changed.
  * @param ... - Values which you want to use instead of '%s'.
@@ -74,6 +74,7 @@ char *make_sql_request(char **dst, char *body, ...) {
             mx_strdel(&temporary_result);
         }
     }
+
     va_end(list);
     return *dst;
 }

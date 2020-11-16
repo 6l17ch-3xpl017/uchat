@@ -2,8 +2,8 @@
 
 int delete_user(t_user *User) {
     sqlite3 *db;
-    char *request = NULL;
     int result;
+    char *request = NULL;
 
     if (!User->id)
         return id_can_not_be_null;

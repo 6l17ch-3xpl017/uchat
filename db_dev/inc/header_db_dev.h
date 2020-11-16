@@ -12,7 +12,7 @@
 #include <time.h>
 #include <stdarg.h>
 
-struct s_user;
+ struct s_user;
 
 typedef struct s_message {
     struct s_message *next;
