@@ -35,9 +35,8 @@ int update_phone_number_of_user(t_user *User, char *new_phone_number) {
         if (check_new_phone(new_phone_number) == phone_number_was_already_signed_up)
             return phone_number_was_already_signed_up;
 
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
+
     if (User->id)
         make_sql_request(&request, "UPDATE Users SET phone_number = %s WHERE id = %s ;", new_phone_number, User->id);
     else

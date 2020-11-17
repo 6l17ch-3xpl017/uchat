@@ -16,9 +16,7 @@ int update_age_of_user(t_user *User, char *new_age) {
     char *request = NULL;
     int result;
 
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
 
     if (User->id)
         make_sql_request(&request, "UPDATE Users SET age = %s WHERE id = %s ;", new_age, User->id);

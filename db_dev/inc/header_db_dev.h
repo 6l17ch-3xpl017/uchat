@@ -12,6 +12,10 @@
 #include <time.h>
 #include <stdarg.h>
 
+#define connect_to_db     result = sqlite3_open("chat_database.db", &db); \
+                          if (result != SQLITE_OK)                        \
+                           return can_not_open_db;
+
  struct s_user;
 
 typedef struct s_message {
@@ -140,6 +144,7 @@ void mx_del_chat_list(t_chat *list, int leng);
 void mx_pop_back_for_chat(t_chat **head);
 int get_all_messages_from_db(t_chat *Chat);
 int get_users_list_for_chat(t_chat *Chat);
+int get_number_of_users_in_chat(t_chat *Chat);
 
 // UPDATE
 // user

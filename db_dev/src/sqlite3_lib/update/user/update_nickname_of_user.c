@@ -39,9 +39,7 @@ int update_nickname_of_user(t_user *User, char *new_nickname) {
     if (check_new_nick(new_nickname) == nickname_was_already_signed_up)
         return nickname_was_already_signed_up;
 
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
 
     if (User->id)
         make_sql_request(&request, "UPDATE Users SET nickname = %s WHERE id = %s ;", new_nickname, User->id);

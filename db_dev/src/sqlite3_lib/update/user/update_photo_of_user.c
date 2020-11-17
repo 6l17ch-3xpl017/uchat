@@ -16,9 +16,7 @@ int update_photo_of_user(t_user *User, char *new_photo) {
     char *request = NULL;
     int result;
 
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
 
     if (User->id)
         make_sql_request(&request, "UPDATE Users SET user_photo = %s WHERE id = %s ;", new_photo, User->id);

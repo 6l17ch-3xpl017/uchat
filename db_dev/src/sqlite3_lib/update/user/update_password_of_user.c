@@ -20,9 +20,7 @@ int update_password_of_user(t_user *User, char *new_password) {
     if (new_password == NULL)
         return nickname_and_password_can_not_be_null;
 
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
 
     if (User->id)
         make_sql_request(&request, "UPDATE Users SET password = %s WHERE id = %s ;", new_password, User->id);

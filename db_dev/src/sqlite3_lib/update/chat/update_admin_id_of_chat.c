@@ -15,16 +15,13 @@ int update_admin_id_of_chat(t_chat *Chat, char *new_admin_id) {
     char *request = NULL;
     int result;
 
-    //  check arguments
+//  check arguments
     if (!new_admin_id)
         return admin_id_can_not_be_null;
     if (!Chat || !Chat->chat_id)
         return chat_does_not_exist;
 
-//  open db
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
 
 //  make and send request
     make_sql_request(&request, "UPDATE Chats SET admin_id = %s WHERE chat_id = %s ;", new_admin_id, Chat->chat_id);

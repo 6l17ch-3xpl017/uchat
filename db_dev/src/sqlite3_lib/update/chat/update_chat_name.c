@@ -21,10 +21,7 @@ int update_chat_name(t_chat *Chat, char *new_chat_name) {
     if (!Chat || !Chat->chat_id)
         return chat_does_not_exist;
 
-//  open db
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
 
 //  make and send request
     make_sql_request(&request, "UPDATE Chats SET chat_name = %s WHERE chat_id = %s ;", new_chat_name, Chat->chat_id);

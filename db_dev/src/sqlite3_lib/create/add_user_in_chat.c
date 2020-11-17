@@ -14,16 +14,13 @@ int add_user_in_chat(t_user *User, t_chat *Chat) {
     int result;
     sqlite3 *db;
     char *request = NULL;
+
+    connect_to_db
+
     // -----------------------------------making request-----------------------------------------------
     request = make_sql_request(&request, "INSERT INTO Chat_User (chat_id, user_id) VALUES (%s, %s);",
                                Chat->chat_id, User->id);
     // ----------------------------adding to the database---------------------------------------------
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK) {
-        mx_strdel(&request);
-        return can_not_open_db;
-    }
-
     result = sqlite3_exec(db, request, 0, 0, 0);
     if (result != SQLITE_OK) {
         sqlite3_close(db);

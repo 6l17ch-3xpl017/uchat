@@ -17,9 +17,7 @@ int delete_chat_from_db(t_chat *Chat) {
     if (!Chat->chat_id)
         return id_can_not_be_null;
 
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
 
     result += send_request(db, "DELETE FROM Chat_User WHERE chat_id = %s ;", Chat->chat_id);
     result += send_request(db, "DELETE FROM Messages WHERE chat_id = %s ;", Chat->chat_id);
