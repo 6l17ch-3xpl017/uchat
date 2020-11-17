@@ -145,6 +145,7 @@ void mx_pop_back_for_chat(t_chat **head);
 int get_all_messages_from_db(t_chat *Chat);
 int get_users_list_for_chat(t_chat *Chat);
 int get_number_of_users_in_chat(t_chat *Chat);
+int is_admin(t_user *User);
 
 // UPDATE
 // user

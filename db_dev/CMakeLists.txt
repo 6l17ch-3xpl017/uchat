@@ -32,7 +32,7 @@ add_executable(db_dev
         src/sqlite3_lib/update/chat/update_chat_name.c
         src/sqlite3_lib/update/chat/update_admin_id_of_chat.c
         src/sqlite3_lib/update/chat/refresh_data_after_chat_update.c src/sqlite3_lib/update/chat/update_chat_photo.c
-        src/sqlite3_lib/read/add_id_to_struct_Message.c src/sqlite3_lib/delete/delete_chat_from_db.c src/sqlite3_lib/request/make_request.c src/sqlite3_lib/read/get_users_list_for_chat.c src/sqlite3_lib/initialization/init_user_struct.c src/sqlite3_lib/read/get_number_of_users_in_chat.c)
+        src/sqlite3_lib/read/add_id_to_struct_Message.c src/sqlite3_lib/delete/delete_chat_from_db.c src/sqlite3_lib/request/make_request.c src/sqlite3_lib/read/get_users_list_for_chat.c src/sqlite3_lib/initialization/init_user_struct.c src/sqlite3_lib/read/get_number_of_users_in_chat.c src/sqlite3_lib/read/is_admin.c src/sqlite3_lib/update/chat/change_admin_randomly.c)
 
 include_directories(/usr/include)
 link_directories(/usr/lib)
