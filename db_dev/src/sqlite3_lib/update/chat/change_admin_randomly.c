@@ -1,9 +1,7 @@
 #include "header_db_dev.h"
 
-int change_admin_randomly(t_chat *Chat) {
-    sqlite3 *db;
+int change_admin_randomly(t_chat *Chat, char *current_admin) {
     int result;
-    char *request = NULL;
     char **list_of_users_id = (char **)malloc(sizeof(char *) * Chat->number_of_users);
     t_user *cursor = Chat->user_in_chat;
 
@@ -12,7 +10,12 @@ int change_admin_randomly(t_chat *Chat) {
         cursor = cursor->next;
     }
 
-    connect_to_db
-
-
+    while (true) {
+        random_number(0, 10)
+        if (rand_num > 0 && list_of_users_id[rand_num][0] != '-') {
+            result = update_admin_id_of_chat(Chat, list_of_users_id[rand_num]);
+            break;
+        }
+    }
+    return result;
 }

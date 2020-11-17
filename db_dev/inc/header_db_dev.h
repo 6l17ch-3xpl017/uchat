@@ -16,6 +16,10 @@
                           if (result != SQLITE_OK)                        \
                            return can_not_open_db;
 
+#define random_number(min, max) srand(time(0)); \
+                                int rand_num  = (rand() % (max - min + 1) - min);
+
+
  struct s_user;
 
 typedef struct s_message {

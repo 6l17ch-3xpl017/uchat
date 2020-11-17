@@ -7,7 +7,7 @@
  * @return 'chat_does_not_exist' if struct Chat = NULL or chat_id = NULL
  * @return 'can_not_open_db' if connection with database was lost
  * @return 'request_failed' if request to database was failed
- * @return 'success' if chat name was updated without troubles
+ * @return 'success' if chat admin id was updated without troubles
  */
 
 int update_admin_id_of_chat(t_chat *Chat, char *new_admin_id) {
