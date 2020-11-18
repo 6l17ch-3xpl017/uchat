@@ -160,12 +160,20 @@ int update_age_of_user(t_user *User, char *new_age);
 int update_fullname_of_user(t_user *User, char *new_fullname);
 int update_phone_number_of_user(t_user *User, char *new_phone_number);
 int update_photo_of_user(t_user *User, char *new_photo);
+int update_user_id_in__chat_user__(t_chat *Chat, char *user_id);
+int update_user_id(t_user *User);
 
 // chat
 void refresh_data_after_chat_update(t_chat *Chat, sqlite3 *db);
+int change_admin_randomly(t_chat *Chat, char *current_admin);
 int update_chat_name(t_chat *Chat, char *new_chat_name);
 int update_admin_id_of_chat(t_chat *Chat, char *new_admin_id);
 int update_chat_photo(t_chat *Chat, char *new_photo_of_chat);
+
+// message
+int update_all_messages_by_deleted_user_in_chat(t_chat *Chat, char *user_id);
+int update_message_content(t_message *Message, char *new_content);
+
 // -----------------------------------------------------------------------
 
 // ------------------------------ADDITIONAL-------------------------------

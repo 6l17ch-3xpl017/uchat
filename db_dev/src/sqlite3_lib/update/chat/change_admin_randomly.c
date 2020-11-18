@@ -11,11 +11,17 @@ int change_admin_randomly(t_chat *Chat, char *current_admin) {
     }
 
     while (true) {
-        random_number(0, 10)
-        if (rand_num > 0 && list_of_users_id[rand_num][0] != '-') {
+        random_number(0, Chat->number_of_users - 1)
+        if (list_of_users_id[rand_num][0] != '-' && strcmp(list_of_users_id[rand_num], current_admin) != 0) {
             result = update_admin_id_of_chat(Chat, list_of_users_id[rand_num]);
             break;
         }
     }
+
+    for (int j = 0; j < Chat->number_of_users; j++) {
+        mx_strdel(&list_of_users_id[j]);
+    }
+    free(list_of_users_id);
+
     return result;
 }

@@ -11,12 +11,14 @@ int update_message_content(t_message *Message, char *new_content) {
     result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&request);
     sqlite3_close(db);
+
     if (result != SQLITE_OK)
         return request_failed;
 
     if (Message->message_content)
         mx_strdel(&Message->message_content);
     Message->message_content = strdup(new_content);
+
     return success;
 }
 

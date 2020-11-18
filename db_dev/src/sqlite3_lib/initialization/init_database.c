@@ -39,7 +39,6 @@ int init_database() {
                               "\"chat_photo\"\tTEXT,\n"
                               "\"options\"\tTEXT,\n"
                               "PRIMARY KEY(\"chat_id\" AUTOINCREMENT)\n"
-                              "FOREIGN KEY(\"admin_id\") REFERENCES Users (\"id\")"
                               ");", 0, 0,0);
     if (result != SQLITE_OK) {
         sqlite3_close(db);
@@ -69,8 +68,6 @@ int init_database() {
                               "\"changed\"\tINTEGER,\n"
                               "\"options\"\tTEXT,\n"
                               "PRIMARY KEY(\"message_id\" AUTOINCREMENT)\n"
-                              "FOREIGN KEY(\"message_owner_id\") REFERENCES Users (\"id\")\n"
-                              "FOREIGN KEY(\"chat_id\") REFERENCES Chats (\"chat_id\")"
                               ");", 0, 0, 0);
     if (result != SQLITE_OK) {
         sqlite3_close(db);
