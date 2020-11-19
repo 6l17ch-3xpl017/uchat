@@ -1,0 +1,398 @@
+* {
+    /*background-clip: padding-box;*/
+
+    /*-GtkArrow-arrow-scaling: 0.5;*/
+    /*-GtkButton-child-displacement-x: 0;*/
+    /*-GtkButton-child-displacement-y: 0;*/
+    /*-GtkButton-default-border: 0;*/
+    /*-GtkButton-image-spacing: 0;*/
+    /*-GtkButton-inner-border: 0;*/
+    /*-GtkButton-interior-focus: true;*/
+    /*-GtkCheckButton-indicator-size: 16;*/
+    /*-GtkCheckMenuItem-indicator-size: 14;*/
+    /*-GtkExpander-expander-size: 8;*/
+    /*-GtkHTML-link-color: #fff;*/
+    /*-GtkIMHtml-hyperlink-color: #fff;*/
+    /*-GtkMenu-horizontal-padding: 0;*/
+    /*-GtkMenu-vertical-padding: 0;*/
+    /*-GtkNotebook-initial-gap: 0;*/
+    /*-GtkPaned-handle-size: 4;*/
+    /*-GtkProgressBar-min-horizontal-bar-height: 12;*/
+    /*-GtkProgressBar-min-vertical-bar-width: 12;*/
+    /*-GtkRange-slider-width: 12;*/
+    /*-GtkRange-stepper-spacing: 0;*/
+    /*-GtkRange-trough-border: 0;*/
+    /*-GtkRange-trough-under-steppers: 1;*/
+    /*-GtkScrollbar-has-backward-stepper: false;*/
+    /*-GtkScrollbar-has-forward-stepper: false;*/
+    /*-GtkScrollbar-min-slider-length: 80;*/
+    /*-GtkScrolledWindow-scrollbar-spacing: 0;*/
+    /*-GtkScrolledWindow-scrollbars-within-bevel: 1;*/
+    /*-GtkStatusbar-shadow-type: none;*/
+    /*-GtkTextView-error-underline-color: #fff;*/
+    /*-GtkToolButton-icon-spacing: 6;*/
+    /*-GtkToolItemGroup-expander-size: 8;*/
+    /*-GtkTreeView-expander-size: 8;*/
+    /*-GtkWidget-focus-line-width: 1;*/
+    /*-GtkWidget-focus-padding: 0;*/
+    /*-GtkWidget-link-color: #fff;*/
+    /*-GtkWidget-visited-link-color: #fff;*/
+    /*-GtkWindow-resize-grip-height: 0;*/
+    /*-GtkWindow-resize-grip-width: 0;*/
+    /*-WnckTasklist-fade-overlay-rect: 0;*/
+
+    /*!*outline-color: alpha(1, #d64937, 0.5);*!*/
+    /*outline-style: solid;*/
+    /*outline-offset: 0;*/
+}
+
+@keyframes cursor
+{
+    50% { border-color: white;}
+}
+
+@keyframes slide-right
+{
+    from
+    {
+        margin-left: 0px;
+        margin-right: 0px;
+        background-image: radial-gradient(ellipse at center, #031bd0 0%, #a100ff 100%);
+        border-radius: 0%;
+    }
+
+    25%
+    {
+        margin-left: 110px;
+        margin-right: 110px;
+        border-radius: 25%;
+    }
+
+    50%
+    {
+        margin-left: 200px;
+        margin-right: 200px;
+        background-image: radial-gradient(ellipse at center, #d05503 0%, #d40606 100%);
+        border-radius: 50%;
+    }
+
+    75%
+    {
+        margin-left: 110px;
+        margin-right: 110px;
+        border-radius: 25%;
+    }
+
+    to {
+        margin-left: 0px;
+        margin-right: 0px;
+        background-image: radial-gradient(ellipse at center, #031bd0 0%, #a100ff 100%);
+        border-radius: 0%;
+    }
+
+}
+
+@keyframes rainbow
+{
+    from
+    {
+        background-image: radial-gradient(ellipse at center, #ff0000 0%, #ff6400 100%);
+        /*background-size: 100px;*/
+    }
+
+    10%
+    {
+        background-image: radial-gradient(ellipse at center, #ffc800 0%, #ffff00 100%);
+        /*background-size: 20px;*/
+    }
+
+    20%
+    {
+        background-image: radial-gradient(ellipse at center, #ffff00 0%, #64ff00 100%);
+        /*background-size: 30px;*/
+    }
+
+    30%
+    {
+        background-image: radial-gradient(ellipse at center, #64ff00 0%, #00ffff 100%);
+        /*background-size: 40px;*/
+    }
+    40%
+    {
+        background-image: radial-gradient(ellipse at center, #00ffff 0%, #0064ff 100%);
+        /*background-size: 50px;*/
+    }
+    50%
+    {
+        background-image: radial-gradient(ellipse at center, #0064ff 0%, #0000ff 100%);
+        /*background-size: 60px;*/
+    }
+    60%
+    {
+        background-image: radial-gradient(ellipse at center, #0000ff 0%, #6400ff 100%);
+        /*background-size: 50px;*/
+    }
+    70%
+    {
+        background-image: radial-gradient(ellipse at center, #6400ff 0%, #c800ff 100%);
+        /*background-size: 40px;*/
+    }
+    80%
+    {
+        background-image: radial-gradient(ellipse at center, #c800ff 0%, #ff0064 100%);
+        /*background-size: 30px;*/
+    }
+    90%
+    {
+        background-image: radial-gradient(ellipse at center, #c80064 0%, #ff0000 100%);
+        /*background-size: 20px;*/
+    }
+
+    to
+    {
+        background-image: radial-gradient(ellipse at center, #c80000 0%, #ff6400 100%);
+        /*background-size: 100px;*/
+    }
+}
+
+@keyframes squueeez
+{
+    from
+    {
+        color: red;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    10%
+    {
+        color: orange;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    20%
+    {
+        color: yellow;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    30%
+    {
+        color: green;
+        margin-left: 75px;
+        margin-right: 75px;
+    }
+    40%
+    {
+        color: blue;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+    50%
+    {
+        color: indigo;
+        margin-left: 125px;
+        margin-right: 125px;
+    }
+    60%
+    {
+        color: violet;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+    70%
+    {
+        color: red;
+        margin-left: 75px;
+        margin-right: 75px;
+    }
+    80%
+    {
+        color: orange;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    90%
+    {
+        color: yellow;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    to
+    {
+        color: green;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+
+@keyframes crossfade
+{
+    from
+    {
+        opacity: 0;
+    }
+
+    10%
+    {
+        opacity: 0.1;
+    }
+
+    20%
+    {
+        opacity: 0.2;
+    }
+
+    30%
+    {
+        opacity: 0.3;
+    }
+    40%
+    {
+        opacity: 0.4;
+    }
+    50%
+    {
+        opacity: 0.5;
+    }
+    60%
+    {
+        opacity: 0.6;
+    }
+    70%
+    {
+        opacity: 0.7;
+    }
+    80%
+    {
+        opacity: 0.8;
+    }
+    90%
+    {
+        opacity: 0.9;
+    }
+
+    to
+    {
+        opacity: 1;
+    }
+}
+
+#sbox_uava
+{
+    animation-name: slide-right, spin;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    background-image: radial-gradient(ellipse at center, #031bd0 0%, #a100ff 100%);
+}
+
+#sbox_sharp_username
+{
+    border-right: .1em solid transparent;
+    animation: cursor 1s infinite;
+}
+
+#sign_up_btn:hover, #sign_up_btn:active
+{
+    animation-name: rainbow;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#pass_eye
+{
+    border-style: none;
+    background: none;
+    box-shadow: none;
+}
+
+#pass_eye:active
+{
+    border-style: none;
+    background: none;
+    box-shadow: none;
+}
+
+#logo_icon
+{
+    animation-name: spin;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#login_btn:hover
+{
+    animation-name: squueeez;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#lwnd_hlabel
+{
+    animation-name: crossfade;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+#mapp_add_friend
+{
+    background: #36b47b;
+    color: white;
+    border-radius: 5%;
+    font-weight: bold;
+
+}
+
+#test_back
+{
+    /*animation-name: rainbow;*/
+    /*animation-duration: 5s;*/
+    /*animation-timing-function: linear;*/
+    /*animation-iteration-count: infinite;*/
+}
+
+.img_btn
+{
+    border-style: none;
+    background: none;
+    box-shadow: none;
+}
+
+.img_btn:active
+{
+    border-style: none;
+    background: none;
+    box-shadow: none;
+}
+
+.sbox_entry
+{
+    transition: border 1000ms ease-out;
+    font-size: 16px;
+}
+
+.sbox_entry:focus
+{
+    transition: border 1000ms ease-in;
+    animation-name: rainbow;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/*.button:active *:insensitive,*/
+/*.primary-toolbar .button:active *:insensitive,*/
+/*.toolbar .button:active *:insensitive,*/
+/*.header-bar .button:active *:insensitive,*/
+/*.entry:insensitive {*/
+/*    box-shadow: none;*/
+/*}*/
