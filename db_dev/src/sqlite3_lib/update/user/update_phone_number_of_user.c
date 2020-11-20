@@ -47,7 +47,5 @@ int update_phone_number_of_user(t_user *User, char *new_phone_number) {
     if (result != SQLITE_OK)
         return request_failed;
 
-    populate_User_struct(User);
-
     return success;
 }

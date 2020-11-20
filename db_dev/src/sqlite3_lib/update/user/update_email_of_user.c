@@ -48,8 +48,6 @@ int update_email_of_user(t_user *User, char *new_email) {
     if (result != SQLITE_OK)
         return request_failed;
 
-    populate_User_struct(User);
-
     return success;
 }
 

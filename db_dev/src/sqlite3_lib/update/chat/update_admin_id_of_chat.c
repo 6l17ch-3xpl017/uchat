@@ -27,7 +27,6 @@ int update_admin_id_of_chat(t_chat *Chat, char *new_admin_id) {
     make_sql_request(&request, "UPDATE Chats SET admin_id = %s WHERE chat_id = %s ;", new_admin_id, Chat->chat_id);
     result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&request);
-    refresh_data_after_chat_update(Chat, db);
     sqlite3_close(db);
     if (result != SQLITE_OK)
         return request_failed;

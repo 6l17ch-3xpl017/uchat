@@ -8,7 +8,7 @@
  *        can't be NULL.
  */
 
-int add_chat_to_db(t_chat *Chat) {
+int add_chat_to_db(t_chat *Chat) { // INSERT INTO Chats (chat_name, admin_id, chat_photo) VALUES ('Chat_A',  '1',  'img/a');
     int result;
     sqlite3 *db;
     char *request = NULL;

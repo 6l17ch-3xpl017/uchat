@@ -6,7 +6,7 @@ static int callback(void *my_arg, int argc, char **argv, char **columns) {
     return 0;
 }
 
-int is_admin(t_user *User) {
+int is_admin(t_user *User, t_chat *Chat) {
     sqlite3 *db;
     int result;
     int numbers_of_chat;
@@ -14,7 +14,8 @@ int is_admin(t_user *User) {
 
     connect_to_db
 
-    make_sql_request(&request, "SELECT COUNT(chat_id) FROM Chats WHERE admin_id = %s;", User->id);
+    make_sql_request(&request, "SELECT COUNT(chat_id) FROM Chats WHERE admin_id = %s AND chat_id = %s ;",
+                     User->id, Chat->chat_id);
     result = sqlite3_exec(db, request, callback, &numbers_of_chat, 0);
     mx_strdel(&request);
     sqlite3_close(db);

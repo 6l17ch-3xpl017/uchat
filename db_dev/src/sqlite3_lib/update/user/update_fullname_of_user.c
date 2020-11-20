@@ -28,7 +28,5 @@ int update_fullname_of_user(t_user *User, char *new_fullname) {
     if (result != SQLITE_OK)
         return request_failed;
 
-    populate_User_struct(User);
-
     return success;
 }

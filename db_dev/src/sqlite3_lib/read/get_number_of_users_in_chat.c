@@ -22,6 +22,7 @@ int get_number_of_users_in_chat(t_chat *Chat) {
     if (result != SQLITE_OK)
         return -1;
 
+    sqlite3_close(db);
     return number_of_users;
 }
 
