@@ -418,6 +418,19 @@
     border-radius: 5px;
 }
 
+.friend_list row:hover
+{
+    border-radius: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.footer_btn:hover
+{
+    background-color: rgba(120, 115, 115, 0.5);
+    border-radius: 35px;
+}
+
 .transparent
 {
     opacity: 0;
