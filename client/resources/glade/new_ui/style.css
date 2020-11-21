@@ -352,13 +352,98 @@
 
 }
 
-#test_back
+#msg_frame
 {
-    /*animation-name: rainbow;*/
-    /*animation-duration: 5s;*/
-    /*animation-timing-function: linear;*/
-    /*animation-iteration-count: infinite;*/
+    background-color: rgba(169, 169, 169, 0.355);
+    /*background: #a9a9a9;*/
+    -GtkWidget-focus-line-width: 1px;
+    border-width: 1px;
+    border-radius: 15px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 15px;
 }
+
+#msg_scrl
+{
+    border: none;
+}
+
+#msg_view
+{
+    border: none;
+}
+
+#msg_text_view
+{
+    border: none;
+}
+
+#msg_text_view text {
+    background-color: rgba(169, 169, 169, 0.23);
+    font-size: 12px;
+}
+
+#msg_back_box
+{
+    background: rgb(17, 18, 25);
+}
+
+#msg_list_box
+{
+    background: rgb(17, 18, 25);
+}
+
+#test_frame
+{
+    background: rgb(13, 13, 19);
+}
+
+#test_frame border
+{
+    border-top-style: solid;
+    border-top-color: black;
+    border-right-style: solid;
+    border-right-color: black;
+    border-left-style: solid;
+    border-left-color: black;
+}
+
+.chat_list_box row:selected
+{
+    margin-left: 7px;
+    margin-right: 7px;
+
+    background-color: rgba(94, 94, 94, 0.5);
+    border-radius: 5px;
+}
+
+.transparent
+{
+    opacity: 0;
+}
+
+.msg_bg_none
+{
+    background: transparent;
+    color: transparent;
+}
+
+.msg_bg_none text
+{
+    background: transparent;
+}
+
+.no_border
+{
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+
+    border-top-style: solid;
+    border-top-color: black;
+}
+
 
 .img_btn
 {
@@ -387,6 +472,12 @@
     animation-duration: 3s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+}
+
+.sep
+{
+    color: white;
+    background: white;
 }
 
 /*.button:active *:insensitive,*/
