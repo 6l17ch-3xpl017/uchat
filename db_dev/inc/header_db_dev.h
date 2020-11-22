@@ -26,10 +26,12 @@ typedef struct s_message {
     struct s_message *next;
     time_t time;
     int changed;
+    int deleted;
     char *message_id;
     char *message_owner_id;
     char *chat_id;
     char *message_content;
+    char *type;
     char *option;
 }              t_message;
 

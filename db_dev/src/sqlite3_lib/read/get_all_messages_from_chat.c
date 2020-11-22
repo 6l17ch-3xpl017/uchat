@@ -26,8 +26,10 @@ static int callback_for_data(void *my_arg, int argc, char **argv, char **columns
     free_and_dup(&message->message_owner_id,      argv[1]);
     free_and_dup(&message->chat_id,               argv[2]);
     free_and_dup(&message->message_content,       argv[3]);
-    free_and_dup((char **)(&message->option),     argv[6]);
-    message->time = atoi(argv[4]);
+    free_and_dup(&message->type,                  argv[7]);
+    free_and_dup((char **)(&message->option),     argv[8]);
+    message->deleted = atoi(argv[6]);
+    message->time =    atoi(argv[4]);
     message->changed = atoi(argv[5]);
     return 0;
 }
@@ -48,12 +50,12 @@ int get_all_messages_from_db(t_chat *Chat) {
 // first request to get all messages id numbers
     make_sql_request(&request, "SELECT message_id FROM Messages WHERE chat_id=%s ORDER BY time;", Chat->chat_id);
     result = sqlite3_exec(db, request, callback_for_id, messages_id, 0);
+    mx_strdel(&request);
+
     if (result != SQLITE_OK) {
-        mx_strdel(&request);
-            sqlite3_close(db);
+        sqlite3_close(db);
         return request_failed;
     }
-    mx_strdel(&request);
 
 // block to make linked list of data about chat's messages
     Chat->number_of_messages = messages_id->number_of_messages;

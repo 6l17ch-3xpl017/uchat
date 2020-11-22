@@ -13,7 +13,7 @@ int update_all_messages_by_deleted_user_in_chat(t_chat *Chat, char *user_id) {
     strcat(new_user_id, user_id);
 
     make_sql_request(&request, "UPDATE Messages SET message_owner_id = %s WHERE message_owner_id = %s ;",
-                     new_user_id, user_id);
+                     new_user_id, user_id); //TODO add in request 'AND chat_id = %s', Chat->chat_id
     result = sqlite3_exec(db, request, 0, 0, 0);
     mx_strdel(&new_user_id);
     mx_strdel(&request);

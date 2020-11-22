@@ -1,7 +1,5 @@
 #include "header_db_dev.h"
 
-//TODO correct the mistakes
-
 int delete_user(t_user *User) { // has leaks
     if (!User->id)
         return id_can_not_be_null;

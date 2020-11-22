@@ -25,5 +25,4 @@ int is_admin(t_user *User, t_chat *Chat) {
         return 1;
     else
         return 0;
-
 }
