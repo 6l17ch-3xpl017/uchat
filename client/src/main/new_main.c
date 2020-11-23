@@ -12,7 +12,8 @@ static t_client_data *init_client_data(void)
     client_data->gtk_attr.error = NULL;
     client_data->gtk_attr.provider = gtk_css_provider_new();
 
-    client_data->thread.pool = calloc(sizeof(struct cmc_thread *), 10);
+    g_mutex_init(&client_data->thread.mutex_interface);
+//    client_data->thread.pool = calloc(sizeof(struct cmc_thread *), 10);
 //    client_data->gtk_attr.context = NULL;
 
     return client_data;
@@ -51,9 +52,12 @@ int main(int argc, char *argv[])
 
     create_window(MAIN_UI, client_data);
 
+    prepare_signup_page(client_data);
     gtk_widget_show_now(get_widget("login_wnd"));
 
     gtk_main();
+
+    g_mutex_clear(&client_data->thread.mutex_interface);
 
     system("leaks -q uchat_gui");
     return 0;

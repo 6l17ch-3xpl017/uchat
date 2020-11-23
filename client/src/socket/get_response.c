@@ -7,7 +7,7 @@ static int status_handler(t_client_data *client_data)
         switch (client_data->server_attr.status)
         {
             case 103:
-                change_login_stack(client_data);
+                change_lwnd_mstack(client_data, rstack);
                 return 103;
 
             case 104:
@@ -19,6 +19,29 @@ static int status_handler(t_client_data *client_data)
             default:
                 cmc_log_fatal("Unknown Error [%i]", client_data->server_attr.status);
         }
+
+    else if (strcmp(client_data->type, REGISTER) is 0)
+
+        switch (client_data->server_attr.status)
+        {
+            case 107:
+                return 107;
+
+            default:
+                cmc_log_fatal("Unknown Error [%i]", client_data->server_attr.status);
+        }
+
+    else if(strcmp(client_data->type, OPEN_CHAT) is 0)
+    {
+        switch (client_data->server_attr.status)
+        {
+            case 1:
+                return 1;
+
+            default:
+                cmc_log_fatal("Unknown Error [%i]", client_data->server_attr.status);
+        }
+    }
 
     cmc_log_fatal("Unknown Type [%s]", client_data->type);
 }
@@ -40,13 +63,4 @@ int get_response(t_client_data *client_data)
 
 
     return status_handler(client_data);
-//    if (client_data->server_attr.status == 104 || client_data->server_attr.status == 107 || client_data->server_attr.status == 0)
-//        return client_data->server_attr.status;
-//
-//    else
-//    {
-//        //ToDo: Rise error in window
-//        cmc_log_error("error: %i", client_data->server_attr.status);
-//        return client_data->server_attr.status;
-//    }
 }

@@ -1,5 +1,25 @@
 #include "client.h"
 
+gboolean update_gui(t_client_data *client_data)
+{
+    g_mutex_lock(&client_data->thread.mutex_interface);
+
+//    gsize result_size;
+//    guchar *img = g_base64_decode("",&result_size);
+//    cmc_log_info("%s | %zu", img, result_size);
+//
+//    int fd = open("test_base.png", O_WRONLY);
+//    write(fd, img, result_size);
+
+    GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file_at_scale("test.png", 32, 24, TRUE, NULL);
+    gtk_image_set_from_pixbuf(GTK_IMAGE(get_widget("country_flag")), pixbuf);
+    g_object_unref(pixbuf);
+
+    g_mutex_unlock(&client_data->thread.mutex_interface);
+
+    return FALSE;
+}
+
 static void change_flag(char *link, t_client_data *client_data)
 {
     link = strtok(NULL, "|");
@@ -10,17 +30,14 @@ static void change_flag(char *link, t_client_data *client_data)
     write(fd, memory->memory, memory->size);
     close(fd);
 
-    GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file_at_scale("test.png", 32, 24, TRUE, NULL);
-    gtk_image_set_from_pixbuf(GTK_IMAGE(get_widget("country_flag")), pixbuf);
+    gdk_threads_add_idle((GSourceFunc)update_gui, client_data);
 
-    g_object_unref(pixbuf);
     free(memory->memory);
     free(memory);
 }
 
 static bool do_work(t_client_data *client_data)
 {
-//    usleep(500);
     FILE *f = fopen("../client/resources/new_countries.txt", "r");
     char *result = calloc(sizeof(char), 100);
     char *needle = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(client_data->gtk_attr.temp_widget));
@@ -39,19 +56,14 @@ static bool do_work(t_client_data *client_data)
     mx_strdel(&needle);
     mx_strdel(&result);
 
-    return TRUE;
+    return FALSE;
 }
 
-// FixMe: Test Threads
 void pick_country(GtkComboBox *countries, t_client_data *client_data)
 {
     client_data->gtk_attr.temp_widget = GTK_WIDGET(countries);
-//    client_data->thread.pool[0] = calloc(sizeof(struct cmc_thread), 1);
-//    cmc_thrd_create(client_data->thread.pool[0], (cmc_thread_proc)do_work, client_data);
     g_thread_new("change_flag", (GThreadFunc)do_work, client_data);
 
-    sleep(3);
-//    free(client_data->thread.pool[0]);
-//    client_data->gtk_attr.temp_widget = GTK_WIDGET(countries);
-//    do_work(client_data);
+    while (gtk_events_pending())
+        gtk_main_iteration();
 }

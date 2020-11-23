@@ -21,14 +21,22 @@
 
 #define LOGIN "sign_in"
 #define REGISTER "sign_up"
+#define OPEN_CHAT "open_chat"
 
 #define P_MSG 1
 #define C_MSG 2
+
+#define lstack 0
+#define rstack 1
 
 #define NO_STATE 0
 
 #define MAIN_UI "../client/resources/glade/new_ui/uchat.glade"
 #define TEST_PAGE "../client/resources/glade/test_all_window.glade"
+
+#define CHAT_WIDGET_CLASS "../client/resources/glade/new_ui/active_chats_class.glade"
+#define P_MSG_WIDGET_CLASS "../client/resources/glade/new_ui/p_msg_widget_class.glade"
+#define C_MSG_WIDGET_CLASS "../client/resources/glade/new_ui/c_msg_widget_class.glade"
 
 #define BASE_STYLE "../client/resources/glade/new_ui/style.css"
 #define load_css         gtk_css_provider_load_from_path(client_data->gtk_attr.provider, BASE_STYLE, &client_data->gtk_attr.error); \
@@ -39,8 +47,6 @@ GTK_STYLE_PROVIDER_PRIORITY_USER);                                              
 
 
 #define get_entry_text(entry_name) gtk_entry_get_text(GTK_ENTRY(get_widget(entry_name)))
-
-
 #define get_widget(widget_name) GTK_WIDGET(gtk_builder_get_object(client_data->gtk_attr.builder, widget_name))
 
 #define and &&
@@ -73,7 +79,7 @@ typedef struct s_client_data
 
     struct s_thread
     {
-        struct cmc_thread **pool;
+        GMutex mutex_interface;
     }     thread;
 
     struct s_gtk_attr
@@ -83,6 +89,7 @@ typedef struct s_client_data
         GtkCssProvider *provider;
         GtkStyleContext *context;
         GtkWidget *temp_widget;
+        char *needle;
     }      gtk_attr;
 
     struct s_user_attr
@@ -95,6 +102,7 @@ typedef struct s_client_data
         char *fullname;
         char *ph_number;
         char *user_photo;
+        char *country;
         char *options;
         json_t *geo_info;
     }      user_attr;
@@ -111,7 +119,7 @@ typedef struct s_client_data
 
 /*    GTK    */
 GtkWidget *msg_widget_factory(int msg_type, char *text_msg, char *username);
-GtkWidget *chat_widget_factory(const char *chat_name, gpointer *chat_id);
+GtkWidget *chat_widget_factory(json_t *chat_obj);
 GtkBuilder *create_widget_from_template(const char *glade_filename);
 void create_window(const char *glade_filename, t_client_data *client_data);
 /* ********  */
@@ -128,11 +136,15 @@ void create_msg_json(gchar *msg_text, t_client_data *client_data);
 
 /*   Pages   */
 int create_user_data(t_client_data *client_data);
-void change_login_stack(t_client_data *client_data);
+void change_lwnd_mstack(t_client_data *client_data, int stack_id);
+void load_main_app_data(t_client_data *client_data);
+GtkWidget *create_chat_widget(json_t *chat_object);
+GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author);
 /* ********* */
 
 /*   Utils   */
 int read_socket(t_client_data *client_data);
+void prepare_signup_page(t_client_data *client_data);
 /* ********* */
 
 /* CURL */

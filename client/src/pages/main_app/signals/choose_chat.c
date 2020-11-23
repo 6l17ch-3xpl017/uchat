@@ -9,7 +9,7 @@ static void send_requestt(t_client_data *client_data)
 
     json_object_set_new(chat, "chat_id", json_string("1"));
     json_object_set_new(chat, "user_id", json_string("1"));
-    json_object_set_new(json, "chat", chat);
+//    json_object_set_new(json, "chat", chat);
 
     client_data->server_attr.request = json;
 

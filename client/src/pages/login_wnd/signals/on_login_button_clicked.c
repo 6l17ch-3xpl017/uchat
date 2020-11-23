@@ -10,13 +10,12 @@ static void fill_chats_lst(t_client_data *client_data)
     for (int i = 0; i < json_array_size(chats_array); i++)
     {
         json_t *chat_obj = json_array_get(chats_array, i);
-        chat_id = json_object_get(chat_obj, "chat_id");
-        chat_name = json_object_get(chat_obj, "chat_name");
+//        chat_id = json_object_get(chat_obj, "chat_id");
+//        chat_name = json_object_get(chat_obj, "chat_name");
 
 //        GtkWidget *test = chat_widget_factory(json_string_value(chat_name), json_string_value(chat_id));
 
-        gtk_list_box_insert(GTK_LIST_BOX(chats_list), chat_widget_factory(json_string_value(chat_name),
-                                                                          (gpointer *) json_string_value(chat_id)), -1);
+        gtk_list_box_insert(GTK_LIST_BOX(chats_list), chat_widget_factory(chat_obj), -1);
         gtk_widget_show_all(chats_list);
     }
 
