@@ -7,6 +7,7 @@
 #include <macro_collections.h>
 
 #include <jansson.h>
+#include <curl/curl.h>
 #include <netdb.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,15 +25,26 @@
 #define P_MSG 1
 #define C_MSG 2
 
-#define LOGIN_PAGE "../client/resources/glade/login_page.glade"
-#define REG_PAGE "../client/resources/glade/register_page_2.glade"
-#define MAIN_PAGE "../client/resources/glade/main_page.glade"
+#define NO_STATE 0
+
+#define MAIN_UI "../client/resources/glade/new_ui/uchat.glade"
 #define TEST_PAGE "../client/resources/glade/test_all_window.glade"
+
+#define BASE_STYLE "../client/resources/glade/new_ui/style.css"
+#define load_css         gtk_css_provider_load_from_path(client_data->gtk_attr.provider, BASE_STYLE, &client_data->gtk_attr.error); \
+g_check_error(client_data->gtk_attr.error, "Style loaded")                                                                          \
+gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),                                                                 \
+GTK_STYLE_PROVIDER(client_data->gtk_attr.provider),                                                                                 \
+GTK_STYLE_PROVIDER_PRIORITY_USER);                                                                                                  \
+
+
+#define get_entry_text(entry_name) gtk_entry_get_text(GTK_ENTRY(get_widget(entry_name)))
+
 
 #define get_widget(widget_name) GTK_WIDGET(gtk_builder_get_object(client_data->gtk_attr.builder, widget_name))
 
 #define and &&
-#define not !
+#define not !=
 #define is ==
 #define or ||
 
@@ -47,40 +59,55 @@
 #pragma clang diagnostic pop
 #include "utl/log.h"
 
+typedef struct s_memory {
+    unsigned char *memory;
+    size_t size;
+}     t_memory;
+
 typedef struct s_client_data
 {
     char *status;
     char *type; //ToDo: Rename
 
+    int state;
+
+    struct s_thread
+    {
+        struct cmc_thread **pool;
+    }     thread;
+
     struct s_gtk_attr
     {
         GtkBuilder *builder;
         GError *error;
+        GtkCssProvider *provider;
+        GtkStyleContext *context;
+        GtkWidget *temp_widget;
     }      gtk_attr;
 
     struct s_user_attr
     {
         char *user_id;
-        char username[128];
-        char password[128];
-        char email[128];
-        char age[128];
-        char fullname[128];
-        char ph_number[128];
-        char user_photo[128];
-        char options[128];
-    } user_attr;
+        char *username;
+        char *password;
+        char *email;
+        char *age;
+        char *fullname;
+        char *ph_number;
+        char *user_photo;
+        char *options;
+        json_t *geo_info;
+    }      user_attr;
 
     struct s_server_attr
     {
         int socket;
+        int status;
         json_t *response;
         json_t *request;
-    } server_attr;
+    }      server_attr;
 
 }              t_client_data;
-
-
 
 /*    GTK    */
 GtkWidget *msg_widget_factory(int msg_type, char *text_msg, char *username);
@@ -89,6 +116,11 @@ GtkBuilder *create_widget_from_template(const char *glade_filename);
 void create_window(const char *glade_filename, t_client_data *client_data);
 /* ********  */
 
+/*  SOCKET  */
+int send_request(t_client_data *client_data);
+int get_response(t_client_data *client_data);
+/* ******** */
+
 /*    JSON   */
 int send_json(t_client_data *client_data);
 void create_msg_json(gchar *msg_text, t_client_data *client_data);
@@ -96,10 +128,15 @@ void create_msg_json(gchar *msg_text, t_client_data *client_data);
 
 /*   Pages   */
 int create_user_data(t_client_data *client_data);
+void change_login_stack(t_client_data *client_data);
 /* ********* */
 
 /*   Utils   */
 int read_socket(t_client_data *client_data);
 /* ********* */
+
+/* CURL */
+t_memory *download_curl(char *link);
+/* **** */
 
 #endif //UCHAT_GUI_CLIENT_H

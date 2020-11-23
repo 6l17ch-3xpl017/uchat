@@ -179,7 +179,7 @@ Author: Denys Ushakov
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="lwnd_pass_entry">
+                  <object class="GtkEntry" id="lwnd_upass_entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="margin_start">85</property>
@@ -477,6 +477,7 @@ Author: Denys Ushakov
                 <property name="max_width_chars">32</property>
                 <property name="primary_icon_pixbuf">user_entry_icon.svg</property>
                 <property name="placeholder_text" translatable="yes">Username |</property>
+                <signal name="changed" handler="uname_anim" swapped="no"/>
                 <style>
                   <class name="sbox_entry"/>
                 </style>
@@ -581,21 +582,32 @@ Author: Denys Ushakov
                 </child>
                 <child>
                   <object class="GtkComboBoxText" id="country_pick">
+                    <property name="name">country_picker</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_right">35</property>
-                    <property name="active">1</property>
+                    <property name="margin_right">5</property>
+                    <property name="active">0</property>
                     <property name="tearoff_title" translatable="yes">privet</property>
-                    <property name="active_id">1</property>
-                    <items>
-                      <item id="0" translatable="yes">Ukraine</item>
-                      <item id="1" translatable="yes">United States of America</item>
-                    </items>
+                    <property name="active_id">0</property>
+                    <signal name="changed" handler="pick_country" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage" id="country_flag">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_right">35</property>
+                    <property name="stock">gtk-add</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
               </object>
@@ -610,7 +622,7 @@ Author: Denys Ushakov
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkEntry" id="sbox_pass">
+                  <object class="GtkEntry" id="sbox_upass">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="margin_left">35</property>
@@ -634,7 +646,6 @@ Author: Denys Ushakov
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="name">pass_eye</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -652,6 +663,9 @@ Author: Denys Ushakov
                         <property name="pixbuf">private.svg</property>
                       </object>
                     </child>
+                    <style>
+                      <class name="img_btn"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -708,15 +722,46 @@ Author: Denys Ushakov
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="signup_btn">
-                <property name="label" translatable="yes">SIGN UP</property>
-                <property name="name">sign_up_btn</property>
+              <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="margin_left">75</property>
-                <property name="margin_right">75</property>
-                <signal name="clicked" handler="signin" swapped="no"/>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkButton" id="get_back_btn">
+                    <property name="name">sign_up_btn</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="pixbuf">back.svg</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="signup_btn">
+                    <property name="label" translatable="yes">SIGN UP</property>
+                    <property name="name">sign_up_btn</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="margin_left">75</property>
+                    <property name="margin_right">75</property>
+                    <signal name="clicked" handler="signin" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>

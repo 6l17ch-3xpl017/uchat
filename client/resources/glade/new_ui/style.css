@@ -1,51 +1,3 @@
-* {
-    /*background-clip: padding-box;*/
-
-    /*-GtkArrow-arrow-scaling: 0.5;*/
-    /*-GtkButton-child-displacement-x: 0;*/
-    /*-GtkButton-child-displacement-y: 0;*/
-    /*-GtkButton-default-border: 0;*/
-    /*-GtkButton-image-spacing: 0;*/
-    /*-GtkButton-inner-border: 0;*/
-    /*-GtkButton-interior-focus: true;*/
-    /*-GtkCheckButton-indicator-size: 16;*/
-    /*-GtkCheckMenuItem-indicator-size: 14;*/
-    /*-GtkExpander-expander-size: 8;*/
-    /*-GtkHTML-link-color: #fff;*/
-    /*-GtkIMHtml-hyperlink-color: #fff;*/
-    /*-GtkMenu-horizontal-padding: 0;*/
-    /*-GtkMenu-vertical-padding: 0;*/
-    /*-GtkNotebook-initial-gap: 0;*/
-    /*-GtkPaned-handle-size: 4;*/
-    /*-GtkProgressBar-min-horizontal-bar-height: 12;*/
-    /*-GtkProgressBar-min-vertical-bar-width: 12;*/
-    /*-GtkRange-slider-width: 12;*/
-    /*-GtkRange-stepper-spacing: 0;*/
-    /*-GtkRange-trough-border: 0;*/
-    /*-GtkRange-trough-under-steppers: 1;*/
-    /*-GtkScrollbar-has-backward-stepper: false;*/
-    /*-GtkScrollbar-has-forward-stepper: false;*/
-    /*-GtkScrollbar-min-slider-length: 80;*/
-    /*-GtkScrolledWindow-scrollbar-spacing: 0;*/
-    /*-GtkScrolledWindow-scrollbars-within-bevel: 1;*/
-    /*-GtkStatusbar-shadow-type: none;*/
-    /*-GtkTextView-error-underline-color: #fff;*/
-    /*-GtkToolButton-icon-spacing: 6;*/
-    /*-GtkToolItemGroup-expander-size: 8;*/
-    /*-GtkTreeView-expander-size: 8;*/
-    /*-GtkWidget-focus-line-width: 1;*/
-    /*-GtkWidget-focus-padding: 0;*/
-    /*-GtkWidget-link-color: #fff;*/
-    /*-GtkWidget-visited-link-color: #fff;*/
-    /*-GtkWindow-resize-grip-height: 0;*/
-    /*-GtkWindow-resize-grip-width: 0;*/
-    /*-WnckTasklist-fade-overlay-rect: 0;*/
-
-    /*!*outline-color: alpha(1, #d64937, 0.5);*!*/
-    /*outline-style: solid;*/
-    /*outline-offset: 0;*/
-}
-
 @keyframes cursor
 {
     50% { border-color: white;}
@@ -58,14 +10,14 @@
         margin-left: 0px;
         margin-right: 0px;
         background-image: radial-gradient(ellipse at center, #031bd0 0%, #a100ff 100%);
-        border-radius: 0%;
+        border-radius: 0;
     }
 
     25%
     {
         margin-left: 110px;
         margin-right: 110px;
-        border-radius: 25%;
+        border-radius: 15px;
     }
 
     50%
@@ -73,21 +25,21 @@
         margin-left: 200px;
         margin-right: 200px;
         background-image: radial-gradient(ellipse at center, #d05503 0%, #d40606 100%);
-        border-radius: 50%;
+        border-radius: 35px;
     }
 
     75%
     {
         margin-left: 110px;
         margin-right: 110px;
-        border-radius: 25%;
+        border-radius: 15px;
     }
 
     to {
         margin-left: 0px;
         margin-right: 0px;
         background-image: radial-gradient(ellipse at center, #031bd0 0%, #a100ff 100%);
-        border-radius: 0%;
+        border-radius: 0;
     }
 
 }
@@ -472,6 +424,20 @@
     box-shadow: none;
 }
 
+.img_btn:hover
+{
+    border-style: none;
+    background: none;
+    box-shadow: none;
+}
+
+.img_btn:selected
+{
+    border-style: none;
+    background: none;
+    box-shadow: none;
+}
+
 .sbox_entry
 {
     transition: border 1000ms ease-out;
@@ -491,6 +457,10 @@
 {
     color: white;
     background: white;
+}
+
+#country_picker window.popup
+{
 }
 
 /*.button:active *:insensitive,*/

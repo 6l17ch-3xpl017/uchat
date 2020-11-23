@@ -1,6 +1,5 @@
 #include "client.h"
 
-
 /**
  * Function create builder from glade file and connects signals with costume user_data
  * @param glade_filename
@@ -19,4 +18,6 @@ void create_window(const char *glade_filename, t_client_data *client_data)
     g_check_error(client_data->gtk_attr.error, "Builder loaded")
 
     gtk_builder_connect_signals(client_data->gtk_attr.builder, client_data);
+
+    load_css
 }
