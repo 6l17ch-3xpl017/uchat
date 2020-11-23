@@ -16,22 +16,18 @@ int add_user_in_chat(t_user *User, t_chat *Chat) {
     char *request = NULL;
 
     connect_to_db
-
-    // -----------------------------------making request-----------------------------------------------
-    request = make_sql_request(&request, "INSERT INTO Chat_User (chat_id, user_id) VALUES (%s, %s);",
-                               Chat->chat_id, User->id);
     // ----------------------------adding to the database---------------------------------------------
-    result = sqlite3_exec(db, request, 0, 0, 0);
-    if (result != SQLITE_OK) {
-        sqlite3_close(db);
+    for (t_user *current_node = User; current_node; current_node = current_node->next) {
+        request = make_sql_request(&request, "INSERT INTO Chat_User (chat_id, user_id) VALUES (%s, %s);",
+                                   Chat->chat_id, current_node->id);
+        result = sqlite3_exec(db, request, 0, 0, 0);
         mx_strdel(&request);
-        return can_not_add_to_database;
+        if (result != SQLITE_OK) {
+            sqlite3_close(db);
+            return can_not_add_to_database;
+        }
     }
+    // -----------------------------------------------------------------------------------------------
     sqlite3_close(db);
-    // ------------------------------------------------------------------------------------------------
-
-    if (request)
-        free(request);
-
     return successfully_added_to_db;
 }

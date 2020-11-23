@@ -1,6 +1,6 @@
 #include "header_db_dev.h"
 
-int delete_user(t_user *User) { // has leaks
+int delete_user(t_user *User) {
     if (!User->id)
         return id_can_not_be_null;
 
@@ -10,7 +10,7 @@ int delete_user(t_user *User) { // has leaks
             delete_chat_from_db(cursor);
         else {
             if (is_admin(User, cursor) == 1)
-                change_admin_randomly(cursor, User->id); // has bugs
+                change_admin_randomly(cursor, User->id);
             update_all_messages_by_deleted_user_in_chat(cursor, User->id);
             update_user_id_in__chat_user__(cursor, User->id);
         }
