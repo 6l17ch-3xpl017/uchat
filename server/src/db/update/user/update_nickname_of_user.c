@@ -23,7 +23,7 @@ static int check_new_nick (char *new_nickname) {
  * @return 'nickname_and_password_can_not_be_null' if new_nickname = NULL.
  * @return 'nickname_was_already_signed_up' if nickname is unavailable.
  * @return 'can_not_open_db' if connection with database was lost.
- * @return 'request_failed' if response was failed.
+ * @return 'request_failed' if request was failed.
  * @return 'success' if nickname was successfully updated.
  * @return 1 if user wasn't sign in
  */
@@ -39,9 +39,7 @@ int update_nickname_of_user(t_user *User, char *new_nickname) {
     if (check_new_nick(new_nickname) == nickname_was_already_signed_up)
         return nickname_was_already_signed_up;
 
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
 
     if (User->id)
         make_sql_request(&request, "UPDATE Users SET nickname = %s WHERE id = %s ;", new_nickname, User->id);

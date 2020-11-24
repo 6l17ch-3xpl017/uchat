@@ -6,7 +6,7 @@
  * @param User - structure with all data about user.
  * @param new_fullname - new fullname which was chosen by user.
  * @return 'can_not_open_db' if connection with database was lost.
- * @return 'request_failed' if response was failed.
+ * @return 'request_failed' if request was failed.
  * @return 'success' if fullname was successfully updated.
  * @return 1 if user wasn't sign in
  */
@@ -16,9 +16,7 @@ int update_fullname_of_user(t_user *User, char *new_fullname) {
     char *request = NULL;
     int result;
 
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
 
     if (User->id)
         make_sql_request(&request, "UPDATE Users SET fullname = %s WHERE id = %s ;", new_fullname, User->id);
@@ -29,8 +27,6 @@ int update_fullname_of_user(t_user *User, char *new_fullname) {
     sqlite3_close(db);
     if (result != SQLITE_OK)
         return request_failed;
-
-    populate_User_struct(User);
 
     return success;
 }

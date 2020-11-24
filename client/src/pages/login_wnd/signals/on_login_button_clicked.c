@@ -7,7 +7,7 @@ static void fill_chats_lst(t_client_data *client_data)
     json_t *chat_name = NULL;
     json_t *chat_id = NULL;
 
-    for (int i = 0; i < json_array_size(chats_array); i++)
+    for (size_t i = 0; i < json_array_size(chats_array); i++)
     {
         json_t *chat_obj = json_array_get(chats_array, i);
         chat_id = json_object_get(chat_obj, "chat_id");

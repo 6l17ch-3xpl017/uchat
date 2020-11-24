@@ -53,22 +53,39 @@ int main(void) {
 
     return 0;
 
-    //------------------------------
-//    char *send_msg;
-//    json_t *message = json_object();
+    //--------------- CREATE NEW CHAT ---------------
+//    char *new_chat;
+//    json_t *chat = json_object();
 //    json_t *json = json_object();
+//    json_t *users_array = json_array();
 //
-//    json_object_set_new(message, "chat_id", json_string("1"));
-//    json_object_set_new(message, "chat_name", json_string("chatik"));
-//    json_object_set_new(message, "chat_type", json_string("public"));
-//    json_object_set_new(message, "user_id", json_string("1"));
-//    json_object_set_new(message, "time", json_string("2020"));
 //
-//    json_object_set_new(json, "type", json_string("open_chat"));
-//    json_object_set_new(json, "chat", message);
 //
-//    send_msg = json_dumps(json, 0);
-//    check_route(send_msg, mgr.active_connections);
+//    t_test *t = malloc(sizeof(t_test));
+//    t->test = strdup("17");
+//    t->nick = strdup("nick777");
+//    t->next = NULL;
+//    t->next = malloc(sizeof(t_test));
+//    t->next->test = strdup("18");
+//    t->next->nick = strdup("nick888");
+//    t->next->next = NULL;
+//
+//    json_object_set_new(json, "chat_type", json_string("private"));
+//    for (t_test *h = t; h; h = h->next) {
+//        json_object_set_new(chat, "user_id", json_string(h->test));
+//        json_object_set_new(chat, "user_nick", json_string(h->nick));
+//        json_array_append_new(users_array, chat);
+//        chat = json_object();
+//    }
+//
+////    json_object_set_new(json, "chat_id", json_string("1"));
+//    json_object_set_new(json, "type", json_string("new_chat"));
+////    json_object_set_new(json, "new_chat", chat);
+//    json_object_set_new(json, "users", users_array);
+//
+//    new_chat = json_dumps(json, 0);
+//    puts(new_chat);
+//    check_route(new_chat, mgr.active_connections);
 //    return 0;
     //------------------------------
 //    char *send_msg;

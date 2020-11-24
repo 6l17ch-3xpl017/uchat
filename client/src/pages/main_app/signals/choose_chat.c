@@ -6,7 +6,6 @@ static void send_request(t_client_data *client_data)
     json_t *chat = json_object();
 
     json_object_set_new(json, "type", json_string("open_chat"));
-
     json_object_set_new(chat, "chat_id", json_string("1"));
     json_object_set_new(chat, "user_id", json_string("1"));
     json_object_set_new(json, "chat", chat);
@@ -21,7 +20,7 @@ static const char *get_username(const char *id, t_client_data *client_data)
     json_t *users = json_object_get(client_data->server_attr.response, "receivers");
     json_t *user = NULL;
 
-    for (int i = 0; i < json_array_size(users); i++)
+    for (size_t i = 0; i < json_array_size(users); i++)
     {
         user = json_array_get(users, i);
         json_t *user_id = json_object_get(user, "users_id");
@@ -50,7 +49,7 @@ void choose_chat(GtkListBox *box, GtkListBoxRow *row, t_client_data *client_data
     char *last_author = NULL;
 
 
-    for (int i = 0; i < json_array_size(messages); i++) {
+    for (size_t i = 0; i < json_array_size(messages); i++) {
 
         message = json_array_get(messages, i);
         json_t *message_content = json_object_get(message, "msg_content");

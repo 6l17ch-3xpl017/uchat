@@ -12,11 +12,10 @@ static t_chat *chat_struct_filling_with_null() {
 
 /* get all data from json and add it to struct */
 static t_user *user_data_struct_fill(json_t *user, struct ns_connection *socket) {
-    t_user *User = NULL;
-    t_chat  *Chat = malloc(sizeof(t_chat));
+    t_chat *Chat = malloc(sizeof(t_chat));
+    t_user *User = malloc(sizeof(t_user));
     int check_status;
 
-    User = (t_user *) malloc(sizeof(t_user));
     User->id = NULL;
     User->nickname = strdup(json_string_value(json_object_get(user, "nickname")));
     User->password = strdup(json_string_value(json_object_get(user, "password")));
@@ -50,13 +49,10 @@ static t_user *user_data_struct_fill(json_t *user, struct ns_connection *socket)
  */
 t_user *user_sign_up(json_t *income_json, struct ns_connection *socket) {
     t_user *User = NULL;
-//    t_chat *Chat = NULL;
     json_t *user;
     /* receive json from client and check its correctness */
     user = json_object_get(income_json,"user");
     if (!json_is_object(user)) {
-        /* init and send json error status */
-//        User->nickname = NULL;
         send_status(NULL, NULL, socket, unknown_error, "sign_up");
         json_decref(user);
         return 0;

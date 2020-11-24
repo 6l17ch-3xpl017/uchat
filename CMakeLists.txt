@@ -70,7 +70,7 @@ file(GLOB_RECURSE SERVER_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "server/inc/*.h")
 file(GLOB_RECURSE SERVER_LIB RELATIVE ${CMAKE_SOURCE_DIR} "server/resources/libmx/src/*.c")
 file(GLOB_RECURSE SERVER_LIB_H RELATIVE ${CMAKE_SOURCE_DIR} "server/resources/libmx/inc/*.h")
 include_directories(server/resources/libmx/inc)
-add_executable(uchat_server ${SERVER_SRC} ${SERVER_HEADERS} ${SERVER_LIB} ${SERVER_LIB_H} server/src/router/messages/open_selected_chat.c)
+add_executable(uchat_server ${SERVER_SRC} ${SERVER_HEADERS} ${SERVER_LIB} ${SERVER_LIB_H} server/src/router/messages/open_selected_chat.c server/src/router/messages/message_pack_send.c)
 target_include_directories(uchat_server PRIVATE ${SERVER_DIR}/inc ${S_JANSSON_DIR}/inc)
 target_link_libraries(uchat_server -L${S_JANSSON_DIR} -ljansson -lsqlite3 -lpthread)
 # Finish building uchat_server #

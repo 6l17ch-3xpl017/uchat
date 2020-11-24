@@ -8,7 +8,14 @@ static char *chat_array_send(t_user *User, t_chat *Chat, json_t *json) {
     if (User->number_of_chats != 0) {
         for (int i = 0; i < User->number_of_chats; i++) {
             json_object_set_new(user_out, "chat_id", json_string(Chat->chat_id));
-            json_object_set_new(user_out, "chat_name", json_string(Chat->chat_name));
+            if (Chat->number_of_users > 2)
+                json_object_set_new(user_out, "chat_name", json_string(Chat->chat_name));
+            else if (Chat->number_of_users == 2) {
+                if (strcmp(Chat->user_in_chat->nickname, User->nickname) == 0)
+                    json_object_set_new(user_out, "user_name", json_string(Chat->user_in_chat->next->nickname));
+                else
+                    json_object_set_new(user_out, "user_name", json_string(Chat->user_in_chat->nickname));
+            }
             json_array_append(chat_array, user_out);
         }
     }
@@ -41,12 +48,12 @@ void send_status(t_user *User, t_chat *Chat, struct ns_connection *conn, int sta
         ns_send(conn, result, strlen(result));
     }
     /* send message pack in case of success function execution */
-    else if (status == 107 && (strcmp(func, "send_message") == 0)) {
-        result = json_dumps(json, 0);
-//        ns_send(conn, mx_itoa(strlen(result)), strlen(mx_itoa(strlen(result))));
-//        ns_send(conn, "{", 1);
-        ns_send(conn, result, strlen(result));
-    }
+//    else if (status == 107 && (strcmp(func, "send_message") == 0)) {
+//        result = json_dumps(json, 0);
+////        ns_send(conn, mx_itoa(strlen(result)), strlen(mx_itoa(strlen(result))));
+////        ns_send(conn, "{", 1);
+//        ns_send(conn, result, strlen(result));
+//    }
         /* in case of any other errors */
     else {
         result = json_dumps(json, 0);

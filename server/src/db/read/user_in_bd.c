@@ -36,11 +36,7 @@ int user_in_db(t_user *User) {
     int number_of_users_with_such_nick_or_email = 0;
     t_password *password = malloc(sizeof(t_password));
 
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK) {
-        printf("Can't open database\n");
-        return can_not_open_db;
-    }
+    connect_to_db
 
     if (User->nickname)
         make_sql_request(&request, "SELECT id FROM Users WHERE nickname = %s ;", User->nickname);

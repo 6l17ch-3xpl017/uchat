@@ -12,10 +12,17 @@
 #include <time.h>
 #include <stdarg.h>
 
+#define connect_to_db     result = sqlite3_open("chat_database.db", &db); \
+                          if (result != SQLITE_OK)                        \
+                           return can_not_open_db;
+
+#define random_number(min, max) srand(time(0)); \
+                                int rand_num  = (rand() % (max - min + 1) - min);
+
+
 struct s_user;
 
 typedef struct s_message {
-//    struct s_message *prev;
     struct s_message *next;
     time_t time;
     int changed;
@@ -117,7 +124,6 @@ enum chat_update {
 
 // ------------------------------SQLITE3_LIB------------------------------
 // CREATE
-int init_database();
 int add_user_to_db(t_user *User);
 int add_chat_to_db(t_chat *Chat);
 int add_message_to_db(t_message *Message);
@@ -128,12 +134,16 @@ void drop_all();
 int delete_user(t_user *User);
 int delete_chat_from_db(t_chat *Chat);
 
-//INSERT
-int user_in_db(t_user *User);
-int populate_User_struct(t_user *User);
+// INITIALIZATION
+int init_database();
 void init_chat_struct(t_chat *Chat);
 void init_message_struct(t_message *Message);
 void init_user_struct(t_user *User);
+
+
+// READ
+int user_in_db(t_user *User);
+int populate_User_struct(t_user *User);
 int get_chats_where_user(t_user *User);
 int check_valid_data_for_sign_up(t_user *User);
 void add_id_to_struct_User(t_user *User);
@@ -143,6 +153,11 @@ void mx_del_chat_list(t_chat *list, int leng);
 void mx_pop_back_for_chat(t_chat **head);
 int get_all_messages_from_db(t_chat *Chat);
 int get_users_list_for_chat(t_chat *Chat);
+int get_number_of_users_in_chat(t_chat *Chat);
+int is_admin(t_user *User, t_chat *Chat);
+
+// REQUEST
+char *make_sql_request(char **dst, char *body, ...);
 
 // UPDATE
 // user
@@ -153,12 +168,20 @@ int update_age_of_user(t_user *User, char *new_age);
 int update_fullname_of_user(t_user *User, char *new_fullname);
 int update_phone_number_of_user(t_user *User, char *new_phone_number);
 int update_photo_of_user(t_user *User, char *new_photo);
+int update_user_id_in__chat_user__(t_chat *Chat, char *user_id);
+int update_user_id(t_user *User);
 
 // chat
 void refresh_data_after_chat_update(t_chat *Chat, sqlite3 *db);
+int change_admin_randomly(t_chat *Chat, char *current_admin);
 int update_chat_name(t_chat *Chat, char *new_chat_name);
 int update_admin_id_of_chat(t_chat *Chat, char *new_admin_id);
 int update_chat_photo(t_chat *Chat, char *new_photo_of_chat);
+
+// message
+int update_all_messages_by_deleted_user_in_chat(t_chat *Chat, char *user_id);
+int update_message_content(t_message *Message, char *new_content);
+
 // -----------------------------------------------------------------------
 
 // ------------------------------ADDITIONAL-------------------------------
@@ -174,7 +197,6 @@ void print_user_info(t_user *User);
 void print_chat_info(t_chat *Chat);
 // -----------------------------------------------------------------------
 
-char *make_sql_request(char **dst, char *body, ...);
 
 
 #endif //UCHAT_HEADER_DB_DEV_H

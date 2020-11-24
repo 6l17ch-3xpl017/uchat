@@ -7,7 +7,7 @@
  * @param new_password - new password which was chosen by user.
  * @return 'nickname_and_password_can_not_be_null' if new_password = NULL.
  * @return 'can_not_open_db' if connection with database was lost.
- * @return 'request_failed' if response was failed.
+ * @return 'request_failed' if request was failed.
  * @return 'success' if password was successfully updated.
  * @return 1 if user wasn't sign in
  */
@@ -20,9 +20,7 @@ int update_password_of_user(t_user *User, char *new_password) {
     if (new_password == NULL)
         return nickname_and_password_can_not_be_null;
 
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
 
     if (User->id)
         make_sql_request(&request, "UPDATE Users SET password = %s WHERE id = %s ;", new_password, User->id);
@@ -33,8 +31,6 @@ int update_password_of_user(t_user *User, char *new_password) {
     sqlite3_close(db);
     if (result != SQLITE_OK)
         return request_failed;
-
-    populate_User_struct(User);
 
     return success;
 }

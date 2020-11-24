@@ -8,7 +8,7 @@
  *        can't be NULL.
  */
 
-int add_chat_to_db(t_chat *Chat) {
+int add_chat_to_db(t_chat *Chat) { // INSERT INTO Chats (chat_name, admin_id, chat_photo) VALUES ('Chat_A',  '1',  'img/a');
     int result;
     sqlite3 *db;
     char *request = NULL;
@@ -16,17 +16,13 @@ int add_chat_to_db(t_chat *Chat) {
     if (!Chat->chat_name || !Chat->admin_id)
         return chat_name_and_admin_id_can_not_be_null;
 
+    connect_to_db
+
     request = make_sql_request(&request, "INSERT INTO Chats (chat_name, admin_id, chat_photo, options) VALUES "
                                          "(%s, %s, %s, %s);", Chat->chat_name, Chat->admin_id, Chat->chat_photo,
                                          Chat->option);
 
     // ----------------------------adding to the database----------------------------
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK) {
-        mx_strdel(&request);
-        return can_not_open_db;
-    }
-
     result = sqlite3_exec(db, request, 0, 0, 0);
     if (result != SQLITE_OK) {
         mx_strdel(&request);

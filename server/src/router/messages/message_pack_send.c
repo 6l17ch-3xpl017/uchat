@@ -23,9 +23,9 @@ char *message_pack_send(t_message *Message, int status) {
         json_array_append_new(users_array, users);
         users = json_object();
     }
-    json_object_set_new(msg, "author", json_string(Message->message_owner_id));
+    json_object_set_new(msg, "author_id", json_string(Message->message_owner_id));
+    json_object_set_new(msg, "author_nick", json_string(current_chat->user_in_chat->nickname));
     json_object_set_new(msg, "type", json_string(Message->type));
-//    json_object_set_new(msg, "prev", json_string(Message->prev->message_owner_id));
     json_object_set_new(msg, "msg_id", json_string(Message->message_id));
     json_object_set_new(msg, "content", json_string(Message->message_content));
     json_object_set_new(msg, "modified", json_integer(Message->changed));
@@ -41,3 +41,4 @@ char *message_pack_send(t_message *Message, int status) {
     free(current_chat);
     return result;
 }
+

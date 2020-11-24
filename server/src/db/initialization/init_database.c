@@ -10,9 +10,8 @@ int init_database() {
     sqlite3 *db;
     int result;
 
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
+
     // -----------------------------=-Block to create Users table-=-------------------------------
     result = sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS\"Users\" (\n"
                               "\"id\"\tINTEGER NOT NULL UNIQUE,\n"
@@ -40,7 +39,6 @@ int init_database() {
                               "\"chat_photo\"\tTEXT,\n"
                               "\"options\"\tTEXT,\n"
                               "PRIMARY KEY(\"chat_id\" AUTOINCREMENT)\n"
-                              "FOREIGN KEY(\"admin_id\") REFERENCES Users (\"id\")"
                               ");", 0, 0,0);
     if (result != SQLITE_OK) {
         sqlite3_close(db);
@@ -72,8 +70,6 @@ int init_database() {
                               "\"type\"\tTEXT,\n"
                               "\"options\"\tTEXT,\n"
                               "PRIMARY KEY(\"message_id\" AUTOINCREMENT)\n"
-                              "FOREIGN KEY(\"message_owner_id\") REFERENCES Users (\"id\")\n"
-                              "FOREIGN KEY(\"chat_id\") REFERENCES Chats (\"chat_id\")"
                               ");", 0, 0, 0);
     if (result != SQLITE_OK) {
         sqlite3_close(db);

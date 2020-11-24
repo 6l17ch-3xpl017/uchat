@@ -29,7 +29,7 @@ static char *mx_replace_one_substr(const char *str, const char *sub, const char 
                 if (!strncmp((char *) str, (char *) sub, strlen(sub))) {
                     stop = true;
                     str += strlen(sub);
-                    for (unsigned long j = 0; j < strlen(replace); i++, j++)
+                    for (int j = 0; j < (int)strlen(replace); i++, j++)
                         memory[i] = replace[j];
                 }
             }
@@ -40,10 +40,10 @@ static char *mx_replace_one_substr(const char *str, const char *sub, const char 
 }
 
 /**
- * @brief Function 'make_sql_request' - takes all information about response that you need and return you finished
- *        response for database. Dont use '' in parameter body! If values != NULL, function will insert it automatically.
+ * @brief Function 'make_sql_request' - takes all information about request that you need and return you finished
+ *        request for database. Dont use '' in parameter body! If values != NULL, function will read it automatically.
  * @param dst - Pointer to string where 'make_sql_request' returns result of work.
- * @param body - Pattern of response. All '%s' will be changed.
+ * @param body - Pattern of request. All '%s' will be changed.
  * @param ... - Values which you want to use instead of '%s'.
  */
 
@@ -74,6 +74,7 @@ char *make_sql_request(char **dst, char *body, ...) {
             mx_strdel(&temporary_result);
         }
     }
+
     va_end(list);
     return *dst;
 }

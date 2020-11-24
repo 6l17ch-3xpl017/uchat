@@ -12,16 +12,18 @@ U_BIN		= ../build/
 
 # main dir for other libs header files
 J_INC_DIR   = resources/framework/jansson/inc/
+# whole path to dirs
+PATH_DIRS	= pages/login_wnd/signals pages/main_app/signals pages/reg_wnd/signals
 
 # list of subdirs in src/
-DIRS		= $(notdir $(wildcard $(SRC_DIR)*))
+DIRS		= $(PATH_DIRS) $(notdir $(wildcard $(SRC_DIR)*))
 # list of only source C-files without extansions
 FILES		= $(foreach dir, $(DIRS), $(basename $(wildcard \
 			  $(SRC_DIR)$(dir)/*.c)))
 # adding extansions .c to FILES
 SRC			= $(FILES:%=%.c)
 # adding extansions .o to FILES
-OBJ			= $(SRC:src/%.c=$(OBJ_DIR)%.o)
+OBJ			= $(SRC:src/$(PATH_DIRS)%.c=$(OBJ_DIR)%.o)
 # list of header files
 INC_H		= $(wildcard $(INC_DIR)*.h)
 

@@ -29,23 +29,19 @@ static int callback_for_id(void *my_arg, int argc, char **argv, char **columns) 
 }
 
 int get_chats_where_user(t_user *User) {
-    sqlite3 *database;
+    sqlite3 *db;
     char *request = NULL;
     int result;
+
+    connect_to_db
 
 // temp structure to keep all id numbers
     t_chats_id *chats_id = (t_chats_id *) malloc(sizeof(t_chats_id));
     chats_id->number_of_chats = 0;
 
-// first response to get all user's chat id numbers
+// first request to get all user's chat id numbers
     make_sql_request(&request, "SELECT chat_id FROM Chat_User WHERE user_id = %s ;", User->id);
-    result = sqlite3_open("chat_database.db", &database);
-    if (result != SQLITE_OK) {
-        mx_strdel(&request);
-        free(chats_id);
-        return can_not_open_db;
-    }
-    result = sqlite3_exec(database, request, callback_for_id, chats_id, 0);
+    result = sqlite3_exec(db, request, callback_for_id, chats_id, 0);
     if (result != SQLITE_OK) {
         mx_strdel(&request);
         free(chats_id);
@@ -60,7 +56,7 @@ int get_chats_where_user(t_user *User) {
     for (int i = 0; i < chats_id->number_of_chats; i++) {
         make_sql_request(&request, "SELECT * FROM Chats WHERE chat_id = %s ;", chats_id->chat_id[i]);
         init_chat_struct(temp_chat);
-        sqlite3_exec(database, request, callback_for_data, temp_chat, 0);
+        sqlite3_exec(db, request, callback_for_data, temp_chat, 0);
         if ((i + 1) < chats_id->number_of_chats)
             temp_chat->next = (t_chat *)malloc(sizeof(t_chat));
         else
@@ -78,6 +74,6 @@ int get_chats_where_user(t_user *User) {
         free(chats_id->chat_id);
 
     free(chats_id);
-    sqlite3_close(database);
+    sqlite3_close(db);
     return success;
 }

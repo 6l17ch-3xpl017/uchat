@@ -7,5 +7,4 @@ void init_chat_struct(t_chat *Chat) {
     Chat->admin_id = NULL;
     Chat->next = NULL;
     Chat->option = NULL;
-    Chat->user_in_chat = NULL;
 }

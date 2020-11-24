@@ -22,7 +22,7 @@ static int check_new_phone(char *new_phone_number) {
  * @param new_nickname - new nickname which was chosen by user.
  * @return 'phone_number_was_already_signed_up' if new phone number is unavailable.
  * @return 'can_not_open_db' if connection with database was lost.
- * @return 'request_failed' if response was failed.
+ * @return 'request_failed' if request was failed.
  * @return 'success' if phone number was successfully updated.
  * @return 1 if user wasn't sign in
  */
@@ -35,9 +35,8 @@ int update_phone_number_of_user(t_user *User, char *new_phone_number) {
         if (check_new_phone(new_phone_number) == phone_number_was_already_signed_up)
             return phone_number_was_already_signed_up;
 
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
+
     if (User->id)
         make_sql_request(&request, "UPDATE Users SET phone_number = %s WHERE id = %s ;", new_phone_number, User->id);
     else
@@ -47,8 +46,6 @@ int update_phone_number_of_user(t_user *User, char *new_phone_number) {
     sqlite3_close(db);
     if (result != SQLITE_OK)
         return request_failed;
-
-    populate_User_struct(User);
 
     return success;
 }

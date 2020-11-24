@@ -33,6 +33,12 @@ enum status {
     log_out = 0
 };
 
+typedef struct test {
+    char *test;
+    char *nick;
+    struct test *next;
+}   t_test;
+
 // router
 int check_route(char *str, struct ns_connection *socket);
 t_user *user_sign_in(json_t *income_json, struct ns_connection *socket);

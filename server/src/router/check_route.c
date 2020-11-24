@@ -15,7 +15,6 @@ int check_route(char *str, struct ns_connection *socket) {
     json_error_t error;
 
     income_json = json_loads(str, 0, &error);
-
     type = json_object_get(income_json, "type");
 
     if (strcmp(json_string_value(type), "sign_in") == 0) {

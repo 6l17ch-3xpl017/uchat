@@ -9,7 +9,7 @@ static void free_and_dup(char **a, char *b) {
         *a = NULL;
 }
 
-static int callback_data(void *my_arg, int argc, char **argv, char **columns) { // TODO Finish this func !!!!
+static int callback_data(void *my_arg, int argc, char **argv, char **columns) {
     t_user *current = (t_user *)my_arg;
     free_and_dup(&current->id,                    argv[0]);
     free_and_dup(&current->nickname,              argv[1]);
@@ -43,9 +43,7 @@ int get_users_list_for_chat(t_chat *Chat) {
         return chat_does_not_exist;
     }
 
-    result = sqlite3_open("chat_database.db", &db);
-    if (result != SQLITE_OK)
-        return can_not_open_db;
+    connect_to_db
 
     make_sql_request(&request, "SELECT user_id FROM Chat_User WHERE chat_id = %s ;", Chat->chat_id);
     result = sqlite3_exec(db, request, callback_id, user_id, 0);
