@@ -1,6 +1,6 @@
 #include "client.h"
 
-static void send_request(t_client_data *client_data)
+static void send_requestt(t_client_data *client_data)
 {
     json_t *json = json_object();
     json_t *chat = json_object();
@@ -8,7 +8,7 @@ static void send_request(t_client_data *client_data)
     json_object_set_new(json, "type", json_string("open_chat"));
     json_object_set_new(chat, "chat_id", json_string("1"));
     json_object_set_new(chat, "user_id", json_string("1"));
-    json_object_set_new(json, "chat", chat);
+//    json_object_set_new(json, "chat", chat);
 
     client_data->server_attr.request = json;
 
@@ -37,7 +37,7 @@ void choose_chat(GtkListBox *box, GtkListBoxRow *row, t_client_data *client_data
     GtkButton *chat = gtk_container_get_children(GTK_CONTAINER(row))->data;
     cmc_log_info(g_object_get_data(G_OBJECT(chat), "chat_id"));
 
-    send_request(client_data);
+    send_requestt(client_data);
 
     cmc_log_info("%s", json_dumps(client_data->server_attr.response, 0));
 

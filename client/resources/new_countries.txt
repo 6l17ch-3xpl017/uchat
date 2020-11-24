@@ -1,0 +1,241 @@
+Afghanistan|https://ipgeolocation.io/static/flags/af_64.png
+Albania|https://ipgeolocation.io/static/flags/al_64.png
+Algeria|https://ipgeolocation.io/static/flags/dz_64.png
+American Samoa|https://ipgeolocation.io/static/flags/as_64.png
+Andorra|https://ipgeolocation.io/static/flags/ad_64.png
+Angola|https://ipgeolocation.io/static/flags/ao_64.png
+Anguilla|https://ipgeolocation.io/static/flags/ai_64.png
+Antarctica|https://ipgeolocation.io/static/flags/aq_64.png
+Antigua And Barbuda|https://ipgeolocation.io/static/flags/ag_64.png
+Argentina|https://ipgeolocation.io/static/flags/ar_64.png
+Armenia|https://ipgeolocation.io/static/flags/am_64.png
+Aruba|https://ipgeolocation.io/static/flags/aw_64.png
+Australia|https://ipgeolocation.io/static/flags/au_64.png
+Austria|https://ipgeolocation.io/static/flags/at_64.png
+Azerbaijan|https://ipgeolocation.io/static/flags/az_64.png
+Bahamas|https://ipgeolocation.io/static/flags/bs_64.png
+Bahrain|https://ipgeolocation.io/static/flags/bh_64.png
+Bangladesh|https://ipgeolocation.io/static/flags/bd_64.png
+Barbados|https://ipgeolocation.io/static/flags/bb_64.png
+Belarus|https://ipgeolocation.io/static/flags/by_64.png
+Belgium|https://ipgeolocation.io/static/flags/be_64.png
+Belize|https://ipgeolocation.io/static/flags/bz_64.png
+Benin|https://ipgeolocation.io/static/flags/bj_64.png
+Bermuda|https://ipgeolocation.io/static/flags/bm_64.png
+Bhutan|https://ipgeolocation.io/static/flags/bt_64.png
+Bolivia|https://ipgeolocation.io/static/flags/bo_64.png
+Bosnia And Herzegovina|https://ipgeolocation.io/static/flags/ba_64.png
+Botswana|https://ipgeolocation.io/static/flags/bw_64.png
+Bouvet Island|https://ipgeolocation.io/static/flags/bv_64.png
+Brazil|https://ipgeolocation.io/static/flags/br_64.png
+British Indian Ocean Territory|https://ipgeolocation.io/static/flags/io_64.png
+Brunei Darussalam|https://ipgeolocation.io/static/flags/bn_64.png
+Bulgaria|https://ipgeolocation.io/static/flags/bg_64.png
+Burkina Faso|https://ipgeolocation.io/static/flags/bf_64.png
+Burundi|https://ipgeolocation.io/static/flags/bi_64.png
+Cambodia|https://ipgeolocation.io/static/flags/kh_64.png
+Cameroon|https://ipgeolocation.io/static/flags/cm_64.png
+Canada|https://ipgeolocation.io/static/flags/ca_64.png
+Cape Verde|https://ipgeolocation.io/static/flags/cv_64.png
+Cayman Islands|https://ipgeolocation.io/static/flags/ky_64.png
+Central African Republic|https://ipgeolocation.io/static/flags/cf_64.png
+Chad|https://ipgeolocation.io/static/flags/td_64.png
+Chile|https://ipgeolocation.io/static/flags/cl_64.png
+China|https://ipgeolocation.io/static/flags/cn_64.png
+Christmas Island|https://ipgeolocation.io/static/flags/cx_64.png
+Cocos (keeling) Islands|https://ipgeolocation.io/static/flags/cc_64.png
+Colombia|https://ipgeolocation.io/static/flags/co_64.png
+Comoros|https://ipgeolocation.io/static/flags/km_64.png
+Congo|https://ipgeolocation.io/static/flags/cg_64.png
+Congo, The Democratic Republic Of The|https://ipgeolocation.io/static/flags/cd_64.png
+Cook Islands|https://ipgeolocation.io/static/flags/ck_64.png
+Costa Rica|https://ipgeolocation.io/static/flags/cr_64.png
+Cote D'ivoire|https://ipgeolocation.io/static/flags/ci_64.png
+Croatia|https://ipgeolocation.io/static/flags/hr_64.png
+Cuba|https://ipgeolocation.io/static/flags/cu_64.png
+Cyprus|https://ipgeolocation.io/static/flags/cy_64.png
+Czech Republic|https://ipgeolocation.io/static/flags/cz_64.png
+Denmark|https://ipgeolocation.io/static/flags/dk_64.png
+Djibouti|https://ipgeolocation.io/static/flags/dj_64.png
+Dominica|https://ipgeolocation.io/static/flags/dm_64.png
+Dominican Republic|https://ipgeolocation.io/static/flags/do_64.png
+East Timor|https://ipgeolocation.io/static/flags/tp_64.png
+Ecuador|https://ipgeolocation.io/static/flags/ec_64.png
+Egypt|https://ipgeolocation.io/static/flags/eg_64.png
+El Salvador|https://ipgeolocation.io/static/flags/sv_64.png
+Equatorial Guinea|https://ipgeolocation.io/static/flags/gq_64.png
+Eritrea|https://ipgeolocation.io/static/flags/er_64.png
+Estonia|https://ipgeolocation.io/static/flags/ee_64.png
+Ethiopia|https://ipgeolocation.io/static/flags/et_64.png
+Falkland Islands (malvinas)|https://ipgeolocation.io/static/flags/fk_64.png
+Faroe Islands|https://ipgeolocation.io/static/flags/fo_64.png
+Fiji|https://ipgeolocation.io/static/flags/fj_64.png
+Finland|https://ipgeolocation.io/static/flags/fi_64.png
+France|https://ipgeolocation.io/static/flags/fr_64.png
+French Guiana|https://ipgeolocation.io/static/flags/gf_64.png
+French Polynesia|https://ipgeolocation.io/static/flags/pf_64.png
+French Southern Territories|https://ipgeolocation.io/static/flags/tf_64.png
+Gabon|https://ipgeolocation.io/static/flags/ga_64.png
+Gambia|https://ipgeolocation.io/static/flags/gm_64.png
+Georgia|https://ipgeolocation.io/static/flags/ge_64.png
+Germany|https://ipgeolocation.io/static/flags/de_64.png
+Ghana|https://ipgeolocation.io/static/flags/gh_64.png
+Gibraltar|https://ipgeolocation.io/static/flags/gi_64.png
+Greece|https://ipgeolocation.io/static/flags/gr_64.png
+Greenland|https://ipgeolocation.io/static/flags/gl_64.png
+Grenada|https://ipgeolocation.io/static/flags/gd_64.png
+Guadeloupe|https://ipgeolocation.io/static/flags/gp_64.png
+Guam|https://ipgeolocation.io/static/flags/gu_64.png
+Guatemala|https://ipgeolocation.io/static/flags/gt_64.png
+Guinea|https://ipgeolocation.io/static/flags/gn_64.png
+Guinea-bissau|https://ipgeolocation.io/static/flags/gw_64.png
+Guyana|https://ipgeolocation.io/static/flags/gy_64.png
+Haiti|https://ipgeolocation.io/static/flags/ht_64.png
+Heard Island And Mcdonald Islands|https://ipgeolocation.io/static/flags/hm_64.png
+Holy See (vatican City State)|https://ipgeolocation.io/static/flags/va_64.png
+Honduras|https://ipgeolocation.io/static/flags/hn_64.png
+Hong Kong|https://ipgeolocation.io/static/flags/hk_64.png
+Hungary|https://ipgeolocation.io/static/flags/hu_64.png
+Iceland|https://ipgeolocation.io/static/flags/is_64.png
+India|https://ipgeolocation.io/static/flags/in_64.png
+Indonesia|https://ipgeolocation.io/static/flags/id_64.png
+Iran, Islamic Republic Of|https://ipgeolocation.io/static/flags/ir_64.png
+Iraq|https://ipgeolocation.io/static/flags/iq_64.png
+Ireland|https://ipgeolocation.io/static/flags/ie_64.png
+Israel|https://ipgeolocation.io/static/flags/il_64.png
+Italy|https://ipgeolocation.io/static/flags/it_64.png
+Jamaica|https://ipgeolocation.io/static/flags/jm_64.png
+Japan|https://ipgeolocation.io/static/flags/jp_64.png
+Jordan|https://ipgeolocation.io/static/flags/jo_64.png
+Kazakstan|https://ipgeolocation.io/static/flags/kz_64.png
+Kenya|https://ipgeolocation.io/static/flags/ke_64.png
+Kiribati|https://ipgeolocation.io/static/flags/ki_64.png
+Korea, Democratic People's Republic Of|https://ipgeolocation.io/static/flags/kp_64.png
+Korea, Republic Of|https://ipgeolocation.io/static/flags/kr_64.png
+Kosovo|https://ipgeolocation.io/static/flags/kv_64.png
+Kuwait|https://ipgeolocation.io/static/flags/kw_64.png
+Kyrgyzstan|https://ipgeolocation.io/static/flags/kg_64.png
+Lao People's Democratic Republic|https://ipgeolocation.io/static/flags/la_64.png
+Latvia|https://ipgeolocation.io/static/flags/lv_64.png
+Lebanon|https://ipgeolocation.io/static/flags/lb_64.png
+Lesotho|https://ipgeolocation.io/static/flags/ls_64.png
+Liberia|https://ipgeolocation.io/static/flags/lr_64.png
+Libyan Arab Jamahiriya|https://ipgeolocation.io/static/flags/ly_64.png
+Liechtenstein|https://ipgeolocation.io/static/flags/li_64.png
+Lithuania|https://ipgeolocation.io/static/flags/lt_64.png
+Luxembourg|https://ipgeolocation.io/static/flags/lu_64.png
+Macau|https://ipgeolocation.io/static/flags/mo_64.png
+Macedonia, The Former Yugoslav Republic Of|https://ipgeolocation.io/static/flags/mk_64.png
+Madagascar|https://ipgeolocation.io/static/flags/mg_64.png
+Malawi|https://ipgeolocation.io/static/flags/mw_64.png
+Malaysia|https://ipgeolocation.io/static/flags/my_64.png
+Maldives|https://ipgeolocation.io/static/flags/mv_64.png
+Mali|https://ipgeolocation.io/static/flags/ml_64.png
+Malta|https://ipgeolocation.io/static/flags/mt_64.png
+Marshall Islands|https://ipgeolocation.io/static/flags/mh_64.png
+Martinique|https://ipgeolocation.io/static/flags/mq_64.png
+Mauritania|https://ipgeolocation.io/static/flags/mr_64.png
+Mauritius|https://ipgeolocation.io/static/flags/mu_64.png
+Mayotte|https://ipgeolocation.io/static/flags/yt_64.png
+Mexico|https://ipgeolocation.io/static/flags/mx_64.png
+Micronesia, Federated States Of|https://ipgeolocation.io/static/flags/fm_64.png
+Moldova, Republic Of|https://ipgeolocation.io/static/flags/md_64.png
+Monaco|https://ipgeolocation.io/static/flags/mc_64.png
+Mongolia|https://ipgeolocation.io/static/flags/mn_64.png
+Montserrat|https://ipgeolocation.io/static/flags/ms_64.png
+Montenegro|https://ipgeolocation.io/static/flags/me_64.png
+Morocco|https://ipgeolocation.io/static/flags/ma_64.png
+Mozambique|https://ipgeolocation.io/static/flags/mz_64.png
+Myanmar|https://ipgeolocation.io/static/flags/mm_64.png
+Namibia|https://ipgeolocation.io/static/flags/na_64.png
+Nauru|https://ipgeolocation.io/static/flags/nr_64.png
+Nepal|https://ipgeolocation.io/static/flags/np_64.png
+Netherlands|https://ipgeolocation.io/static/flags/nl_64.png
+Netherlands Antilles|https://ipgeolocation.io/static/flags/an_64.png
+New Caledonia|https://ipgeolocation.io/static/flags/nc_64.png
+New Zealand|https://ipgeolocation.io/static/flags/nz_64.png
+Nicaragua|https://ipgeolocation.io/static/flags/ni_64.png
+Niger|https://ipgeolocation.io/static/flags/ne_64.png
+Nigeria|https://ipgeolocation.io/static/flags/ng_64.png
+Niue|https://ipgeolocation.io/static/flags/nu_64.png
+Norfolk Island|https://ipgeolocation.io/static/flags/nf_64.png
+Northern Mariana Islands|https://ipgeolocation.io/static/flags/mp_64.png
+Norway|https://ipgeolocation.io/static/flags/no_64.png
+Oman|https://ipgeolocation.io/static/flags/om_64.png
+Pakistan|https://ipgeolocation.io/static/flags/pk_64.png
+Palau|https://ipgeolocation.io/static/flags/pw_64.png
+Palestinian Territory, Occupied|https://ipgeolocation.io/static/flags/ps_64.png
+Panama|https://ipgeolocation.io/static/flags/pa_64.png
+Papua New Guinea|https://ipgeolocation.io/static/flags/pg_64.png
+Paraguay|https://ipgeolocation.io/static/flags/py_64.png
+Peru|https://ipgeolocation.io/static/flags/pe_64.png
+Philippines|https://ipgeolocation.io/static/flags/ph_64.png
+Pitcairn|https://ipgeolocation.io/static/flags/pn_64.png
+Poland|https://ipgeolocation.io/static/flags/pl_64.png
+Portugal|https://ipgeolocation.io/static/flags/pt_64.png
+Puerto Rico|https://ipgeolocation.io/static/flags/pr_64.png
+Qatar|https://ipgeolocation.io/static/flags/qa_64.png
+Reunion|https://ipgeolocation.io/static/flags/re_64.png
+Romania|https://ipgeolocation.io/static/flags/ro_64.png
+Russian Federation|https://ipgeolocation.io/static/flags/ru_64.png
+Rwanda|https://ipgeolocation.io/static/flags/rw_64.png
+Saint Helena|https://ipgeolocation.io/static/flags/sh_64.png
+Saint Kitts And Nevis|https://ipgeolocation.io/static/flags/kn_64.png
+Saint Lucia|https://ipgeolocation.io/static/flags/lc_64.png
+Saint Pierre And Miquelon|https://ipgeolocation.io/static/flags/pm_64.png
+Saint Vincent And The Grenadines|https://ipgeolocation.io/static/flags/vc_64.png
+Samoa|https://ipgeolocation.io/static/flags/ws_64.png
+San Marino|https://ipgeolocation.io/static/flags/sm_64.png
+Sao Tome And Principe|https://ipgeolocation.io/static/flags/st_64.png
+Saudi Arabia|https://ipgeolocation.io/static/flags/sa_64.png
+Senegal|https://ipgeolocation.io/static/flags/sn_64.png
+Serbia|https://ipgeolocation.io/static/flags/rs_64.png
+Seychelles|https://ipgeolocation.io/static/flags/sc_64.png
+Sierra Leone|https://ipgeolocation.io/static/flags/sl_64.png
+Singapore|https://ipgeolocation.io/static/flags/sg_64.png
+Slovakia|https://ipgeolocation.io/static/flags/sk_64.png
+Slovenia|https://ipgeolocation.io/static/flags/si_64.png
+Solomon Islands|https://ipgeolocation.io/static/flags/sb_64.png
+Somalia|https://ipgeolocation.io/static/flags/so_64.png
+South Africa|https://ipgeolocation.io/static/flags/za_64.png
+South Georgia And The South Sandwich Islands|https://ipgeolocation.io/static/flags/gs_64.png
+Spain|https://ipgeolocation.io/static/flags/es_64.png
+Sri Lanka|https://ipgeolocation.io/static/flags/lk_64.png
+Sudan|https://ipgeolocation.io/static/flags/sd_64.png
+Suriname|https://ipgeolocation.io/static/flags/sr_64.png
+Svalbard And Jan Mayen|https://ipgeolocation.io/static/flags/sj_64.png
+Swaziland|https://ipgeolocation.io/static/flags/sz_64.png
+Sweden|https://ipgeolocation.io/static/flags/se_64.png
+Switzerland|https://ipgeolocation.io/static/flags/ch_64.png
+Syrian Arab Republic|https://ipgeolocation.io/static/flags/sy_64.png
+Taiwan, Province Of China|https://ipgeolocation.io/static/flags/tw_64.png
+Tajikistan|https://ipgeolocation.io/static/flags/tj_64.png
+Tanzania, United Republic Of|https://ipgeolocation.io/static/flags/tz_64.png
+Thailand|https://ipgeolocation.io/static/flags/th_64.png
+Togo|https://ipgeolocation.io/static/flags/tg_64.png
+Tokelau|https://ipgeolocation.io/static/flags/tk_64.png
+Tonga|https://ipgeolocation.io/static/flags/to_64.png
+Trinidad And Tobago|https://ipgeolocation.io/static/flags/tt_64.png
+Tunisia|https://ipgeolocation.io/static/flags/tn_64.png
+Turkey|https://ipgeolocation.io/static/flags/tr_64.png
+Turkmenistan|https://ipgeolocation.io/static/flags/tm_64.png
+Turks And Caicos Islands|https://ipgeolocation.io/static/flags/tc_64.png
+Tuvalu|https://ipgeolocation.io/static/flags/tv_64.png
+Uganda|https://ipgeolocation.io/static/flags/ug_64.png
+Ukraine|https://ipgeolocation.io/static/flags/ua_64.png
+United Arab Emirates|https://ipgeolocation.io/static/flags/ae_64.png
+United Kingdom|https://ipgeolocation.io/static/flags/gb_64.png
+United States|https://ipgeolocation.io/static/flags/us_64.png
+United States Minor Outlying Islands|https://ipgeolocation.io/static/flags/um_64.png
+Uruguay|https://ipgeolocation.io/static/flags/uy_64.png
+Uzbekistan|https://ipgeolocation.io/static/flags/uz_64.png
+Vanuatu|https://ipgeolocation.io/static/flags/vu_64.png
+Venezuela|https://ipgeolocation.io/static/flags/ve_64.png
+Viet Nam|https://ipgeolocation.io/static/flags/vn_64.png
+Virgin Islands, British|https://ipgeolocation.io/static/flags/vg_64.png
+Virgin Islands, U.s.|https://ipgeolocation.io/static/flags/vi_64.png
+Wallis And Futuna|https://ipgeolocation.io/static/flags/wf_64.png
+Western Sahara|https://ipgeolocation.io/static/flags/eh_64.png
+Yemen|https://ipgeolocation.io/static/flags/ye_64.png
+Zambia|https://ipgeolocation.io/static/flags/zm_64.png
+Zimbabwe|https://ipgeolocation.io/static/flags/zw_64.png

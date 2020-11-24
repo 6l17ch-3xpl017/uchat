@@ -20,10 +20,10 @@ static t_user *user_data_struct_fill(json_t *user, struct ns_connection *socket)
     User->nickname = strdup(json_string_value(json_object_get(user, "nickname")));
     User->password = strdup(json_string_value(json_object_get(user, "password")));
     User->email = strdup(json_string_value(json_object_get(user, "email")));
-    User->age = strdup(json_string_value(json_object_get(user, "age")));
+    User->age = strdup("18");
     User->fullname = strdup(json_string_value(json_object_get(user, "fullname")));
     User->ph_number = strdup(json_string_value(json_object_get(user, "ph_number")));
-    User->user_photo = strdup(json_string_value(json_object_get(user, "user_photo")));
+    User->user_photo = strdup("5");
     User->option = NULL; //strdup(json_string_value(json_object_get(user, "option")));
     User->number_of_chats = 0;
     User->chats = NULL;
@@ -31,6 +31,7 @@ static t_user *user_data_struct_fill(json_t *user, struct ns_connection *socket)
     if (check_status == 104 || check_status == 107) {
         User->number_of_chats = 1;
         Chat->chat_id = strdup("1");
+        Chat->chat_name = "1";
         add_chat_to_db(chat_struct_filling_with_null());
         add_user_in_chat(User, Chat);
     }

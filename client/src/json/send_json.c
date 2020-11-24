@@ -9,6 +9,6 @@ int send_json(t_client_data *client_data)
     json_decref(client_data->server_attr.request);
     free(result);
 
-    return read_socket(client_data);
+    return get_response(client_data);
 }
 

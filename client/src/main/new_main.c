@@ -5,10 +5,16 @@ static t_client_data *init_client_data(void)
 {
     t_client_data *client_data = calloc(1, sizeof(t_client_data));
 
-    char *status = NULL;
-    char *type = NULL;
+    client_data->status = NULL;
+    client_data->type = NULL;
+    client_data->status = NO_STATE;
 
     client_data->gtk_attr.error = NULL;
+    client_data->gtk_attr.provider = gtk_css_provider_new();
+
+    g_mutex_init(&client_data->thread.mutex_interface);
+//    client_data->thread.pool = calloc(sizeof(struct cmc_thread *), 10);
+//    client_data->gtk_attr.context = NULL;
 
     return client_data;
 }
@@ -44,28 +50,59 @@ int main(int argc, char *argv[])
     init_connection(client_data);
     gtk_init(&argc, &argv);
 
-    create_window(TEST_PAGE, client_data);
-    gtk_widget_show_now(get_widget("login_window"));
+    create_window(MAIN_UI, client_data);
+
+    prepare_signup_page(client_data);
+    gtk_widget_show_now(get_widget("login_wnd"));
 
     gtk_main();
+
+    g_mutex_clear(&client_data->thread.mutex_interface);
+
     system("leaks -q uchat_gui");
     return 0;
 
-//    json_t *array = json_array();
-//    char **msg = calloc(5, sizeof(char *));
+//    int fo = open("../client/resources/countries", O_RDONLY);
+//    int fn = open("../client/resources/new_countries.txt", O_WRONLY);
 //
-//    for (int i = 0; i <= 5; i++)
-//        msg[i] = calloc(32, sizeof(char));
+//    char buf[2];
+//    buf[1] = '\0';
 //
-//    json_array_append(array, json_string("Hello"));
-//    json_array_append_new(array, json_string("Hello1"));
-//    json_array_append_new(array, json_string("Hello2"));
-//    json_array_append_new(array, json_string("Hello3"));
-//    json_array_append_new(array, json_string("Hello4"));
+//    char *result = calloc(sizeof(char), 125);
+//    char *flag_link = calloc(sizeof(char), 50);
 //
-//    int result = json_unpack(array, "[s!]", msg);
+//    strcpy(flag_link, "https://ipgeolocation.io/static/flags/");  //ag_64.png
 //
-//    for (int j = 0; j <= 5; j++)
-//        printf("%s", msg[j]);
-
+//    char code[4];
+//    code[3] = '\0';
+//
+//    for (int i = 0; i < 241; i++)
+//    {
+//        read(fo, &code, 3);
+//
+//        while (read(fo, &buf, 1)) {
+//            if (buf[0] is '\n')
+//                break;
+//
+//            strcat(result, buf);
+//        }
+//
+//        strcat(result, "|");
+//
+//        strcat(result, "https://ipgeolocation.io/static/flags/");
+//
+//        result[strlen(result)] = code[0] + 32;
+//        result[strlen(result)] = code[1] + 32;
+//
+//        strcat(result, "_64.png\n");
+//
+//        write(fn, result, strlen(result));
+//        mx_strdel(&result);
+//        result = calloc(sizeof(char), 125);
+//    }
+//
+//    close(fn);
+//    close(fo);
+//
+//    return 0;
 }
