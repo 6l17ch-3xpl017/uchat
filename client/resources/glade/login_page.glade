@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.38.1 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkWindow" id="login_window">
+    <property name="can-focus">False</property>
+    <property name="title" translatable="yes">xChat</property>
+    <property name="resizable">False</property>
+    <property name="window-position">center</property>
+    <property name="default-width">720</property>
+    <property name="default-height">400</property>
+    <property name="gravity">center</property>
+    <child>
+      <object class="GtkBox" id="main_box">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkImage" id="logo">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="pixbuf">logo.png</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="username_box">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkEntry" id="username_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="margin-left">65</property>
+                <property name="margin-right">65</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
+                <property name="max-length">128</property>
+                <property name="primary-icon-stock">gtk-edit</property>
+                <property name="secondary-icon-stock">gtk-delete</property>
+                <property name="placeholder-text" translatable="yes">Username</property>
+                <signal name="changed" handler="on_username_entry_changed" object="username_box" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="error_in_username">
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">error_in_username</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="password_box">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkEntry" id="password_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="margin-left">65</property>
+                <property name="margin-right">65</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
+                <property name="max-length">128</property>
+                <property name="visibility">False</property>
+                <property name="invisible-char">●</property>
+                <property name="shadow-type">out</property>
+                <property name="primary-icon-stock">gtk-apply</property>
+                <property name="secondary-icon-stock">gtk-delete</property>
+                <property name="placeholder-text" translatable="yes">Password</property>
+                <signal name="changed" handler="on_password_entry_changed" object="password_box" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="error_in_password">
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">error_in_password</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="remember_check_box">
+                <property name="label" translatable="yes">remember me</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
+                <property name="margin-left">62</property>
+                <property name="margin-right">62</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
+                <property name="draw-indicator">True</property>
+                <signal name="toggled" handler="on_remember_check_box_toggled" object="username_box" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="login_box">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkButton" id="login_button">
+                <property name="label" translatable="yes">LOGIN</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="focus-on-click">False</property>
+                <property name="receives-default">True</property>
+                <property name="margin-left">95</property>
+                <property name="margin-right">95</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
+                <signal name="clicked" handler="on_login_button_clicked" object="main_box" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="options_box">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkLinkButton" id="reg_button">
+                    <property name="label" translatable="yes">Sign up</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="halign">start</property>
+                    <property name="valign">start</property>
+                    <property name="hexpand">True</property>
+                    <property name="relief">none</property>
+                    <property name="use-underline">True</property>
+                    <signal name="activate-link" handler="on_reg_button_activate_link" object="username_box" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="padding">78</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLinkButton" id="fyp_button">
+                    <property name="label" translatable="yes">Forgot password ?</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="halign">end</property>
+                    <property name="valign">end</property>
+                    <property name="hexpand">True</property>
+                    <property name="relief">none</property>
+                    <property name="uri">http://glade.gnome.org</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="padding">80</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
