@@ -17,10 +17,12 @@ char *pack_json(t_chat *Chat, int check_status, json_t *json) {
     if (Chat->number_of_messages != 0) {
         for (t_message *head = Chat->next_message; head; head = head->next) {
             json_object_set_new(msg, "author", json_string(head->message_owner_id));
+            json_object_set_new(msg, "author_name", json_string(head->message_owner_name));
             json_object_set_new(msg, "msg_type", json_string(head->type));
             json_object_set_new(msg, "msg_id", json_string(head->message_id));
             json_object_set_new(msg, "msg_content", json_string(head->message_content));
-            json_object_set_new(msg, "time", json_integer(head->time));
+            json_object_set_new(msg, "chat_id", json_string(head->message_content));
+            json_object_set_new(msg, "time", json_string(head->time));
             json_object_set_new(msg, "modified", json_integer(head->changed));
             json_object_set_new(msg, "deleted", json_integer(head->deleted));
             json_array_append_new(msg_array, msg);

@@ -14,7 +14,7 @@ static t_message *json_new_chat_parse(json_t *income_json) {
     Message->message_owner_id = strdup(json_string_value(json_object_get(user_message, "message_owner_id")));
     Message->message_owner_name = strdup(json_string_value(json_object_get(user_message, "message_owner_name")));
     Message->message_content = strdup(json_string_value(json_object_get(user_message, "message_content")));
-    Message->time = json_integer_value(json_object_get(user_message, "time"));
+    Message->time = strdup(json_string_value(json_object_get(user_message, "time")));
     Message->next = NULL;
     json_decref(user_message);
     return Message;

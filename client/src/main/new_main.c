@@ -1,4 +1,5 @@
 #include "client.h"
+#include "db.h"
 
 // ToDo: Free memmory
 static t_client_data *init_client_data(void)
@@ -71,7 +72,11 @@ int main(int argc, char *argv[])
 {
     t_client_data *client_data = init_client_data();
     init_connection(client_data);
+    init_local_database();
+    fill_countries();
     gtk_init(&argc, &argv);
+
+    sqlite3_open("local.db", &client_data->db);
 
     create_window(MAIN_UI, client_data);
 

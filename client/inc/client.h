@@ -18,6 +18,9 @@
 #include "unistd.h"
 #include "libmx.h"
 
+#include <sqlite3.h>
+#include <stdbool.h>
+
 #define MAXL 8000
 #define PORT 5000
 #define SA struct sockaddr
@@ -80,6 +83,8 @@ typedef struct s_client_data
     char *type; //ToDo: Rename
 
     int state;
+
+    sqlite3 *db;
 
     struct s_thread
     {
@@ -148,7 +153,7 @@ int create_user_data(t_client_data *client_data);
 void change_lwnd_mstack(t_client_data *client_data, int stack_id);
 void load_main_app_data(t_client_data *client_data);
 GtkWidget *create_chat_widget(json_t *chat_object);
-GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author, t_client_data *clinet_data);
+GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author, t_client_data *client_data);
 /* ********* */
 
 /*   Utils   */
@@ -159,5 +164,10 @@ void prepare_signup_page(t_client_data *client_data);
 /* CURL */
 t_memory *download_curl(char *link);
 /* **** */
+
+int init_local_database();
+char *make_sql_request(char **dst, char *body, ...);
+int fill_countries();
+void get_country(t_client_data *client_data, char *country);
 
 #endif //UCHAT_GUI_CLIENT_H

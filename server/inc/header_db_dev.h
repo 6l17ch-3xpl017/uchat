@@ -24,7 +24,7 @@ struct s_user;
 
 typedef struct s_message {
     struct s_message *next;
-    time_t time;
+    char *time;
     int changed;
     int deleted;
     char *message_id;

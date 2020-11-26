@@ -39,7 +39,7 @@ void send_msg(GtkWidget *widget, GdkEventKey *event, t_client_data *client_data)
 //        GtkWidget *msg = msg_widget_factory(P_MSG, text, client_data->user_attr.username);
 //        GtkWidget *msg = gtk_label_new(text);
         GtkWidget *msg = create_msg_widget(create_msg(POLL_MSG, client_data->user_attr.username, text),
-                                           client_data->user_attr.user_id, client_data);
+                                           client_data->gtk_attr.last_msg_author, client_data);
 
 //        create_msg_widget
 

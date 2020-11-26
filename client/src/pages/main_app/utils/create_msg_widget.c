@@ -5,7 +5,7 @@ static GtkWidget *create_parent(json_t *msg_obj)
     GtkBuilder *builder = create_widget_from_template(P_MSG_WIDGET_CLASS);
     GtkWidget *widget = GTK_WIDGET(gtk_builder_get_object(builder, "msg_row"));
 
-    json_t *author = json_object_get(msg_obj, "author");
+    json_t *author = json_object_get(msg_obj, "author_name");
     json_t *time = json_object_get(msg_obj, "time");
     json_t *content = json_object_get(msg_obj, "msg_content");
 
@@ -52,17 +52,18 @@ static GtkWidget *create_child(json_t *msg_obj)
 }
 
 
-GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author, t_client_data *clinet_data)
+GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author, t_client_data *client_data)
 {
-    json_t *auhtor = json_object_get(msg_obj, "author");
+    json_t *author = json_object_get(msg_obj, "author");
 
-    if (clinet_data->gtk_attr.last_msg_author)
-        mx_strdel(&clinet_data->gtk_attr.last_msg_author);
-    clinet_data->gtk_attr.last_msg_author = strdup(last_author);
+//    if (clinet_data->gtk_attr.last_msg_author)
+//        mx_strdel(&clinet_data->gtk_attr.last_msg_author);
 
-    cmc_log_info("%s | %s", json_string_value(auhtor), last_author);
+    client_data->gtk_attr.last_msg_author = strdup(json_string_value(author));
 
-    if (strcmp(json_string_value(auhtor), last_author) != 0 || last_author[0] is '-')
+    cmc_log_info("%s | %s", json_string_value(author), last_author);
+
+    if (strcmp(json_string_value(author), last_author) != 0 || last_author[0] is '-')
         return create_parent(msg_obj);
 
     else

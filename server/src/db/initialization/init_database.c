@@ -65,7 +65,7 @@ int init_database() {
                               "\"message_owner_name\"\tTEXT NOT NULL,\n"
                               "\"chat_id\"\tINTEGER NOT NULL,\n"
                               "\"message_content\"\tTEXT NOT NULL,\n"
-                              "\"time\"\tINTEGER,\n"
+                              "\"time\"\tTEXT,\n"
                               "\"changed\"\tINTEGER,\n"
                               "\"deleted\"\tINTEGER,\n"
                               "\"type\"\tTEXT,\n"
