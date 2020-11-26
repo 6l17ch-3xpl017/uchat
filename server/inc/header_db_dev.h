@@ -29,6 +29,7 @@ typedef struct s_message {
     int deleted;
     char *message_id;
     char *message_owner_id;
+    char *message_owner_name;
     char *chat_id;
     char *message_content;
     char *type;

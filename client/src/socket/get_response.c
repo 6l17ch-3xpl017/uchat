@@ -39,6 +39,7 @@ static int status_handler(t_client_data *client_data)
         switch (client_data->server_attr.status)
         {
             case 1:
+                client_data->state = json_get_int(client_data->server_attr.response, "chat_id", 1);
                 return 1;
 
             default:
@@ -67,6 +68,9 @@ int get_response(t_client_data *client_data)
         json_decref(client_data->server_attr.response);
 
     client_data->server_attr.response = json_loadfd(client_data->server_attr.socket, JSON_DISABLE_EOF_CHECK, NULL);
+
+    if (!client_data->server_attr.response)
+        return 0;
 
     /* *************************************************************************************************************** */
     cmc_log_info("%s", json_dumps(client_data->server_attr.response, 0));                                            //*/

@@ -3,6 +3,7 @@
 void init_message_struct(t_message *Message) {
     Message->message_id = NULL;
     Message->message_owner_id = NULL;
+    Message->message_owner_name = NULL;
     Message->chat_id = NULL;
     Message->type = NULL;
     Message->message_content = NULL;

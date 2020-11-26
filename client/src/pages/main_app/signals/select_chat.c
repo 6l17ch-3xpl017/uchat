@@ -30,7 +30,7 @@ static void fill_chat(t_client_data *client_data)
     {
         msg_obj = json_array_get(chats_array, i);
 
-        gtk_list_box_insert(GTK_LIST_BOX(msg_list), create_msg_widget(msg_obj, s_last_author), -1);
+        gtk_list_box_insert(GTK_LIST_BOX(msg_list), create_msg_widget(msg_obj, s_last_author, client_data), -1);
 
         last_author = json_object_get(msg_obj, "author");
         s_last_author = json_string_value(last_author);
@@ -44,7 +44,7 @@ static void fill_chat(t_client_data *client_data)
 //    cmc_log_info("l%i\n", gtk_adjustment_get_lower(adjust));
 //    cmc_log_info("v%i\n", gtk_adjustment_get_value(adjust));
 //
-//    gtk_adjustment_set_value(adjust, gtk_adjustment_get_upper(adjust) + 1000000);
+    gtk_adjustment_set_value(adjust, gtk_adjustment_get_upper(adjust) + 1000000);
 //
 //    cmc_log_info("u%i\n", gtk_adjustment_get_upper(adjust));
 //    cmc_log_info("l%i\n", gtk_adjustment_get_lower(adjust));

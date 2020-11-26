@@ -27,6 +27,7 @@ static t_user *user_data_struct_fill(json_t *user, struct ns_connection *socket)
     User->option = NULL; //strdup(json_string_value(json_object_get(user, "option")));
     User->number_of_chats = 0;
     User->chats = NULL;
+    User->next = NULL;
     check_status = add_user_to_db(User);
     if (check_status == 104 || check_status == 107) {
         User->number_of_chats = 1;

@@ -13,6 +13,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/socket.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "unistd.h"
 #include "libmx.h"
 
 #define MAXL 8000
@@ -81,6 +84,7 @@ typedef struct s_client_data
     struct s_thread
     {
         GMutex mutex_interface;
+        GMutex mutex_client;
     }     thread;
 
     struct s_gtk_attr
@@ -91,6 +95,8 @@ typedef struct s_client_data
         GtkStyleContext *context;
         GtkWidget *temp_widget;
         char *needle;
+
+        char *last_msg_author;
     }      gtk_attr;
 
     struct s_user_attr
@@ -133,6 +139,8 @@ int get_response(t_client_data *client_data);
 /*    JSON   */
 int send_json(t_client_data *client_data);
 void create_msg_json(gchar *msg_text, t_client_data *client_data);
+char *json_get_str(json_t *root, char *key);
+int json_get_int(json_t *root, char *key, int mode);
 /* ********  */
 
 /*   Pages   */
@@ -140,7 +148,7 @@ int create_user_data(t_client_data *client_data);
 void change_lwnd_mstack(t_client_data *client_data, int stack_id);
 void load_main_app_data(t_client_data *client_data);
 GtkWidget *create_chat_widget(json_t *chat_object);
-GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author);
+GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author, t_client_data *clinet_data);
 /* ********* */
 
 /*   Utils   */

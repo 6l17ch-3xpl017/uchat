@@ -24,6 +24,7 @@ static int callback_for_data(void *my_arg, int argc, char **argv, char **columns
     t_message *message = (t_message *)my_arg;
     free_and_dup(&message->message_id,            argv[0]);
     free_and_dup(&message->message_owner_id,      argv[1]);
+    free_and_dup(&message->message_owner_id,      argv[2]);
     free_and_dup(&message->chat_id,               argv[2]);
     free_and_dup(&message->message_content,       argv[3]);
     free_and_dup(&message->type,                  argv[7]);

@@ -12,6 +12,7 @@ static t_message *json_new_chat_parse(json_t *income_json) {
     user_message = json_object_get(income_json, "message");
     Message->chat_id = strdup(json_string_value(json_object_get(user_message, "chat_id")));
     Message->message_owner_id = strdup(json_string_value(json_object_get(user_message, "message_owner_id")));
+    Message->message_owner_name = strdup(json_string_value(json_object_get(user_message, "message_owner_name")));
     Message->message_content = strdup(json_string_value(json_object_get(user_message, "message_content")));
     Message->time = json_integer_value(json_object_get(user_message, "time"));
     Message->next = NULL;
@@ -24,6 +25,7 @@ void create_new_message(json_t *income_json, struct ns_connection *socket) {
     int check_status = 0;
     msg = json_new_chat_parse(income_json);
     check_status = add_message_to_db(msg);
-    message_pack_send(msg, check_status);
-    send_status(NULL, NULL, socket, check_status, "send_message");
+    char *result = message_pack_send(msg, check_status);
+    ns_send(socket, result, strlen(result));
+//    send_status(NULL, NULL, socket, check_status, "send_message");
 }

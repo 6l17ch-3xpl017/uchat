@@ -43,6 +43,15 @@ int check_route(char *str, struct ns_connection *socket) {
         json_decref(income_json);
         return log_out;
     }
+
+    else if(strcmp(json_string_value(type), "ping") == 0)
+    {
+        json_t *json = json_object();
+        json_object_set(json, "status", json_integer(1));
+        char *json_string = json_dumps(json, 0);
+        ns_send(socket, json_string, (int)strlen(json_string));
+    }
+
     else if (!income_json) {
         puts("FORCE_LOG_OUT");
         mx_printstr("socket: ");

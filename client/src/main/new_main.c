@@ -43,6 +43,29 @@ static void init_connection(t_client_data *client_data)
                 "[Connected to server]", strerror(errno))
 }
 
+static parse_anoyer_result(t_client_data *client_data)
+{
+
+}
+
+bool _Noreturn test_anoyer(t_client_data *client_data)
+{
+    json_t *json =  json_pack("{s:s, s:i}", "type", "ping", "mode", client_data->state);
+    json_t *request = NULL;
+
+    while (TRUE)
+    {
+        sleep(1);
+        cmc_log_info("[WORK]");
+        char *result = json_dumps(json, 0);
+        g_mutex_lock(&client_data->thread.mutex_client);
+        write(client_data->server_attr.socket, result, strlen(result));
+        request = json_loadfd(client_data->server_attr.socket, JSON_DISABLE_EOF_CHECK, NULL);
+        g_mutex_unlock(&client_data->thread.mutex_client);
+        cmc_log_info("%s", json_dumps(request, 0));
+    }
+}
+
 //ToDo: Split all on logical containers and get with gtk_container_foreach()
 int main(int argc, char *argv[])
 {
@@ -54,6 +77,8 @@ int main(int argc, char *argv[])
 
     prepare_signup_page(client_data);
     gtk_widget_show_now(get_widget("login_wnd"));
+
+    g_thread_new("anoyer", (GThreadFunc)test_anoyer, client_data);
 
     gtk_main();
 

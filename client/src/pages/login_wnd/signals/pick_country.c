@@ -11,9 +11,8 @@ gboolean update_gui(t_client_data *client_data)
 //    int fd = open("test_base.png", O_WRONLY);
 //    write(fd, img, result_size);
 
-    GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file_at_scale("test.png", 32, 24, TRUE, NULL);
+    GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file_at_scale("temp.png", 32, 24, TRUE, NULL);
     gtk_image_set_from_pixbuf(GTK_IMAGE(get_widget("country_flag")), pixbuf);
-    g_object_unref(pixbuf);
 
     g_mutex_unlock(&client_data->thread.mutex_interface);
 
@@ -26,11 +25,14 @@ static void change_flag(char *link, t_client_data *client_data)
     link = strtok(link, "\n");
     t_memory *memory = download_curl(link);
 
-    int fd = open("test.png", O_WRONLY);
+
+    int fd = open("temp.png", O_WRONLY | O_CREAT);
+    chmod("temp.png", S_IRWXU);
+
     write(fd, memory->memory, memory->size);
     close(fd);
 
-    update_gui, client_data;
+    update_gui(client_data);
 
     free(memory->memory);
     free(memory);

@@ -52,9 +52,13 @@ static GtkWidget *create_child(json_t *msg_obj)
 }
 
 
-GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author)
+GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author, t_client_data *clinet_data)
 {
     json_t *auhtor = json_object_get(msg_obj, "author");
+
+    if (clinet_data->gtk_attr.last_msg_author)
+        mx_strdel(&clinet_data->gtk_attr.last_msg_author);
+    clinet_data->gtk_attr.last_msg_author = strdup(last_author);
 
     cmc_log_info("%s | %s", json_string_value(auhtor), last_author);
 

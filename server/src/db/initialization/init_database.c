@@ -62,6 +62,7 @@ int init_database() {
     result = sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS \"Messages\" (\n"
                               "\"message_id\"\tINTEGER NOT NULL UNIQUE,\n"
                               "\"message_owner_id\"\tINTEGER NOT NULL,\n"
+                              "\"message_owner_name\"\tTEXT NOT NULL,\n"
                               "\"chat_id\"\tINTEGER NOT NULL,\n"
                               "\"message_content\"\tTEXT NOT NULL,\n"
                               "\"time\"\tINTEGER,\n"
