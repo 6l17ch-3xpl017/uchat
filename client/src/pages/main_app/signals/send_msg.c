@@ -52,6 +52,7 @@ void send_msg(GtkWidget *widget, GdkEventKey *event, t_client_data *client_data)
 
         gtk_adjustment_set_value(adjust, 100000);
 
+        client_data->state_data = mx_itoa(atoi(client_data->state_data) + 1);
 
         cmc_log_info("***%s***", client_data->gtk_attr.last_msg_author);
         g_free(text);

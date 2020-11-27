@@ -83,6 +83,7 @@ typedef struct s_client_data
     char *type; //ToDo: Rename
 
     int state;
+    char *state_data;
 
     sqlite3 *db;
 
