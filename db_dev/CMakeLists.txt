@@ -50,6 +50,7 @@ add_executable(db_dev
         src/sqlite3_lib/update/message/update_massage_content.c
         src/sqlite3_lib/update/user/update_user_id_in__chat_user__.c
         src/sqlite3_lib/update/user/update_user_id.c
+        src/sqlite3_lib/read/messages_from_id.c
         src/additional/sql/print_user_info.c
         src/additional/sql/print_chat_info.c
         src/additional/lib/mx_del_strarr.c
@@ -57,11 +58,12 @@ add_executable(db_dev
         src/additional/lib/mx_strdel.c
         src/additional/lib/mx_strnew.c
         src/additional/lib/mx_itoa.c
-        client/inc/sophia.h
-        client/src/sophia_add.c
-        client/src/sophia.c
-        client/src/sophia_get.c
-        client/inc/sophia_client.h)
+#        client/inc/sophia.h
+#        client/src/sophia_add.c
+#        client/src/sophia.c
+#        client/src/sophia_get.c
+#        client/inc/sophia_client.h
+        )
 
 include_directories(/usr/include)
 link_directories(/usr/lib)

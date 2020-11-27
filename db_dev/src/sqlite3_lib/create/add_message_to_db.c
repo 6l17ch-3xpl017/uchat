@@ -4,7 +4,7 @@
  * @brief Function takes structure with data and paste this data into database. Every variable of structure Message must be
  * NULL or must contain some information about message.
  * @param Message - structure that has data about the message (message_id, message_owner_id, chat_id, message_content,
- * time, changed, options). message_id, message_owner_id and chat_id can't be NULL.
+ * time, changed, options). 'message_owner_id' and 'chat_id' can't be NULL.
  * @return 'can_not_open_db' if connection to database was lost
  * @return 'can_not_add_to_database' if request to add new use to database was failed
  * @return 'successfully_added_to_db' if new user was successfully added to database
