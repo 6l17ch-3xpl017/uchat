@@ -44,12 +44,12 @@ static void init_connection(t_client_data *client_data)
                 "[Connected to server]", strerror(errno))
 }
 
-static parse_anoyer_result(t_client_data *client_data)
+static int parse_annoyer_result(t_client_data *client_data)
 {
 
 }
 
-bool _Noreturn test_anoyer(t_client_data *client_data)
+bool _Noreturn test_annoyer(t_client_data *client_data)
 {
     json_t *json =  json_pack("{s:s, s:i}", "type", "ping", "mode", client_data->state);
     json_t *request = NULL;
@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
     prepare_signup_page(client_data);
     gtk_widget_show_now(get_widget("login_wnd"));
 
-    g_thread_new("anoyer", (GThreadFunc)test_anoyer, client_data);
+    g_thread_new("anoyer", (GThreadFunc)test_annoyer, client_data);
 
     gtk_main();
 

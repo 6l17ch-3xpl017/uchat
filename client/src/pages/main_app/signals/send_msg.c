@@ -18,7 +18,7 @@ json_t *create_msg(int msg_type, char *author, char *content)
     struct tm *ptm = localtime(&rawtime);
 
     strftime(str_time, 256, "%r", ptm);
-    json_object_set(msg, "author", json_string(author));
+    json_object_set(msg, "author_name", json_string(author));
     json_object_set(msg, "msg_content", json_string(content));
     json_object_set(msg, "time", json_string(str_time));
 
@@ -36,16 +36,9 @@ void send_msg(GtkWidget *widget, GdkEventKey *event, t_client_data *client_data)
         GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(get_widget("chat_msg_entry")));
 
         GtkWidget *listbox = get_widget("cm_lbox");
-//        GtkWidget *msg = msg_widget_factory(P_MSG, text, client_data->user_attr.username);
-//        GtkWidget *msg = gtk_label_new(text);
+
         GtkWidget *msg = create_msg_widget(create_msg(POLL_MSG, client_data->user_attr.username, text),
                                            client_data->gtk_attr.last_msg_author, client_data);
-
-//        create_msg_widget
-
-//        cmc_log_info("%i", gtk_tree_model_iter_n_children(GTK_TREE_MODEL(listbox), NULL));
-//        adjust = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(get_widget("msg_list_scrld")));
-//        gtk_adjustment_set_value(adjust, gtk_adjustment_get_upper(adjust));
 
         gtk_list_box_insert(GTK_LIST_BOX(listbox), GTK_WIDGET(msg), -1);
         gtk_widget_show_all(listbox);
@@ -56,15 +49,10 @@ void send_msg(GtkWidget *widget, GdkEventKey *event, t_client_data *client_data)
 
         adjust = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(get_widget("msg_list_scrld")));
 
-//        cmc_log_info("u%i\n", gtk_adjustment_get_upper(adjust));
-//        cmc_log_info("l%i\n", gtk_adjustment_get_lower(adjust));
-//        cmc_log_info("v%i\n", gtk_adjustment_get_value(adjust));
 
         gtk_adjustment_set_value(adjust, 100000);
 
-//        cmc_log_info("u%i\n", gtk_adjustment_get_upper(adjust));
-//        cmc_log_info("l%i\n", gtk_adjustment_get_lower(adjust));
-//        cmc_log_info("v%i\n", gtk_adjustment_get_value(adjust));
+
         cmc_log_info("***%s***", client_data->gtk_attr.last_msg_author);
         g_free(text);
     }

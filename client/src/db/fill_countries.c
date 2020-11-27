@@ -34,11 +34,8 @@ static void do_work(sqlite3 *db)
         make_sql_request(&request, "INSERT INTO Countries (country_name, country_flag) VALUES (%s, %s);",
                          country_and_flag[0], flag);
 
-
         if (!result[0])
-        {
             break;
-        }
 
         sqlite3_exec(db, request, 0, 0, 0);
 
@@ -53,7 +50,7 @@ static void do_work(sqlite3 *db)
 }
 
 
-int fill_countries()
+void fill_countries()
 {
     sqlite3 *db;
     int result;
@@ -61,7 +58,7 @@ int fill_countries()
     result = sqlite3_open("local.db", &db);
 
     if (result != SQLITE_OK)
-        return 404;
+        return ;
 
     if (!check_country(db))
     {

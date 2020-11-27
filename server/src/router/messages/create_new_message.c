@@ -7,7 +7,6 @@ static t_message *json_new_chat_parse(json_t *income_json) {
 
     puts(json_dumps(income_json, 0));
 
-
     init_message_struct(Message);
     user_message = json_object_get(income_json, "message");
     Message->chat_id = strdup(json_string_value(json_object_get(user_message, "chat_id")));
