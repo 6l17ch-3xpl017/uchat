@@ -13,7 +13,7 @@ U_BIN		= ../build/
 # main dir for other libs header files
 J_INC_DIR   = resources/framework/jansson/inc/
 # whole path to dirs
-PATH_DIRS	= pages/login_wnd/signals pages/main_app/signals pages/main_app/utils pages/reg_wnd/signals
+PATH_DIRS	= pages/login_wnd/signals pages/login_wnd/utils pages/main_app/signals pages/main_app/utils pages/reg_wnd/signals
 
 # list of subdirs in src/
 DIRS		= $(PATH_DIRS) $(notdir $(wildcard $(SRC_DIR)*))
