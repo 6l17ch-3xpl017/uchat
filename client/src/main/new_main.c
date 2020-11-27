@@ -88,51 +88,8 @@ int main(int argc, char *argv[])
     gtk_main();
 
     g_mutex_clear(&client_data->thread.mutex_interface);
+    g_mutex_clear(&client_data->thread.mutex_client);
 
     system("leaks -q uchat_gui");
     return 0;
-
-//    int fo = open("../client/resources/countries", O_RDONLY);
-//    int fn = open("../client/resources/new_countries.txt", O_WRONLY);
-//
-//    char buf[2];
-//    buf[1] = '\0';
-//
-//    char *result = calloc(sizeof(char), 125);
-//    char *flag_link = calloc(sizeof(char), 50);
-//
-//    strcpy(flag_link, "https://ipgeolocation.io/static/flags/");  //ag_64.png
-//
-//    char code[4];
-//    code[3] = '\0';
-//
-//    for (int i = 0; i < 241; i++)
-//    {
-//        read(fo, &code, 3);
-//
-//        while (read(fo, &buf, 1)) {
-//            if (buf[0] is '\n')
-//                break;
-//
-//            strcat(result, buf);
-//        }
-//
-//        strcat(result, "|");
-//
-//        strcat(result, "https://ipgeolocation.io/static/flags/");
-//
-//        result[strlen(result)] = code[0] + 32;
-//        result[strlen(result)] = code[1] + 32;
-//
-//        strcat(result, "_64.png\n");
-//
-//        write(fn, result, strlen(result));
-//        mx_strdel(&result);
-//        result = calloc(sizeof(char), 125);
-//    }
-//
-//    close(fn);
-//    close(fo);
-//
-//    return 0;
 }
