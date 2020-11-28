@@ -32,9 +32,10 @@ static void fill_chat(t_client_data *client_data)
 
         gtk_list_box_insert(GTK_LIST_BOX(msg_list), create_msg_widget(msg_obj, s_last_author, client_data), -1);
 
-        last_author = json_object_get(msg_obj, "author");
+        last_author = json_object_get(msg_obj, "author_name");
         s_last_author = json_string_value(last_author);
-        gtk_widget_show_all(msg_list);
+//        gtk_widget_show_all(msg_list);
+        client_data->state_data = strdup(json_string_value(json_object_get(msg_obj, "msg_id")));
     }
 
     GtkAdjustment *adjust;

@@ -54,7 +54,7 @@ static GtkWidget *create_child(json_t *msg_obj)
 
 GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author, t_client_data *client_data)
 {
-    json_t *author = json_object_get(msg_obj, "author");
+    json_t *author = json_object_get(msg_obj, "author_name");
 
 //    if (clinet_data->gtk_attr.last_msg_author)
 //        mx_strdel(&clinet_data->gtk_attr.last_msg_author);
@@ -63,7 +63,7 @@ GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author, t_client_
 
     cmc_log_info("%s | %s", json_string_value(author), last_author);
 
-    if (strcmp(json_string_value(author), last_author) != 0 || last_author[0] is '-')
+    if (last_author is NULL or strcmp(json_string_value(author), last_author) not 0 or last_author[0] is '-')
         return create_parent(msg_obj);
 
     else

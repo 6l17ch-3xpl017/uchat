@@ -2,49 +2,65 @@
 
 static int check_fields(t_client_data *client_data)
 {
-    if (!get_entry_text("sbox_uname"))
+    int check = 1;
+
+    if (!get_entry_text("sbox_uname")[0])
     {
         gtk_widget_show_now(get_widget("sbox_uname_error"));
-        return 0;
+        check = 0;
     }
+    else
+        gtk_widget_hide(get_widget("sbox_uname_error"));
 
-    if (!get_entry_text("sbox_upass") || !get_entry_text("sbox_cpass"))
+    if (!get_entry_text("sbox_upass")[0] || !get_entry_text("sbox_cpass")[0])
     {
         gtk_widget_show_now(get_widget("sbox_pass_error"));
-        return 0;
+        check = 0;
     }
+    else
+        gtk_widget_hide(get_widget("sbox_pass_error"));
 
     if (strcmp(get_entry_text("sbox_upass"), get_entry_text("sbox_cpass")) != 0)
     {
         gtk_widget_show_now(get_widget("sbox_pass_error"));
-        return 0;
+        check = 0;
     }
+    else
+        gtk_widget_hide(get_widget("sbox_pass_error"));
 
-    if (!get_entry_text("sbox_fname"))
+    if (!get_entry_text("sbox_fname")[0])
     {
         gtk_widget_show_now(get_widget("sbox_fname_error"));
-        return 0;
+        check = 0;
     }
+    else
+        gtk_widget_hide(get_widget("sbox_fname_error"));
 
-    else if(!get_entry_text("sbox_lname"))
+    if(!get_entry_text("sbox_lname")[0])
     {
         gtk_widget_show_now(get_widget("sbox_lname_error"));
-        return 0;
+        check = 0;
     }
+    else
+        gtk_widget_hide(get_widget("sbox_lname_error"));
 
-    if (!get_entry_text("sbox_email"))
+    if (!get_entry_text("sbox_email")[0])
     {
         gtk_widget_show_now(get_widget("sbox_email_error"));
-        return 0;
+        check = 0;
     }
+    else
+        gtk_widget_hide(get_widget("sbox_email_error"));
 
-    if (!get_entry_text("sbox_phone"))
+    if (!get_entry_text("sbox_phone")[0])
     {
         gtk_widget_show_now(get_widget("sbox_phone_error"));
-        return 0;
+        check = 0;
     }
+    else
+        gtk_widget_hide(get_widget("sbox_phone_error"));
 
-    return 1;
+    return check;
 }
 
 // ToDo: Add user photo

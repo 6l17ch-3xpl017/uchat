@@ -83,6 +83,7 @@ typedef struct s_client_data
     char *type; //ToDo: Rename
 
     int state;
+    char *state_data;
 
     sqlite3 *db;
 
@@ -167,7 +168,7 @@ t_memory *download_curl(char *link);
 
 int init_local_database();
 char *make_sql_request(char **dst, char *body, ...);
-int fill_countries();
+void fill_countries();
 void get_country(t_client_data *client_data, char *country);
 
 #endif //UCHAT_GUI_CLIENT_H
