@@ -39,7 +39,9 @@ t_message *messages_from_id(char *message_id, char *chat_id) {
     char *request = NULL;
     int result;
 
-    connect_to_db
+    result = sqlite3_open("chat_database.db", &db);
+    if (result != SQLITE_OK)
+        return NULL;
 
     t_messages_id *messages_id = (t_messages_id *) malloc(sizeof(t_messages_id));
     messages_id->number_of_messages = 0;
@@ -50,7 +52,7 @@ t_message *messages_from_id(char *message_id, char *chat_id) {
     result = sqlite3_exec(db, request, callback_for_id, messages_id, 0);
     mx_strdel(&request);
 
-    if (result != SQLITE_OK) {
+    if (result != SQLITE_OK || messages_id->number_of_messages == 0) {
         sqlite3_close(db);
         free(messages_id);
         return NULL;
