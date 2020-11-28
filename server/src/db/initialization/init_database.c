@@ -22,6 +22,7 @@ int init_database() {
                               "\"fullname\"\tTEXT,\n"
                               "\"phone_number\"\tTEXT UNIQUE,\n"
                               "\"user_photo\"\tTEXT,\n"
+                              "\"country\"\tTEXT,\n"
                               "\"options\"\tTEXT,\n"
                               "PRIMARY KEY(\"id\" AUTOINCREMENT)\n"
                               ");", 0, 0, 0);

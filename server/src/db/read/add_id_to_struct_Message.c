@@ -25,7 +25,7 @@ static char *make_request_for_message(char *wrapper,char *key1, char *key2, char
 void add_id_to_struct_Message(t_message *Message) {
     sqlite3 *database;
     char *request;
-    char *time = mx_itoa(Message->time);
+    char *time = Message->time;
     request = make_request_for_message("SELECT message_id FROM Messages WHERE message_owner_id='",
             Message->message_owner_id, Message->chat_id, Message->message_content, time);
     sqlite3_open("chat_database.db", &database);

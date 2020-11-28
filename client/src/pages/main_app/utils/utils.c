@@ -10,7 +10,7 @@ static void fill_chats(t_client_data *client_data)
     GtkWidget *chats_list = get_widget("hp_chats");
     json_t *chats_array = json_object_get(client_data->server_attr.response, "user_chats");
 
-    for (int i = 0; i < json_array_size(chats_array); i++)
+    for (int i = 0; i < (int)json_array_size(chats_array); i++)
     {
         json_t *chat_obj = json_array_get(chats_array, i);
 

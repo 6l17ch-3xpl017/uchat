@@ -48,6 +48,7 @@ typedef struct s_chat {
     char *chat_name;
     char *admin_id;
     char *chat_photo;
+    char *chat_type;
 }              t_chat;
 
 typedef struct s_user {
@@ -55,6 +56,7 @@ typedef struct s_user {
     struct s_chat *chats;
     int number_of_chats;
     void *option;
+    char *country;
     char *id;
     char *nickname;
     char *password;
@@ -156,6 +158,7 @@ int get_all_messages_from_db(t_chat *Chat);
 int get_users_list_for_chat(t_chat *Chat);
 int get_number_of_users_in_chat(t_chat *Chat);
 int is_admin(t_user *User, t_chat *Chat);
+t_message *messages_from_id(char *message_id, char *chat_id);
 
 // REQUEST
 char *make_sql_request(char **dst, char *body, ...);

@@ -6,7 +6,9 @@ static int get_country_cb(void *my_arg, int argc, char **argv, char **columns)
 
     guchar *result = g_base64_decode(argv[1], &result_size);
 
-    int fd = open("temp.png", O_WRONLY);
+    int fd = open("temp.png", O_CREAT | O_WRONLY);
+
+    chmod("temp.png", 0777);
 
     write(fd, result, result_size);
     close(fd);

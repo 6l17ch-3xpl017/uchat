@@ -29,12 +29,15 @@ int add_user_to_db(t_user *User) {
         return nickname_and_password_can_not_be_null;
     // -----------------------------------making request-----------------------------------------------
     request = make_sql_request(&request, "INSERT INTO Users (nickname, password, email, age, fullname, "
-                                         "phone_number, user_photo, options) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);",
+                                         "phone_number, user_photo, country, options) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);",
                                          User->nickname, User->password, User->email, User->age, User->fullname,
-                                         User->ph_number, User->user_photo, (char *)User->option);
+                                         User->ph_number, User->user_photo, User->country, (char *)User->option);
     // ----------------------------adding to the database---------------------------------------------
-    result = sqlite3_exec(db, request, 0, 0, 0);
+    char *error = NULL;
+    result = sqlite3_exec(db, request, 0, 0, &error);
+    puts(request);
     if (result != SQLITE_OK) {
+        puts(error);
         sqlite3_close(db);
         mx_strdel(&request);
         return can_not_add_to_database;

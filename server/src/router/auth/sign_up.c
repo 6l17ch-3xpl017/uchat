@@ -23,6 +23,7 @@ static t_user *user_data_struct_fill(json_t *user, struct ns_connection *socket)
     User->age = strdup("18");
     User->fullname = strdup(json_string_value(json_object_get(user, "fullname")));
     User->ph_number = strdup(json_string_value(json_object_get(user, "ph_number")));
+    User->country = strdup(json_string_value(json_object_get(user, "country")));
     User->user_photo = strdup("5");
     User->option = NULL; //strdup(json_string_value(json_object_get(user, "option")));
     User->number_of_chats = 0;

@@ -10,6 +10,7 @@ void init_user_struct(t_user *User) {
     User->ph_number = NULL;
     User->user_photo = NULL;
     User->option = NULL;
+    User->country = NULL;
     User->next = NULL;
     User->chats = NULL;
     User->number_of_chats = 0;

@@ -27,6 +27,10 @@
 
 #define check(expr) if (!(expr)) { perror(#expr); kill(0, SIGTERM); }
 
+#define IN_CHAT 1
+#define UPDATED 2
+#define NO_UPDATES 0
+
 enum status {
     unknown_error = -10,
     ok_check_route = 5,
@@ -35,7 +39,6 @@ enum status {
 
 typedef struct test {
     char *test;
-    char *nick;
     struct test *next;
 }   t_test;
 
@@ -44,9 +47,16 @@ int check_route(char *str, struct ns_connection *socket);
 t_user *user_sign_in(json_t *income_json, struct ns_connection *socket);
 t_user *user_sign_up(json_t *income_json, struct ns_connection *socket);
 void send_status(t_user *User, t_chat *Chat, struct ns_connection *conn, int status, char *func);
+
+//messages
 void create_new_message(json_t *income_json, struct ns_connection *socket);
 char *message_pack_send(t_message *Message, int status);
+
+//chats
 void create_new_empty_chat(json_t *income_json, struct ns_connection *socket);
 void open_selected_chat(json_t *income_json, struct ns_connection *socket);
+void check_for_updates(json_t *income_json, struct ns_connection *socket);
+void free_chat_struct(t_chat *Chat);
+char *new_chat_pack_send(t_chat *Chat, int status);
 
 #endif

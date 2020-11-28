@@ -26,7 +26,7 @@ static void fill_chat(t_client_data *client_data)
     json_t *last_author;
     const char *s_last_author = "-1";
 
-    for (int i = 0; i < json_array_size(chats_array); i++)
+    for (int i = 0; i < (int)json_array_size(chats_array); i++)
     {
         msg_obj = json_array_get(chats_array, i);
 

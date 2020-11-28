@@ -44,8 +44,8 @@ int check_route(char *str, struct ns_connection *socket) {
         return log_out;
     }
 
-    else if(strcmp(json_string_value(type), "ping") == 0)
-    {
+    else if(strcmp(json_string_value(type), "ping") == 0) {
+//        check_for_updates(income_json, socket);
         json_t *json = json_object();
         json_object_set(json, "status", json_integer(1));
         char *json_string = json_dumps(json, 0);

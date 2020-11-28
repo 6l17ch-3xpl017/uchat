@@ -44,9 +44,9 @@ static void init_connection(t_client_data *client_data)
                 "[Connected to server]", strerror(errno))
 }
 
-static parse_anoyer_result(t_client_data *client_data)
+static int parse_anoyer_result(t_client_data *client_data)
 {
-
+return 0;
 }
 
 bool _Noreturn test_anoyer(t_client_data *client_data)

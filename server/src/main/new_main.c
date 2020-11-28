@@ -53,6 +53,10 @@ int main(void) {
 
     return 0;
 
+    //--------------- CHECK PING ---------------
+
+//    char *msg_id =
+
     //--------------- CREATE NEW CHAT ---------------
 //    char *new_chat;
 //    json_t *chat = json_object();
