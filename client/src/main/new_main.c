@@ -40,6 +40,20 @@ static void init_connection(t_client_data *client_data)
 
     cmc_log_info("[Trying connect server socket to client socket]");
 
+//    int skt, sndsize;
+//    int err = setsockopt(client_data->server_attr.socket, SOL_SOCKET, SO_RCVBUF, (char *)&sndsize,
+//                     (int)sizeof(sndsize));
+
+
+    int size = 1048576;
+
+    setsockopt(client_data->server_attr.socket, SOL_SOCKET, SO_SNDBUF, &size, sizeof(size));
+
+//    char *sockbufsize = mx_strnew(1000);
+//    unsigned int size;
+//
+//    err = getsockopt(client_data->server_attr.socket, SOL_SOCKET, SO_RCVBUF, (char *)&sockbufsize, &size);
+    cmc_log_info("%i", sizeof(size));
     check_error(connect(client_data->server_attr.socket, (SA*)&servaddr, sizeof(servaddr)) != 0,
                 "[Connected to server]", strerror(errno))
 }

@@ -593,7 +593,7 @@ static int ns_ssl_err(struct ns_connection *conn, int res) {
 #endif
 
 static void ns_read_from_socket(struct ns_connection *conn) {
-  char buf[2048];
+  char buf[1048576];
   int n = 0;
 
   if (conn->flags & NSF_CONNECTING) {
