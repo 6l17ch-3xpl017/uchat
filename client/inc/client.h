@@ -144,7 +144,7 @@ int get_response(t_client_data *client_data);
 
 /*    JSON   */
 int send_json(t_client_data *client_data);
-void create_msg_json(gchar *msg_text, t_client_data *client_data);
+void create_msg_json(gchar *msg_text, gchar *msg_type, t_client_data *client_data);
 char *json_get_str(json_t *root, char *key);
 int json_get_int(json_t *root, char *key, int mode);
 /* ********  */

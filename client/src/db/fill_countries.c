@@ -22,9 +22,14 @@ static void do_work(sqlite3 *db)
     char *result = calloc(sizeof(char), 100);
     char *request = NULL;
     char **country_and_flag = NULL;
+    int counter = 0;
 
     while (result != NULL)
     {
+        write(1, "Loading: ", strlen("Loading: "));
+        write(1, mx_itoa(counter), strlen(mx_itoa(counter)));
+        write(1, "\n", 1);
+
         fgets(result, 100, f);
         country_and_flag = g_strsplit(result, "|", 2);
 
@@ -61,15 +66,7 @@ void fill_countries()
         return ;
 
     if (!check_country(db))
-    {
-//        t_memory *mem = download_curl("https://ipgeolocation.io/static/flags/ug_64.png");
-//        char *country64 = g_base64_encode(mem->memory, mem->size);
         do_work(db);
-//        make_sql_request(&request, "INSERT INTO Countries (country_name, country_flag, country_flag_size) VALUES (%s, %s, %s);", country, country64, mx_itoa(mem->size));
-//        result = sqlite3_exec(db, request, 0, 0, &err);
-    }
-
-//    sqlite3_exec(db, "SELECT * FROM Countries WHERE country_name = 'C';", get_country, &result, 0);
 
     sqlite3_close(db);
 }

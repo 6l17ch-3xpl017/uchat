@@ -51,7 +51,7 @@ int check_route(char *str, struct ns_connection *socket) {
 //        char *json_string = json_dumps(json, 0);
         char *json_string = "{\"status\": 2, \"messages\": [{\"author\": \"5\", \"author_name\": \"FightForDobro\", \"msg_type\": \"text\", \"msg_id\": \"16\", \"msg_content\": \"Hello World!\\n\", \"chat_id\": \"Hello World!\\n\", \"time\": \"text\", \"modified\": 0, \"deleted\": 0}]}";
 
-        ns_send(socket, json_string, (int)strlen(json_string));
+//        ns_send(socket, json_string, (int)strlen(json_string));
     }
 
     else if (!income_json) {

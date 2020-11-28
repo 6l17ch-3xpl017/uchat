@@ -132,7 +132,7 @@ int main(int argc, char *argv[])
     gtk_widget_show_now(get_widget("login_wnd"));
 
 
-    g_thread_new("annoyer", (GThreadFunc)test_annoyer, client_data);
+//    g_thread_new("annoyer", (GThreadFunc)test_annoyer, client_data);
 
     gtk_main();
 

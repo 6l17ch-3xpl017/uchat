@@ -25,6 +25,7 @@ static void fill_chat(t_client_data *client_data)
     json_t *msg_obj, *last_msg = json_array_get(chats_array, 0);
     json_t *last_author;
     const char *s_last_author = "-1";
+    client_data->state_data = strdup(s_last_author);
 
     for (int i = 0; i < (int)json_array_size(chats_array); i++)
     {

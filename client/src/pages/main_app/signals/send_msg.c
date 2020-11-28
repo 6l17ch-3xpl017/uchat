@@ -1,6 +1,6 @@
 #include "client.h"
 
-gchar *get_text_from_text_view(GtkTextView *chat_msg_entry)
+static gchar *get_text_from_text_view(GtkTextView *chat_msg_entry)
 {
     GtkTextIter start, end;
     GtkTextBuffer *buffer = gtk_text_view_get_buffer(chat_msg_entry);
@@ -10,7 +10,7 @@ gchar *get_text_from_text_view(GtkTextView *chat_msg_entry)
     return gtk_text_buffer_get_text(buffer, &start, &end, FALSE);;
 }
 
-json_t *create_msg(int msg_type, char *author, char *content)
+static json_t *create_msg(int msg_type, char *author, char *content)
 {
     json_t *msg = json_object();
     char *str_time = mx_strnew(256);
@@ -45,10 +45,10 @@ void send_msg(GtkWidget *widget, GdkEventKey *event, t_client_data *client_data)
         gtk_text_buffer_set_text(buffer, "", -1);
 
         client_data->type = SEND_MSG;
-        create_msg_json(text, client_data);
+        char *msg_type = strdup("text");
+        create_msg_json(text, msg_type, client_data);
 
         adjust = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(get_widget("msg_list_scrld")));
-
 
         gtk_adjustment_set_value(adjust, 100000);
 
@@ -62,14 +62,4 @@ void send_msg(GtkWidget *widget, GdkEventKey *event, t_client_data *client_data)
         adjust = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(get_widget("msg_entry_scrld")));
         gtk_adjustment_set_value(adjust, gtk_adjustment_get_upper(adjust));
     }
-}
-
-void test_test()
-{
-    cmc_log_info("test_test");
-}
-
-void test_test1()
-{
-    cmc_log_info("test_test1");
 }

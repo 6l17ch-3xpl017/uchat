@@ -45,8 +45,6 @@ static GtkWidget *create_child(json_t *msg_obj)
 
     gtk_text_buffer_set_text(mbuffer, json_string_value(content), -1);
 
-//    json_decref(time);
-//    json_decref(content);
 
     return widget;
 }
@@ -55,9 +53,6 @@ static GtkWidget *create_child(json_t *msg_obj)
 GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author, t_client_data *client_data)
 {
     json_t *author = json_object_get(msg_obj, "author_name");
-
-//    if (clinet_data->gtk_attr.last_msg_author)
-//        mx_strdel(&clinet_data->gtk_attr.last_msg_author);
 
     client_data->gtk_attr.last_msg_author = strdup(json_string_value(author));
 
