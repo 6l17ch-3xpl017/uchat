@@ -21,6 +21,7 @@ static json_t *create_msg(int msg_type, char *author, char *content)
     json_object_set(msg, "author_name", json_string(author));
     json_object_set(msg, "msg_content", json_string(content));
     json_object_set(msg, "time", json_string(str_time));
+    json_object_set(msg, "msg_type", json_string("text"));
 
     mx_strdel(&str_time);
     return msg;

@@ -256,7 +256,7 @@ ADD_DEFINITIONS(${GTK3_CFLAGS_OTHER})
 
 target_compile_options(uchat_gui PRIVATE -pthread -rdynamic -DCURL_STATICLIB)
 target_include_directories(uchat_gui PRIVATE ${CLIENT_DIR}/inc ${C_LIB_DIR}/inc ${C_JANSSON_DIR}/inc ${LIBCURL_DIR}/inc ${CMC_DIR} ${MACROS_DIR})                      # ${SOUND_LIB}/include
-target_link_libraries(uchat_gui uv dl rt ${GTK3_LIBRARIES} ${C_LIB_DIR}/libmx.a ${LIBCURL_DIR}/libcurl.a -L${C_JANSSON_DIR}/ -lpthread -ljansson -lm -lcurl -lssl -lcrypto -lssl -lcrypto -lbrotlidec  -lz -lsqlite3)
+target_link_libraries(uchat_gui uv dl rt ${GTK3_LIBRARIES} ${C_LIB_DIR}/libmx.a ${LIBCURL_DIR}/libcurl.a -L${C_JANSSON_DIR}/ -lpthread -ljansson -lm -lcurl -lssl -lcrypto -lssl -lcrypto)
 
 # Finish building uchat_gui #
 

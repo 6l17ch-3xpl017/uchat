@@ -12,7 +12,7 @@ void create_msg_json(gchar *msg_text, gchar *msg_type, t_client_data *client_dat
 
     json_object_set_new(json, "type", json_string(SEND_MSG));
 
-    json_object_set_new(json, "msg_type", json_string("text"));
+    json_object_set_new(json, "msg_type", json_string(msg_type));
     json_object_set_new(msg, "message_content", json_string(msg_text));
     json_object_set_new(msg, "message_owner_id", json_string(client_data->user_attr.user_id));
     json_object_set_new(msg, "message_owner_name", json_string(client_data->user_attr.username));
