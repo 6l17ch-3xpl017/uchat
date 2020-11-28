@@ -26,9 +26,9 @@ static void do_work(sqlite3 *db)
 
     while (result != NULL)
     {
-        write(1, "Loading: ", strlen("Loading: "));
-        write(1, mx_itoa(counter), strlen(mx_itoa(counter)));
-        write(1, "\n", 1);
+//        write(1, "Loading: ", strlen("Loading: "));
+//        write(1, mx_itoa(counter), strlen(mx_itoa(counter)));
+//        write(1, "\n", 1);
 
         fgets(result, 100, f);
         country_and_flag = g_strsplit(result, "|", 2);
