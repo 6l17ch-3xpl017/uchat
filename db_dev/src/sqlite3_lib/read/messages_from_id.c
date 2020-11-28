@@ -13,13 +13,14 @@ static int callback_for_data(void *my_arg, int argc, char **argv, char **columns
     t_message *message = (t_message *)my_arg;
     free_and_dup(&message->message_id,            argv[0]);
     free_and_dup(&message->message_owner_id,      argv[1]);
-    free_and_dup(&message->chat_id,               argv[2]);
-    free_and_dup(&message->message_content,       argv[3]);
-    free_and_dup(&message->type,                  argv[7]);
-    free_and_dup((char **)(&message->option),     argv[8]);
-    message->time =    atoi(argv[4]);
-    message->changed = atoi(argv[5]);
-    message->deleted = atoi(argv[6]);
+    free_and_dup(&message->message_owner_name,    argv[2]);
+    free_and_dup(&message->chat_id,               argv[3]);
+    free_and_dup(&message->message_content,       argv[4]);
+    free_and_dup(&message->time,                  argv[5]);
+    free_and_dup(&message->type,                  argv[8]);
+    free_and_dup((char **)(&message->option),     argv[9]);
+    message->changed = atoi(argv[6]);
+    message->deleted = atoi(argv[7]);
     return 0;
 }
 

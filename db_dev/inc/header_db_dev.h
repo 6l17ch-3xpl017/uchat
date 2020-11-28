@@ -19,22 +19,21 @@
 #define random_number(min, max) srand(time(0)); \
                                 int rand_num  = (rand() % (max - min + 1) - min);
 
-
- struct s_user;
+struct s_user;
 
 typedef struct s_message {
     struct s_message *next;
-    time_t time;
     int changed;
     int deleted;
+    char *time;
     char *message_id;
     char *message_owner_id;
+    char *message_owner_name;
     char *chat_id;
     char *message_content;
     char *type;
     char *option;
 }              t_message;
-
 
 typedef struct s_chat {
     struct s_user *user_in_chat;
@@ -197,8 +196,6 @@ void decoding_enum(int enum_number);
 void print_user_info(t_user *User);
 void print_chat_info(t_chat *Chat);
 // -----------------------------------------------------------------------
-
-
 
 #endif //UCHAT_HEADER_DB_DEV_H
 

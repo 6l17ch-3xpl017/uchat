@@ -63,7 +63,7 @@ add_executable(db_dev
 #        client/src/sophia.c
 #        client/src/sophia_get.c
 #        client/inc/sophia_client.h
-        )
+        src/sqlite3_lib/delete/delete_message.c)
 
 include_directories(/usr/include)
 link_directories(/usr/lib)
