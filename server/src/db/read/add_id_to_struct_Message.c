@@ -31,7 +31,8 @@ void add_id_to_struct_Message(t_message *Message) {
     sqlite3_open("chat_database.db", &database);
     sqlite3_exec(database, request, callback, Message, 0);
     sqlite3_close(database);
-    mx_strdel(&time);
+    if (time)
+        mx_strdel(&time);
     free(request);
 }
 
