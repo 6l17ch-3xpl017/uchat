@@ -8,7 +8,7 @@ static char *pack_json_updated_msg(t_message *Message) {
     /* send all newly appeared messages in chat */
     for (t_message *head = Message; head; head = head->next) {
         json_object_set_new(msg, "author", json_string(head->message_owner_id));
-        json_object_set_new(msg, "author_name", json_string(head->message_owner_name)); //todo add to db
+        json_object_set_new(msg, "author_name", json_string(head->message_owner_name));
         json_object_set_new(msg, "chat_id", json_string(head->chat_id));
         json_object_set_new(msg, "msg_content", json_string(head->message_content));
         json_object_set_new(msg, "msg_type", json_string(head->type));
@@ -32,9 +32,16 @@ void check_for_updates(json_t *income_json, struct ns_connection *socket) {
     chat_id = mx_itoa((int)json_integer_value(json_object_get(income_json, "mode")));
     json_unpack(income_json, "{s:s}, {s:i}", "msg_id", &msg_id, "mode", &chat_id);
     msg = messages_from_id(msg_id, chat_id);
-    if (msg != NULL) {
+    if (msg != NULL && msg_id[0] != '0') {
         json_string = pack_json_updated_msg(msg);
         puts(json_string); //print json
+        ns_send(socket, json_string, (int) strlen(json_string));
+    }
+    else
+    {
+        json_t *json = json_object();
+        json_object_set(json, "status", json_integer(NO_UPDATES));
+        json_string = json_dumps(json, 0);
         ns_send(socket, json_string, (int) strlen(json_string));
     }
 }

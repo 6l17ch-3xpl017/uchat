@@ -89,7 +89,9 @@ GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author, t_client_
 
     client_data->gtk_attr.last_msg_author = strdup(json_string_value(author));
 
-    cmc_log_info("%s | %s", json_string_value(author), last_author);
+//    cmc_log_info("%s | %s", json_string_value(author), last_author);
+    if (!last_author)
+        last_author = strdup("-1");
 
     if (last_author is NULL or strcmp(json_string_value(author), last_author) not 0 or last_author[0] is '-')
         return create_parent(msg_obj);
