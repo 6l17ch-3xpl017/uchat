@@ -20,7 +20,7 @@ static int status_handler(t_client_data *client_data)
 
 
             default:
-                cmc_log_fatal("Unknown Error [%i]", client_data->server_attr.status);
+                cmc_log_error("Unknown Error [%i]", client_data->server_attr.status);
         }
 
     else if (strcmp(client_data->type, REGISTER) is 0)
@@ -31,7 +31,7 @@ static int status_handler(t_client_data *client_data)
                 return 107;
 
             default:
-                cmc_log_fatal("Unknown Error [%i]", client_data->server_attr.status);
+                cmc_log_error("Unknown Error [%i]", client_data->server_attr.status);
         }
 
     else if(strcmp(client_data->type, OPEN_CHAT) is 0)
@@ -43,7 +43,7 @@ static int status_handler(t_client_data *client_data)
                 return 1;
 
             default:
-                cmc_log_fatal("Unknown Error [%i]", client_data->server_attr.status);
+                cmc_log_error("Unknown Error [%i]", client_data->server_attr.status);
         }
     }
 
@@ -55,11 +55,11 @@ static int status_handler(t_client_data *client_data)
                 return 107;
 
             default:
-                cmc_log_fatal("Unknown Error [%i]", client_data->server_attr.status);
+                cmc_log_error("Unknown Error [%i]", client_data->server_attr.status);
         }
     }
 
-    cmc_log_fatal("Unknown Type [%s]", client_data->type);
+    cmc_log_error("Unknown Type [%s]", client_data->type);
 }
 
 int get_response(t_client_data *client_data)

@@ -33,6 +33,46 @@ Author: Denys Ushakov
   <!-- interface-name LocalChat -->
   <!-- interface-description Simple chat with geolocation on C and gtk+3 -->
   <!-- interface-authors Denys Ushakov -->
+  <object class="GtkFileChooserDialog" id="ava_chooser_popup">
+    <property name="can_focus">False</property>
+    <property name="type_hint">dialog</property>
+    <property name="attached_to">hp_send_file</property>
+    <property name="create_folders">False</property>
+    <signal name="file-activated" handler="change_img_ava" swapped="no"/>
+    <child type="titlebar">
+      <object class="GtkLabel">
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">label</property>
+      </object>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkWindow" id="login_wnd">
     <property name="name">login_window</property>
     <property name="visible">True</property>
@@ -2115,7 +2155,9 @@ Author: Denys Ushakov
                                         <property name="name">msg_list_box</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="activate_on_single_click">False</property>
+                                        <property name="events">GDK_EXPOSURE_MASK | GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON1_MOTION_MASK | GDK_BUTTON2_MOTION_MASK | GDK_BUTTON3_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK | GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_FOCUS_CHANGE_MASK | GDK_STRUCTURE_MASK | GDK_PROPERTY_CHANGE_MASK | GDK_VISIBILITY_NOTIFY_MASK | GDK_PROXIMITY_IN_MASK | GDK_PROXIMITY_OUT_MASK | GDK_SUBSTRUCTURE_MASK | GDK_SCROLL_MASK | GDK_TOUCH_MASK | GDK_SMOOTH_SCROLL_MASK | GDK_TOUCHPAD_GESTURE_MASK | GDK_TABLET_PAD_MASK</property>
+                                        <property name="selection_mode">none</property>
+                                        <signal name="row-activated" handler="del_row" swapped="no"/>
                                         <style>
                                           <class name="no_border"/>
                                         </style>
@@ -2354,7 +2396,7 @@ Author: Denys Ushakov
           </packing>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="GtkBox" id="settings_box">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
@@ -2419,10 +2461,18 @@ Author: Denys Ushakov
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <child>
-                                  <object class="GtkImage">
+                                  <object class="GtkEventBox">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="pixbuf">no_avatar_icon.svg</property>
+                                    <property name="events">GDK_EXPOSURE_MASK | GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON1_MOTION_MASK | GDK_BUTTON2_MOTION_MASK | GDK_BUTTON3_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK | GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_FOCUS_CHANGE_MASK | GDK_STRUCTURE_MASK | GDK_PROPERTY_CHANGE_MASK | GDK_VISIBILITY_NOTIFY_MASK | GDK_PROXIMITY_IN_MASK | GDK_PROXIMITY_OUT_MASK | GDK_SUBSTRUCTURE_MASK | GDK_SCROLL_MASK | GDK_TOUCH_MASK | GDK_SMOOTH_SCROLL_MASK | GDK_TOUCHPAD_GESTURE_MASK | GDK_TABLET_PAD_MASK</property>
+                                    <signal name="button-press-event" handler="change_avatar" swapped="no"/>
+                                    <child>
+                                      <object class="GtkImage" id="set_uava">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="pixbuf">no_avatar_icon.svg</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -2431,7 +2481,7 @@ Author: Denys Ushakov
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel">
+                                  <object class="GtkLabel" id="global_uname">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="label" translatable="yes">Username</property>
@@ -2488,7 +2538,7 @@ Author: Denys Ushakov
                                                   </packing>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkLabel">
+                                                  <object class="GtkLabel" id="set_uname">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
                                                     <property name="label" translatable="yes">username</property>
@@ -2513,6 +2563,7 @@ Author: Denys Ushakov
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
                                                 <property name="margin_left">35</property>
+                                                <signal name="clicked" handler="pop_up_uname" swapped="no"/>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -2549,7 +2600,7 @@ Author: Denys Ushakov
                                                   </packing>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkLabel">
+                                                  <object class="GtkLabel" id="set_email">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
                                                     <property name="label" translatable="yes">email</property>
@@ -2574,6 +2625,7 @@ Author: Denys Ushakov
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
                                                 <property name="margin_left">65</property>
+                                                <signal name="clicked" handler="pop_up_email" swapped="no"/>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -2610,7 +2662,7 @@ Author: Denys Ushakov
                                                   </packing>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkLabel">
+                                                  <object class="GtkLabel" id="set_number">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
                                                     <property name="halign">start</property>
@@ -2636,6 +2688,7 @@ Author: Denys Ushakov
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
                                                 <property name="margin_left">5</property>
+                                                <signal name="clicked" handler="pop_up_number" swapped="no"/>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -2734,6 +2787,114 @@ Author: Denys Ushakov
       </object>
     </child>
   </object>
+  <object class="GtkPopover" id="c_email_pop">
+    <property name="can_focus">False</property>
+    <property name="relative_to">set_email</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkEntry" id="c_email_entry">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="placeholder_text" translatable="yes">Change Email</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="label" translatable="yes">OK</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="change_email" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkPopover" id="c_phone_pop">
+    <property name="can_focus">False</property>
+    <property name="relative_to">set_number</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkEntry" id="c_phone_entry">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="placeholder_text" translatable="yes">Change Phone</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="label" translatable="yes">OK</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="change_phone" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkPopover" id="c_uname_pop">
+    <property name="can_focus">False</property>
+    <property name="relative_to">set_uname</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkEntry" id="c_uname_entry">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="placeholder_text" translatable="yes">Change Username</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="label" translatable="yes">OK</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="change_uname" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkFileChooserDialog" id="file_chooser_popup">
     <property name="can_focus">False</property>
     <property name="type_hint">dialog</property>
@@ -2741,7 +2902,10 @@ Author: Denys Ushakov
     <property name="create_folders">False</property>
     <signal name="file-activated" handler="choose_file" swapped="no"/>
     <child type="titlebar">
-      <placeholder/>
+      <object class="GtkLabel">
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">label</property>
+      </object>
     </child>
     <child internal-child="vbox">
       <object class="GtkBox">
