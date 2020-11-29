@@ -12,10 +12,23 @@ static t_chat *chat_struct_filling_with_null() {
 
 
 static void ev_handler(struct ns_connection *nc, int ev, void *p) {
+//    iobuf_resize(&nc->recv_iobuf, 1048576);
+
+    int size = 1048576;
+    setsockopt(nc->sock, SOL_SOCKET, SO_RCVBUF, &size, sizeof(size));
+
     struct iobuf *io = &nc->recv_iobuf;
     char *income_json = NULL;
+    char *buff = mx_strnew(2048);
     if (ev == NS_RECV)
     {
+
+        if (* (int *)p == 2048)
+        {
+            char *buff = mx_strnew(2048);
+            read(nc->sock, &buff, 5);
+        }
+
         income_json = strndup(io->buf, io->len);
 
         check_route(income_json, nc);
@@ -37,6 +50,7 @@ int main(void) {
     struct ns_mgr mgr;
 
     ns_mgr_init(&mgr, NULL);
+//    iobuf_resize(&mgr.active_connections->recv_iobuf, 1048576);
     init_database();
 
 
