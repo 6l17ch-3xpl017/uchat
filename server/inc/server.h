@@ -27,9 +27,8 @@
 
 #define check(expr) if (!(expr)) { perror(#expr); kill(0, SIGTERM); }
 
-#define IN_CHAT 1
+#define NO_UPDATES 1
 #define UPDATED 2
-#define NO_UPDATES 0
 
 enum status {
     unknown_error = -10,

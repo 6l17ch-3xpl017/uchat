@@ -26,23 +26,16 @@ static char *pack_json_updated_msg(t_message *Message) {
 }
 
 void check_for_updates(json_t *income_json, struct ns_connection *socket) {
-    json_t *mode;
     char *msg_id = NULL, *chat_id = NULL, *json_string = NULL;
     t_message *msg = NULL;
 
-    mode = json_object_get(income_json, "mode");
-    if (json_integer_value(mode) == IN_CHAT) {
-        json_unpack(income_json, "{s:s}, {s:s}", "msg_id", &msg_id, "chat_id", &chat_id);
-        msg = messages_from_id(msg_id, chat_id);
-        if (msg != NULL) {
-            json_string = pack_json_updated_msg(msg);
-            puts(json_string); //print json
-            ns_send(socket, json_string, (int) strlen(json_string));
-        }
-        else {
-            send_status(NULL, NULL, socket, NO_UPDATES, "ping");
-            json_decref(income_json);
-        }
+    chat_id = mx_itoa((int)json_integer_value(json_object_get(income_json, "mode")));
+    json_unpack(income_json, "{s:s}, {s:i}", "msg_id", &msg_id, "mode", &chat_id);
+    msg = messages_from_id(msg_id, chat_id);
+    if (msg != NULL) {
+        json_string = pack_json_updated_msg(msg);
+        puts(json_string); //print json
+        ns_send(socket, json_string, (int) strlen(json_string));
     }
 }
 

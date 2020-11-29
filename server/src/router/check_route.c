@@ -44,14 +44,22 @@ int check_route(char *str, struct ns_connection *socket) {
         return log_out;
     }
 
-    else if(strcmp(json_string_value(type), "ping") == 0) {
-//        check_for_updates(income_json, socket);
-        json_t *json = json_object();
-        json_object_set(json, "status", json_integer(1));
-//        char *json_string = json_dumps(json, 0);
-        char *json_string = "{\"status\": 2, \"messages\": [{\"author\": \"5\", \"author_name\": \"FightForDobro\", \"msg_type\": \"text\", \"msg_id\": \"16\", \"msg_content\": \"Hello World!\\n\", \"chat_id\": \"Hello World!\\n\", \"time\": \"text\", \"modified\": 0, \"deleted\": 0}]}";
-
-        ns_send(socket, json_string, (int)strlen(json_string));
+    else if (strcmp(json_string_value(type), "ping") == 0) {
+        if (json_integer_value(json_object_get(income_json, "mode")) > 0) {
+            check_for_updates(income_json, socket);
+        }
+        else {
+            json_t *json = json_object();
+            json_object_set(json, "status", json_integer(NO_UPDATES));
+            char *json_string = json_dumps(json, 0);
+            ns_send(socket, json_string, (int) strlen(json_string));
+        }
+//        json_t *json = json_object();
+//        json_object_set(json, "status", json_integer(1));
+////        char *json_string = json_dumps(json, 0);
+//        char *json_string = "{\"status\": 2, \"messages\": [{\"author\": \"5\", \"author_name\": \"FightForDobro\", \"msg_type\": \"text\", \"msg_id\": \"16\", \"msg_content\": \"Hello World!\\n\", \"chat_id\": \"Hello World!\\n\", \"time\": \"text\", \"modified\": 0, \"deleted\": 0}]}";
+//
+//        ns_send(socket, json_string, (int)strlen(json_string));
     }
 
     else if (!income_json) {
