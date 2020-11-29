@@ -48,9 +48,6 @@ void open_selected_chat(json_t *income_json, struct ns_connection *socket) {
     puts(json_dumps(income_json, 0)); // print json
 
     Chat->chat_id = strdup(json_string_value(json_object_get(user_message, "chat_id")));
-    printf("chats: %d\n", get_users_list_for_chat(Chat));
-    printf("msg: %d\n", get_all_messages_from_db(Chat));
-
     if (get_users_list_for_chat(Chat) != get_all_messages_from_db(Chat))
         check_status = request_failed;
 
