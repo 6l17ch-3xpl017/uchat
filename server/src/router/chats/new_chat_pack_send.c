@@ -20,14 +20,6 @@ char *new_chat_pack_send(t_chat *Chat, int status) {
 
     if (status == 107) {
         json_object_set_new(json, "chat_name", json_string(Chat->chat_name));
-        json_object_set_new(json, "chat_photo", json_string(Chat->chat_photo));
-//        if (Chat->number_of_users > 2) {
-//            json_object_set_new(json, "chat_name", json_string(Chat->chat_name));
-//            json_object_set_new(json, "chat_photo", json_string(Chat->chat_photo));
-//            json_object_set_new(json, "chat_type", json_string("public"));
-//        }
-//        else
-//            json_object_set_new(json, "chat_type", json_string("private"));
         json_object_set_new(json, "chat_id", json_string(Chat->chat_id));
         get_users_list_for_chat(Chat);
         for (t_user *head = Chat->user_in_chat; head; head = head->next) {

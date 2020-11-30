@@ -6,18 +6,24 @@ static char *chat_array_send(t_user *User, t_chat *Chat, json_t *json) {
     user_out = json_object();
     chat_array = json_array();
     if (User->number_of_chats != 0) {
-        for (int i = 0; i < User->number_of_chats; i++) {
-            json_object_set_new(user_out, "chat_id", json_string(Chat->chat_id));
-            if (Chat->number_of_users > 2)
-                json_object_set_new(user_out, "chat_name", json_string(Chat->chat_name));
-            else if (Chat->number_of_users == 2) {
-                if (strcmp(Chat->user_in_chat->nickname, User->nickname) == 0)
-                    json_object_set_new(user_out, "user_name", json_string(Chat->user_in_chat->next->nickname));
-                else
-                    json_object_set_new(user_out, "user_name", json_string(Chat->user_in_chat->nickname));
-            }
+        for (t_chat *head = Chat; head; head = head->next) {
+            json_object_set_new(user_out, "chat_id", json_string(head->chat_id));
+            json_object_set_new(user_out, "chat_name", json_string(head->chat_name));
             json_array_append(chat_array, user_out);
+            user_out = json_object();
         }
+//        for (int i = 0; i < User->number_of_chats; i++) {
+//            json_object_set_new(user_out, "chat_id", json_string(Chat->chat_id));
+//            if (Chat->number_of_users > 2)
+//                json_object_set_new(user_out, "chat_name", json_string(Chat->chat_name));
+//            else if (Chat->number_of_users == 2) {
+//                if (strcmp(Chat->user_in_chat->nickname, User->nickname) == 0)
+//                    json_object_set_new(user_out, "user_name", json_string(Chat->user_in_chat->next->nickname));
+//                else
+//                    json_object_set_new(user_out, "user_name", json_string(Chat->user_in_chat->nickname));
+//            }
+//            json_array_append(chat_array, user_out);
+//        }
     }
     json_object_set_new(json, "num_of_chats", json_integer(User->number_of_chats));
     json_object_set_new(json, "user_chats", chat_array);

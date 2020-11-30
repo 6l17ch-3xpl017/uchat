@@ -13,7 +13,8 @@ static void make_request_json(char *username, t_client_data *client_data)
     json_t *json = json_object();
 
     json_object_set(json, "type", json_string("new_chat"));
-    json_object_set(json, "self_name", json_string(client_data->user_attr.user_id));
+    json_object_set(json, "self_name", json_string(client_data->user_attr.username));
+    json_object_set(json, "self_id", json_string(client_data->user_attr.user_id));
     json_object_set(json, "user_name", json_string(username));
 
     client_data->server_attr.request = json;
@@ -21,7 +22,7 @@ static void make_request_json(char *username, t_client_data *client_data)
     send_request(client_data);
 }
 
-void add_friend(GtkEntry *entry, GdkEventKey *event, t_client_data *client_data)
+gboolean add_friend(GtkEntry *entry, GdkEventKey *event, t_client_data *client_data)
 {
     if (event->keyval == GDK_KEY_Return)
     {
@@ -29,4 +30,6 @@ void add_friend(GtkEntry *entry, GdkEventKey *event, t_client_data *client_data)
         make_request_json(friend_name, client_data);
         mx_strdel(&friend_name);
     }
+
+    return FALSE;
 }
