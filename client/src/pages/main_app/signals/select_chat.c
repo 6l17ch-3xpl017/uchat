@@ -17,10 +17,24 @@ static void prepare_request(GtkListBoxRow *chat_id, t_client_data *client_data)
     send_request(client_data);
 }
 
-static void fill_chat(t_client_data *client_data)
+static void clear_chat(t_client_data *client_data)
 {
     GtkWidget *msg_list = get_widget("cm_lbox");
 
+    GList *list = gtk_container_get_children(GTK_CONTAINER(msg_list));
+
+    for (GList *gtemp = list; gtemp != NULL; gtemp = gtemp->next)
+    {
+        gtk_container_remove(GTK_CONTAINER(msg_list), GTK_WIDGET(gtemp->data));
+    }
+
+}
+
+
+static void fill_chat(t_client_data *client_data)
+{
+    GtkWidget *msg_list = get_widget("cm_lbox");
+    clear_chat(client_data);
     json_t *chats_array = json_object_get(client_data->server_attr.response, "messages");
     json_t *msg_obj, *last_msg = json_array_get(chats_array, 0);
     json_t *last_author;
@@ -59,7 +73,12 @@ static void fill_chat(t_client_data *client_data)
 
 void select_chat(GtkListBox *box, GtkListBoxRow *chat, t_client_data *client_data)
 {
-    client_data->type = OPEN_CHAT;
-    prepare_request(chat, client_data);
-    fill_chat(client_data);
+
+    char *chat_id = g_object_get_data(G_OBJECT(chat), "chat_id");
+
+    if (client_data->state != atoi(chat_id)) {
+        client_data->type = OPEN_CHAT;
+        prepare_request(chat, client_data);
+        fill_chat(client_data);
+    }
 }

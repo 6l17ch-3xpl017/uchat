@@ -888,6 +888,7 @@ Author: Denys Ushakov
                                         <property name="margin-bottom">10</property>
                                         <property name="inconsistent">True</property>
                                         <property name="draw-indicator">True</property>
+                                        <signal name="clicked" handler="friend_page" swapped="no"/>
                                         <child>
                                           <object class="GtkBox" id="hp_friends_btn_box">
                                             <property name="visible">True</property>

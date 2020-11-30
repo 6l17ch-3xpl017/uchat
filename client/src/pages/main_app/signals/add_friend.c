@@ -26,7 +26,8 @@ gboolean add_friend(GtkEntry *entry, GdkEventKey *event, t_client_data *client_d
 {
     if (event->keyval == GDK_KEY_Return)
     {
-        char *friend_name = strndup(gtk_entry_get_text(entry), strlen(gtk_entry_get_text(entry)) - 1);
+        client_data->type = NEW_CHAT;
+        char *friend_name = strndup(gtk_entry_get_text(entry), strlen(gtk_entry_get_text(entry)));
         make_request_json(friend_name, client_data);
         mx_strdel(&friend_name);
     }

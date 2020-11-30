@@ -42,9 +42,6 @@ static int init_connection()
 
     int size = 1048576;
     setsockopt(sfd, SOL_SOCKET, SO_SNDBUF, &size, sizeof(size));
-//
-//    check_error(connect(sfd, (SA*)&servaddr, sizeof(servaddr)) != 0,
-//                "[Connected to server]", strerror(errno));
 
     while (connect(sfd, (SA*)&servaddr, sizeof(servaddr))) {
         sleep(1);

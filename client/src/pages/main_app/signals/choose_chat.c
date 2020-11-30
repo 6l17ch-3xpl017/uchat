@@ -35,42 +35,45 @@ static const char *get_username(const char *id, t_client_data *client_data)
 void choose_chat(GtkListBox *box, GtkListBoxRow *row, t_client_data *client_data)
 {
     GtkButton *chat = gtk_container_get_children(GTK_CONTAINER(row))->data;
-    cmc_log_info(g_object_get_data(G_OBJECT(chat), "chat_id"));
 
-    send_requestt(client_data);
+    if (client_data->state != atoi(g_object_get_data(G_OBJECT(chat), "chat_id"))) {
 
-    cmc_log_info("%s", json_dumps(client_data->server_attr.response, 0));
+        cmc_log_info(g_object_get_data(G_OBJECT(chat), "chat_id"));
 
-    json_t *messages = json_object_get(client_data->server_attr.response, "messages");
-    json_t *message = NULL;
+        send_requestt(client_data);
+
+        cmc_log_info("%s", json_dumps(client_data->server_attr.response, 0));
+
+        json_t *messages = json_object_get(client_data->server_attr.response, "messages");
+        json_t *message = NULL;
 
 
-    /* TEMP CODE */
-    char *last_author = NULL;
+        /* TEMP CODE */
+        char *last_author = NULL;
 
 
-    for (size_t i = 0; i < json_array_size(messages); i++) {
+        for (size_t i = 0; i < json_array_size(messages); i++) {
 
-        message = json_array_get(messages, i);
-        json_t *message_content = json_object_get(message, "msg_content");
-        json_t *author = json_object_get(message, "author");
+            message = json_array_get(messages, i);
+            json_t *message_content = json_object_get(message, "msg_content");
+            json_t *author = json_object_get(message, "author");
 
-        if (last_author == NULL)
-        {
-            last_author = (char *)json_string_value(author);
+            if (last_author == NULL) {
+                last_author = (char *) json_string_value(author);
+            }
+
+
+            GtkWidget *listbox = get_widget("chat_msg_lst_box");
+
+            GtkWidget *msg = msg_widget_factory(strcmp(json_string_value(author), last_author) == 0 ? 1 : 2,
+                                                (char *) json_string_value(message_content),
+                                                (char *) get_username(json_string_value(author),
+                                                                      client_data)); // ToDo: Request username
+
+            strcmp(json_string_value(author), last_author) == 0 ? 0 : (last_author = (char *) json_string_value(author));
+
+            gtk_list_box_insert(GTK_LIST_BOX(listbox), GTK_WIDGET(msg), -1);
+            gtk_widget_show_all(listbox);
         }
-
-
-
-        GtkWidget *listbox = get_widget("chat_msg_lst_box");
-
-        GtkWidget *msg = msg_widget_factory(strcmp(json_string_value(author), last_author) == 0 ? 1 : 2, (char *)json_string_value(message_content),
-                                                   (char *)get_username(json_string_value(author), client_data)); // ToDo: Request username
-
-       strcmp(json_string_value(author), last_author) == 0 ? 0 : (last_author = (char *)json_string_value(author));
-
-        gtk_list_box_insert(GTK_LIST_BOX(listbox), GTK_WIDGET(msg), -1);
-        gtk_widget_show_all(listbox);
     }
-
 }
