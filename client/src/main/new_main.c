@@ -61,7 +61,7 @@ static bool parse_annoyer_result(t_client_data *client_data)
 
     cmc_log_info("%s", json_dumps(msg_array, 0));
 
-    for (int i = 0; i < json_array_size(msg_array); i++)
+    for (int i = 0; i < (int)json_array_size(msg_array); i++)
     {
         msg_obj = json_array_get(msg_array, i);
         msg_id = json_object_get(msg_obj, "msg_id");

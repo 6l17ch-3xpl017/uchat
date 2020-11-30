@@ -53,9 +53,9 @@ char *message_pack_send(t_message *Message, int status);
 
 //chats
 void create_new_empty_chat(json_t *income_json, struct ns_connection *socket);
+char *new_chat_pack_send(t_chat *Chat, int status);
 void open_selected_chat(json_t *income_json, struct ns_connection *socket);
 void check_for_updates(json_t *income_json, struct ns_connection *socket);
 void free_chat_struct(t_chat *Chat);
-char *new_chat_pack_send(t_chat *Chat, int status);
 
 #endif

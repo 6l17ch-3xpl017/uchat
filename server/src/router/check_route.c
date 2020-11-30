@@ -67,7 +67,7 @@ int check_route(char *str, struct ns_connection *socket) {
         } else {
             return unknown_error;
         }
-
-        return ok_check_route;
     }
+    return ok_check_route;
 }
+
