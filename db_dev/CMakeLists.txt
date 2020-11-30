@@ -58,12 +58,12 @@ add_executable(db_dev
         src/additional/lib/mx_strdel.c
         src/additional/lib/mx_strnew.c
         src/additional/lib/mx_itoa.c
-#        client/inc/sophia.h
-#        client/src/sophia_add.c
-#        client/src/sophia.c
-#        client/src/sophia_get.c
-#        client/inc/sophia_client.h
-        src/sqlite3_lib/delete/delete_message.c)
+        client/inc/sophia.h
+        client/src/sophia_add.c
+        client/src/sophia.c
+        client/src/sophia_get.c
+        client/inc/sophia_client.h
+        src/sqlite3_lib/read/get_id_by_nickname.c)
 
 include_directories(/usr/include)
 link_directories(/usr/lib)
