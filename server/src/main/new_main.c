@@ -12,8 +12,6 @@ static t_chat *chat_struct_filling_with_null() {
 
 
 static void ev_handler(struct ns_connection *nc, int ev, void *p) {
-//    iobuf_resize(&nc->recv_iobuf, 1048576);
-
     int size = 1048576;
     setsockopt(nc->sock, SOL_SOCKET, SO_RCVBUF, &size, sizeof(size));
 
@@ -22,18 +20,19 @@ static void ev_handler(struct ns_connection *nc, int ev, void *p) {
     char *buff = mx_strnew(2048);
     if (ev == NS_RECV)
     {
-
-        if (* (int *)p == 2048)
-        {
-            char *buff = mx_strnew(2048);
-            read(nc->sock, &buff, 5);
-        }
-
         income_json = strndup(io->buf, io->len);
 
         check_route(income_json, nc);
         iobuf_remove(io, io->len);
         free(income_json);
+    }
+    else if (ev == NS_ACCEPT)
+    {
+        printf("A\n");
+    }
+    else if (ev == NS_CLOSE)
+    {
+        puts("X\n");
     }
 //    "{"type": "sign_in", "user": {"nickname": "smith", "password": "123321"}}\261\a\002"
 //    switch (ev) {

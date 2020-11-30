@@ -1,6 +1,6 @@
 #include "client.h"
 
-static GtkWidget *create_parent(json_t *msg_obj)
+static GtkWidget *create_parent(json_t *msg_obj, t_client_data *client_data)
 {
     GtkBuilder *builder = create_widget_from_template(P_MSG_WIDGET_CLASS);
     GtkWidget *widget = GTK_WIDGET(gtk_builder_get_object(builder, "msg_row"));
@@ -13,6 +13,7 @@ static GtkWidget *create_parent(json_t *msg_obj)
     GtkLabel *uname = GTK_LABEL(gtk_builder_get_object(builder, "uname"));
     GtkLabel *mtime = GTK_LABEL(gtk_builder_get_object(builder, "mtime"));
 
+    gtk_builder_connect_signals(builder, builder);
 
     if(strcmp(json_string_value(type), "text") is 0)
     {
@@ -43,7 +44,7 @@ static GtkWidget *create_parent(json_t *msg_obj)
 }
 
 
-static GtkWidget *create_child(json_t *msg_obj)
+static GtkWidget *create_child(json_t *msg_obj, t_client_data *client_data)
 {
     GtkBuilder *builder = create_widget_from_template(C_MSG_WIDGET_CLASS);
     GtkWidget *widget = GTK_WIDGET(gtk_builder_get_object(builder, "msg_row"));
@@ -53,6 +54,8 @@ static GtkWidget *create_child(json_t *msg_obj)
     json_t *type = json_object_get(msg_obj, "msg_type");
 
     GtkLabel *mtime = GTK_LABEL(gtk_builder_get_object(builder, "mtime"));
+
+    gtk_builder_connect_signals(builder, builder);
 
     if (strcmp(json_string_value(type), "text") is 0)
     {
@@ -94,8 +97,8 @@ GtkWidget *create_msg_widget(json_t *msg_obj, const char *last_author, t_client_
         last_author = strdup("-1");
 
     if (last_author is NULL or strcmp(json_string_value(author), last_author) not 0 or last_author[0] is '-')
-        return create_parent(msg_obj);
+        return create_parent(msg_obj, client_data);
 
     else
-        return create_child(msg_obj);
+        return create_child(msg_obj, client_data);
 }

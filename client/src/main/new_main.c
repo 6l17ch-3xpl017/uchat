@@ -20,16 +20,16 @@ static t_client_data *init_client_data(void)
     return client_data;
 }
 
-static void init_connection(t_client_data *client_data)
+static int init_connection()
 {
     cmc_log_info("[Trying connect to server]");
 
     struct sockaddr_in servaddr;
-
+    int sfd;
     cmc_log_info("[Trying to create a socket]");
 
     // ToDo: Add messages to .h
-    check_error((client_data->server_attr.socket = socket(AF_INET, SOCK_STREAM, 0)) == -1,
+    check_error((sfd = socket(AF_INET, SOCK_STREAM, 0)) == -1,
                 "[Socket successfully created]", strerror(errno))
 
     memset(&servaddr, 0, sizeof(servaddr));
@@ -41,10 +41,17 @@ static void init_connection(t_client_data *client_data)
     cmc_log_info("[Trying connect server socket to client socket]");
 
     int size = 1048576;
-    setsockopt(client_data->server_attr.socket, SOL_SOCKET, SO_SNDBUF, &size, sizeof(size));
+    setsockopt(sfd, SOL_SOCKET, SO_SNDBUF, &size, sizeof(size));
+//
+//    check_error(connect(sfd, (SA*)&servaddr, sizeof(servaddr)) != 0,
+//                "[Connected to server]", strerror(errno));
 
-    check_error(connect(client_data->server_attr.socket, (SA*)&servaddr, sizeof(servaddr)) != 0,
-                "[Connected to server]", strerror(errno))
+    while (connect(sfd, (SA*)&servaddr, sizeof(servaddr))) {
+        sleep(1);
+        cmc_log_info("Reconnect...");
+    }
+
+    return sfd;
 }
 
 static bool parse_annoyer_result(t_client_data *client_data)
@@ -70,14 +77,13 @@ static bool parse_annoyer_result(t_client_data *client_data)
 
         msg_obj = json_array_get(msg_array, i);
 
-        last_author = json_object_get(msg_obj, "author_name");
-        s_last_author = strdup(json_string_value(last_author));
+        gtk_list_box_insert(GTK_LIST_BOX(listbox), create_msg_widget(msg_obj, client_data->gtk_attr.last_msg_author,
+                                                                     client_data), -1);
 
-        gtk_list_box_insert(GTK_LIST_BOX(listbox), create_msg_widget(msg_obj, s_last_author, client_data), -1);
+        client_data->gtk_attr.last_msg_author = strdup(json_string_value(json_object_get(msg_obj, "author_name")));
 
         gtk_widget_show_all(listbox);
         client_data->state_data = strdup(json_string_value(msg_id));
-//        sleep(1);
     }
     g_mutex_unlock(&client_data->thread.mutex_interface);
     return FALSE;
@@ -106,6 +112,13 @@ bool _Noreturn test_annoyer(t_client_data *client_data)
             g_mutex_lock(&client_data->thread.mutex_client);
             write(client_data->server_attr.socket, result, strlen(result));
             request = json_loadfd(client_data->server_attr.socket, JSON_DISABLE_EOF_CHECK, NULL);
+
+            if (!request)
+            {
+                close(client_data->server_attr.socket);
+                client_data->server_attr.socket = init_connection();
+            }
+
             g_mutex_unlock(&client_data->thread.mutex_client);
         }
         json_unpack(request, "{s:i}", "status", &status);
@@ -114,7 +127,6 @@ bool _Noreturn test_annoyer(t_client_data *client_data)
         {
             client_data->server_attr.response = request;
             gdk_threads_add_idle((GSourceFunc)parse_annoyer_result, client_data);
-//            parse_annoyer_result(client_data);
             sleep(1);
         }
 
@@ -122,11 +134,17 @@ bool _Noreturn test_annoyer(t_client_data *client_data)
     }
 }
 
+void reconnect()
+{
+
+}
+
 //ToDo: Split all on logical containers and get with gtk_container_foreach()
 int main(int argc, char *argv[])
 {
     t_client_data *client_data = init_client_data();
-    init_connection(client_data);
+    client_data->server_attr.socket = init_connection();
+    signal(SIGPIPE, SIG_IGN);
     init_local_database();
     fill_countries();
     gtk_init(&argc, &argv);

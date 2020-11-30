@@ -29,6 +29,7 @@
 #define REGISTER "sign_up"
 #define OPEN_CHAT "open_chat"
 #define SEND_MSG "send_message"
+#define NEW_CHAT "new_chat"
 
 #define P_MSG 1
 #define C_MSG 2
@@ -170,5 +171,7 @@ int init_local_database();
 char *make_sql_request(char **dst, char *body, ...);
 void fill_countries();
 void get_country(t_client_data *client_data, char *country);
+
+int add_new_chat(t_client_data *client_data);
 
 #endif //UCHAT_GUI_CLIENT_H

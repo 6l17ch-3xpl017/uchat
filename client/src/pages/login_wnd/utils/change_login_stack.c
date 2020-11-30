@@ -18,4 +18,5 @@ void change_lwnd_mstack(t_client_data *client_data, int stack_id)
     }
     else
         cmc_log_fatal("Unknow stack_id = [%i]", stack_id);
+
 }

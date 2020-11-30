@@ -113,6 +113,7 @@ void sign_up(GtkButton *signup_btn, t_client_data *client_data)
         {
             load_main_app_data(client_data);
             gtk_widget_show_now(get_widget("main_app"));
+            gtk_widget_hide(get_widget("login_wnd"));
         }
         else
         {
