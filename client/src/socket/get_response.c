@@ -13,9 +13,11 @@ static int status_handler(t_client_data *client_data)
             case 104:
                 load_main_app_data(client_data);
                 gtk_widget_show_now(get_widget("main_app"));
+                gtk_widget_hide(get_widget("login_wnd"));
                 return 104;
 
             case 105:
+                gtk_widget_show_now(get_widget("sbox_pass_error"));
                 return 105;
 
 
@@ -58,6 +60,24 @@ static int status_handler(t_client_data *client_data)
                 cmc_log_error("Unknown Error [%i]", client_data->server_attr.status);
         }
     }
+
+    else if(strcmp(client_data->type, NEW_CHAT) is 0)
+    {
+        switch (client_data->server_attr.status)
+        {
+
+            case 0:
+                return 0;
+
+            case 107:
+                return add_new_chat(client_data);
+
+            default:
+                cmc_log_error("Unknown Error [%i]", client_data->server_attr.status);
+
+        }
+    }
+
 
     cmc_log_error("Unknown Type [%s]", client_data->type);
 }
