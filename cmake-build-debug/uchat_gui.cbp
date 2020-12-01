@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="uchat_gui"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="uchat_server">
+				<Option output="/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/uchat_server" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/inc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/server/inc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/framework/jansson/inc"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 uchat_server"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="uchat_server/fast">
+				<Option output="/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/uchat_server" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/inc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/server/inc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/framework/jansson/inc"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 uchat_server/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="uchat_gui">
+				<Option output="/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/uchat_gui" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/client/inc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/client/resources/libmx/inc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/client/resources/framework/jansson/inc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/client/resources/framework/cmc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/client/resources/framework/macros.h"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/client/resources/framework/libcurl/inc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/inc"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 uchat_gui"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="uchat_gui/fast">
+				<Option output="/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/uchat_gui" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/client/inc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/client/resources/libmx/inc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/client/resources/framework/jansson/inc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/client/resources/framework/cmc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/client/resources/framework/macros.h"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/client/resources/framework/libcurl/inc"/>
+					<Add directory="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/inc"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 uchat_gui/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/inc/client.h">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/inc/encryption.h">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/db/fill_countries.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/db/get_country.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/db/init_database.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/db/make_sql_request.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/encryption/ssem.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/json/create_msg_json.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/json/json_get_int.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/json/json_get_str.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/json/send_json.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/main/main.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/login_wnd/signals/goto_lwnd_mbox.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/login_wnd/signals/login.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/login_wnd/signals/login_wnd_destroy.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/login_wnd/signals/on_login_button_clicked.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/login_wnd/signals/on_password_entry_changed.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/login_wnd/signals/on_reg_button_activate_link.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/login_wnd/signals/on_username_entry_changed.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/login_wnd/signals/pick_country.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/login_wnd/signals/sign_up.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/login_wnd/signals/uname_anim.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/login_wnd/utils/change_login_stack.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/main_app/signals/add_friend.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/main_app/signals/choose_chat.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/main_app/signals/edit_msg.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/main_app/signals/exit_mapp.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/main_app/signals/friend_page.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/main_app/signals/select_chat.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/main_app/signals/send_file.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/main_app/signals/send_msg.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/main_app/signals/show_settings.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/main_app/utils/create_chat_widget.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/main_app/utils/create_msg_widget.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/main_app/utils/utils.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/reg_wnd/signals/on_email_entry_changed.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/reg_wnd/signals/on_password_entry_changed.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/reg_wnd/signals/on_phonenumber_entry_changed.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/reg_wnd/signals/on_rep_password_entry_changed.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/reg_wnd/signals/on_submit_button_clicked.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/pages/reg_wnd/signals/on_username_entry_changed.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/socket/get_response.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/socket/send_request.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/utils/create_user_data.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/utils/create_widget_from_template.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/utils/create_window.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/utils/download_curl.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/utils/msg_widget_factory.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/utils/prepare_signup_page.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/client/src/utils/read_socket.c">
+			<Option target="uchat_gui"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/inc/header_db_dev.h">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/inc/net_skeleton.h">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/inc/server.h">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/inc/libmx.h">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_atoi.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_binary_search.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_bubble_sort.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_count_substr.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_count_words.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_create_node.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_del_extra_spaces.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_del_intarr.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_del_strarr.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_file_to_str.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_foreach.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_get_char_index.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_get_substr_index.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_hex_to_nbr.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_intlen.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_isalpha.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_isdigit.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_isspace.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_itoa.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_list_size.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_memccpy.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_memchr.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_memcmp.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_memcpy.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_memmem.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_memmove.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_memrchr.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_memset.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_nbr_length.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_nbr_to_hex.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_pop_back.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_pop_front.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_pow.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_print_intarr.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_print_strarr.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_print_unicode.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_printchar.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_printerr.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_printint.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_printstr.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_push_back.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_push_front.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_quicksort.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_realloc.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_replace_substr.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_sort_list.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_sqrt.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_str_reverse.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strcat.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strcmp.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strcpy.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strdel.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strdup.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strjoin.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strlen.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strncmp.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strncpy.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strndup.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strnew.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strsplit.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strstr.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_strtrim.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/resources/libmx/src/mx_swap_char.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/create/add_chat_to_db.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/create/add_message_to_db.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/create/add_user_in_chat.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/create/add_user_to_db.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/delete/delete_chat_from_db.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/delete/delete_user.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/delete/drop_all.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/initialization/init_chat_struct.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/initialization/init_database.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/initialization/init_message_struct.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/initialization/init_user_struct.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/add_id_to_struct_Chat.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/add_id_to_struct_Message.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/add_id_to_struct_User.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/check_valid_data_for_sign_up.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/get_all_messages_from_chat.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/get_chat_by_id.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/get_chats_where_user.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/get_id_by_nickname.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/get_number_of_users_in_chat.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/get_users_list_for_chat.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/is_admin.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/messages_from_id.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/mx_del_chat_list.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/mx_pop_back_for_chat.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/populate_User_struct.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/read/user_in_bd.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/request/make_request.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/chat/change_admin_randomly.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/chat/refresh_data_after_chat_update.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/chat/update_admin_id_of_chat.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/chat/update_chat_name.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/chat/update_chat_photo.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/message/update_all_messages_by_deleted_user_in_chat.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/message/update_massage_content.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/user/update_age_of_user.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/user/update_email_of_user.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/user/update_fullname_of_user.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/user/update_nickname_of_user.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/user/update_password_of_user.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/user/update_phone_number_of_user.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/user/update_photo_of_user.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/user/update_user_id.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/db/update/user/update_user_id_in__chat_user__.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/main/net_skeleton.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/main/new_main.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/router/auth/send_status.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/router/auth/sign_in.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/router/auth/sign_up.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/router/chats/check_for_updates.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/router/chats/create_new_empty_chat.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/router/chats/free_chat_struct.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/router/chats/new_chat_pack_send.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/router/chats/open_selected_chat.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/router/check_route.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/router/messages/create_new_message.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/server/src/router/messages/message_pack_send.c">
+			<Option target="uchat_server"/>
+		</Unit>
+		<Unit filename="/Users/yksonzenko/CLionProjects/uchat_master/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

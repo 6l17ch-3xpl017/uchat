@@ -1,0 +1,4 @@
+/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/CMakeFiles/uchat_server.dir
+/Users/yksonzenko/CLionProjects/uchat_master/cmake-build-debug/CMakeFiles/uchat_gui.dir
