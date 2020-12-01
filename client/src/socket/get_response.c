@@ -80,6 +80,7 @@ static int status_handler(t_client_data *client_data)
 
 
     cmc_log_error("Unknown Type [%s]", client_data->type);
+    return 0;
 }
 
 int get_response(t_client_data *client_data)

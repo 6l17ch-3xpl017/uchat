@@ -160,6 +160,7 @@ int get_number_of_users_in_chat(t_chat *Chat);
 int is_admin(t_user *User, t_chat *Chat);
 t_message *messages_from_id(char *message_id, char *chat_id);
 char *get_id_by_nickname(char *nickname);
+char *get_chat_by_id(char *chatname);
 
 // REQUEST
 char *make_sql_request(char **dst, char *body, ...);
