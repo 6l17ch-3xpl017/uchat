@@ -1,5 +1,4 @@
 #include "client.h"
-#include "db.h"
 
 // ToDo: Free memmory
 static t_client_data *init_client_data(void)
@@ -20,7 +19,7 @@ static t_client_data *init_client_data(void)
     return client_data;
 }
 
-static int init_connection()
+static int init_connection(t_client_data *client_data)
 {
     cmc_log_info("[Trying connect to server]");
 
@@ -36,14 +35,15 @@ static int init_connection()
 
     //ToDo: add auto ip and port assign and log output
     servaddr.sin_family = AF_INET;
-    servaddr.sin_port = htons(7777);
+    servaddr.sin_addr.s_addr = inet_addr(client_data->server_attr.ip);
+    servaddr.sin_port = htons(atoi(client_data->server_attr.port));
 
     cmc_log_info("[Trying connect server socket to client socket]");
 
     int size = 1048576;
     setsockopt(sfd, SOL_SOCKET, SO_SNDBUF, &size, sizeof(size));
 
-    while (connect(sfd, (SA*)&servaddr, sizeof(servaddr))) {
+    for (int i = 0; connect(sfd, (SA*)&servaddr, sizeof(servaddr)) && i != 10; i++) {
         sleep(1);
         cmc_log_info("Reconnect...");
     }
@@ -60,8 +60,6 @@ static bool parse_annoyer_result(t_client_data *client_data)
     json_t *msg_array = json_object_get(client_data->server_attr.response, "messages");
     json_t *msg_obj;
     json_t *msg_id;
-    json_t *last_author;
-    char *s_last_author;
 
     cmc_log_info("%s", json_dumps(msg_array, 0));
 
@@ -86,7 +84,7 @@ static bool parse_annoyer_result(t_client_data *client_data)
     return FALSE;
 }
 
-bool _Noreturn test_annoyer(t_client_data *client_data)
+bool test_annoyer(t_client_data *client_data)
 {
     json_t *request = NULL;
     json_t *json;
@@ -113,7 +111,7 @@ bool _Noreturn test_annoyer(t_client_data *client_data)
             if (!request)
             {
                 close(client_data->server_attr.socket);
-                client_data->server_attr.socket = init_connection();
+                client_data->server_attr.socket = init_connection(client_data);
             }
 
             g_mutex_unlock(&client_data->thread.mutex_client);
@@ -131,16 +129,18 @@ bool _Noreturn test_annoyer(t_client_data *client_data)
     }
 }
 
-void reconnect()
-{
-
-}
-
 //ToDo: Split all on logical containers and get with gtk_container_foreach()
 int main(int argc, char *argv[])
 {
+    if (argc != 3)
+        exit(0);
+
     t_client_data *client_data = init_client_data();
-    client_data->server_attr.socket = init_connection();
+
+    client_data->server_attr.ip = argv[1];
+    client_data->server_attr.port = argv[2];
+
+    client_data->server_attr.socket = init_connection(client_data);
     signal(SIGPIPE, SIG_IGN);
     init_local_database();
     fill_countries();
@@ -161,6 +161,5 @@ int main(int argc, char *argv[])
     g_mutex_clear(&client_data->thread.mutex_interface);
     g_mutex_clear(&client_data->thread.mutex_client);
 
-    system("leaks -q uchat_gui");
     return 0;
 }

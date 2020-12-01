@@ -49,8 +49,8 @@ static void connecting_to_port(char *port, struct ns_mgr *mgr) {
         exit(0);
 }
 
-
-int main(int argc, char *argv[]) {
+static void do_main_work(int argc, char *argv[])
+{
     struct ns_mgr mgr;
     char *chat_name = "Ukraine";
 
@@ -63,8 +63,42 @@ int main(int argc, char *argv[]) {
     if (argc == 2)
         connecting_to_port(argv[1], &mgr);
     else
+    {
+        write(2, "usage: ./uchat_server [port]", strlen("usage: ./uchat_server [port])"));
         exit(0);
+    }
 
     for (;;)
         ns_mgr_poll(&mgr, 1000);
+};
+
+
+int main(int argc, char *argv[])
+{
+
+    if (argc != 2)
+    {
+        write(2, "usage: ./uchat_server [port]", strlen("usage: ./uchat_server [port])"));
+        exit(0);
+    }
+
+    pid_t process_id = 0;
+    pid_t sid = 0;
+    // Create child process
+    process_id = fork();
+    // Indication of fork() failure
+    if (process_id < 0)
+    {
+        printf("fork failed!\n");
+    // Return failure in exit status
+        exit(1);
+    }
+    // PARENT PROCESS. Need to kill it.
+    if (process_id > 0)
+    {
+        printf("process_id of child process %d \n", process_id);
+    // return success in exit status
+        exit(0);
+    }
+    do_main_work(argc, argv);
 }

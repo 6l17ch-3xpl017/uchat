@@ -18,6 +18,13 @@
 #include "unistd.h"
 #include "libmx.h"
 
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<sys/socket.h>
+#include<arpa/inet.h>
+#include<unistd.h>
+
 #include <sqlite3.h>
 #include <stdbool.h>
 
@@ -123,6 +130,8 @@ typedef struct s_client_data
 
     struct s_server_attr
     {
+        char *ip;
+        char *port;
         int socket;
         int status;
         json_t *response;
